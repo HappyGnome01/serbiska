@@ -41,3 +41,10 @@ Nästa steg:
 - `process.md`: GitHub Desktop ersatt av arbetsgången där Claude Code sköter git.
 - Omnämnandena av pojkvännen behålls. GitHub-namnet är anonymt.
 - Projektets git använder GitHubs anonyma e-postadress. Säkerhetsspärren stoppade Claude från att ändra kontoinställningen och skapa repot, så användaren gör de klicken själv.
+
+## [2026-10-31] publish | Appen publicerad
+- Repo: https://github.com/HappyGnome01/serbiska (publikt). App: https://happygnome01.github.io/serbiska/
+- Kontrollerat på den publicerade adressen: startsidan och datafilerna laddar, `raw/` och `.claude/` går inte att nå.
+Nästa steg:
+1. Testa på telefonen och lägg appen på hemskärmen.
+2. Låt pojkvännen granska `data/words.json` och `data/sentences.json`.
