@@ -1,0 +1,381 @@
+[
+  {
+    "id": "l1-zdravo",
+    "lesson": 1,
+    "theme": "Hälsningar",
+    "sr": "zdravo",
+    "sv": "hej",
+    "note": "Informellt. Till äldre du inte känner: dobar dan."
+  },
+  {
+    "id": "l1-dobar-dan",
+    "lesson": 1,
+    "theme": "Hälsningar",
+    "sr": "dobar dan",
+    "sv": "god dag",
+    "note": "Artigt, passar bra till äldre släktingar."
+  },
+  {
+    "id": "l1-kako-si",
+    "lesson": 1,
+    "theme": "Hälsningar",
+    "sr": "kako si?",
+    "sv": "hur mår du?",
+    "note": "Till en person du säger du till. Artigt/flera: kako ste?"
+  },
+  {
+    "id": "l1-dobro",
+    "lesson": 1,
+    "theme": "Hälsningar",
+    "sr": "dobro",
+    "sv": "bra"
+  },
+  {
+    "id": "l1-hvala",
+    "lesson": 1,
+    "theme": "Hälsningar",
+    "sr": "hvala",
+    "sv": "tack"
+  },
+  {
+    "id": "l2-molim",
+    "lesson": 2,
+    "theme": "Artighet",
+    "sr": "molim",
+    "sv": "snälla / varsågod",
+    "note": "Molim? betyder också: förlåt, vad sa du?"
+  },
+  {
+    "id": "l2-izvini",
+    "lesson": 2,
+    "theme": "Artighet",
+    "sr": "izvini",
+    "sv": "förlåt",
+    "note": "Till en person du säger du till. Artigt: izvinite."
+  },
+  {
+    "id": "l2-da",
+    "lesson": 2,
+    "theme": "Artighet",
+    "sr": "da",
+    "sv": "ja"
+  },
+  {
+    "id": "l2-ne",
+    "lesson": 2,
+    "theme": "Artighet",
+    "sr": "ne",
+    "sv": "nej / inte",
+    "note": "Före ett verb betyder ne 'inte': ne razumijem."
+  },
+  {
+    "id": "l2-moze",
+    "lesson": 2,
+    "theme": "Artighet",
+    "sr": "može",
+    "sv": "gärna / det går bra",
+    "note": "Används hela tiden: Može kafa? – Može!"
+  },
+  {
+    "id": "l3-ja",
+    "lesson": 3,
+    "theme": "Presentera dig",
+    "sr": "ja",
+    "sv": "jag",
+    "note": "Uttalas som svenska 'ja'."
+  },
+  {
+    "id": "l3-zovem-se",
+    "lesson": 3,
+    "theme": "Presentera dig",
+    "sr": "zovem se",
+    "sv": "jag heter"
+  },
+  {
+    "id": "l3-drago-mi-je",
+    "lesson": 3,
+    "theme": "Presentera dig",
+    "sr": "drago mi je",
+    "sv": "trevligt att träffas"
+  },
+  {
+    "id": "l3-razumijem",
+    "lesson": 3,
+    "theme": "Presentera dig",
+    "sr": "razumijem",
+    "sv": "jag förstår",
+    "note": "Ekaviskt: razumem."
+  },
+  {
+    "id": "l3-srpski",
+    "lesson": 3,
+    "theme": "Presentera dig",
+    "sr": "srpski",
+    "sv": "serbiska"
+  },
+  {
+    "id": "l4-mama",
+    "lesson": 4,
+    "theme": "Familjen",
+    "sr": "mama",
+    "sv": "mamma"
+  },
+  {
+    "id": "l4-tata",
+    "lesson": 4,
+    "theme": "Familjen",
+    "sr": "tata",
+    "sv": "pappa"
+  },
+  {
+    "id": "l4-brat",
+    "lesson": 4,
+    "theme": "Familjen",
+    "sr": "brat",
+    "sv": "bror"
+  },
+  {
+    "id": "l4-sestra",
+    "lesson": 4,
+    "theme": "Familjen",
+    "sr": "sestra",
+    "sv": "syster"
+  },
+  {
+    "id": "l4-porodica",
+    "lesson": 4,
+    "theme": "Familjen",
+    "sr": "porodica",
+    "sv": "familj",
+    "note": "I Bosnien hörs även familija."
+  },
+  {
+    "id": "l5-baka",
+    "lesson": 5,
+    "theme": "Släkt och vänner",
+    "sr": "baka",
+    "sv": "farmor / mormor"
+  },
+  {
+    "id": "l5-djed",
+    "lesson": 5,
+    "theme": "Släkt och vänner",
+    "sr": "djed",
+    "sv": "farfar / morfar",
+    "note": "Ekaviskt: deda. I vardagen även dedo/deda."
+  },
+  {
+    "id": "l5-djevojka",
+    "lesson": 5,
+    "theme": "Släkt och vänner",
+    "sr": "djevojka",
+    "sv": "flickvän / tjej",
+    "note": "Ekaviskt: devojka."
+  },
+  {
+    "id": "l5-momak",
+    "lesson": 5,
+    "theme": "Släkt och vänner",
+    "sr": "momak",
+    "sv": "pojkvän / ung man",
+    "note": "Även dečko används för pojkvän."
+  },
+  {
+    "id": "l5-prijatelj",
+    "lesson": 5,
+    "theme": "Släkt och vänner",
+    "sr": "prijatelj",
+    "sv": "vän",
+    "note": "Om en kvinna: prijateljica."
+  },
+  {
+    "id": "l6-kafa",
+    "lesson": 6,
+    "theme": "Mat och dryck",
+    "sr": "kafa",
+    "sv": "kaffe",
+    "note": "I Bosnien säger många också kahva."
+  },
+  {
+    "id": "l6-voda",
+    "lesson": 6,
+    "theme": "Mat och dryck",
+    "sr": "voda",
+    "sv": "vatten"
+  },
+  {
+    "id": "l6-hljeb",
+    "lesson": 6,
+    "theme": "Mat och dryck",
+    "sr": "hljeb",
+    "sv": "bröd",
+    "note": "Ekaviskt: hleb."
+  },
+  {
+    "id": "l6-mlijeko",
+    "lesson": 6,
+    "theme": "Mat och dryck",
+    "sr": "mlijeko",
+    "sv": "mjölk",
+    "note": "Ekaviskt: mleko."
+  },
+  {
+    "id": "l6-caj",
+    "lesson": 6,
+    "theme": "Mat och dryck",
+    "sr": "čaj",
+    "sv": "te"
+  },
+  {
+    "id": "l7-prijatno",
+    "lesson": 7,
+    "theme": "Vid bordet",
+    "sr": "prijatno",
+    "sv": "smaklig måltid",
+    "note": "Sägs när man börjar äta."
+  },
+  {
+    "id": "l7-ukusno",
+    "lesson": 7,
+    "theme": "Vid bordet",
+    "sr": "ukusno",
+    "sv": "gott"
+  },
+  {
+    "id": "l7-jedi",
+    "lesson": 7,
+    "theme": "Vid bordet",
+    "sr": "jedi!",
+    "sv": "ät!",
+    "note": "Uppmaning, från verbet jesti (att äta)."
+  },
+  {
+    "id": "l7-jos",
+    "lesson": 7,
+    "theme": "Vid bordet",
+    "sr": "još",
+    "sv": "mer / till"
+  },
+  {
+    "id": "l7-sita-sam",
+    "lesson": 7,
+    "theme": "Vid bordet",
+    "sr": "sita sam",
+    "sv": "jag är mätt",
+    "note": "Kvinna: sita sam. Man: sit sam."
+  },
+  {
+    "id": "l8-zivjeli",
+    "lesson": 8,
+    "theme": "Fest och firande",
+    "sr": "živjeli!",
+    "sv": "skål!",
+    "note": "Ekaviskt: živeli. Titta varandra i ögonen när ni skålar."
+  },
+  {
+    "id": "l8-rakija",
+    "lesson": 8,
+    "theme": "Fest och firande",
+    "sr": "rakija",
+    "sv": "rakija (fruktbrännvin)"
+  },
+  {
+    "id": "l8-slava",
+    "lesson": 8,
+    "theme": "Fest och firande",
+    "sr": "slava",
+    "sv": "slava (familjens helgondag)",
+    "note": "Se wiki/kultur/slava.md."
+  },
+  {
+    "id": "l8-cestitam",
+    "lesson": 8,
+    "theme": "Fest och firande",
+    "sr": "čestitam",
+    "sv": "grattis"
+  },
+  {
+    "id": "l8-sretno",
+    "lesson": 8,
+    "theme": "Fest och firande",
+    "sr": "sretno!",
+    "sv": "lycka till!",
+    "note": "Ekaviskt: srećno."
+  },
+  {
+    "id": "l9-sta",
+    "lesson": 9,
+    "theme": "Frågeord",
+    "sr": "šta",
+    "sv": "vad"
+  },
+  {
+    "id": "l9-ko",
+    "lesson": 9,
+    "theme": "Frågeord",
+    "sr": "ko",
+    "sv": "vem"
+  },
+  {
+    "id": "l9-gdje",
+    "lesson": 9,
+    "theme": "Frågeord",
+    "sr": "gdje",
+    "sv": "var",
+    "note": "Ekaviskt: gde."
+  },
+  {
+    "id": "l9-kada",
+    "lesson": 9,
+    "theme": "Frågeord",
+    "sr": "kada",
+    "sv": "när",
+    "note": "Kortare form: kad."
+  },
+  {
+    "id": "l9-koliko",
+    "lesson": 9,
+    "theme": "Frågeord",
+    "sr": "koliko",
+    "sv": "hur mycket / hur många"
+  },
+  {
+    "id": "l10-lijepo",
+    "lesson": 10,
+    "theme": "Känslor",
+    "sr": "lijepo",
+    "sv": "fint / vackert",
+    "note": "Ekaviskt: lepo."
+  },
+  {
+    "id": "l10-volim",
+    "lesson": 10,
+    "theme": "Känslor",
+    "sr": "volim",
+    "sv": "jag älskar / jag tycker om"
+  },
+  {
+    "id": "l10-umorna",
+    "lesson": 10,
+    "theme": "Känslor",
+    "sr": "umorna",
+    "sv": "trött",
+    "note": "Kvinna: umorna. Man: umoran."
+  },
+  {
+    "id": "l10-sretna",
+    "lesson": 10,
+    "theme": "Känslor",
+    "sr": "sretna",
+    "sv": "glad",
+    "note": "Kvinna: sretna. Man: sretan. Ekaviskt: srećna."
+  },
+  {
+    "id": "l10-ovdje",
+    "lesson": 10,
+    "theme": "Känslor",
+    "sr": "ovdje",
+    "sv": "här",
+    "note": "Ekaviskt: ovde."
+  }
+]

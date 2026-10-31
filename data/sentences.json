@@ -1,0 +1,325 @@
+[
+  {
+    "id": "l1-s1",
+    "lesson": 1,
+    "sr": "Zdravo, kako si?",
+    "sv": "Hej, hur mår du?"
+  },
+  {
+    "id": "l1-s2",
+    "lesson": 1,
+    "sr": "Dobro sam, hvala.",
+    "sv": "Jag mår bra, tack.",
+    "note": "sam = jag är"
+  },
+  {
+    "id": "l1-s3",
+    "lesson": 1,
+    "sr": "Dobar dan, kako ste?",
+    "sv": "God dag, hur mår ni?",
+    "note": "ste är den artiga formen. Använd den till äldre."
+  },
+  {
+    "id": "l1-s4",
+    "lesson": 1,
+    "sr": "Hvala, dobro.",
+    "sv": "Tack, bra."
+  },
+  {
+    "id": "l1-s5",
+    "lesson": 1,
+    "sr": "Dobro, a ti?",
+    "sv": "Bra, och du?",
+    "note": "a = och (när man vänder på frågan)"
+  },
+  {
+    "id": "l2-s1",
+    "lesson": 2,
+    "sr": "Može kafa?",
+    "sv": "Vill du ha kaffe?",
+    "note": "Ordagrant: går det med kaffe?"
+  },
+  {
+    "id": "l2-s2",
+    "lesson": 2,
+    "sr": "Da, molim.",
+    "sv": "Ja tack."
+  },
+  {
+    "id": "l2-s3",
+    "lesson": 2,
+    "sr": "Ne, hvala.",
+    "sv": "Nej tack."
+  },
+  {
+    "id": "l2-s4",
+    "lesson": 2,
+    "sr": "Da, može.",
+    "sv": "Ja, gärna."
+  },
+  {
+    "id": "l2-s5",
+    "lesson": 2,
+    "sr": "Izvini, molim?",
+    "sv": "Förlåt, vad sa du?"
+  },
+  {
+    "id": "l3-s1",
+    "lesson": 3,
+    "sr": "Zovem se Ana.",
+    "sv": "Jag heter Ana.",
+    "note": "Byt Ana mot ditt eget namn när du övar högt."
+  },
+  {
+    "id": "l3-s2",
+    "lesson": 3,
+    "sr": "Kako se zoveš?",
+    "sv": "Vad heter du?"
+  },
+  {
+    "id": "l3-s3",
+    "lesson": 3,
+    "sr": "Drago mi je!",
+    "sv": "Trevligt att träffas!"
+  },
+  {
+    "id": "l3-s4",
+    "lesson": 3,
+    "sr": "Ne razumijem.",
+    "sv": "Jag förstår inte."
+  },
+  {
+    "id": "l3-s5",
+    "lesson": 3,
+    "sr": "Ja ne govorim dobro srpski.",
+    "sv": "Jag pratar inte så bra serbiska.",
+    "note": "govorim = jag pratar"
+  },
+  {
+    "id": "l4-s1",
+    "lesson": 4,
+    "sr": "Ovo je mama.",
+    "sv": "Det här är mamma.",
+    "note": "ovo je = det här är"
+  },
+  {
+    "id": "l4-s2",
+    "lesson": 4,
+    "sr": "Tata je ovdje.",
+    "sv": "Pappa är här."
+  },
+  {
+    "id": "l4-s3",
+    "lesson": 4,
+    "sr": "Imaš li brata?",
+    "sv": "Har du en bror?",
+    "note": "brat → brata efter 'har du' (ackusativ)."
+  },
+  {
+    "id": "l4-s4",
+    "lesson": 4,
+    "sr": "Moja sestra je u Švedskoj.",
+    "sv": "Min syster är i Sverige.",
+    "note": "Švedska → u Švedskoj (lokativ: var något är)."
+  },
+  {
+    "id": "l4-s5",
+    "lesson": 4,
+    "sr": "Velika porodica!",
+    "sv": "En stor familj!"
+  },
+  {
+    "id": "l5-s1",
+    "lesson": 5,
+    "sr": "Ovo je baka.",
+    "sv": "Det här är farmor."
+  },
+  {
+    "id": "l5-s2",
+    "lesson": 5,
+    "sr": "Djed je u bašti.",
+    "sv": "Farfar är i trädgården.",
+    "note": "bašta → u bašti (lokativ)."
+  },
+  {
+    "id": "l5-s3",
+    "lesson": 5,
+    "sr": "Ja sam njegova djevojka.",
+    "sv": "Jag är hans flickvän.",
+    "note": "njegova = hans"
+  },
+  {
+    "id": "l5-s4",
+    "lesson": 5,
+    "sr": "On je moj momak.",
+    "sv": "Han är min pojkvän."
+  },
+  {
+    "id": "l5-s5",
+    "lesson": 5,
+    "sr": "Ovo je moj prijatelj.",
+    "sv": "Det här är min vän."
+  },
+  {
+    "id": "l6-s1",
+    "lesson": 6,
+    "sr": "Hoćeš li kafu?",
+    "sv": "Vill du ha kaffe?",
+    "note": "kafa → kafu efter 'vill du ha' (ackusativ)."
+  },
+  {
+    "id": "l6-s2",
+    "lesson": 6,
+    "sr": "Čašu vode, molim.",
+    "sv": "Ett glas vatten, tack.",
+    "note": "voda → vode: 'ett glas av vatten' (genitiv)."
+  },
+  {
+    "id": "l6-s3",
+    "lesson": 6,
+    "sr": "Kafa sa mlijekom.",
+    "sv": "Kaffe med mjölk.",
+    "note": "mlijeko → mlijekom efter sa = med (instrumental)."
+  },
+  {
+    "id": "l6-s4",
+    "lesson": 6,
+    "sr": "Ovo je domaći hljeb.",
+    "sv": "Det här är hembakat bröd.",
+    "note": "domaći = hemgjord"
+  },
+  {
+    "id": "l6-s5",
+    "lesson": 6,
+    "sr": "Ne pijem kafu, može čaj?",
+    "sv": "Jag dricker inte kaffe, går det bra med te?"
+  },
+  {
+    "id": "l7-s1",
+    "lesson": 7,
+    "sr": "Prijatno!",
+    "sv": "Smaklig måltid!"
+  },
+  {
+    "id": "l7-s2",
+    "lesson": 7,
+    "sr": "Ovo je jako ukusno!",
+    "sv": "Det här är jättegott!",
+    "note": "jako = väldigt"
+  },
+  {
+    "id": "l7-s3",
+    "lesson": 7,
+    "sr": "Hoćeš li još?",
+    "sv": "Vill du ha mer?"
+  },
+  {
+    "id": "l7-s4",
+    "lesson": 7,
+    "sr": "Hvala, sita sam.",
+    "sv": "Tack, jag är mätt."
+  },
+  {
+    "id": "l7-s5",
+    "lesson": 7,
+    "sr": "Jedi, jedi!",
+    "sv": "Ät, ät!",
+    "note": "Klassiskt från värdar och mor- och farföräldrar."
+  },
+  {
+    "id": "l8-s1",
+    "lesson": 8,
+    "sr": "Živjeli!",
+    "sv": "Skål!"
+  },
+  {
+    "id": "l8-s2",
+    "lesson": 8,
+    "sr": "Hoćeš li rakiju?",
+    "sv": "Vill du ha rakija?",
+    "note": "rakija → rakiju (ackusativ)."
+  },
+  {
+    "id": "l8-s3",
+    "lesson": 8,
+    "sr": "Sretna slava!",
+    "sv": "Glad slava!",
+    "note": "Lyckönskan när du kommer till en slava."
+  },
+  {
+    "id": "l8-s4",
+    "lesson": 8,
+    "sr": "Čestitam rođendan!",
+    "sv": "Grattis på födelsedagen!"
+  },
+  {
+    "id": "l8-s5",
+    "lesson": 8,
+    "sr": "Sretno na putu!",
+    "sv": "Trevlig resa!",
+    "note": "Ordagrant: lycka till på vägen."
+  },
+  {
+    "id": "l9-s1",
+    "lesson": 9,
+    "sr": "Šta je ovo?",
+    "sv": "Vad är det här?"
+  },
+  {
+    "id": "l9-s2",
+    "lesson": 9,
+    "sr": "Ko je to?",
+    "sv": "Vem är det?"
+  },
+  {
+    "id": "l9-s3",
+    "lesson": 9,
+    "sr": "Gdje je toalet?",
+    "sv": "Var är toaletten?"
+  },
+  {
+    "id": "l9-s4",
+    "lesson": 9,
+    "sr": "Kada dolaziš?",
+    "sv": "När kommer du?"
+  },
+  {
+    "id": "l9-s5",
+    "lesson": 9,
+    "sr": "Koliko imaš godina?",
+    "sv": "Hur gammal är du?",
+    "note": "Ordagrant: hur många år har du?"
+  },
+  {
+    "id": "l10-s1",
+    "lesson": 10,
+    "sr": "Lijepo je ovdje.",
+    "sv": "Det är fint här."
+  },
+  {
+    "id": "l10-s2",
+    "lesson": 10,
+    "sr": "Volim te.",
+    "sv": "Jag älskar dig."
+  },
+  {
+    "id": "l10-s3",
+    "lesson": 10,
+    "sr": "Volim srpsku hranu.",
+    "sv": "Jag älskar serbisk mat.",
+    "note": "hrana = mat → hranu (ackusativ)."
+  },
+  {
+    "id": "l10-s4",
+    "lesson": 10,
+    "sr": "Malo sam umorna.",
+    "sv": "Jag är lite trött.",
+    "note": "malo = lite"
+  },
+  {
+    "id": "l10-s5",
+    "lesson": 10,
+    "sr": "Sretna sam što sam ovdje.",
+    "sv": "Jag är glad att jag är här."
+  }
+]

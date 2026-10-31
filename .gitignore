@@ -1,0 +1,5 @@
+# Privata råanteckningar publiceras aldrig
+raw/
+
+# Lokal testserver och Claude-inställningar behöver inte publiceras
+.claude/

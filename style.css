@@ -1,0 +1,115 @@
+/* ===== Färger (ändra här för att byta tema) ===== */
+:root {
+  --bg: #f4f1ea;
+  --card: #ffffff;
+  --text: #222222;
+  --muted: #6b6b6b;
+  --primary: #2d3a4a;
+  --again: #c0392b;
+  --hard: #e67e22;
+  --good: #27ae60;
+  --easy: #2980b9;
+  --border: #e2ddd2;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1d21;
+    --card: #262a30;
+    --text: #ececec;
+    --muted: #a0a0a0;
+    --primary: #8fb3d9;
+    --border: #3a3f47;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+h1 { font-size: 1.3rem; margin: 0; }
+nav { display: flex; gap: 6px; }
+.nav-btn { background: transparent; color: var(--muted); padding: 8px 12px; border: 1px solid var(--border); }
+.nav-btn.active { background: var(--primary); color: var(--bg); border-color: var(--primary); }
+
+main { max-width: 520px; margin: 0 auto; padding: 0 16px 40px; }
+
+/* Kort */
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 12px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  text-align: center;
+}
+.sr { font-size: 2rem; font-weight: 700; }
+.sr.sentence { font-size: 1.5rem; }
+.cyr { color: var(--muted); font-size: 1.1rem; margin-top: 4px; }
+.sv { font-size: 1.3rem; margin-top: 16px; }
+.note { color: var(--muted); font-size: 0.95rem; margin-top: 12px; }
+.big { font-size: 1.6rem; font-weight: 700; margin: 8px 0; }
+.step-label { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.center { text-align: center; }
+.muted { color: var(--muted); }
+.hidden { display: none !important; }
+
+/* Förloppsindikator */
+.progress { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-top: 8px; }
+.bar { height: 100%; background: var(--good); transition: width 0.3s; }
+
+/* Knappar */
+.buttons { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 12px 0; }
+button {
+  font: inherit;
+  font-size: 1rem;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: var(--border);
+  color: var(--text);
+}
+button:disabled { opacity: 0.5; cursor: default; }
+button.primary { background: var(--primary); color: var(--bg); min-width: 160px; }
+button.again { background: var(--again); color: #fff; }
+button.hard  { background: var(--hard);  color: #fff; }
+button.good  { background: var(--good);  color: #fff; }
+button.easy  { background: var(--easy);  color: #fff; }
+
+/* Flervalsfrågor */
+.options { display: grid; gap: 8px; }
+.option { background: var(--card); border: 2px solid var(--border); text-align: left; }
+.option.correct { border-color: var(--good); background: rgba(39,174,96,0.15); opacity: 1; }
+.option.wrong { border-color: var(--again); background: rgba(192,57,43,0.15); opacity: 1; }
+.feedback { text-align: center; font-weight: 600; }
+.feedback.ok { color: var(--good); }
+.feedback.bad { color: var(--again); }
+
+/* Ordbrickor för "bygg meningen" */
+.tiles { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; min-height: 52px; padding: 8px 0; }
+.answer-row { border-bottom: 2px dashed var(--border); }
+.tile { background: var(--card); border: 2px solid var(--border); font-weight: 600; }
+
+/* Dashboard */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.stat { background: var(--card); border-radius: 12px; padding: 14px 6px; text-align: center; border-top: 5px solid var(--border); }
+.stat .num { font-size: 1.8rem; font-weight: 700; }
+.stat.easy { border-top-color: var(--easy); }
+.stat.good { border-top-color: var(--good); }
+.stat.hard { border-top-color: var(--hard); }
+.summary { text-align: left; line-height: 1.8; }
+details { background: var(--card); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+summary { cursor: pointer; font-weight: 600; }
+.word-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); gap: 12px; }
+.word-row:last-child { border-bottom: none; }
