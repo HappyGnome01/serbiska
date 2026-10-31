@@ -35,7 +35,7 @@ Målet är inte att du ska kunna koda, utan att du ska kunna **styra AI:n** så 
 Git for Windows är installerat, och Claude Code sköter git åt dig.
 1. Skapa ett konto på **github.com**.
 2. Logga in på GitHub i Claudes webbläsarpanel. Lösenord och koder skriver du alltid själv.
-3. Claude skapar ett tomt, **publikt** repo. Gratis GitHub Pages kräver det.
+3. Skapa ett tomt, **publikt** repo och slå på "Keep my email addresses private". Claude kan fylla i formuläret, men säkerhetsspärren stoppar Claude från de sista klicken på kontot. Gratis GitHub Pages kräver ett publikt repo.
 4. Claude gör första commit och pushar efter ditt ok. Första gången öppnas ett inloggningsfönster där du själv loggar in.
 5. På github.com, i ditt repo: **Settings → Pages** → under "Branch" välj `main` och `/ (root)` → **Save**.
 6. Efter någon minut finns appen på `https://<ditt-användarnamn>.github.io/<repo-namn>/`.

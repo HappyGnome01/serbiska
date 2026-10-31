@@ -39,3 +39,5 @@ Nästa steg:
 - `.claude/` lades till i `.gitignore`. Kontrollerat att `raw/` och `.claude/` inte kommer med.
 - Filerna genomsöktes efter personliga uppgifter: inga namn, e-postadresser eller adresser, men några omnämnanden av pojkvännen och hans familj.
 - `process.md`: GitHub Desktop ersatt av arbetsgången där Claude Code sköter git.
+- Omnämnandena av pojkvännen behålls. GitHub-namnet är anonymt.
+- Projektets git använder GitHubs anonyma e-postadress. Säkerhetsspärren stoppade Claude från att ändra kontoinställningen och skapa repot, så användaren gör de klicken själv.
