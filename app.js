@@ -28,6 +28,7 @@ const main = document.getElementById("main");
 // progress.sessions  = [{ date, lesson, reviewed, newWords }]
 // progress.placement = gammalt resultat från nivåtestet, som är borttaget. Används inte längre.
 // progress.currentLesson = nästa lektion (saknas tills du gjort ett pass eller bytt nivå)
+// progress.gradeDays = { "ÅÅÅÅ-MM-DD": { easy, good, hard } }, antal ord per betyg när dagen slutade
 function loadProgress() {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
@@ -132,7 +133,48 @@ function gradeWord(id, quality) {
   p.lastGrade = quality;
   delete p.placed;                    // Ordet är nu övat, inte bara överhoppat
   progress.words[id] = p;
+  progress.gradeDays[dateStr(new Date())] = countGrades();
   saveProgress();
+}
+
+const GRADE_KEYS = { 5: "easy", 4: "good", 3: "hard" };
+
+// Ord per senaste betyg just nu
+function countGrades() {
+  const counts = { easy: 0, good: 0, hard: 0 };
+  WORDS.forEach(w => {
+    const key = progress.words[w.id] && GRADE_KEYS[progress.words[w.id].lastGrade];
+    if (key) counts[key]++;
+  });
+  return counts;
+}
+
+// Äldre framsteg saknar betyg per dag. Historiken byggs då upp ur senaste betyget och
+// dagen det gavs, så den blir en uppskattning: tidigare betyg på samma ord är inte sparade.
+function seedGradeDays() {
+  if (progress.gradeDays) return;
+  const perDay = {};
+  WORDS.forEach(w => {
+    const p = progress.words[w.id];
+    const key = p && GRADE_KEYS[p.lastGrade];
+    if (!key) return;
+    const day = dateStr(new Date(p.due - p.interval * DAY));
+    perDay[day] = perDay[day] || { easy: 0, good: 0, hard: 0 };
+    perDay[day][key]++;
+  });
+  const total = { easy: 0, good: 0, hard: 0 };
+  progress.gradeDays = {};
+  Object.keys(perDay).sort().forEach(day => {
+    Object.keys(total).forEach(key => total[key] += perDay[day][key]);
+    progress.gradeDays[day] = { ...total };
+  });
+  saveProgress();
+}
+
+// Betygen som gällde en viss dag: senaste sparade dag fram till och med den
+function gradesOn(date) {
+  const last = Object.keys(progress.gradeDays).filter(d => d <= date).sort().pop();
+  return last ? progress.gradeDays[last] : { easy: 0, good: 0, hard: 0 };
 }
 
 function gradeButtons(onGrade, includeFail) {
@@ -401,6 +443,16 @@ function lessonStatus(lesson) {
 
 const STATUS_TEXT = { current: "Din lektion", done: "Gjord", skipped: "Överhoppad", next: "Kommande" };
 
+// Lektioner du gjort ett pass på. Överhoppade räknas inte.
+function doneLessons() {
+  return allLessons().filter(lesson => progress.sessions.some(s => s.lesson === lesson));
+}
+
+// Ord du kan: senaste betyg är Lätt eller Bra
+function knownWords(list = WORDS) {
+  return list.filter(w => progress.words[w.id] && progress.words[w.id].lastGrade >= 4);
+}
+
 // Stigens mått: höjd i pixlar per rad, sidled i procent av bredden
 const ROAD_ROW = 98;
 const ROAD_CURRENT = 160;  // Din lektion får plats för startknappen
@@ -554,8 +606,6 @@ function showHome(focus) {
   const doneToday = progress.sessions.some(x => x.date === dateStr(new Date()));
   const startLabel = doneToday ? "Kör ett pass till" : "Starta pass";
   fillMain(
-    s.lesson ? h("div", { class: "road-links" },
-      h("button", { class: "link-btn", onclick: () => scrollToLesson(s.lesson) }, "Till min lektion")) : null,
     s.lesson ? null : h("div", { class: "card" },
       h("div", { class: "big" }, "Alla lektioner klara!"),
       h("p", { class: "note" }, "Be Claude lägga till fler lektioner. Tills dess repeterar du."),
@@ -671,7 +721,7 @@ function moveToLesson(lesson) {
   showHome();
 }
 
-// Välj själv vilken nivå du vill jobba på
+// Översikt: hur långt du kommit på varje nivå, och välj själv var du vill jobba
 function showLevelPicker() {
   const levels = lessonLevel(lastLessonNumber());
   const lesson = currentLesson();
@@ -680,13 +730,17 @@ function showLevelPicker() {
     const first = (level - 1) * LESSONS_PER_LEVEL + 1;
     const themes = [...new Set(WORDS.filter(w => lessonLevel(w.lesson) === level).map(w => w.theme))];
     const here = level === currentLevel;
+    const lessons = allLessons().filter(l => lessonLevel(l) === level);
+    const done = doneLessons().filter(l => lessonLevel(l) === level).length;
     return h("button", { class: "option level-option", ...(here ? { disabled: "" } : {}), onclick: () => moveToLesson(first) },
       h("div", { class: "level-title" }, `Nivå ${level} · lektion ${first}–${first + LESSONS_PER_LEVEL - 1}` + (here ? " · du är här" : "")),
-      h("div", { class: "muted level-themes" }, themes.slice(0, 4).join(", ")));
+      h("div", { class: "muted level-themes" }, themes.slice(0, 4).join(", ")),
+      h("div", { class: "progress" }, h("div", { class: "bar", style: `width:${done / lessons.length * 100}%` })),
+      h("div", { class: "muted level-themes" }, `${done} av ${lessons.length} lektioner klara`));
   });
   setNav("levels");
   main.replaceChildren(
-    h("p", { class: "step-label center" }, "Välj nivå"),
+    h("p", { class: "step-label center" }, "Översikt"),
     h("p", { class: "muted center" }, levelChangeNote),
     h("div", { class: "options" }, rows));
 }
@@ -732,7 +786,8 @@ function chartBuckets(days) {
       ? first.toLocaleDateString("sv-SE", { weekday: "short" })
       : first.toLocaleDateString("sv-SE", { day: "numeric", month: "short" });
     const title = first.toLocaleDateString("sv-SE", { weekday: "short", day: "numeric", month: "short" });
-    buckets.push({ ...sumSessions(ago + step - 1, ago), label, title: step > 1 ? `Veckan från ${title}` : title });
+    const grades = gradesOn(dateStr(daysAgo(ago)));  // Veckans stapel visar läget när veckan slutade
+    buckets.push({ ...grades, total: grades.easy + grades.good + grades.hard, label, title: step > 1 ? `Veckan från ${title}` : title });
   }
   return buckets;
 }
@@ -758,8 +813,7 @@ function metric(label, now, before) {
 }
 
 function chartColumn(bucket, tip) {
-  const total = bucket.newWords + bucket.reviewed;
-  const text = `${bucket.title}: ${bucket.newWords} nya ord, ${bucket.reviewed} repetitioner`;
+  const text = `${bucket.title}: ${bucket.easy} lätt, ${bucket.good} bra, ${bucket.hard} svårt`;
   const show = e => {
     const plot = e.currentTarget.parentElement;
     const center = e.currentTarget.offsetLeft + e.currentTarget.offsetWidth / 2;
@@ -770,13 +824,13 @@ function chartColumn(bucket, tip) {
   const hide = () => tip.classList.add("hidden");
   return h("button", { class: "chart-col", "aria-label": text,
     onmouseenter: show, onfocus: show, onclick: show, onmouseleave: hide, onblur: hide },
-    bucket.newWords ? h("span", { class: "chart-seg new", style: `flex-grow:${bucket.newWords}` }) : null,
-    bucket.reviewed ? h("span", { class: "chart-seg review", style: `flex-grow:${bucket.reviewed}` }) : null,
-    h("span", { class: "chart-space", style: `flex-grow:${total ? 0 : 1}` }));
+    ["easy", "good", "hard"].map(key => bucket[key]
+      ? h("span", { class: "chart-seg " + key, style: `flex-grow:${bucket[key]}` }) : null),
+    h("span", { class: "chart-space", style: `flex-grow:${bucket.total ? 0 : 1}` }));
 }
 
 function progressChart(buckets) {
-  const max = niceMax(Math.max(...buckets.map(b => b.newWords + b.reviewed), 1));
+  const max = niceMax(Math.max(...buckets.map(b => b.total), 1));
   const tip = h("div", { class: "chart-tip hidden" });
   const every = Math.ceil(buckets.length / 7);  // Visar bara var n:te datum så att de får plats
   return h("div", { class: "chart" },
@@ -788,19 +842,39 @@ function progressChart(buckets) {
         h("div", { class: "chart-line", style: "top:100%" }),
         tip,
         buckets.map(b => h("div", { class: "chart-slot" },
-          h("div", { class: "chart-bar", style: `height:${(b.newWords + b.reviewed) / max * 100}%` }, chartColumn(b, tip)))))),
+          h("div", { class: "chart-bar", style: `height:${b.total / max * 100}%` }, chartColumn(b, tip)))))),
     h("div", { class: "chart-labels" }, buckets.map((b, i) =>
       h("span", {}, (buckets.length - 1 - i) % every === 0 ? b.label : ""))),
     h("div", { class: "chart-legend" },
-      h("span", {}, h("i", { class: "swatch new" }), "Nya ord"),
-      h("span", {}, h("i", { class: "swatch review" }), "Repetitioner")));
+      h("span", {}, h("i", { class: "swatch easy" }), "Lätt"),
+      h("span", {}, h("i", { class: "swatch good" }), "Bra"),
+      h("span", {}, h("i", { class: "swatch hard" }), "Svårt")));
+}
+
+// Cirkel som fylls i takt med hur många ord du kan av ett totalt antal
+function progressRing(known, total, label) {
+  const radius = 42;
+  const length = 2 * Math.PI * radius;
+  const circle = cls => svgEl("circle", { class: cls, cx: 50, cy: 50, r: radius });
+  const ring = svgEl("svg", { class: "ring-svg", viewBox: "0 0 100 100", "aria-hidden": "true" });
+  ring.append(circle("ring-track"));
+  if (known) {
+    const value = circle("ring-value");
+    value.setAttribute("stroke-dasharray", `${known / total * length} ${length}`);
+    ring.append(value);
+  }
+  return h("div", { class: "ring", role: "img", "aria-label": `${label}: ${known} av ${total} ord` },
+    h("div", { class: "ring-circle" }, ring,
+      h("div", { class: "ring-text" }, h("span", { class: "ring-num" }, String(known)), h("span", { class: "muted" }, `av ${total}`))),
+    h("div", { class: "muted ring-label" }, label));
 }
 
 function progressSection() {
   const now = sumSessions(chartDays - 1, 0);
   const before = sumSessions(chartDays * 2 - 1, chartDays);
   const buckets = chartBuckets(chartDays);
-  const ranges = [[7, "7 dagar"], [30, "30 dagar"], [91, "3 månader"]];
+  const withWords = buckets.filter(b => b.total);
+  const ranges =[[7, "7 dagar"], [30, "30 dagar"], [91, "3 månader"]];
   return h("div", {},
     h("div", { class: "section-title" }, "Din utveckling"),
     h("div", { class: "ranges" }, ranges.map(([days, label]) =>
@@ -812,11 +886,11 @@ function progressSection() {
         metric("Nya ord", now.newWords, before.newWords),
         metric("Repetitioner", now.reviewed, before.reviewed),
         metric("Aktiva dagar", now.activeDays, before.activeDays)),
-      now.sessions ? progressChart(buckets) : h("p", { class: "muted" }, "Inga pass under den här perioden.")),
-    now.sessions ? h("details", {},
+      withWords.length ? progressChart(buckets) : h("p", { class: "muted" }, "Inga ord med betyg än.")),
+    withWords.length ? h("details", {},
       h("summary", {}, "Visa som tabell"),
-      buckets.filter(b => b.sessions).map(b => h("div", { class: "word-row" },
-        h("span", {}, b.title), h("span", { class: "muted" }, `${b.newWords} nya, ${b.reviewed} rep.`)))) : null);
+      withWords.map(b => h("div", { class: "word-row" },
+        h("span", {}, b.title), h("span", { class: "muted" }, `${b.easy} lätt, ${b.good} bra, ${b.hard} svårt`)))) : null);
 }
 
 function showDashboard() {
@@ -824,8 +898,9 @@ function showDashboard() {
   const seen = WORDS.filter(w => progress.words[w.id]);
   const byGrade = g => seen.filter(w => progress.words[w.id].lastGrade === g);
   const groups = [["Lätt", "easy", byGrade(5)], ["Bra", "good", byGrade(4)], ["Svårt", "hard", byGrade(3)]];
-  const lessons = [...new Set(WORDS.map(w => w.lesson))];
-  const lessonsDone = lessons.filter(l => WORDS.filter(w => w.lesson === l).every(w => progress.words[w.id])).length;
+  const lessons = allLessons();
+  const done = doneLessons();
+  const wordsDone = WORDS.filter(w => done.includes(w.lesson));
 
   const fileInput = h("input", { type: "file", accept: ".json", class: "hidden",
     onchange: e => { if (e.target.files[0]) importProgress(e.target.files[0]); } });
@@ -839,11 +914,14 @@ function showDashboard() {
       h("div", { class: "muted today-streak" }, streakText())),
     progressSection(),
     h("div", { class: "section-title" }, "Ord du kan"),
+    h("div", { class: "rings" },
+      progressRing(knownWords(wordsDone).length, wordsDone.length, "I klara lektioner"),
+      progressRing(knownWords().length, WORDS.length, "I hela appen")),
     h("div", { class: "stats" }, groups.map(([label, cls, list]) =>
       h("button", { class: "stat " + cls, "aria-label": `${label}: ${list.length} ord. Visa orden.`, onclick: () => showWords(label, list) },
         h("span", { class: "stat-num" }, String(list.length)), label))),
     h("div", { class: "card summary" },
-      h("div", { class: "word-row" }, h("span", {}, "Lektioner klara"), h("span", { class: "muted" }, `${lessonsDone} av ${lessons.length}`)),
+      h("div", { class: "word-row" }, h("span", {}, "Lektioner klara"), h("span", { class: "muted" }, `${done.length} av ${lessons.length}`)),
       h("div", { class: "word-row" }, h("span", {}, "Pass totalt"), h("span", { class: "muted" }, String(progress.sessions.length)))),
     Object.values(progress.words).some(p => p.placed) ? h("div", { class: "buttons" },
       h("button", { class: "link-btn", onclick: undoPlacement }, "Ångra hoppet")) : null,
@@ -874,6 +952,7 @@ function importProgress(file) {
     if (confirm("Ersätta dina nuvarande framsteg med innehållet i filen?")) {
       progress = data;
       saveProgress();
+      seedGradeDays();
       showDashboard();
     }
   }).catch(() => alert("Filen kunde inte läsas."));
@@ -890,9 +969,8 @@ function setNav(active) {
 
 // Raden bredvid rubriken: svit och ord du kan (senaste betyg Lätt eller Bra)
 function updateHeader() {
-  const known = WORDS.filter(w => progress.words[w.id] && progress.words[w.id].lastGrade >= 4);
   document.getElementById("streakCount").textContent = `🔥 ${streak()}`;
-  document.getElementById("knownCount").textContent = `🍃 ${known.length}`;
+  document.getElementById("knownCount").textContent = `🍃 ${knownWords().length}`;
 }
 
 document.getElementById("navHome").addEventListener("click", () => showHome());
@@ -908,6 +986,7 @@ Promise.all([
   WORDS = words;
   SENTENCES = sentences;
   GRAMMAR = grammar;
+  seedGradeDays();
   showHome();
 }).catch(() => {
   main.replaceChildren(h("div", { class: "card" },

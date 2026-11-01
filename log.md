@@ -155,3 +155,11 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 
 ## [2026-11-01] feature | Svit och ord du kan bredvid rubriken
 - Bredvid rubriken Serbiska står nu 🔥 med antal dagar i rad och 🍃 med antal ord vars senaste betyg är Lätt eller Bra. Raden syns på alla sidor och uppdateras under passet.
+
+## [2026-11-01] feature | Översikt, ny graf och cirklar
+- Idag-ikonen visar två tassavtryck. Länken Till min lektion togs bort.
+- Fliken Välj nivå heter nu Översikt och varje nivå har en bar med klara lektioner.
+- Grafen under Framsteg visar staplade ord i Lätt, Bra och Svårt per dag. Framsteg sparar nu betygen per dag i `gradeDays`, ett nytt fält som inte påverkar befintliga framsteg. Äldre dagar uppskattas ur senaste betyget.
+- Två cirklar visar ord du kan av orden i klara lektioner och av alla ord i appen.
+- Lektioner klara räknar nu lektioner med gjort pass, samma som Översikt och cirklarna.
+- De runda knapparna Lätt, Bra och Svårt visades som fyllda rutor och är nu runda.

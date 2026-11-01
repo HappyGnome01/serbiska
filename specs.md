@@ -20,13 +20,13 @@ Inspirerat av Duolingo och modern språkdidaktik:
 - Idag-sidan är en slingrande stig med en rund knapp per lektion, indelad i nivåer. Sidan öppnas vid din lektion: tidigare lektioner ligger uppåt, kommande nedåt.
 - Tassavtryck längs en mjuk kurva binder ihop knapparna inom en nivå, en tass per 30 pixlar fritt avstånd och med lika stora mellanrum. Mellan nivåer finns inga tassar. Tassarna går växelvis på varsin sida och pekar dit stigen går. Vägen fram till din lektion är grön, resten dämpad. En igelkott står vid din lektion med en stillsam tomgångsanimation: kroppen andas mjukt upp och ner och ögat blinkar ibland.
 - **Lägen:** gjord (grön med bock, du har gjort ett pass), överhoppad (streckad ring), din lektion (större och rosa), kommande (dämpad).
-- Pass startas med knappen vid din lektion på stigen. Överst finns länken Till min lektion.
+- Pass startas med knappen vid din lektion på stigen.
 
 ## Flikar
 Flikarna ligger alltid längst ner på skärmen, på alla sidor, och visas som ikoner:
-- **Två par tassavtryck:** Idag.
+- **Två tassavtryck:** Idag.
 - **Träd:** Framsteg.
-- **Förstoringsglas:** Välj nivå.
+- **Förstoringsglas:** Översikt.
 
 Bredvid rubriken Serbiska står 🔥 med antal dagar i rad och 🍃 med antal ord du kan: ord vars senaste betyg är Lätt eller Bra.
 
@@ -55,7 +55,7 @@ När alla lektioner är klara visas bara repetition och slumpade meningar, tills
 
 ## Byta nivå
 - En nivå är 10 lektioner.
-- Fliken **Välj nivå** visar alla nivåer med teman. Ett tryck flyttar dig till nivåns första lektion.
+- Fliken **Översikt** visar alla nivåer med teman och en bar med hur många lektioner som är klara. Klar betyder att du gjort ett pass på lektionen, så överhoppade lektioner räknas inte. Ett tryck på en nivå flyttar dig till dess första lektion.
 - **Framåt:** ord i tidigare lektioner blir sedda och kommer tillbaka i repetitionen.
 - **Bakåt:** överhoppade ord du inte övat på blir nya igen. En lektion du redan gjort visas på nytt.
 - Ord du redan övat på ändras aldrig av ett nivåbyte, och passhistoriken påverkas inte.
@@ -72,7 +72,9 @@ När alla lektioner är klara visas bara repetition och slumpade meningar, tills
 Intervall: 1 dag → 6 dagar → föregående × "lätthet" (startar på 2,5, minst 1,3).
 
 ## Dashboard ("Framsteg")
-- **Din utveckling:** välj 7 dagar, 30 dagar eller 3 månader. Visar pass, nya ord, repetitioner och aktiva dagar med förändring mot föregående period, plus staplar per dag (per vecka vid 3 månader) och en tabellvy. Bygger på de pass som redan sparas.
+- **Din utveckling:** välj 7 dagar, 30 dagar eller 3 månader. Visar pass, nya ord, repetitioner och aktiva dagar med förändring mot föregående period.
+- **Grafen:** staplade staplar per dag (per vecka vid 3 månader) med alla ord i Lätt, Bra och Svårt som de såg ut när dagen slutade, i samma färger som knapparna. Har en tabellvy. Från och med nu sparas läget varje dag. Dagar innan dess är en uppskattning utifrån senaste betyget på varje ord.
+- **Cirklarna:** ord du kan (Lätt eller Bra) av alla ord i lektioner du gjort pass på, och av alla ord i appen.
 - Samma stil som Idag: kort överst med ord du har sett och svit, lila rubrikband och runda knappar.
 - Antal ord per **senaste betyg** i runda knappar: Lätt, Bra, Svårt. "Kunde inte" visas inte. Ett tryck öppnar ett fönster med orden i gruppen.
 - Lektioner klara och antal pass.
