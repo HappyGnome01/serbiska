@@ -377,5 +377,197 @@
     "sr": "ovdje",
     "sv": "här",
     "note": "Ekaviskt: ovde."
+  },
+  {
+    "id": "l11-znam",
+    "lesson": 11,
+    "theme": "Vanliga verb",
+    "sr": "znam",
+    "sv": "jag vet / jag kan",
+    "note": "Från znati. Du: znaš."
+  },
+  {
+    "id": "l11-mogu",
+    "lesson": 11,
+    "theme": "Vanliga verb",
+    "sr": "mogu",
+    "sv": "jag kan / jag får",
+    "note": "Från moći. Du: možeš."
+  },
+  {
+    "id": "l11-imam",
+    "lesson": 11,
+    "theme": "Vanliga verb",
+    "sr": "imam",
+    "sv": "jag har",
+    "note": "Från imati. Du: imaš. Jag har inte: nemam."
+  },
+  {
+    "id": "l11-moram",
+    "lesson": 11,
+    "theme": "Vanliga verb",
+    "sr": "moram",
+    "sv": "jag måste",
+    "note": "Från morati. Du: moraš."
+  },
+  {
+    "id": "l11-idem",
+    "lesson": 11,
+    "theme": "Vanliga verb",
+    "sr": "idem",
+    "sv": "jag går / jag åker",
+    "note": "Från ići. Du: ideš."
+  },
+  {
+    "id": "l12-danas",
+    "lesson": 12,
+    "theme": "Tid",
+    "sr": "danas",
+    "sv": "idag"
+  },
+  {
+    "id": "l12-sutra",
+    "lesson": 12,
+    "theme": "Tid",
+    "sr": "sutra",
+    "sv": "imorgon"
+  },
+  {
+    "id": "l12-sada",
+    "lesson": 12,
+    "theme": "Tid",
+    "sr": "sada",
+    "sv": "nu",
+    "note": "Kortare form: sad."
+  },
+  {
+    "id": "l12-uvijek",
+    "lesson": 12,
+    "theme": "Tid",
+    "sr": "uvijek",
+    "sv": "alltid",
+    "note": "Ekaviskt: uvek."
+  },
+  {
+    "id": "l12-nikad",
+    "lesson": 12,
+    "theme": "Tid",
+    "sr": "nikad",
+    "sv": "aldrig",
+    "note": "Med verb behövs också ne: nikad ne pijem kafu."
+  },
+  {
+    "id": "l13-kuca",
+    "lesson": 13,
+    "theme": "Människor och vardag",
+    "sr": "kuća",
+    "sv": "hus / hem",
+    "note": "Kući = hem, hemåt. Kod kuće = hemma."
+  },
+  {
+    "id": "l13-posao",
+    "lesson": 13,
+    "theme": "Människor och vardag",
+    "sr": "posao",
+    "sv": "jobb / arbete"
+  },
+  {
+    "id": "l13-zena",
+    "lesson": 13,
+    "theme": "Människor och vardag",
+    "sr": "žena",
+    "sv": "kvinna / fru"
+  },
+  {
+    "id": "l13-dijete",
+    "lesson": 13,
+    "theme": "Människor och vardag",
+    "sr": "dijete",
+    "sv": "barn",
+    "note": "Ekaviskt: dete. Flera barn: djeca."
+  },
+  {
+    "id": "l13-ljudi",
+    "lesson": 13,
+    "theme": "Människor och vardag",
+    "sr": "ljudi",
+    "sv": "människor / folk",
+    "note": "Flertal av čovjek (ekaviskt: čovek)."
+  },
+  {
+    "id": "l14-zasto",
+    "lesson": 14,
+    "theme": "Binda ihop",
+    "sr": "zašto",
+    "sv": "varför"
+  },
+  {
+    "id": "l14-jer",
+    "lesson": 14,
+    "theme": "Binda ihop",
+    "sr": "jer",
+    "sv": "eftersom / för"
+  },
+  {
+    "id": "l14-ali",
+    "lesson": 14,
+    "theme": "Binda ihop",
+    "sr": "ali",
+    "sv": "men"
+  },
+  {
+    "id": "l14-mozda",
+    "lesson": 14,
+    "theme": "Binda ihop",
+    "sr": "možda",
+    "sv": "kanske"
+  },
+  {
+    "id": "l14-mnogo",
+    "lesson": 14,
+    "theme": "Binda ihop",
+    "sr": "mnogo",
+    "sv": "mycket / många",
+    "note": "Efter mnogo står genitiv: mnogo ljudi."
+  },
+  {
+    "id": "l15-zelim",
+    "lesson": 15,
+    "theme": "Tänka och säga",
+    "sr": "želim",
+    "sv": "jag vill / jag önskar",
+    "note": "Från željeti. Ekaviskt: želeti."
+  },
+  {
+    "id": "l15-mislim",
+    "lesson": 15,
+    "theme": "Tänka och säga",
+    "sr": "mislim",
+    "sv": "jag tänker / jag tror",
+    "note": "Från misliti."
+  },
+  {
+    "id": "l15-vidim",
+    "lesson": 15,
+    "theme": "Tänka och säga",
+    "sr": "vidim",
+    "sv": "jag ser",
+    "note": "Från vidjeti. Ekaviskt: videti."
+  },
+  {
+    "id": "l15-radim",
+    "lesson": 15,
+    "theme": "Tänka och säga",
+    "sr": "radim",
+    "sv": "jag jobbar / jag gör",
+    "note": "Från raditi. Du: radiš."
+  },
+  {
+    "id": "l15-kazem",
+    "lesson": 15,
+    "theme": "Tänka och säga",
+    "sr": "kažem",
+    "sv": "jag säger",
+    "note": "Från kazati. Du: kažeš."
   }
 ]

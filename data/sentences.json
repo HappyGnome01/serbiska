@@ -321,5 +321,199 @@
     "lesson": 10,
     "sr": "Sretna sam što sam ovdje.",
     "sv": "Jag är glad att jag är här."
+  },
+  {
+    "id": "l11-s1",
+    "lesson": 11,
+    "sr": "Ne znam šta je to.",
+    "sv": "Jag vet inte vad det är.",
+    "source": "tatoeba:3253759"
+  },
+  {
+    "id": "l11-s2",
+    "lesson": 11,
+    "sr": "Mogu li dobiti čašu vina?",
+    "sv": "Kan jag få ett glas vin?",
+    "note": "čaša → čašu (ackusativ). vino → vina: 'ett glas av vin' (genitiv).",
+    "source": "tatoeba:4992851"
+  },
+  {
+    "id": "l11-s3",
+    "lesson": 11,
+    "sr": "Imam pitanje.",
+    "sv": "Jag har en fråga.",
+    "note": "pitanje = fråga",
+    "source": "tatoeba:11183020"
+  },
+  {
+    "id": "l11-s4",
+    "lesson": 11,
+    "sr": "Moraš da mi vjeruješ.",
+    "sv": "Du måste lita på mig.",
+    "note": "vjerovati = lita på. Ekaviskt: veruješ.",
+    "source": "tatoeba:6963584"
+  },
+  {
+    "id": "l11-s5",
+    "lesson": 11,
+    "sr": "Mogu li da idem?",
+    "sv": "Kan jag gå?",
+    "note": "li gör meningen till en fråga.",
+    "source": "tatoeba:4992862"
+  },
+  {
+    "id": "l12-s1",
+    "lesson": 12,
+    "sr": "Danas je hladno.",
+    "sv": "Det är kallt idag.",
+    "note": "hladno = kallt",
+    "source": "tatoeba:4726292"
+  },
+  {
+    "id": "l12-s2",
+    "lesson": 12,
+    "sr": "Dođi sutra.",
+    "sv": "Kom imorgon.",
+    "note": "dođi = kom! (från doći)",
+    "source": "tatoeba:4995968"
+  },
+  {
+    "id": "l12-s3",
+    "lesson": 12,
+    "sr": "Gdje si sada?",
+    "sv": "Var är du nu?",
+    "note": "Ekaviskt: Gde si sada?",
+    "source": "tatoeba:5039825"
+  },
+  {
+    "id": "l12-s4",
+    "lesson": 12,
+    "sr": "Moja majka je uvijek zauzeta.",
+    "sv": "Min mamma är alltid upptagen.",
+    "note": "zauzeta = upptagen (om en kvinna). Om en man: zauzet.",
+    "source": "tatoeba:3253705"
+  },
+  {
+    "id": "l12-s5",
+    "lesson": 12,
+    "sr": "Sad ili nikad!",
+    "sv": "Nu eller aldrig!",
+    "note": "ili = eller",
+    "source": "tatoeba:6937649"
+  },
+  {
+    "id": "l13-s1",
+    "lesson": 13,
+    "sr": "Idem kući.",
+    "sv": "Jag går hem.",
+    "source": "tatoeba:1478648"
+  },
+  {
+    "id": "l13-s2",
+    "lesson": 13,
+    "sr": "Tražim posao.",
+    "sv": "Jag söker jobb.",
+    "note": "tražim = jag söker",
+    "source": "tatoeba:892219"
+  },
+  {
+    "id": "l13-s3",
+    "lesson": 13,
+    "sr": "Gdje je žena?",
+    "sv": "Var är kvinnan?",
+    "source": "tatoeba:2342031"
+  },
+  {
+    "id": "l13-s4",
+    "lesson": 13,
+    "sr": "Čak i dijete zna to.",
+    "sv": "Det vet till och med ett barn.",
+    "note": "čak i = till och med. Ekaviskt: dete.",
+    "source": "tatoeba:4992730",
+    "check": true
+  },
+  {
+    "id": "l13-s5",
+    "lesson": 13,
+    "sr": "Ko su ovi ljudi?",
+    "sv": "Vilka är de här människorna?",
+    "note": "ovi = de här",
+    "source": "tatoeba:3429825"
+  },
+  {
+    "id": "l14-s1",
+    "lesson": 14,
+    "sr": "Zašto si ljuta na mene?",
+    "sv": "Varför är du arg på mig?",
+    "note": "ljuta = arg (om en kvinna). Om en man: ljut.",
+    "source": "tatoeba:5034640"
+  },
+  {
+    "id": "l14-s2",
+    "lesson": 14,
+    "sr": "Ne mogu jer idem kući.",
+    "sv": "Jag kan inte eftersom jag ska hem.",
+    "check": true
+  },
+  {
+    "id": "l14-s3",
+    "lesson": 14,
+    "sr": "Bili smo siromašni, ali sretni.",
+    "sv": "Vi var fattiga men glada.",
+    "note": "siromašni = fattiga. I Serbien: srećni.",
+    "source": "tatoeba:3437802"
+  },
+  {
+    "id": "l14-s4",
+    "lesson": 14,
+    "sr": "Možda si u pravu.",
+    "sv": "Du kanske har rätt.",
+    "note": "biti u pravu = ha rätt",
+    "source": "tatoeba:3426483"
+  },
+  {
+    "id": "l14-s5",
+    "lesson": 14,
+    "sr": "Mnogo volim mačke.",
+    "sv": "Jag gillar katter väldigt mycket.",
+    "note": "mačka → mačke (ackusativ, flertal).",
+    "source": "tatoeba:9117164"
+  },
+  {
+    "id": "l15-s1",
+    "lesson": 15,
+    "sr": "Želim da budem sa tobom.",
+    "sv": "Jag vill vara med dig.",
+    "note": "sa tobom = med dig",
+    "source": "tatoeba:6920341"
+  },
+  {
+    "id": "l15-s2",
+    "lesson": 15,
+    "sr": "Mislim da si u pravu.",
+    "sv": "Jag tror att du har rätt.",
+    "source": "tatoeba:3426484"
+  },
+  {
+    "id": "l15-s3",
+    "lesson": 15,
+    "sr": "Dođi da nas vidiš.",
+    "sv": "Kom och hälsa på oss.",
+    "note": "Ordagrant: kom så att du ser oss.",
+    "source": "tatoeba:4449669"
+  },
+  {
+    "id": "l15-s4",
+    "lesson": 15,
+    "sr": "Šta radiš?",
+    "sv": "Vad gör du?",
+    "source": "tatoeba:11183534"
+  },
+  {
+    "id": "l15-s5",
+    "lesson": 15,
+    "sr": "Šta da kažem?",
+    "sv": "Vad ska jag säga?",
+    "check": true
   }
 ]

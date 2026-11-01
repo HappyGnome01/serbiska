@@ -98,8 +98,13 @@ button.easy  { background: var(--easy);  color: #fff; }
 
 /* Ordbrickor för "bygg meningen" */
 .tiles { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; min-height: 52px; padding: 8px 0; }
-.answer-row { border-bottom: 2px dashed var(--border); }
+.answer-row { align-items: flex-end; }
 .tile { background: var(--card); border: 2px solid var(--border); font-weight: 600; }
+.slot-group { display: inline-flex; align-items: flex-end; gap: 2px; font-size: 1.2rem; font-weight: 600; }
+.slot { display: inline-block; width: 72px; height: 44px; border-bottom: 2px solid var(--muted); }
+
+/* Varning när framsteg inte kan sparas */
+.warning { background: var(--again); color: #fff; padding: 10px 16px; text-align: center; font-size: 0.95rem; }
 
 /* Dashboard */
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
@@ -113,3 +118,5 @@ details { background: var(--card); border-radius: 12px; padding: 12px 16px; marg
 summary { cursor: pointer; font-weight: 600; }
 .word-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); gap: 12px; }
 .word-row:last-child { border-bottom: none; }
+.credits { font-size: 0.8rem; margin-top: 24px; }
+.credits a { color: inherit; }

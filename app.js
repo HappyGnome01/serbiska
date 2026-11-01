@@ -27,13 +27,20 @@ function loadProgress() {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
     if (data) return JSON.parse(data);
-  } catch (e) { /* lagring fungerar inte, börja om */ }
+  } catch (e) { showSaveWarning(); }
   return { words: {}, sessions: [] };
 }
 
 function saveProgress() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }
-  catch (e) { /* lagring fungerar inte, framsteg sparas inte */ }
+  catch (e) { showSaveWarning(); }
+}
+
+// Visar en röd rad överst, en gång, om webbläsaren inte kan spara eller läsa framsteg
+function showSaveWarning() {
+  if (document.getElementById("saveWarning")) return;
+  document.body.prepend(h("div", { id: "saveWarning", class: "warning" },
+    "Framstegen kunde inte sparas. Är privat surfning på?"));
 }
 
 // ---------- 3. Hjälpfunktioner ----------
@@ -142,7 +149,17 @@ function buildSession() {
   return { review, newWords, sentences, lesson, theme: newWords[0].theme };
 }
 
-function tiles(sentence) { return sentence.sr.split(" "); }
+// Delar en mening i ord och fasta skiljetecken:
+// "Zdravo, kako si?" → zdravo + "," / kako / si + "?"
+// Första ordet får liten bokstav, så att brickan inte avslöjar var meningen börjar.
+function sentenceParts(sentence) {
+  const parts = sentence.sr.split(" ").map(token => {
+    const [, before, word, after] = token.match(/^([^\p{L}\p{N}]*)(.*?)([^\p{L}\p{N}]*)$/u);
+    return { before, word, after };
+  });
+  parts[0].word = parts[0].word[0].toLowerCase() + parts[0].word.slice(1);
+  return parts;
+}
 
 function startSession() {
   session = buildSession();
@@ -151,7 +168,7 @@ function startSession() {
   session.newWords.forEach(w => queue.push({ type: "intro", word: w }));         // Steg 2: nya ord
   shuffle(session.newWords).forEach(w => queue.push({ type: "quiz", word: w }));  //         ...och testa dem
   session.sentences.forEach(s => queue.push({ type: "read", sentence: s }));     // Steg 3: läs meningar
-  session.sentences.filter(s => tiles(s).length >= 2)
+  session.sentences.filter(s => sentenceParts(s).length >= 2)
     .forEach(s => queue.push({ type: "build", sentence: s }));                   //         ...och bygg dem
   pos = 0;
   showTask();
@@ -248,24 +265,28 @@ function showRead(task) {
 
 function showBuild(task) {
   const s = task.sentence;
-  const correct = tiles(s);
-  const pool = shuffle(correct.map((word, i) => ({ word, i })));  // i skiljer på dubbletter
-  let chosen = [];
+  const parts = sentenceParts(s);
+  const pool = shuffle(parts.map((part, i) => ({ word: part.word, i })));  // i skiljer på dubbletter
+  const slots = parts.map(() => null);  // Vilken bricka som ligger på varje tom rad
   const answerRow = h("div", { class: "tiles answer-row" });
   const poolRow = h("div", { class: "tiles" });
   const result = h("div");
   const checkBtn = h("button", { class: "primary", onclick: check }, "Kontrollera");
 
   function draw() {
-    answerRow.replaceChildren(...chosen.map(t =>
-      h("button", { class: "tile", onclick: () => { chosen = chosen.filter(x => x !== t); draw(); } }, t.word)));
-    poolRow.replaceChildren(...pool.filter(t => !chosen.includes(t)).map(t =>
-      h("button", { class: "tile", onclick: () => { chosen.push(t); draw(); } }, t.word)));
-    checkBtn.disabled = chosen.length !== correct.length;
+    answerRow.replaceChildren(...parts.map((part, i) => h("span", { class: "slot-group" },
+      part.before,
+      slots[i]
+        ? h("button", { class: "tile", onclick: () => { slots[i] = null; draw(); } }, slots[i].word)
+        : h("span", { class: "slot" }),
+      part.after)));
+    poolRow.replaceChildren(...pool.filter(t => !slots.includes(t)).map(t =>
+      h("button", { class: "tile", onclick: () => { slots[slots.indexOf(null)] = t; draw(); } }, t.word)));
+    checkBtn.disabled = slots.includes(null);
   }
 
   function check() {
-    const ok = chosen.map(t => t.word).join(" ") === s.sr;
+    const ok = slots.every((t, i) => t.word === parts[i].word);
     answerRow.querySelectorAll("button").forEach(b => b.disabled = true);
     checkBtn.classList.add("hidden");
     // h() hoppar över null, därför packas allt i en div
@@ -355,11 +376,14 @@ function showDashboard() {
       h("summary", {}, `${label} (${list.length})`),
       list.map(w => h("div", { class: "word-row" }, h("span", {}, w.sr), h("span", { class: "muted" }, w.sv)))) : null),
     h("p", { class: "step-label", style: "margin-top:24px" }, "Säkerhetskopia"),
-    h("p", { class: "muted" }, "Framstegen sparas bara i den här webbläsaren. Exportera då och då som backup."),
+    h("p", { class: "muted" }, "Framstegen sparas bara här. På iPhone är appen på hemskärmen och Safari skilda platser, så använd alltid samma. Exportera då och då som backup."),
     h("div", { class: "buttons" },
       h("button", { onclick: exportProgress }, "Exportera"),
       h("button", { onclick: () => fileInput.click() }, "Importera")),
-    fileInput));
+    fileInput,
+    h("p", { class: "muted credits" }, "Källor: meningar från ",
+      h("a", { href: "https://tatoeba.org/" }, "Tatoeba"), " (CC BY 2.0 FR), vissa anpassade till ijekaviska. Ordkontroll och frekvens från ",
+      h("a", { href: "https://en.wiktionary.org/" }, "Wiktionary"), " (CC BY-SA 4.0).")));
 }
 
 function exportProgress() {

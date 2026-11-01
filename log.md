@@ -48,3 +48,24 @@ Nästa steg:
 Nästa steg:
 1. Testa på telefonen och lägg appen på hemskärmen.
 2. Låt pojkvännen granska `data/words.json` och `data/sentences.json`.
+
+## [2026-11-01] query | Framsteg på telefonen, nivåtest och källor
+- Användaren: framstegen fanns inte kvar efter att appen lagts på hemskärmen, och innehållet känns för lätt.
+- Sparkoden ser rätt ut. Trolig orsak på iPhone: hemskärmsappar har egen lagring, skild från Safari. Inte bekräftat på telefonen.
+- Källor testade: Tatoeba (meningar, CC BY) och kaikki.org/Wiktionary (ord, böjning, ekavisk och ijekavisk form). Inga öppna CEFR-listor för serbiska hittades.
+- Tatoebas serbiska meningar är ekaviska och mest på kyrilliska. Inget är ändrat i appen än, planen väntar på ok.
+
+## [2026-11-01] fix | Framsteg på iPhone
+- Användaren bekräftade förklaringen: hemskärmsappen och Safari har skild lagring.
+- Röd varning visas om framsteg inte kan sparas eller läsas. Framsteg-sidan och `process.md` förklarar skillnaden.
+
+## [2026-11-01] feature | Bygg meningen med tomma rader
+- Varje ord har en tom rad och skiljetecknen står på plats. Brickorna saknar skiljetecken och första ordet har liten bokstav.
+- Testat i webbläsaren med rätt och fel ordning, dubbletter, borttagna brickor och telefonbredd. Alla 75 meningar kan delas upp.
+
+## [2026-11-01] content | Pilot: lektion 11–15
+- 25 ord valda ur frekvenslistan och kontrollerade mot Wiktionary. 23 av 25 meningar kommer från Tatoeba, 5 omvandlade till ijekaviska.
+- 3 av 25 meningar har `check: true`: `l13-s4`, `l14-s2`, `l15-s5`. Två av dem är egna, eftersom Tatoeba saknar korta svenska meningar med *jer* och *kažem*.
+- Urvalet gjordes för hand ur 286 kortare kandidater. Svenska ordöversättningar är Claudes, utifrån Wiktionarys engelska.
+- Källor anges under Framsteg. Fältet `source` lades till i `sentences.json`.
+Nästa steg: användaren testar lektionerna och pojkvännen svarar på de tre markerade meningarna. Sedan beslut om utbyggnad till 300–500 ord, därefter nivåtestet.

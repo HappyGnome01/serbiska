@@ -23,7 +23,7 @@ Inspirerat av Duolingo och modern språkdidaktik:
    - Flervalsfråga: "Vad betyder ordet?" (4 alternativ). Rätt → betygsätt Svårt/Bra/Lätt. Fel → räknas som "Kunde inte" och frågan kommer tillbaka sist.
 3. **Meningar – 5 meningar** med lektionens ord.
    - Läs och förstå: serbisk mening → "Visa översättning" + grammatiktips.
-   - Bygg meningen: svensk översättning visas, tryck på serbiska ordbrickor i rätt ordning (meningar med minst 2 ord).
+   - Bygg meningen: svensk översättning visas, tryck på serbiska ordbrickor i rätt ordning (meningar med minst 2 ord). Varje ord har en tom rad och skiljetecknen står redan på plats. Brickorna saknar skiljetecken och första ordet har liten bokstav, så att de inte avslöjar ordningen.
 4. **Klart:** sammanfattning och svit.
 
 Ord som får "Kunde inte" visas igen senare i samma pass (en gång) och först i kön nästa pass.
@@ -50,7 +50,10 @@ Intervall: 1 dag → 6 dagar → föregående × "lätthet" (startar på 2,5, mi
 - **Framsteg:** webbläsarens localStorage, nyckel `serbiska-progress-v1`.
   - Finns bara på den enhet och i den webbläsare där du pluggar.
   - En statisk sida (GitHub Pages) kan inte skriva till JSON-filerna. Därför sparas framsteg lokalt.
-- Version 1: 10 lektioner, 50 ord, 50 meningar.
+  - På iPhone har appen på hemskärmen en egen lagring, skild från Safari.
+  - Om framsteg inte kan sparas eller läsas visas en röd varning överst.
+- Nu: 15 lektioner, 75 ord, 75 meningar.
+- **Källor:** lektion 11–15 bygger på frekvenslistan och Wiktionary (CC BY-SA 4.0) och på meningar från Tatoeba (CC BY 2.0 FR). Materialet hämtas när lektioner skapas och sparas i `data/`, appen anropar inga externa tjänster. Källorna anges under Framsteg.
 
 ## Teknik
 - Ren HTML/CSS/JavaScript, inga ramverk eller byggsteg.

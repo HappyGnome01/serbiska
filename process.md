@@ -39,7 +39,7 @@ Git for Windows är installerat, och Claude Code sköter git åt dig.
 4. Claude gör första commit och pushar efter ditt ok. Första gången öppnas ett inloggningsfönster där du själv loggar in.
 5. På github.com, i ditt repo: **Settings → Pages** → under "Branch" välj `main` och `/ (root)` → **Save**.
 6. Efter någon minut finns appen på `https://<ditt-användarnamn>.github.io/<repo-namn>/`.
-7. Öppna adressen på telefonen → **Lägg till på hemskärmen** (iPhone: Dela-knappen; Android: menyn ⋮).
+7. Öppna adressen på telefonen → **Lägg till på hemskärmen** (iPhone: Dela-knappen; Android: menyn ⋮). På iPhone sparas framsteg separat i ikonen och i Safari, så gör alltid passen från ikonen.
 
 ### Varje gång du ändrat något
 Säg till Claude: *"Commit och push."* Telefonen visar ändringen efter ungefär en minut. Ladda om sidan om den inte syns.
