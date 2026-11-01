@@ -546,6 +546,7 @@ function grammarButton(lesson) {
 }
 
 function showGrammar(lesson) {
+  const closeDialog = () => { dialog.close(); dialog.remove(); };
   const dialog = h("dialog", { class: "grammar", "aria-label": "Grammatik" },
     h("div", { class: "grammar-body" },
       grammarFor(lesson).map(g => h("section", {},
@@ -553,9 +554,9 @@ function showGrammar(lesson) {
         g.text.map(t => h("p", {}, t)),
         h("div", { class: "grammar-examples" }, g.examples.map(([sr, sv]) =>
           h("div", { class: "word-row" }, h("span", {}, sr), h("span", { class: "muted" }, sv)))))),
-      h("div", { class: "buttons" }, h("button", { class: "primary", onclick: () => dialog.close() }, "Stäng"))));
-  dialog.addEventListener("close", () => dialog.remove());
-  dialog.addEventListener("click", e => { if (e.target === dialog) dialog.close(); });  // Tryck utanför stänger
+      h("div", { class: "buttons" }, h("button", { class: "primary", onclick: closeDialog }, "Stäng"))));
+  dialog.addEventListener("close", () => dialog.remove());  // Esc-tangenten
+  dialog.addEventListener("click", e => { if (e.target === dialog) closeDialog(); });  // Tryck utanför stänger
   document.body.append(dialog);
   dialog.showModal();
 }
