@@ -152,3 +152,6 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 - Flikarna ligger nu längst ner på skärmen och visas som ikoner: två par tassavtryck (Idag), träd (Framsteg) och förstoringsglas (Välj nivå, ny egen flik).
 - Kortet Dagens pass togs bort. Pass startas med knappen vid lektionen på stigen. Sviten syns nu bara under Framsteg.
 - Nivåtestet togs bort. Gamla testresultat ligger kvar orörda i sparade framsteg men används inte.
+
+## [2026-11-01] feature | Svit och ord du kan bredvid rubriken
+- Bredvid rubriken Serbiska står nu 🔥 med antal dagar i rad och 🍃 med antal ord vars senaste betyg är Lätt eller Bra. Raden syns på alla sidor och uppdateras under passet.

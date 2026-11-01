@@ -357,6 +357,7 @@ function showDone() {
     reviewed: session.review.length, newWords: session.newWords.length });
   if (session.lesson && !session.practice) progress.currentLesson = session.lesson + 1;
   saveProgress();
+  updateHeader();
   main.replaceChildren(
     h("div", { class: "card" },
       h("div", { class: "big" }, "Bra jobbat! 🎉"),
@@ -884,7 +885,16 @@ function setNav(active) {
   document.getElementById("navHome").classList.toggle("active", active === "home");
   document.getElementById("navDash").classList.toggle("active", active === "dash");
   document.getElementById("navLevels").classList.toggle("active", active === "levels");
+  updateHeader();
 }
+
+// Raden bredvid rubriken: svit och ord du kan (senaste betyg Lätt eller Bra)
+function updateHeader() {
+  const known = WORDS.filter(w => progress.words[w.id] && progress.words[w.id].lastGrade >= 4);
+  document.getElementById("streakCount").textContent = `🔥 ${streak()}`;
+  document.getElementById("knownCount").textContent = `🍃 ${known.length}`;
+}
+
 document.getElementById("navHome").addEventListener("click", () => showHome());
 document.getElementById("navDash").addEventListener("click", showDashboard);
 document.getElementById("navLevels").addEventListener("click", showLevelPicker);

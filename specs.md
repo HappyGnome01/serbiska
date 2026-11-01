@@ -28,6 +28,8 @@ Flikarna ligger alltid längst ner på skärmen, på alla sidor, och visas som i
 - **Träd:** Framsteg.
 - **Förstoringsglas:** Välj nivå.
 
+Bredvid rubriken Serbiska står 🔥 med antal dagar i rad och 🍃 med antal ord du kan: ord vars senaste betyg är Lätt eller Bra.
+
 ## Lektionssidor
 - Tryck på en lektion för att se orden och meningarna.
 - **Gjord eller överhoppad:** Repetera lektionen ger flervalsfrågor, läsning och Bygg meningen. Din plats ändras inte. Ett repetitionspass räknas i grafen och sviten, och en överhoppad lektion blir gjord.
