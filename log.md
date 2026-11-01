@@ -147,3 +147,8 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 ## [2026-11-01] fix | Flikarna ligger kvar överst
 - Flikarna Idag och Framsteg ligger nu fast högst upp när man scrollar. Kortet med Dagens pass och kortet Dina framsteg scrollar bort med sidan.
 - Igelkottens andetag kortades från 2,8 till 1,8 sekunder, fortfarande mjukt.
+
+## [2026-11-01] feature | Flikar med ikoner längst ner
+- Flikarna ligger nu längst ner på skärmen och visas som ikoner: två par tassavtryck (Idag), träd (Framsteg) och förstoringsglas (Välj nivå, ny egen flik).
+- Kortet Dagens pass togs bort. Pass startas med knappen vid lektionen på stigen. Sviten syns nu bara under Framsteg.
+- Nivåtestet togs bort. Gamla testresultat ligger kvar orörda i sparade framsteg men används inte.

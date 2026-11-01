@@ -26,7 +26,7 @@ const main = document.getElementById("main");
 // ---------- 2. Spara och ladda framsteg ----------
 // progress.words[id] = { reps, interval, ease, due, lastGrade, placed? }
 // progress.sessions  = [{ date, lesson, reviewed, newWords }]
-// progress.placement = { date, level, lesson, correct, total } (finns efter nivåtestet)
+// progress.placement = gammalt resultat från nivåtestet, som är borttaget. Används inte längre.
 // progress.currentLesson = nästa lektion (saknas tills du gjort ett pass eller bytt nivå)
 function loadProgress() {
   try {
@@ -130,7 +130,7 @@ function gradeWord(id, quality) {
   }
   p.ease = Math.max(1.3, p.ease + 0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
   p.lastGrade = quality;
-  delete p.placed;                    // Ordet är nu övat, inte bara placerat av nivåtestet
+  delete p.placed;                    // Ordet är nu övat, inte bara överhoppat
   progress.words[id] = p;
   saveProgress();
 }
@@ -552,17 +552,9 @@ function showHome(focus) {
   const s = buildSession();
   const doneToday = progress.sessions.some(x => x.date === dateStr(new Date()));
   const startLabel = doneToday ? "Kör ett pass till" : "Starta pass";
-  const passName = s.lesson ? `Lektion ${s.lesson}: ${s.theme}` : "Repetition";
   fillMain(
-    h("div", { class: "today" },
-      h("div", {},
-        h("div", { class: "today-title" }, doneToday ? "Dagens pass är klart ✅" : "Dagens pass"),
-        h("div", { class: "muted today-meta" }, (doneToday ? "Nästa: " : "") + passName)),
-      h("div", { class: "muted today-streak" }, streakText())),
-    h("div", { class: "road-links" },
-      s.lesson ? h("button", { class: "link-btn", onclick: () => scrollToLesson(s.lesson) }, "Till min lektion") : null,
-      h("button", { class: "link-btn", onclick: startTest }, progress.placement ? "Gör om nivåtestet" : "Gör nivåtestet"),
-      h("button", { class: "link-btn", onclick: showLevelPicker }, "Välj nivå")),
+    s.lesson ? h("div", { class: "road-links" },
+      h("button", { class: "link-btn", onclick: () => scrollToLesson(s.lesson) }, "Till min lektion")) : null,
     s.lesson ? null : h("div", { class: "card" },
       h("div", { class: "big" }, "Alla lektioner klara!"),
       h("p", { class: "note" }, "Be Claude lägga till fler lektioner. Tills dess repeterar du."),
@@ -648,120 +640,26 @@ function showWords(label, list) {
       : h("p", { class: "muted" }, "Inga ord här än.")]);
 }
 
-// ---------- 9. Nivåtest ----------
-// Testet hittar den högsta nivån du klarar. En nivå = 10 lektioner, 4 frågor.
-// Det börjar på nivå 2 och går upp vid godkänt, ner vid underkänt, tills gränsen är hittad.
+// ---------- 9. Nivåer ----------
+// En nivå = 10 lektioner
 const LESSONS_PER_LEVEL = 10;
-const WORDS_PER_LEVEL = 3;
-const SENTENCES_PER_LEVEL = 1;
-const PASS_SCORE = 3;   // Rätt svar av 4 för att klara en nivå
-const START_LEVEL = 2;
-
-let test = null;
 
 function lessonLevel(lesson) { return Math.ceil(lesson / LESSONS_PER_LEVEL); }
-function levelOf(item) { return lessonLevel(item.lesson); }
 function lastLessonNumber() { return Math.max(...WORDS.map(w => w.lesson)); }
-
-function startTest() {
-  const levels = lessonLevel(lastLessonNumber());
-  test = { levels, level: Math.min(START_LEVEL, levels), scores: {}, asked: [], questions: [], index: 0 };
-  setNav(null);
-  main.replaceChildren(
-    h("div", { class: "card" },
-      h("div", { class: "big" }, "Nivåtest"),
-      h("p", {}, "Svårigheten anpassas efter dina svar. Det tar 3–5 minuter."),
-      h("p", { class: "muted" }, "Tryck på \"Vet inte\" i stället för att gissa, så blir resultatet rätt.")),
-    h("div", { class: "buttons" },
-      h("button", { class: "primary", onclick: startLevel }, "Börja"),
-      h("button", { onclick: showHome }, "Avbryt")));
-}
-
-function startLevel() {
-  const inLevel = list => shuffle(list.filter(x => levelOf(x) === test.level));
-  test.questions = shuffle([
-    ...inLevel(WORDS).slice(0, WORDS_PER_LEVEL).map(word => ({ word })),
-    ...inLevel(SENTENCES).slice(0, SENTENCES_PER_LEVEL).map(sentence => ({ sentence }))
-  ]);
-  test.index = 0;
-  test.scores[test.level] = 0;
-  showTestQuestion();
-}
-
-function showTestQuestion() {
-  const q = test.questions[test.index];
-  const item = q.word || q.sentence;
-  const others = (q.word ? WORDS : SENTENCES).filter(x => levelOf(x) === test.level && x.id !== item.id && x.sv !== item.sv);
-  const options = shuffle([item, ...shuffle(others).slice(0, 3)]);
-  setNav(null);
-  main.replaceChildren(
-    h("p", { class: "step-label center" }, `Nivåtest · fråga ${test.asked.length + 1}`),
-    h("div", { class: "card" }, srBlock(item.sr, q.sentence ? "sentence" : "")),
-    h("div", { class: "options" }, options.map(o =>
-      h("button", { class: "option", onclick: () => answerTest(q, o === item) }, o.sv))),
-    h("div", { class: "buttons" }, h("button", { onclick: () => answerTest(q, false) }, "Vet inte")));
-}
-
-function answerTest(q, correct) {
-  test.asked.push({ ...q, correct });
-  if (correct) test.scores[test.level]++;
-  test.index++;
-  if (test.index < test.questions.length) return showTestQuestion();
-
-  // Nivån är klar: gå vidare, eller avsluta om gränsen är hittad
-  const passed = test.scores[test.level] >= PASS_SCORE;
-  const nextLevel = test.level + (passed ? 1 : -1);
-  if (nextLevel < 1 || nextLevel > test.levels || nextLevel in test.scores) return showTestResult();
-  test.level = nextLevel;
-  startLevel();
-}
-
-function showTestResult() {
-  const passedLevels = Object.keys(test.scores).map(Number).filter(l => test.scores[l] >= PASS_SCORE);
-  const level = passedLevels.length ? Math.max(...passedLevels) : 0;
-  const lastLesson = level * LESSONS_PER_LEVEL;
-  const total = test.asked.length;
-  const correct = test.asked.filter(a => a.correct).length;
-  const allLevels = level === test.levels;
-  const suggested = lastLesson + 1;
-  const current = currentLesson() || lastLessonNumber() + 1;  // Efter sista lektionen = allt klart
-  const change = lessonLevel(current) !== lessonLevel(suggested);
-  const missed = new Set(test.asked.filter(a => a.word && !a.correct).map(a => a.word.id));
-  progress.placement = { date: dateStr(new Date()), level, lesson: suggested, correct, total };
-  saveProgress();
-
-  setNav(null);
-  main.replaceChildren(
-    h("div", { class: "card" },
-      h("p", { class: "step-label" }, `${correct} rätt av ${total}`),
-      h("div", { class: "big" }, level ? `Du klarar lektion 1–${lastLesson}` : "Börja från början"),
-      h("p", {}, change
-        ? (allLevels ? "Du kan hoppa över alla lektioner och bara repetera." : `Testet föreslår lektion ${suggested}.`)
-        : "Du är redan på rätt nivå."),
-      change && current <= lastLessonNumber() ? h("p", { class: "muted" }, `Du är nu på lektion ${current}.`) : null,
-      h("p", { class: "muted" }, "Testet är en uppskattning. Det mäter orden i appen, inte en officiell nivå."),
-      change ? h("p", { class: "note" }, levelChangeNote) : null),
-    h("div", { class: "buttons" },
-      change ? h("button", { class: "primary", onclick: () => moveToLesson(suggested, missed) },
-        allLevels ? "Hoppa över allt" : `Byt till lektion ${suggested}`) : null,
-      h("button", { class: change ? "" : "primary", onclick: showHome },
-        change ? (current <= lastLessonNumber() ? `Stanna på lektion ${current}` : "Stanna där jag är") : "Till startsidan")));
-}
 
 const levelChangeNote = "Ord du redan har övat på sparas. Överhoppade ord kommer tillbaka i repetitionen.";
 
 // Flyttar dig till en lektion, framåt eller bakåt. Ord med riktiga framsteg lämnas alltid orörda.
-function moveToLesson(lesson, missed = new Set()) {
+function moveToLesson(lesson) {
   WORDS.forEach(w => {
     const p = progress.words[w.id];
     if (w.lesson >= lesson && p && p.placed) delete progress.words[w.id];  // Bakåt: blir nya ord igen
     if (w.lesson < lesson && !p) {
-      const known = !missed.has(w.id);
       progress.words[w.id] = {
-        reps: known ? 2 : 0,
-        interval: known ? 6 : 0,
+        reps: 2,
+        interval: 6,
         ease: 2.5,
-        due: Date.now() + (known ? (1 + Math.random() * 13) * DAY : 0),  // Fel svar repeteras först
+        due: Date.now() + (1 + Math.random() * 13) * DAY,
         lastGrade: null,
         placed: true
       };
@@ -785,12 +683,11 @@ function showLevelPicker() {
       h("div", { class: "level-title" }, `Nivå ${level} · lektion ${first}–${first + LESSONS_PER_LEVEL - 1}` + (here ? " · du är här" : "")),
       h("div", { class: "muted level-themes" }, themes.slice(0, 4).join(", ")));
   });
-  setNav(null);
+  setNav("levels");
   main.replaceChildren(
     h("p", { class: "step-label center" }, "Välj nivå"),
     h("p", { class: "muted center" }, levelChangeNote),
-    h("div", { class: "options" }, rows),
-    h("div", { class: "buttons" }, h("button", { onclick: showHome }, "Tillbaka")));
+    h("div", { class: "options" }, rows));
 }
 
 // Tar bort ord du hoppat över och inte har övat på
@@ -986,9 +883,11 @@ function setNav(active) {
   window.scrollTo(0, 0);  // Stigen är lång, så varje ny vy börjar överst
   document.getElementById("navHome").classList.toggle("active", active === "home");
   document.getElementById("navDash").classList.toggle("active", active === "dash");
+  document.getElementById("navLevels").classList.toggle("active", active === "levels");
 }
 document.getElementById("navHome").addEventListener("click", () => showHome());
 document.getElementById("navDash").addEventListener("click", showDashboard);
+document.getElementById("navLevels").addEventListener("click", showLevelPicker);
 
 // Läs in ord och meningar, visa sedan startsidan
 Promise.all([

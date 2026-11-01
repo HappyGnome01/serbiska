@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#f7f1e8">
   <!-- Gör att appen ser ut som en app när den läggs på hemskärmen -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,14 +13,37 @@
 <body>
   <header>
     <h1>Serbiska</h1>
-    <nav>
-      <button id="navHome" class="nav-btn">Idag</button>
-      <button id="navDash" class="nav-btn">Framsteg</button>
-    </nav>
   </header>
 
   <!-- Allt innehåll ritas här av app.js -->
   <main id="main"><p class="muted center">Laddar…</p></main>
+
+  <!-- Flikarna längst ner. Ikonerna ritas här, namnen hörs i skärmläsare. -->
+  <nav class="tabs">
+    <button id="navHome" class="nav-btn" aria-label="Idag" title="Idag">
+      <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+        <defs><path id="navPaw" d="M-3.6 2a3.6 3 0 1 0 7.2 0a3.6 3 0 1 0-7.2 0ZM-5.6-1.6a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0ZM-2.9-3.8a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0ZM.1-3.8a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0ZM2.8-1.6a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0Z"/></defs>
+        <use href="#navPaw" transform="translate(9 25.5) rotate(-8) scale(.82)"/>
+        <use href="#navPaw" transform="translate(23 19.5) rotate(8) scale(.82)"/>
+        <use href="#navPaw" transform="translate(9 12) rotate(-8) scale(.82)"/>
+        <use href="#navPaw" transform="translate(23 6) rotate(8) scale(.82)"/>
+      </svg>
+    </button>
+    <button id="navDash" class="nav-btn" aria-label="Framsteg" title="Framsteg">
+      <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+        <rect x="14.25" y="19" width="3.5" height="11" rx="1.5"/>
+        <circle cx="16" cy="9.5" r="7.5"/>
+        <circle cx="9.5" cy="16" r="6.5"/>
+        <circle cx="22.5" cy="16" r="6.5"/>
+      </svg>
+    </button>
+    <button id="navLevels" class="nav-btn" aria-label="Välj nivå" title="Välj nivå">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" aria-hidden="true">
+        <circle cx="13.5" cy="13.5" r="9"/>
+        <path d="M20.5 20.5 28 28"/>
+      </svg>
+    </button>
+  </nav>
 
   <script src="app.js"></script>
 </body>

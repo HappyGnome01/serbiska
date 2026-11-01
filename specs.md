@@ -20,8 +20,13 @@ Inspirerat av Duolingo och modern språkdidaktik:
 - Idag-sidan är en slingrande stig med en rund knapp per lektion, indelad i nivåer. Sidan öppnas vid din lektion: tidigare lektioner ligger uppåt, kommande nedåt.
 - Tassavtryck längs en mjuk kurva binder ihop knapparna inom en nivå, en tass per 30 pixlar fritt avstånd och med lika stora mellanrum. Mellan nivåer finns inga tassar. Tassarna går växelvis på varsin sida och pekar dit stigen går. Vägen fram till din lektion är grön, resten dämpad. En igelkott står vid din lektion med en stillsam tomgångsanimation: kroppen andas mjukt upp och ner och ögat blinkar ibland.
 - **Lägen:** gjord (grön med bock, du har gjort ett pass), överhoppad (streckad ring), din lektion (större och rosa), kommande (dämpad).
-- Flikarna Idag och Framsteg ligger alltid kvar högst upp när du scrollar, på alla sidor.
-- Först på sidan står Dagens pass med lektionens nummer och namn, plus sviten. Kortet scrollar bort med sidan. Är dagens pass gjort står nästa pass där. Under finns Till min lektion, nivåtestet och Välj nivå.
+- Pass startas med knappen vid din lektion på stigen. Överst finns länken Till min lektion.
+
+## Flikar
+Flikarna ligger alltid längst ner på skärmen, på alla sidor, och visas som ikoner:
+- **Två par tassavtryck:** Idag.
+- **Träd:** Framsteg.
+- **Förstoringsglas:** Välj nivå.
 
 ## Lektionssidor
 - Tryck på en lektion för att se orden och meningarna.
@@ -46,16 +51,10 @@ Inspirerat av Duolingo och modern språkdidaktik:
 Ord som får "Kunde inte" visas igen senare i samma pass (en gång) och först i kön nästa pass.
 När alla lektioner är klara visas bara repetition och slumpade meningar, tills nya lektioner läggs till.
 
-## Nivåtest
-Hittar var du ska börja, och nås via en länk på startsidan. Tar 3–5 minuter.
-- En nivå är 10 lektioner. Varje nivå har 4 frågor: 3 ord och 1 mening, med svarsalternativ från samma nivå och knappen "Vet inte".
-- Testet börjar på nivå 2. Minst 3 rätt ger nästa nivå, annars nivån under, tills gränsen är hittad. Det ger 8–20 frågor.
-- Resultatet visas som lektioner, inte som en officiell nivå som A1 eller A2.
-- Testet kan göras om. Föreslår det en annan nivå, uppåt eller nedåt, väljer du "Byt till lektion X" eller "Stanna på lektion Y". Samma nivå ger inget byte.
-
 ## Byta nivå
-- **Välj nivå** på startsidan visar alla nivåer med teman. Ett tryck flyttar dig till nivåns första lektion.
-- **Framåt:** ord i tidigare lektioner blir sedda och kommer tillbaka i repetitionen. Ord du svarat fel på i testet repeteras först.
+- En nivå är 10 lektioner.
+- Fliken **Välj nivå** visar alla nivåer med teman. Ett tryck flyttar dig till nivåns första lektion.
+- **Framåt:** ord i tidigare lektioner blir sedda och kommer tillbaka i repetitionen.
 - **Bakåt:** överhoppade ord du inte övat på blir nya igen. En lektion du redan gjort visas på nytt.
 - Ord du redan övat på ändras aldrig av ett nivåbyte, och passhistoriken påverkas inte.
 - **Ångra hoppet** under Framsteg tar bort överhoppade ord du inte har övat på och går tillbaka till första lektionen med ord du inte sett.
