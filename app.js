@@ -417,14 +417,21 @@ const PAW = "M-3.6 2a3.6 3 0 1 0 7.2 0a3.6 3 0 1 0-7.2 0Z" +
   "M.1-3.8a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0Z" +
   "M2.8-1.6a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0Z";
 
+// Benen står still och kroppen rör sig, så att igelkotten niger utan att lämna marken
 const HEDGEHOG = `<svg viewBox="0 0 58 46" aria-hidden="true">
-  <path d="M5 34 L2 27 L8 26 L6 18 L13 20 L14 11 L21 15 L25 7 L30 14 L37 9 L38 18 L43 22 Q50 26 49 33 Q48 38 41 38 L12 38 Q6 38 5 34Z" fill="#a98c76"/>
-  <path d="M34 38 Q31 24 42 22 Q52 25 55 32 Q56 35 53 36 Q47 39 41 38Z" fill="#efdccb"/>
-  <circle cx="44" cy="29" r="1.8" fill="#4d4540"/>
-  <circle cx="55" cy="33" r="2" fill="#4d4540"/>
-  <ellipse cx="39" cy="33" rx="2.6" ry="1.7" fill="#e9b7ae"/>
-  <ellipse cx="20" cy="40" rx="4.5" ry="2.6" fill="#8d7360"/>
-  <ellipse cx="36" cy="40" rx="4.5" ry="2.6" fill="#8d7360"/>
+  <g fill="#8d7360">
+    <rect x="17" y="33" width="6" height="11" rx="3"/>
+    <rect x="33" y="33" width="6" height="11" rx="3"/>
+    <ellipse cx="21" cy="43.2" rx="5" ry="2.4"/>
+    <ellipse cx="37" cy="43.2" rx="5" ry="2.4"/>
+  </g>
+  <g class="hedgehog-body">
+    <path d="M5 34 L2 27 L8 26 L6 18 L13 20 L14 11 L21 15 L25 7 L30 14 L37 9 L38 18 L43 22 Q50 26 49 33 Q48 38 41 38 L12 38 Q6 38 5 34Z" fill="#a98c76"/>
+    <path d="M34 38 Q31 24 42 22 Q52 25 55 32 Q56 35 53 36 Q47 39 41 38Z" fill="#efdccb"/>
+    <circle cx="44" cy="29" r="1.8" fill="#4d4540"/>
+    <circle cx="55" cy="33" r="2" fill="#4d4540"/>
+    <ellipse cx="39" cy="33" rx="2.6" ry="1.7" fill="#e9b7ae"/>
+  </g>
 </svg>`;
 
 function svgEl(tag, attrs) {

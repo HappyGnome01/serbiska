@@ -136,3 +136,6 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 ## [2026-11-01] fix | Jämnare tassar på stigen
 - Tassarna läggs nu ut sträcka för sträcka med lika stora mellanrum, en tass per 30 pixlar fritt avstånd. Regeln kommer från de sträckor användaren tyckte såg bra ut.
 - Inga tassar mellan sista lektionen i en nivå och första i nästa.
+
+## [2026-11-01] fix | Igelkotten niger
+- Igelkotten fick ben som står still på marken. Kroppen sjunker ner över benen, lutar framåt och reser sig igen, i stället för att hela djuret svävar upp och ner.

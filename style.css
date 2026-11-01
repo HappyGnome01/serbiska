@@ -195,11 +195,16 @@ summary { cursor: pointer; font-weight: 600; }
 .node.current { width: 74px; height: 74px; font-size: 1.3rem; background: var(--again); border-color: var(--primary); color: var(--on-again); }
 .node-check { position: absolute; right: -4px; top: -4px; width: 22px; height: 22px; line-height: 18px; border-radius: 50%; background: var(--card); border: 2px solid var(--good-line); color: var(--on-good); font-size: 0.75rem; }
 .road-start { position: absolute; z-index: 3; left: 0; right: 0; display: flex; justify-content: center; }
-.hedgehog { position: absolute; z-index: 3; width: 58px; height: 46px; pointer-events: none; animation: hedgehog-bob 2.4s ease-in-out infinite; }
+.hedgehog { position: absolute; z-index: 3; width: 58px; height: 46px; pointer-events: none; }
 .hedgehog.flip svg { transform: scaleX(-1); }
-.hedgehog svg { width: 100%; height: 100%; display: block; }
-@keyframes hedgehog-bob { 50% { translate: 0 -4px; } }
-@media (prefers-reduced-motion: reduce) { .hedgehog { animation: none; } }
+.hedgehog svg { width: 100%; height: 100%; display: block; overflow: visible; }
+/* Nigning: kroppen sjunker ner över benen, lutar framåt och reser sig igen */
+.hedgehog-body { transform-box: fill-box; transform-origin: 50% 100%; animation: hedgehog-curtsy 2.8s ease-in-out infinite; }
+@keyframes hedgehog-curtsy {
+  0%, 45%, 100% { transform: none; }
+  20%, 27% { transform: translateY(5px) rotate(5deg); }
+}
+@media (prefers-reduced-motion: reduce) { .hedgehog-body { animation: none; } }
 
 /* Lektionssidan */
 .lesson-list { display: grid; gap: 8px; margin-bottom: 16px; }
