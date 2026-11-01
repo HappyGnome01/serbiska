@@ -96,3 +96,9 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 - Övriga markerade meningar godkändes, och alla `check` togs bort.
 - `l52-s5` innehåller inte längre lektionens ord *do*.
 - Rättat: trasiga tecken i anteckningen till *sto*.
+
+## [2026-11-01] feature | Nivåtest
+- Anpassat test med 6 nivåer, 4 frågor per nivå och start på nivå 2. Resultatet anges som lektion.
+- Ord som hoppas över sparas som sedda med `placed: true` och kommer tillbaka i repetitionen. `progress.placement` är nytt, gamla framsteg fungerar som förut.
+- Ångra finns under Framsteg.
+- Automatiskt testat i webbläsaren: alla vägar, befintliga framsteg, ångra, omtest och hopp över allt.

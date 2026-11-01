@@ -90,6 +90,7 @@ button.again { background: var(--again); color: #fff; }
 button.hard  { background: var(--hard);  color: #fff; }
 button.good  { background: var(--good);  color: #fff; }
 button.easy  { background: var(--easy);  color: #fff; }
+button.link-btn { background: transparent; color: var(--muted); font-size: 0.9rem; text-decoration: underline; padding: 6px 10px; }
 
 /* Flervalsfrågor */
 .options { display: grid; gap: 8px; }

@@ -29,6 +29,15 @@ Inspirerat av Duolingo och modern språkdidaktik:
 Ord som får "Kunde inte" visas igen senare i samma pass (en gång) och först i kön nästa pass.
 När alla lektioner är klara visas bara repetition och slumpade meningar, tills nya lektioner läggs till.
 
+## Nivåtest
+Hittar var du ska börja, och nås via en länk på startsidan. Tar 3–5 minuter.
+- En nivå är 10 lektioner. Varje nivå har 4 frågor: 3 ord och 1 mening, med svarsalternativ från samma nivå och knappen "Vet inte".
+- Testet börjar på nivå 2. Minst 3 rätt ger nästa nivå, annars nivån under, tills gränsen är hittad. Det ger 8–20 frågor.
+- Resultatet visas som lektioner, inte som en officiell nivå som A1 eller A2. Du väljer själv om du vill hoppa dit eller fortsätta där du är.
+- Vid hopp blir ord i tidigare lektioner sedda och kommer tillbaka i repetitionen. Ord du svarat fel på repeteras först. Ord du redan övat på ändras inte, och passhistoriken påverkas inte.
+- "Ångra nivåtestet" under Framsteg tar bort ord som testet hoppade över och som du inte har övat på.
+- Testet kan göras om, men flyttar dig aldrig bakåt.
+
 ## Betygssystem
 | Knapp | Värde | Effekt |
 |---|---|---|
