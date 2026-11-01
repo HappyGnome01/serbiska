@@ -132,3 +132,7 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 - Dagens pass visar lektionens nummer och namn. Texten om antal repetitioner, nya ord och tid togs bort.
 - Framsteg har fått samma stil som Idag: fast kort överst, lila rubrikband och runda knappar.
 - Lätt, Bra och Svårt öppnar ett fönster med orden. Det ersätter de utfällbara listorna. Grammatiken använder samma fönster.
+
+## [2026-11-01] fix | Jämnare tassar på stigen
+- Tassarna läggs nu ut sträcka för sträcka med lika stora mellanrum, en tass per 30 pixlar fritt avstånd. Regeln kommer från de sträckor användaren tyckte såg bra ut.
+- Inga tassar mellan sista lektionen i en nivå och första i nästa.

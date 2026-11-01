@@ -406,9 +406,9 @@ const ROAD_CURRENT = 160;  // Din lektion får plats för startknappen
 const ROAD_LEVEL = 62;
 const ROAD_SWING = 38;
 const ROAD_TURN = 0.9;  // Högre värde ger fler svängar
-const ROAD_STEP = 30;   // Pixlar mellan tassavtrycken
+const ROAD_STEP = 30;   // En tass per så många pixlar fritt avstånd mellan knapparna
 const ROAD_SIDE = 6;    // Tassarna går växelvis på varsin sida om stigens mitt
-const ROAD_GAP = 6;     // Fritt utrymme runt knappar och rubriker
+const ROAD_GAP = 6;     // Fritt utrymme runt startknappen och igelkotten
 
 // Ett tassavtryck: trampdyna och fyra tår, med tårna uppåt
 const PAW = "M-3.6 2a3.6 3 0 1 0 7.2 0a3.6 3 0 1 0-7.2 0Z" +
@@ -433,49 +433,54 @@ function svgEl(tag, attrs) {
   return el;
 }
 
-// Mjuk kurva genom punkterna, utan knyck vid knapparna
-function roadPath(points) {
-  return points.map((p, i) => {
-    if (i === 0) return `M ${p.x} ${p.y}`;
-    const from = points[i - 1];
-    const back = points[i - 2] || from;
-    const ahead = points[i + 1] || p;
-    return `C ${from.x + (p.x - back.x) / 6} ${from.y + (p.y - back.y) / 6} ` +
-      `${p.x - (ahead.x - from.x) / 6} ${p.y - (ahead.y - from.y) / 6} ${p.x} ${p.y}`;
-  }).join(" ");
+// Mjuk kurva från en knapp till nästa, utan knyck vid knapparna
+function roadSegment(points, i) {
+  const from = points[i], to = points[i + 1];
+  const back = points[i - 1] || from;
+  const ahead = points[i + 2] || to;
+  return `M ${from.x} ${from.y} C ${from.x + (to.x - back.x) / 6} ${from.y + (to.y - back.y) / 6} ` +
+    `${to.x - (ahead.x - from.x) / 6} ${to.y - (ahead.y - from.y) / 6} ${to.x} ${to.y}`;
 }
 
-// Sätter tassavtryck längs stigen. Avtryck som skulle hamna under något hoppas över.
-function drawPaws(road, points, walkedY) {
+// Sätter tassavtryck med lika stora mellanrum mellan knapparna i varje nivå.
+// Mellan nivåer blir det inga, och avtryck som skulle hamna under något hoppas över.
+function drawPaws(road, points, stop) {
   const box = road.getBoundingClientRect();
   const rects = selector => [...road.querySelectorAll(selector)].map(el => {
     const r = el.getBoundingClientRect();
     return { left: r.left - box.left, right: r.right - box.left, top: r.top - box.top, bottom: r.bottom - box.top };
   });
-  const nodes = rects(".node");
-  const blocks = rects(".road-level, .road-start button, .hedgehog");
+  const radii = rects(".node").map(n => (n.right - n.left) / 2);
+  const blocks = rects(".road-start button, .hedgehog");
   const isFree = (x, y) =>
-    !nodes.some(n => Math.hypot(x - (n.left + n.right) / 2, y - (n.top + n.bottom) / 2) < (n.right - n.left) / 2 + ROAD_GAP) &&
     !blocks.some(b => x > b.left - ROAD_GAP && x < b.right + ROAD_GAP && y > b.top - ROAD_GAP && y < b.bottom + ROAD_GAP);
 
   const line = road.querySelector(".road-line");
-  const curve = svgEl("path", { d: roadPath(points.map(p => ({ x: p.x / 100 * box.width, y: p.y }))) });
+  const curve = svgEl("path", {});
   line.replaceChildren(curve);
   const walked = svgEl("g", { class: "road-walked" });
   const ahead = svgEl("g", { class: "road-ahead" });
-  const total = curve.getTotalLength();
+  const pixels = points.map(p => ({ x: p.x / 100 * box.width, y: p.y }));
 
-  for (let length = ROAD_STEP / 2, side = 1; length < total; length += ROAD_STEP, side = -side) {
-    const p = curve.getPointAtLength(length);
-    const next = curve.getPointAtLength(length + 1);
-    const angle = Math.atan2(next.y - p.y, next.x - p.x);
-    const x = p.x - Math.sin(angle) * side * ROAD_SIDE;
-    const y = p.y + Math.cos(angle) * side * ROAD_SIDE;
-    if (!isFree(x, y)) continue;
-    const degrees = angle * 180 / Math.PI + 90;  // Tårna pekar dit stigen går
-    (p.y <= walkedY ? walked : ahead).append(svgEl("path",
-      { d: PAW, transform: `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${degrees.toFixed(0)})` }));
-  }
+  points.slice(1).forEach((point, i) => {
+    if (lessonLevel(points[i].lesson) !== lessonLevel(point.lesson)) return;
+    curve.setAttribute("d", roadSegment(pixels, i));
+    const room = curve.getTotalLength() - radii[i] - radii[i + 1];
+    const count = Math.max(1, Math.floor(room / ROAD_STEP));
+    for (let n = 1; n <= count; n++) {
+      const length = radii[i] + room * n / (count + 1);
+      const p = curve.getPointAtLength(length);
+      const next = curve.getPointAtLength(length + 1);
+      const angle = Math.atan2(next.y - p.y, next.x - p.x);
+      const side = count === 1 ? 0 : (n % 2 ? ROAD_SIDE : -ROAD_SIDE);
+      const x = p.x - Math.sin(angle) * side;
+      const y = p.y + Math.cos(angle) * side;
+      if (!isFree(x, y)) continue;
+      const degrees = angle * 180 / Math.PI + 90;  // Tårna pekar dit stigen går
+      (i < stop ? walked : ahead).append(svgEl("path",
+        { d: PAW, transform: `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${degrees.toFixed(0)})` }));
+    }
+  });
   line.replaceChildren(ahead, walked);
 }
 
@@ -524,7 +529,7 @@ function roadmap(startLabel) {
     const width = road.clientWidth;
     if (!width || width === drawnWidth) return;
     drawnWidth = width;
-    drawPaws(road, points, points[stop].y);
+    drawPaws(road, points, stop);
   }).observe(road);
   return road;
 }

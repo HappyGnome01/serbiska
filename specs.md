@@ -18,7 +18,7 @@ Inspirerat av Duolingo och modern språkdidaktik:
 
 ## Idag: stigen
 - Idag-sidan är en slingrande stig med en rund knapp per lektion, indelad i nivåer. Sidan öppnas vid din lektion: tidigare lektioner ligger uppåt, kommande nedåt.
-- Tassavtryck längs en mjuk, sammanhängande kurva binder ihop knapparna. Tassarna går växelvis på varsin sida och pekar dit stigen går. Vägen fram till din lektion är grön, resten dämpad. En igelkott står vid din lektion.
+- Tassavtryck längs en mjuk kurva binder ihop knapparna inom en nivå, en tass per 30 pixlar fritt avstånd och med lika stora mellanrum. Mellan nivåer finns inga tassar. Tassarna går växelvis på varsin sida och pekar dit stigen går. Vägen fram till din lektion är grön, resten dämpad. En igelkott står vid din lektion.
 - **Lägen:** gjord (grön med bock, du har gjort ett pass), överhoppad (streckad ring), din lektion (större och rosa), kommande (dämpad).
 - Överst står alltid Dagens pass med lektionens nummer och namn, plus sviten. Är dagens pass gjort står nästa pass där. Under finns Till min lektion, nivåtestet och Välj nivå.
 
