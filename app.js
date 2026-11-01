@@ -286,7 +286,9 @@ function showBuild(task) {
   }
 
   function check() {
-    const ok = slots.every((t, i) => t.word === parts[i].word);
+    // Serbiskans ordföljd är fri, så en mening kan ha flera rätta svar (fältet alt)
+    const wordsOf = sr => sentenceParts({ sr }).map(p => p.word.toLowerCase()).join(" ");
+    const ok = [s.sr, ...(s.alt || [])].map(wordsOf).includes(slots.map(t => t.word.toLowerCase()).join(" "));
     answerRow.querySelectorAll("button").forEach(b => b.disabled = true);
     checkBtn.classList.add("hidden");
     // h() hoppar över null, därför packas allt i en div
@@ -336,7 +338,7 @@ function showHome() {
   const s = buildSession();
   const doneToday = progress.sessions.some(x => x.date === dateStr(new Date()));
   const parts = [];
-  if (s.review.length) parts.push(`${s.review.length} repetitioner`);
+  if (s.review.length) parts.push(`${s.review.length} ${s.review.length === 1 ? "repetition" : "repetitioner"}`);
   if (s.newWords.length) parts.push(`${s.newWords.length} nya ord`);
   parts.push(`${s.sentences.length} meningar`);
   main.replaceChildren(
@@ -351,6 +353,124 @@ function showHome() {
 }
 
 // ---------- 9. Dashboard ----------
+let chartDays = 7;  // Vald period i grafen: 7, 30 eller 91 dagar
+
+function daysAgo(n) {
+  const d = new Date();
+  d.setDate(d.getDate() - n);
+  return d;
+}
+
+// Summerar alla pass mellan två dagar (räknat i dagar bakåt från idag)
+function sumSessions(fromAgo, toAgo) {
+  const from = dateStr(daysAgo(fromAgo)), to = dateStr(daysAgo(toAgo));
+  const list = progress.sessions.filter(s => s.date >= from && s.date <= to);
+  return {
+    sessions: list.length,
+    newWords: list.reduce((sum, s) => sum + s.newWords, 0),
+    reviewed: list.reduce((sum, s) => sum + s.reviewed, 0),
+    activeDays: new Set(list.map(s => s.date)).size
+  };
+}
+
+// En stapel per dag, eller per vecka när perioden är längre än 30 dagar
+function chartBuckets(days) {
+  const step = days > 30 ? 7 : 1;
+  const buckets = [];
+  for (let ago = days - step; ago >= 0; ago -= step) {
+    const first = daysAgo(ago + step - 1);
+    const label = days === 7
+      ? first.toLocaleDateString("sv-SE", { weekday: "short" })
+      : first.toLocaleDateString("sv-SE", { day: "numeric", month: "short" });
+    const title = first.toLocaleDateString("sv-SE", { weekday: "short", day: "numeric", month: "short" });
+    buckets.push({ ...sumSessions(ago + step - 1, ago), label, title: step > 1 ? `Veckan från ${title}` : title });
+  }
+  return buckets;
+}
+
+// Avrundar uppåt till ett jämnt tal, så att mittlinjen i grafen blir ett heltal
+function niceMax(value) {
+  const scale = 10 ** Math.floor(Math.log10(Math.max(value, 1)));
+  return [2, 4, 6, 8, 10].map(n => n * scale).find(n => n >= value) || scale * 2;
+}
+
+// Liten etikett som visar förändringen mot föregående period
+function deltaPill(now, before) {
+  if (!before) return null;
+  const change = Math.round((now - before) / before * 100);
+  return h("span", { class: "delta " + (change < 0 ? "down" : "up") }, `${change < 0 ? "↓" : "↑"} ${Math.abs(change)} %`);
+}
+
+function metric(label, now, before) {
+  return h("div", { class: "metric" },
+    h("div", { class: "metric-label" }, label),
+    h("div", { class: "metric-value" }, String(now)),
+    deltaPill(now, before));
+}
+
+function chartColumn(bucket, tip) {
+  const total = bucket.newWords + bucket.reviewed;
+  const text = `${bucket.title}: ${bucket.newWords} nya ord, ${bucket.reviewed} repetitioner`;
+  const show = e => {
+    const plot = e.currentTarget.parentElement;
+    const center = e.currentTarget.offsetLeft + e.currentTarget.offsetWidth / 2;
+    tip.textContent = text;
+    tip.style.left = `${Math.min(80, Math.max(20, center / plot.offsetWidth * 100))}%`;
+    tip.classList.remove("hidden");
+  };
+  const hide = () => tip.classList.add("hidden");
+  return h("button", { class: "chart-col", "aria-label": text,
+    onmouseenter: show, onfocus: show, onclick: show, onmouseleave: hide, onblur: hide },
+    bucket.newWords ? h("span", { class: "chart-seg new", style: `flex-grow:${bucket.newWords}` }) : null,
+    bucket.reviewed ? h("span", { class: "chart-seg review", style: `flex-grow:${bucket.reviewed}` }) : null,
+    h("span", { class: "chart-space", style: `flex-grow:${total ? 0 : 1}` }));
+}
+
+function progressChart(buckets) {
+  const max = niceMax(Math.max(...buckets.map(b => b.newWords + b.reviewed), 1));
+  const tip = h("div", { class: "chart-tip hidden" });
+  const every = Math.ceil(buckets.length / 7);  // Visar bara var n:te datum så att de får plats
+  return h("div", { class: "chart" },
+    h("div", { class: "chart-area" },
+      h("div", { class: "chart-axis" }, h("span", {}, String(max)), h("span", {}, String(max / 2)), h("span", {}, "0")),
+      h("div", { class: "chart-plot" },
+        h("div", { class: "chart-line", style: "top:0" }),
+        h("div", { class: "chart-line", style: "top:50%" }),
+        h("div", { class: "chart-line", style: "top:100%" }),
+        tip,
+        buckets.map(b => h("div", { class: "chart-slot" },
+          h("div", { class: "chart-bar", style: `height:${(b.newWords + b.reviewed) / max * 100}%` }, chartColumn(b, tip)))))),
+    h("div", { class: "chart-labels" }, buckets.map((b, i) =>
+      h("span", {}, (buckets.length - 1 - i) % every === 0 ? b.label : ""))),
+    h("div", { class: "chart-legend" },
+      h("span", {}, h("i", { class: "swatch new" }), "Nya ord"),
+      h("span", {}, h("i", { class: "swatch review" }), "Repetitioner")));
+}
+
+function progressSection() {
+  const now = sumSessions(chartDays - 1, 0);
+  const before = sumSessions(chartDays * 2 - 1, chartDays);
+  const buckets = chartBuckets(chartDays);
+  const ranges = [[7, "7 dagar"], [30, "30 dagar"], [91, "3 månader"]];
+  return h("div", {},
+    h("div", { class: "section-head" },
+      h("p", { class: "step-label" }, "Din utveckling"),
+      h("div", { class: "ranges" }, ranges.map(([days, label]) =>
+        h("button", { class: "range-btn" + (days === chartDays ? " active" : ""),
+          onclick: () => { chartDays = days; showDashboard(); } }, label)))),
+    h("div", { class: "card chart-card" },
+      h("div", { class: "metrics" },
+        metric("Pass", now.sessions, before.sessions),
+        metric("Nya ord", now.newWords, before.newWords),
+        metric("Repetitioner", now.reviewed, before.reviewed),
+        metric("Aktiva dagar", now.activeDays, before.activeDays)),
+      now.sessions ? progressChart(buckets) : h("p", { class: "muted" }, "Inga pass under den här perioden.")),
+    now.sessions ? h("details", {},
+      h("summary", {}, "Visa som tabell"),
+      buckets.filter(b => b.sessions).map(b => h("div", { class: "word-row" },
+        h("span", {}, b.title), h("span", { class: "muted" }, `${b.newWords} nya, ${b.reviewed} rep.`)))) : null);
+}
+
 function showDashboard() {
   setNav("dash");
   const seen = WORDS.filter(w => progress.words[w.id]);
@@ -364,7 +484,8 @@ function showDashboard() {
 
   // Allt packas i en div så att listor och null hanteras av h()
   main.replaceChildren(h("div", {},
-    h("p", { class: "step-label" }, "Ord du kan"),
+    progressSection(),
+    h("p", { class: "step-label", style: "margin-top:24px" }, "Ord du kan"),
     h("div", { class: "stats" }, groups.map(([label, cls, list]) =>
       h("div", { class: "stat " + cls }, h("div", { class: "num" }, String(list.length)), h("div", { class: "muted" }, label)))),
     h("div", { class: "card summary" },

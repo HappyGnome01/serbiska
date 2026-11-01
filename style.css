@@ -10,6 +10,8 @@
   --good: #27ae60;
   --easy: #2980b9;
   --border: #e2ddd2;
+  --chart-new: #2a78d6;
+  --chart-review: #eb6834;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -19,6 +21,8 @@
     --muted: #a0a0a0;
     --primary: #8fb3d9;
     --border: #3a3f47;
+    --chart-new: #3987e5;
+    --chart-review: #d95926;
   }
 }
 
@@ -118,5 +122,43 @@ details { background: var(--card); border-radius: 12px; padding: 12px 16px; marg
 summary { cursor: pointer; font-weight: 600; }
 .word-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); gap: 12px; }
 .word-row:last-child { border-bottom: none; }
+
+/* Utvecklingsgrafen */
+.section-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ranges { display: flex; gap: 4px; }
+.range-btn { background: transparent; color: var(--muted); font-size: 0.85rem; padding: 6px 10px; }
+.range-btn.active { background: var(--border); color: var(--text); }
+.chart-card { text-align: left; padding: 20px 16px; }
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.metric-label { color: var(--muted); font-size: 0.8rem; }
+.metric-value { font-size: 1.7rem; font-weight: 700; line-height: 1.3; font-variant-numeric: tabular-nums; }
+.delta { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 1px 6px; border-radius: 5px; }
+.delta.up { color: var(--good); background: rgba(39,174,96,0.15); }
+.delta.down { color: var(--again); background: rgba(192,57,43,0.15); }
+.chart { margin-top: 20px; }
+.chart-area { display: flex; gap: 8px; height: 170px; }
+.chart-axis { display: flex; flex-direction: column; justify-content: space-between; color: var(--muted); font-size: 0.75rem; text-align: right; min-width: 20px; margin: -7px 0; }
+.chart-plot { position: relative; flex: 1; display: flex; align-items: flex-end; gap: 3px; min-width: 0; }
+.chart-line { position: absolute; left: 0; right: 0; border-top: 1px solid var(--border); }
+.chart-slot { position: relative; flex: 1; height: 100%; display: flex; align-items: flex-end; justify-content: center; min-width: 0; }
+.chart-bar { width: 100%; max-width: 36px; }
+/* Hela kolumnen går att trycka på, även när stapeln är låg */
+.chart-col { position: relative; display: flex; flex-direction: column-reverse; gap: 2px; width: 100%; height: 100%; padding: 0; background: transparent; border-radius: 4px 4px 0 0; }
+.chart-col::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 170px; }
+.chart-seg { display: block; flex-basis: 0; min-height: 2px; }
+.chart-seg.new { background: var(--chart-new); }
+.chart-seg.review { background: var(--chart-review); }
+.chart-seg:nth-last-child(2) { border-radius: 4px 4px 0 0; }
+.chart-tip { position: absolute; top: -8px; transform: translate(-50%, -100%); z-index: 2; background: var(--text); color: var(--bg); font-size: 0.8rem; padding: 5px 9px; border-radius: 6px; white-space: nowrap; pointer-events: none; }
+.chart-labels { display: flex; gap: 3px; margin: 6px 0 0 28px; color: var(--muted); font-size: 0.75rem; }
+.chart-labels span { flex: 1; min-width: 0; text-align: center; white-space: nowrap; }
+.chart-legend { display: flex; gap: 16px; justify-content: center; margin-top: 12px; color: var(--muted); font-size: 0.85rem; }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
+.swatch.new { background: var(--chart-new); }
+.swatch.review { background: var(--chart-review); }
+@media (max-width: 420px) {
+  .metrics { grid-template-columns: repeat(2, 1fr); }
+}
+
 .credits { font-size: 0.8rem; margin-top: 24px; }
 .credits a { color: inherit; }

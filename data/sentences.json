@@ -22,8 +22,9 @@
   {
     "id": "l1-s4",
     "lesson": 1,
-    "sr": "Hvala, dobro.",
-    "sv": "Tack, bra."
+    "sr": "Dobro, hvala.",
+    "sv": "Bra, tack.",
+    "alt": ["Hvala, dobro."]
   },
   {
     "id": "l1-s5",
@@ -106,7 +107,8 @@
     "id": "l4-s2",
     "lesson": 4,
     "sr": "Tata je ovdje.",
-    "sv": "Pappa är här."
+    "sv": "Pappa är här.",
+    "alt": ["Ovdje je tata."]
   },
   {
     "id": "l4-s3",
@@ -294,7 +296,8 @@
     "id": "l10-s1",
     "lesson": 10,
     "sr": "Lijepo je ovdje.",
-    "sv": "Det är fint här."
+    "sv": "Det är fint här.",
+    "alt": ["Ovdje je lijepo."]
   },
   {
     "id": "l10-s2",
@@ -367,6 +370,7 @@
     "sr": "Danas je hladno.",
     "sv": "Det är kallt idag.",
     "note": "hladno = kallt",
+    "alt": ["Hladno je danas."],
     "source": "tatoeba:4726292"
   },
   {
@@ -429,6 +433,7 @@
     "sr": "Čak i dijete zna to.",
     "sv": "Det vet till och med ett barn.",
     "note": "čak i = till och med. Ekaviskt: dete.",
+    "alt": ["Čak i dijete to zna."],
     "source": "tatoeba:4992730"
   },
   {
@@ -475,6 +480,7 @@
     "sr": "Mnogo volim mačke.",
     "sv": "Jag gillar katter väldigt mycket.",
     "note": "mačka → mačke (ackusativ, flertal).",
+    "alt": ["Volim mačke mnogo."],
     "source": "tatoeba:9117164"
   },
   {
