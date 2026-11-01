@@ -50,6 +50,11 @@ function showSaveWarning() {
 
 // ---------- 3. Hjälpfunktioner ----------
 // Skapar ett HTML-element: h("button", { class: "primary", onclick: fn }, "Text")
+// Byter innehåll på sidan. Tomma delar hoppas över, annars visas ordet "null".
+function fillMain(...children) {
+  main.replaceChildren(...children.filter(child => child !== null));
+}
+
 function h(tag, props = {}, ...children) {
   const el = document.createElement(tag);
   for (const [key, value] of Object.entries(props)) {
@@ -237,7 +242,7 @@ function showTask() {
 // Ram för varje steg: förloppsindikator + rubrik + innehåll
 function screen(label, ...content) {
   setNav(null);
-  main.replaceChildren(
+  fillMain(
     h("div", { class: "progress" }, h("div", { class: "bar", style: `width:${(pos / queue.length) * 100}%` })),
     h("p", { class: "step-label center" }, label),
     ...content
@@ -396,10 +401,20 @@ function lessonStatus(lesson) {
 const STATUS_TEXT = { current: "Din lektion", done: "Gjord", skipped: "Överhoppad", next: "Kommande" };
 
 // Stigens mått: höjd i pixlar per rad, sidled i procent av bredden
-const ROAD_ROW = 92;
-const ROAD_CURRENT = 168;  // Din lektion får plats för startknappen
+const ROAD_ROW = 128;
+const ROAD_CURRENT = 190;  // Din lektion får plats för startknappen
 const ROAD_LEVEL = 62;
 const ROAD_SWING = 30;
+const ROAD_STEP = 15;   // Pixlar mellan tassavtrycken
+const ROAD_SIDE = 6;    // Tassarna går växelvis på varsin sida om stigens mitt
+const ROAD_GAP = 6;     // Fritt utrymme runt knappar och rubriker
+
+// Ett tassavtryck: trampdyna och fyra tår, med tårna uppåt
+const PAW = "M-3.6 2a3.6 3 0 1 0 7.2 0a3.6 3 0 1 0-7.2 0Z" +
+  "M-5.6-1.6a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0Z" +
+  "M-2.9-3.8a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0Z" +
+  "M.1-3.8a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0Z" +
+  "M2.8-1.6a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0Z";
 
 const HEDGEHOG = `<svg viewBox="0 0 58 46" aria-hidden="true">
   <path d="M5 34 L2 27 L8 26 L6 18 L13 20 L14 11 L21 15 L25 7 L30 14 L37 9 L38 18 L43 22 Q50 26 49 33 Q48 38 41 38 L12 38 Q6 38 5 34Z" fill="#a98c76"/>
@@ -417,14 +432,50 @@ function svgEl(tag, attrs) {
   return el;
 }
 
-// Mjuk kurva genom punkterna, som går rakt ut ur och in i varje knapp
+// Mjuk kurva genom punkterna, utan knyck vid knapparna
 function roadPath(points) {
   return points.map((p, i) => {
     if (i === 0) return `M ${p.x} ${p.y}`;
-    const before = points[i - 1];
-    const middle = (before.y + p.y) / 2;
-    return `C ${before.x} ${middle} ${p.x} ${middle} ${p.x} ${p.y}`;
+    const from = points[i - 1];
+    const back = points[i - 2] || from;
+    const ahead = points[i + 1] || p;
+    return `C ${from.x + (p.x - back.x) / 6} ${from.y + (p.y - back.y) / 6} ` +
+      `${p.x - (ahead.x - from.x) / 6} ${p.y - (ahead.y - from.y) / 6} ${p.x} ${p.y}`;
   }).join(" ");
+}
+
+// Sätter tassavtryck längs stigen. Avtryck som skulle hamna under något hoppas över.
+function drawPaws(road, points, walkedY) {
+  const box = road.getBoundingClientRect();
+  const rects = selector => [...road.querySelectorAll(selector)].map(el => {
+    const r = el.getBoundingClientRect();
+    return { left: r.left - box.left, right: r.right - box.left, top: r.top - box.top, bottom: r.bottom - box.top };
+  });
+  const nodes = rects(".node");
+  const blocks = rects(".road-level, .road-start button, .hedgehog");
+  const isFree = (x, y) =>
+    !nodes.some(n => Math.hypot(x - (n.left + n.right) / 2, y - (n.top + n.bottom) / 2) < (n.right - n.left) / 2 + ROAD_GAP) &&
+    !blocks.some(b => x > b.left - ROAD_GAP && x < b.right + ROAD_GAP && y > b.top - ROAD_GAP && y < b.bottom + ROAD_GAP);
+
+  const line = road.querySelector(".road-line");
+  const curve = svgEl("path", { d: roadPath(points.map(p => ({ x: p.x / 100 * box.width, y: p.y }))) });
+  line.replaceChildren(curve);
+  const walked = svgEl("g", { class: "road-walked" });
+  const ahead = svgEl("g", { class: "road-ahead" });
+  const total = curve.getTotalLength();
+
+  for (let length = ROAD_STEP / 2, side = 1; length < total; length += ROAD_STEP, side = -side) {
+    const p = curve.getPointAtLength(length);
+    const next = curve.getPointAtLength(length + 1);
+    const angle = Math.atan2(next.y - p.y, next.x - p.x);
+    const x = p.x - Math.sin(angle) * side * ROAD_SIDE;
+    const y = p.y + Math.cos(angle) * side * ROAD_SIDE;
+    if (!isFree(x, y)) continue;
+    const degrees = angle * 180 / Math.PI + 90;  // Tårna pekar dit stigen går
+    (p.y <= walkedY ? walked : ahead).append(svgEl("path",
+      { d: PAW, transform: `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${degrees.toFixed(0)})` }));
+  }
+  line.replaceChildren(ahead, walked);
 }
 
 function roadmap(startLabel) {
@@ -440,7 +491,7 @@ function roadmap(startLabel) {
       items.push(h("div", { class: "road-level", style: `top:${y}px` }, `Nivå ${level}`));
       y += ROAD_LEVEL;
     }
-    const x = 50 + Math.sin(i * 0.85) * ROAD_SWING;
+    const x = 50 + Math.sin(i * 0.6) * ROAD_SWING;
     const status = lessonStatus(lesson);
     const center = y + 46;
     points.push({ x, y: center, lesson });
@@ -461,13 +512,20 @@ function roadmap(startLabel) {
     y += status === "current" ? ROAD_CURRENT : ROAD_ROW;
   });
 
-  // Streckad stig: gången del fram till din lektion, resten dämpad
+  // Tassavtryck: gången del fram till din lektion, resten dämpad
   const stop = current ? points.findIndex(p => p.lesson === current) : points.length - 1;
-  const line = svgEl("svg", { class: "road-line", viewBox: `0 0 100 ${y}`, preserveAspectRatio: "none", height: y, "aria-hidden": "true" });
-  line.append(
-    svgEl("path", { class: "road-ahead", d: roadPath(points.slice(stop)) }),
-    svgEl("path", { class: "road-walked", d: roadPath(points.slice(0, stop + 1)) }));
-  return h("div", { class: "road", style: `height:${y}px` }, line, items);
+  const line = svgEl("svg", { class: "road-line", height: y, "aria-hidden": "true" });
+  const road = h("div", { class: "road", style: `height:${y}px` }, line, items);
+
+  // Avtrycken ritas när bredden är känd och om igen när den ändras
+  let drawnWidth = 0;
+  new ResizeObserver(() => {
+    const width = road.clientWidth;
+    if (!width || width === drawnWidth) return;
+    drawnWidth = width;
+    drawPaws(road, points, points[stop].y);
+  }).observe(road);
+  return road;
 }
 
 function scrollToLesson(lesson) {
@@ -485,7 +543,7 @@ function showHome(focus) {
   if (s.review.length) parts.push(`${s.review.length} ${s.review.length === 1 ? "repetition" : "repetitioner"}`);
   if (s.newWords.length) parts.push(`${s.newWords.length} nya ord`);
   parts.push(`${s.sentences.length} meningar`);
-  main.replaceChildren(
+  fillMain(
     h("div", { class: "today" },
       h("div", {},
         h("div", { class: "today-title" }, doneToday ? "Dagens pass är klart ✅" : "Dagens pass"),
@@ -509,7 +567,7 @@ function showLesson(lesson) {
   const status = lessonStatus(lesson);
   const words = WORDS.filter(w => w.lesson === lesson);
   const sentences = SENTENCES.filter(s => s.lesson === lesson);
-  main.replaceChildren(
+  fillMain(
     h("button", { class: "link-btn", onclick: () => showHome(lesson) }, "← Till stigen"),
     h("div", { class: "card" },
       h("p", { class: "step-label" }, `Nivå ${lessonLevel(lesson)} · ${STATUS_TEXT[status]}`),

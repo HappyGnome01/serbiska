@@ -121,3 +121,8 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 - Serbiska står nu i kursiv i `note` och `grammar.json`, märkt `*så här*`. Appen visar märkningen med funktionen `mixed`.
 - *Normativna gramatika srpskoga jezika* (Matica srpska) är grammatisk referens. Claude har inte tillgång till boken, så inget i appen är kontrollerat i den.
 - Grammatikfönstret stängs nu direkt, utan att ligga kvar osynligt.
+
+## [2026-11-01] feature | Tassavtryck på stigen
+- Stigen är nu en enda mjuk kurva utan knyck vid knapparna, ritad i riktiga pixlar och omritad när bredden ändras.
+- Strecken ersattes av tassavtryck. Avtryck som skulle hamna under knappar, rubriker eller igelkotten hoppas över. Knapparna står glesare så att det får plats tassar emellan.
+- Rättat: ordet "null" syntes på Idag och på lektionssidor, ett fel från bygget av stigen.

@@ -183,9 +183,8 @@ summary { cursor: pointer; font-weight: 600; }
 .road-links { display: flex; flex-wrap: wrap; justify-content: center; }
 .road { position: relative; margin: 12px 0 24px; }
 .road-line { position: absolute; inset: 0; width: 100%; pointer-events: none; }
-.road-line path { fill: none; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 2 13; vector-effect: non-scaling-stroke; }
-.road-walked { stroke: var(--good-line); }
-.road-ahead { stroke: var(--muted); opacity: 0.45; }
+.road-walked { fill: var(--good-line); }
+.road-ahead { fill: var(--muted); opacity: 0.6; }
 .road-level { position: absolute; left: 0; right: 0; z-index: 2; background: var(--lav); color: var(--on-lav); border-radius: 14px; padding: 8px 12px; text-align: center; font-weight: 600; font-size: 0.9rem; }
 .node { position: absolute; z-index: 2; width: 58px; height: 58px; padding: 0; border-radius: 50%; border: 3px solid; font-weight: 700; transform: translate(-50%, -50%); }
 .node.done { background: var(--good); border-color: var(--good-line); color: var(--on-good); }
