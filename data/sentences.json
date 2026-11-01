@@ -10,14 +10,14 @@
     "lesson": 1,
     "sr": "Dobro sam, hvala.",
     "sv": "Jag mår bra, tack.",
-    "note": "sam = jag är"
+    "note": "*sam* = jag är"
   },
   {
     "id": "l1-s3",
     "lesson": 1,
     "sr": "Dobar dan, kako ste?",
     "sv": "God dag, hur mår ni?",
-    "note": "ste är den artiga formen. Använd den till äldre."
+    "note": "*ste* är den artiga formen. Använd den till äldre."
   },
   {
     "id": "l1-s4",
@@ -31,7 +31,7 @@
     "lesson": 1,
     "sr": "Dobro, a ti?",
     "sv": "Bra, och du?",
-    "note": "a = och (när man vänder på frågan)"
+    "note": "*a* = och (när man vänder på frågan)"
   },
   {
     "id": "l2-s1",
@@ -94,14 +94,14 @@
     "lesson": 3,
     "sr": "Ja ne govorim dobro srpski.",
     "sv": "Jag pratar inte så bra serbiska.",
-    "note": "govorim = jag pratar"
+    "note": "*govorim* = jag pratar"
   },
   {
     "id": "l4-s1",
     "lesson": 4,
     "sr": "Ovo je mama.",
     "sv": "Det här är mamma.",
-    "note": "ovo je = det här är"
+    "note": "*ovo je* = det här är"
   },
   {
     "id": "l4-s2",
@@ -115,14 +115,14 @@
     "lesson": 4,
     "sr": "Imaš li brata?",
     "sv": "Har du en bror?",
-    "note": "brat → brata efter 'har du' (ackusativ)."
+    "note": "*brat* → *brata* efter 'har du' (ackusativ)."
   },
   {
     "id": "l4-s4",
     "lesson": 4,
     "sr": "Moja sestra je u Švedskoj.",
     "sv": "Min syster är i Sverige.",
-    "note": "Švedska → u Švedskoj (lokativ: var något är)."
+    "note": "*Švedska* → *u Švedskoj* (lokativ: var något är)."
   },
   {
     "id": "l4-s5",
@@ -141,14 +141,14 @@
     "lesson": 5,
     "sr": "Djed je u bašti.",
     "sv": "Farfar är i trädgården.",
-    "note": "bašta → u bašti (lokativ)."
+    "note": "*bašta* → *u bašti* (lokativ)."
   },
   {
     "id": "l5-s3",
     "lesson": 5,
     "sr": "Ja sam njegova djevojka.",
     "sv": "Jag är hans flickvän.",
-    "note": "njegova = hans"
+    "note": "*njegova* = hans"
   },
   {
     "id": "l5-s4",
@@ -167,28 +167,28 @@
     "lesson": 6,
     "sr": "Hoćeš li kafu?",
     "sv": "Vill du ha kaffe?",
-    "note": "kafa → kafu efter 'vill du ha' (ackusativ)."
+    "note": "*kafa* → *kafu* efter 'vill du ha' (ackusativ)."
   },
   {
     "id": "l6-s2",
     "lesson": 6,
     "sr": "Čašu vode, molim.",
     "sv": "Ett glas vatten, tack.",
-    "note": "voda → vode: 'ett glas av vatten' (genitiv)."
+    "note": "*voda* → *vode*: 'ett glas av vatten' (genitiv)."
   },
   {
     "id": "l6-s3",
     "lesson": 6,
     "sr": "Kafa sa mlijekom.",
     "sv": "Kaffe med mjölk.",
-    "note": "mlijeko → mlijekom efter sa = med (instrumental)."
+    "note": "*mlijeko* → *mlijekom* efter *sa* = med (instrumental)."
   },
   {
     "id": "l6-s4",
     "lesson": 6,
     "sr": "Ovo je domaći hljeb.",
     "sv": "Det här är hembakat bröd.",
-    "note": "domaći = hemgjord"
+    "note": "*domaći* = hemgjord"
   },
   {
     "id": "l6-s5",
@@ -207,7 +207,7 @@
     "lesson": 7,
     "sr": "Ovo je jako ukusno!",
     "sv": "Det här är jättegott!",
-    "note": "jako = väldigt"
+    "note": "*jako* = väldigt"
   },
   {
     "id": "l7-s3",
@@ -239,14 +239,14 @@
     "lesson": 8,
     "sr": "Hoćeš li rakiju?",
     "sv": "Vill du ha rakija?",
-    "note": "rakija → rakiju (ackusativ)."
+    "note": "*rakija* → *rakiju* (ackusativ)."
   },
   {
     "id": "l8-s3",
     "lesson": 8,
     "sr": "Sretna slava!",
     "sv": "Glad slava!",
-    "note": "Lyckönskan när du kommer till en slava."
+    "note": "Lyckönskan när du kommer till en *slava*."
   },
   {
     "id": "l8-s4",
@@ -310,14 +310,14 @@
     "lesson": 10,
     "sr": "Volim srpsku hranu.",
     "sv": "Jag älskar serbisk mat.",
-    "note": "hrana = mat → hranu (ackusativ)."
+    "note": "*hrana* = mat → *hranu* (ackusativ)."
   },
   {
     "id": "l10-s4",
     "lesson": 10,
     "sr": "Malo sam umorna.",
     "sv": "Jag är lite trött.",
-    "note": "malo = lite"
+    "note": "*malo* = lite"
   },
   {
     "id": "l10-s5",
@@ -337,7 +337,7 @@
     "lesson": 11,
     "sr": "Mogu li dobiti čašu vina?",
     "sv": "Kan jag få ett glas vin?",
-    "note": "čaša → čašu (ackusativ). vino → vina: 'ett glas av vin' (genitiv).",
+    "note": "*čaša* → *čašu* (ackusativ). *vino* → *vina*: 'ett glas av vin' (genitiv).",
     "source": "tatoeba:4992851"
   },
   {
@@ -345,7 +345,7 @@
     "lesson": 11,
     "sr": "Imam pitanje.",
     "sv": "Jag har en fråga.",
-    "note": "pitanje = fråga",
+    "note": "*pitanje* = fråga",
     "source": "tatoeba:11183020"
   },
   {
@@ -353,7 +353,7 @@
     "lesson": 11,
     "sr": "Moraš da mi vjeruješ.",
     "sv": "Du måste lita på mig.",
-    "note": "vjerovati = lita på. Ekaviskt: veruješ.",
+    "note": "*vjerovati* = lita på. Ekaviskt: *veruješ*.",
     "source": "tatoeba:6963584"
   },
   {
@@ -361,7 +361,7 @@
     "lesson": 11,
     "sr": "Mogu li da idem?",
     "sv": "Kan jag gå?",
-    "note": "li gör meningen till en fråga.",
+    "note": "*li* gör meningen till en fråga.",
     "source": "tatoeba:4992862"
   },
   {
@@ -369,7 +369,7 @@
     "lesson": 12,
     "sr": "Danas je hladno.",
     "sv": "Det är kallt idag.",
-    "note": "hladno = kallt",
+    "note": "*hladno* = kallt",
     "alt": ["Hladno je danas."],
     "source": "tatoeba:4726292"
   },
@@ -378,7 +378,7 @@
     "lesson": 12,
     "sr": "Dođi sutra.",
     "sv": "Kom imorgon.",
-    "note": "dođi = kom! (från doći)",
+    "note": "*dođi* = kom! (från *doći*)",
     "source": "tatoeba:4995968"
   },
   {
@@ -386,7 +386,7 @@
     "lesson": 12,
     "sr": "Gdje si sada?",
     "sv": "Var är du nu?",
-    "note": "Ekaviskt: Gde si sada?",
+    "note": "Ekaviskt: *Gde si sada?*",
     "source": "tatoeba:5039825"
   },
   {
@@ -394,7 +394,7 @@
     "lesson": 12,
     "sr": "Moja majka je uvijek zauzeta.",
     "sv": "Min mamma är alltid upptagen.",
-    "note": "zauzeta = upptagen (om en kvinna). Om en man: zauzet.",
+    "note": "*zauzeta* = upptagen (om en kvinna). Om en man: *zauzet*.",
     "source": "tatoeba:3253705"
   },
   {
@@ -402,7 +402,7 @@
     "lesson": 12,
     "sr": "Sad ili nikad!",
     "sv": "Nu eller aldrig!",
-    "note": "ili = eller",
+    "note": "*ili* = eller",
     "source": "tatoeba:6937649"
   },
   {
@@ -417,7 +417,7 @@
     "lesson": 13,
     "sr": "Tražim posao.",
     "sv": "Jag söker jobb.",
-    "note": "tražim = jag söker",
+    "note": "*tražim* = jag söker",
     "source": "tatoeba:892219"
   },
   {
@@ -432,7 +432,7 @@
     "lesson": 13,
     "sr": "Čak i dijete zna to.",
     "sv": "Det vet till och med ett barn.",
-    "note": "čak i = till och med. Ekaviskt: dete.",
+    "note": "*čak i* = till och med. Ekaviskt: *dete*.",
     "alt": ["Čak i dijete to zna."],
     "source": "tatoeba:4992730"
   },
@@ -441,7 +441,7 @@
     "lesson": 13,
     "sr": "Ko su ovi ljudi?",
     "sv": "Vilka är de här människorna?",
-    "note": "ovi = de här",
+    "note": "*ovi* = de här",
     "source": "tatoeba:3429825"
   },
   {
@@ -449,7 +449,7 @@
     "lesson": 14,
     "sr": "Zašto si ljuta na mene?",
     "sv": "Varför är du arg på mig?",
-    "note": "ljuta = arg (om en kvinna). Om en man: ljut.",
+    "note": "*ljuta* = arg (om en kvinna). Om en man: *ljut*.",
     "source": "tatoeba:5034640"
   },
   {
@@ -463,7 +463,7 @@
     "lesson": 14,
     "sr": "Bili smo siromašni, ali sretni.",
     "sv": "Vi var fattiga men glada.",
-    "note": "siromašni = fattiga. I Serbien: srećni.",
+    "note": "*siromašni* = fattiga. I Serbien: *srećni*.",
     "source": "tatoeba:3437802"
   },
   {
@@ -471,7 +471,7 @@
     "lesson": 14,
     "sr": "Možda si u pravu.",
     "sv": "Du kanske har rätt.",
-    "note": "biti u pravu = ha rätt",
+    "note": "*biti u pravu* = ha rätt",
     "source": "tatoeba:3426483"
   },
   {
@@ -479,7 +479,7 @@
     "lesson": 14,
     "sr": "Mnogo volim mačke.",
     "sv": "Jag gillar katter väldigt mycket.",
-    "note": "mačka → mačke (ackusativ, flertal).",
+    "note": "*mačka* → *mačke* (ackusativ, flertal).",
     "alt": ["Volim mačke mnogo."],
     "source": "tatoeba:9117164"
   },
@@ -488,7 +488,7 @@
     "lesson": 15,
     "sr": "Želim da budem sa tobom.",
     "sv": "Jag vill vara med dig.",
-    "note": "sa tobom = med dig",
+    "note": "*sa tobom* = med dig",
     "source": "tatoeba:6920341"
   },
   {
@@ -524,7 +524,7 @@
     "lesson": 16,
     "sr": "Ti si jedan od nas.",
     "sv": "Du är en av oss.",
-    "note": "od = av",
+    "note": "*od* = av",
     "source": "tatoeba:4324619"
   },
   {
@@ -532,7 +532,7 @@
     "lesson": 16,
     "sr": "Imam dvije mačke.",
     "sv": "Jag har två katter.",
-    "note": "Ekaviskt: dve.",
+    "note": "Ekaviskt: *dve*.",
     "source": "tatoeba:3081389"
   },
   {
@@ -540,7 +540,7 @@
     "lesson": 16,
     "sr": "Tri sladoleda, molim.",
     "sv": "Tre glassar, tack.",
-    "note": "sladoled = glass",
+    "note": "*sladoled* = glass",
     "source": "tatoeba:3251028"
   },
   {
@@ -548,7 +548,7 @@
     "lesson": 16,
     "sr": "Imam četiri brata.",
     "sv": "Jag har fyra bröder.",
-    "note": "Efter 2–4 får ordet genitiv singular: brata."
+    "note": "Efter 2–4 får ordet genitiv singular: *brata*."
   },
   {
     "id": "l16-s5",
@@ -581,7 +581,7 @@
     "lesson": 17,
     "sr": "Srešćemo se na stanici u devet.",
     "sv": "Vi ses på stationen klockan nio.",
-    "note": "stanica = station",
+    "note": "*stanica* = station",
     "source": "tatoeba:3248383"
   },
   {
@@ -589,7 +589,7 @@
     "lesson": 17,
     "sr": "Broj od jedan do deset.",
     "sv": "Räkna från ett till tio.",
-    "note": "broj = räkna!",
+    "note": "*broj* = räkna!",
     "source": "tatoeba:3311722"
   },
   {
@@ -611,7 +611,7 @@
     "lesson": 18,
     "sr": "Dođi u srijedu.",
     "sv": "Kom på onsdag.",
-    "note": "srijeda → u srijedu (ackusativ)."
+    "note": "*srijeda* → *u srijedu* (ackusativ)."
   },
   {
     "id": "l18-s4",
@@ -625,7 +625,7 @@
     "lesson": 18,
     "sr": "Konačno je petak.",
     "sv": "Äntligen är det fredag.",
-    "note": "konačno = äntligen",
+    "note": "*konačno* = äntligen",
     "source": "tatoeba:3651134"
   },
   {
@@ -640,7 +640,7 @@
     "lesson": 19,
     "sr": "Juče je bila nedjelja, a ne subota.",
     "sv": "Igår var det söndag, inte lördag.",
-    "note": "Ekaviskt: nedelja.",
+    "note": "Ekaviskt: *nedelja*.",
     "source": "tatoeba:3380035"
   },
   {
@@ -648,21 +648,21 @@
     "lesson": 19,
     "sr": "Idem kući za sedmicu.",
     "sv": "Jag åker hem om en vecka.",
-    "note": "za = om (tid)"
+    "note": "*za* = om (tid)"
   },
   {
     "id": "l19-s4",
     "lesson": 19,
     "sr": "Idem u Švedsku za mjesec dana.",
     "sv": "Jag åker till Sverige om en månad.",
-    "note": "Ekaviskt: mesec."
+    "note": "Ekaviskt: *mesec*."
   },
   {
     "id": "l19-s5",
     "lesson": 19,
     "sr": "Imam trideset godina.",
     "sv": "Jag är trettio år.",
-    "note": "trideset = trettio",
+    "note": "*trideset* = trettio",
     "source": "tatoeba:3388971"
   },
   {
@@ -670,7 +670,7 @@
     "lesson": 20,
     "sr": "Kada si ustao jutros?",
     "sv": "När gick du upp i morse?",
-    "note": "Till en kvinna: ustala.",
+    "note": "Till en kvinna: *ustala*.",
     "source": "tatoeba:898463"
   },
   {
@@ -691,7 +691,7 @@
     "lesson": 20,
     "sr": "Noć je duga.",
     "sv": "Natten är lång.",
-    "note": "duga = lång (kvinnligt)"
+    "note": "*duga* = lång (kvinnligt)"
   },
   {
     "id": "l20-s5",
@@ -705,7 +705,7 @@
     "lesson": 21,
     "sr": "Juče je bilo vruće.",
     "sv": "Det var varmt igår.",
-    "note": "vruće = varmt",
+    "note": "*vruće* = varmt",
     "source": "tatoeba:3414795"
   },
   {
@@ -719,7 +719,7 @@
     "lesson": 21,
     "sr": "Previše kasno.",
     "sv": "För sent.",
-    "note": "previše = för mycket",
+    "note": "*previše* = för mycket",
     "source": "tatoeba:5003509"
   },
   {
@@ -734,7 +734,7 @@
     "lesson": 21,
     "sr": "Vrijeme leti.",
     "sv": "Tiden flyger.",
-    "note": "Ekaviskt: vreme.",
+    "note": "Ekaviskt: *vreme*.",
     "source": "tatoeba:11183139"
   },
   {
@@ -797,7 +797,7 @@
     "lesson": 23,
     "sr": "Da li su ovo vaše torbe?",
     "sv": "Är det här era väskor?",
-    "note": "torba = väska",
+    "note": "*torba* = väska",
     "source": "tatoeba:4324651"
   },
   {
@@ -811,7 +811,7 @@
     "lesson": 24,
     "sr": "Gdje je tvoj otac?",
     "sv": "Var är din pappa?",
-    "note": "Ekaviskt: gde.",
+    "note": "Ekaviskt: *gde*.",
     "source": "tatoeba:3384150"
   },
   {
@@ -876,7 +876,7 @@
     "lesson": 26,
     "sr": "Soba je bila mračna.",
     "sv": "Rummet var mörkt.",
-    "note": "mračna = mörk",
+    "note": "*mračna* = mörk",
     "source": "tatoeba:4967481"
   },
   {
@@ -897,7 +897,7 @@
     "lesson": 26,
     "sr": "Zatvori vrata.",
     "sv": "Stäng dörren.",
-    "note": "zatvori = stäng!",
+    "note": "*zatvori* = stäng!",
     "source": "tatoeba:3294874"
   },
   {
@@ -905,7 +905,7 @@
     "lesson": 26,
     "sr": "Prozor je otvoren.",
     "sv": "Fönstret är öppet.",
-    "note": "otvoren = öppen",
+    "note": "*otvoren* = öppen",
     "source": "tatoeba:3438993"
   },
   {
@@ -913,7 +913,7 @@
     "lesson": 27,
     "sr": "Knjiga je na stolu.",
     "sv": "Boken är på bordet.",
-    "note": "sto → na stolu (lokativ).",
+    "note": "*sto* → *na stolu* (lokativ).",
     "source": "tatoeba:2345997"
   },
   {
@@ -921,7 +921,7 @@
     "lesson": 27,
     "sr": "Ova stolica je ružna.",
     "sv": "Den här stolen är ful.",
-    "note": "ružna = ful",
+    "note": "*ružna* = ful",
     "source": "tatoeba:3425920"
   },
   {
@@ -941,14 +941,14 @@
     "lesson": 27,
     "sr": "Ugasi svjetlo.",
     "sv": "Släck ljuset.",
-    "note": "ugasi = släck!"
+    "note": "*ugasi* = släck!"
   },
   {
     "id": "l28-s1",
     "lesson": 28,
     "sr": "Niko ovdje ne jede meso.",
     "sv": "Ingen här äter kött.",
-    "note": "niko = ingen",
+    "note": "*niko* = ingen",
     "source": "tatoeba:4250731"
   },
   {
@@ -956,7 +956,7 @@
     "lesson": 28,
     "sr": "Ribu, molim.",
     "sv": "Fisk, tack.",
-    "note": "riba → ribu (ackusativ).",
+    "note": "*riba* → *ribu* (ackusativ).",
     "source": "tatoeba:10198920"
   },
   {
@@ -976,7 +976,7 @@
     "lesson": 28,
     "sr": "Jedi supu dok je vruća.",
     "sv": "Ät soppan medan den är varm.",
-    "note": "supa → supu (ackusativ).",
+    "note": "*supa* → *supu* (ackusativ).",
     "source": "tatoeba:5024378"
   },
   {
@@ -1016,14 +1016,14 @@
     "lesson": 30,
     "sr": "Dodaj mi so, molim te.",
     "sv": "Kan du skicka saltet, tack.",
-    "note": "dodaj = räck, skicka. Molim te är den informella formen av molim."
+    "note": "*dodaj* = räck, skicka. *Molim te* är den informella formen av *molim*."
   },
   {
     "id": "l30-s2",
     "lesson": 30,
     "sr": "Kafa bez šećera, molim te.",
     "sv": "Kaffe utan socker, tack.",
-    "note": "šećer → bez šećera (genitiv)."
+    "note": "*šećer* → *bez šećera* (genitiv)."
   },
   {
     "id": "l30-s3",
@@ -1043,7 +1043,7 @@
     "lesson": 30,
     "sr": "Donesi vino.",
     "sv": "Hämta vin.",
-    "note": "donesi = hämta!",
+    "note": "*donesi* = hämta!",
     "source": "tatoeba:4996021"
   },
   {
@@ -1057,7 +1057,7 @@
     "lesson": 31,
     "sr": "Pozvana sam na ručak.",
     "sv": "Jag är bjuden på lunch.",
-    "note": "Kvinna: pozvana. Man: pozvan.",
+    "note": "Kvinna: *pozvana*. Man: *pozvan*.",
     "source": "tatoeba:3275989"
   },
   {
@@ -1078,7 +1078,7 @@
     "lesson": 31,
     "sr": "Jedem puno mesa.",
     "sv": "Jag äter mycket kött.",
-    "note": "puno = mycket",
+    "note": "*puno* = mycket",
     "source": "tatoeba:4324233"
   },
   {
@@ -1127,7 +1127,7 @@
     "lesson": 33,
     "sr": "To je loš znak.",
     "sv": "Det är ett dåligt tecken.",
-    "note": "znak = tecken",
+    "note": "*znak* = tecken",
     "source": "tatoeba:6147431"
   },
   {
@@ -1148,7 +1148,7 @@
     "lesson": 33,
     "sr": "Sve to mi je novo.",
     "sv": "Allt det är nytt för mig.",
-    "note": "sve = allt",
+    "note": "*sve* = allt",
     "source": "tatoeba:4324349"
   },
   {
@@ -1169,7 +1169,7 @@
     "lesson": 34,
     "sr": "Veoma si lijepa.",
     "sv": "Du är väldigt vacker.",
-    "note": "veoma = väldigt",
+    "note": "*veoma* = väldigt",
     "source": "tatoeba:4967423"
   },
   {
@@ -1191,7 +1191,7 @@
     "lesson": 35,
     "sr": "Imam bijelog konja.",
     "sv": "Jag har en vit häst.",
-    "note": "konj = häst",
+    "note": "*konj* = häst",
     "source": "tatoeba:3317304"
   },
   {
@@ -1199,7 +1199,7 @@
     "lesson": 35,
     "sr": "Imam crne oči.",
     "sv": "Jag har svarta ögon.",
-    "note": "oko → oči (flertal).",
+    "note": "*oko* → *oči* (flertal).",
     "source": "tatoeba:3314349"
   },
   {
@@ -1220,14 +1220,14 @@
     "lesson": 35,
     "sr": "Trava je zelena.",
     "sv": "Gräset är grönt.",
-    "note": "trava = gräs"
+    "note": "*trava* = gräs"
   },
   {
     "id": "l36-s1",
     "lesson": 36,
     "sr": "Sunce sija.",
     "sv": "Solen skiner.",
-    "note": "sija = skiner"
+    "note": "*sija* = skiner"
   },
   {
     "id": "l36-s2",
@@ -1242,14 +1242,14 @@
     "lesson": 36,
     "sr": "Pada snijeg.",
     "sv": "Det snöar.",
-    "note": "Ekaviskt: sneg."
+    "note": "Ekaviskt: *sneg*."
   },
   {
     "id": "l36-s4",
     "lesson": 36,
     "sr": "Danas je jak vjetar.",
     "sv": "Det blåser hårt idag.",
-    "note": "jak = stark"
+    "note": "*jak* = stark"
   },
   {
     "id": "l36-s5",
@@ -1303,7 +1303,7 @@
     "lesson": 38,
     "sr": "Moraš da sačekaš sljedeći autobus.",
     "sv": "Du måste vänta på nästa buss.",
-    "note": "sljedeći = nästa. Ekaviskt: sledeći.",
+    "note": "*sljedeći* = nästa. Ekaviskt: *sledeći*.",
     "source": "tatoeba:3478031"
   },
   {
@@ -1311,7 +1311,7 @@
     "lesson": 38,
     "sr": "Voz nije još stigao.",
     "sv": "Tåget har inte kommit ännu.",
-    "note": "stigao = kommit",
+    "note": "*stigao* = kommit",
     "source": "tatoeba:3311747"
   },
   {
@@ -1319,28 +1319,28 @@
     "lesson": 38,
     "sr": "Idem avionom.",
     "sv": "Jag åker flyg.",
-    "note": "avion → avionom (med flyg)."
+    "note": "*avion* → *avionom* (med flyg)."
   },
   {
     "id": "l38-s5",
     "lesson": 38,
     "sr": "Sretan put!",
     "sv": "Trevlig resa!",
-    "note": "I Serbien: srećan put."
+    "note": "I Serbien: *srećan put*."
   },
   {
     "id": "l39-s1",
     "lesson": 39,
     "sr": "Idi lijevo.",
     "sv": "Gå åt vänster.",
-    "note": "idi = gå!"
+    "note": "*idi* = gå!"
   },
   {
     "id": "l39-s2",
     "lesson": 39,
     "sr": "Skreni desno.",
     "sv": "Sväng höger.",
-    "note": "skreni = sväng!"
+    "note": "*skreni* = sväng!"
   },
   {
     "id": "l39-s3",
@@ -1379,7 +1379,7 @@
     "lesson": 40,
     "sr": "Dođi ovamo dolje.",
     "sv": "Kom ner hit.",
-    "note": "ovamo = hit",
+    "note": "*ovamo* = hit",
     "source": "tatoeba:4449673"
   },
   {
@@ -1394,7 +1394,7 @@
     "lesson": 40,
     "sr": "Svi su napolju.",
     "sv": "Alla är ute.",
-    "note": "svi = alla",
+    "note": "*svi* = alla",
     "source": "tatoeba:4997547"
   },
   {
@@ -1416,7 +1416,7 @@
     "lesson": 41,
     "sr": "Ostani sa nama!",
     "sv": "Stanna hos oss!",
-    "note": "ostani = stanna!",
+    "note": "*ostani* = stanna!",
     "source": "tatoeba:7059278"
   },
   {
@@ -1431,7 +1431,7 @@
     "lesson": 41,
     "sr": "Vraćam se uskoro.",
     "sv": "Jag kommer tillbaka snart.",
-    "note": "uskoro = snart",
+    "note": "*uskoro* = snart",
     "source": "tatoeba:3243809"
   },
   {
@@ -1473,7 +1473,7 @@
     "lesson": 43,
     "sr": "Daj mi kašiku.",
     "sv": "Ge mig en sked.",
-    "note": "kašika = sked",
+    "note": "*kašika* = sked",
     "source": "tatoeba:4790584"
   },
   {
@@ -1488,7 +1488,7 @@
     "lesson": 43,
     "sr": "Kupila sam knjigu.",
     "sv": "Jag köpte en bok.",
-    "note": "Kvinna: kupila. Man: kupio.",
+    "note": "Kvinna: *kupila*. Man: *kupio*.",
     "source": "tatoeba:6938092"
   },
   {
@@ -1496,7 +1496,7 @@
     "lesson": 43,
     "sr": "Plaćam unaprijed.",
     "sv": "Jag betalar i förskott.",
-    "note": "Ekaviskt: unapred.",
+    "note": "Ekaviskt: *unapred*.",
     "source": "tatoeba:893558"
   },
   {
@@ -1525,7 +1525,7 @@
     "lesson": 44,
     "sr": "Dođi i sjedi.",
     "sv": "Kom och sätt dig.",
-    "note": "Ekaviskt: sedi.",
+    "note": "Ekaviskt: *sedi*.",
     "source": "tatoeba:4449668"
   },
   {
@@ -1539,7 +1539,7 @@
     "lesson": 44,
     "sr": "Moja sestra se igra sa lutkama.",
     "sv": "Min syster leker med dockor.",
-    "note": "lutka = docka",
+    "note": "*lutka* = docka",
     "source": "tatoeba:800881"
   },
   {
@@ -1575,7 +1575,7 @@
     "lesson": 45,
     "sr": "Nadam se da nisi ljut na mene.",
     "sv": "Jag hoppas att du inte är arg på mig.",
-    "note": "nisi = du är inte",
+    "note": "*nisi* = du är inte",
     "source": "tatoeba:3531402"
   },
   {
@@ -1622,7 +1622,7 @@
     "lesson": 47,
     "sr": "Ruke su mi pune.",
     "sv": "Jag har händerna fulla.",
-    "note": "pune = fulla",
+    "note": "*pune* = fulla",
     "source": "tatoeba:4784487"
   },
   {
@@ -1665,7 +1665,7 @@
     "lesson": 48,
     "sr": "Treba mi lijek.",
     "sv": "Jag behöver medicin.",
-    "note": "Ekaviskt: lek."
+    "note": "Ekaviskt: *lek*."
   },
   {
     "id": "l48-s4",
@@ -1686,7 +1686,7 @@
     "lesson": 49,
     "sr": "Imam mačku i psa.",
     "sv": "Jag har en katt och en hund.",
-    "note": "pas → psa (ackusativ).",
+    "note": "*pas* → *psa* (ackusativ).",
     "source": "tatoeba:3307023"
   },
   {
@@ -1713,7 +1713,7 @@
     "lesson": 49,
     "sr": "Bolje nego juče.",
     "sv": "Bättre än igår.",
-    "note": "bolje = bättre"
+    "note": "*bolje* = bättre"
   },
   {
     "id": "l50-s1",
@@ -1728,7 +1728,7 @@
     "lesson": 50,
     "sr": "Pokušaj opet.",
     "sv": "Försök igen.",
-    "note": "pokušaj = försök!",
+    "note": "*pokušaj* = försök!",
     "source": "tatoeba:3278264"
   },
   {
@@ -1743,7 +1743,7 @@
     "lesson": 50,
     "sr": "To je bilo vrlo jeftino.",
     "sv": "Det var väldigt billigt.",
-    "note": "jeftino = billigt",
+    "note": "*jeftino* = billigt",
     "source": "tatoeba:3425925"
   },
   {
@@ -1793,14 +1793,14 @@
     "lesson": 52,
     "sr": "Idem sa tobom.",
     "sv": "Jag följer med dig.",
-    "note": "Man kan också säga: Idem s tobom."
+    "note": "Man kan också säga: *Idem s tobom*."
   },
   {
     "id": "l52-s2",
     "lesson": 52,
     "sr": "Mogu da živim bez vode.",
     "sv": "Jag kan leva utan vatten.",
-    "note": "voda → bez vode (genitiv).",
+    "note": "*voda* → *bez vode* (genitiv).",
     "source": "tatoeba:2655864"
   },
   {
@@ -1814,7 +1814,7 @@
     "lesson": 52,
     "sr": "Ovo je od mame.",
     "sv": "Det här är från mamma.",
-    "note": "mama → od mame (genitiv)."
+    "note": "*mama* → *od mame* (genitiv)."
   },
   {
     "id": "l52-s5",
@@ -1827,7 +1827,7 @@
     "lesson": 53,
     "sr": "Idem na plažu.",
     "sv": "Jag går till stranden.",
-    "note": "plaža → na plažu (ackusativ).",
+    "note": "*plaža* → *na plažu* (ackusativ).",
     "source": "tatoeba:4250142"
   },
   {
@@ -1835,7 +1835,7 @@
     "lesson": 53,
     "sr": "Ja sam iz Švedske.",
     "sv": "Jag är från Sverige.",
-    "note": "Švedska → iz Švedske (genitiv)."
+    "note": "*Švedska* → *iz Švedske* (genitiv)."
   },
   {
     "id": "l53-s3",
@@ -1849,7 +1849,7 @@
     "lesson": 53,
     "sr": "Maj dolazi poslije aprila.",
     "sv": "Maj kommer efter april.",
-    "note": "Ekaviskt: posle.",
+    "note": "Ekaviskt: *posle*.",
     "source": "tatoeba:901909"
   },
   {
@@ -1857,7 +1857,7 @@
     "lesson": 53,
     "sr": "Vidjela sam ga prije tri godine.",
     "sv": "Jag såg honom för tre år sedan.",
-    "note": "Kvinna: vidjela. Man: vidio.",
+    "note": "Kvinna: *vidjela*. Man: *vidio*.",
     "source": "tatoeba:3334430"
   },
   {
@@ -1899,7 +1899,7 @@
     "lesson": 55,
     "sr": "Hajde da probamo nešto.",
     "sv": "Kom, så provar vi något.",
-    "note": "nešto = något",
+    "note": "*nešto* = något",
     "source": "tatoeba:3292799"
   },
   {
@@ -1967,7 +1967,7 @@
     "lesson": 57,
     "sr": "Pjevao je pjesmu.",
     "sv": "Han sjöng en sång.",
-    "note": "Ekaviskt: pevao, pesmu.",
+    "note": "Ekaviskt: *pevao, pesmu*.",
     "source": "tatoeba:2507715"
   },
   {
@@ -2000,7 +2000,7 @@
     "lesson": 58,
     "sr": "Sretan Božić!",
     "sv": "God jul!",
-    "note": "I Serbien: srećan.",
+    "note": "I Serbien: *srećan*.",
     "source": "tatoeba:10198913"
   },
   {
@@ -2008,7 +2008,7 @@
     "lesson": 58,
     "sr": "Sretan Vaskrs!",
     "sv": "Glad påsk!",
-    "note": "Även Uskrs.",
+    "note": "Även *Uskrs*.",
     "source": "tatoeba:3188083"
   },
   {
@@ -2022,7 +2022,7 @@
     "lesson": 58,
     "sr": "Upali svijeću.",
     "sv": "Tänd ett ljus.",
-    "note": "upali = tänd!"
+    "note": "*upali* = tänd!"
   },
   {
     "id": "l58-s5",

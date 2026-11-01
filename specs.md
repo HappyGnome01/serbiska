@@ -30,6 +30,7 @@ Inspirerat av Duolingo och modern språkdidaktik:
 ## Grammatik
 - Knappen **Förklara grammatiken** visas på lektionssidan och i stegen Nytt ord och Läs och förstå, när lektionen har en förklaring.
 - Den öppnar ett fönster med kort förklaring och exempel. Innehållet finns i `data/grammar.json`.
+- Serbiska står i kursiv när den blandas med svenska, både här och i tipsen vid ord och meningar. I datafilerna märks den `*så här*`.
 
 ## Dagens pass (~5–10 min)
 1. **Repetition – 3 till 15 ord** från tidigare pass. Antalet växer med hur många ord som behöver befästas: överhoppade ord du inte övat på, och ord du senast gav "Kunde inte" eller "Svårt" (ett extra ord per 4 sådana, högst 15). Försenade ord kommer först, sedan ord att befästa, sist övriga. Visa ordet → "Visa svar" → betygsätt. Vid fler än 8 repetitioner visar startsidan ca 10–15 min.

@@ -247,7 +247,7 @@ function screen(label, ...content) {
 // ---------- 7. Stegen i passet ----------
 function showReview(task) {
   const w = task.word;
-  const answer = h("div", { class: "hidden" }, h("div", { class: "sv" }, w.sv), w.note ? h("div", { class: "note" }, w.note) : null);
+  const answer = h("div", { class: "hidden" }, h("div", { class: "sv" }, w.sv), w.note ? h("div", { class: "note" }, mixed(w.note)) : null);
   const grades = gradeButtons(q => {
     gradeWord(w.id, q);
     if (q === 1) retryLater(task);
@@ -266,7 +266,7 @@ function showIntro(task) {
   const w = task.word;
   if (!progress.words[w.id]) { progress.words[w.id] = newProgress(); saveProgress(); }  // Markera som sett
   screen("Nytt ord",
-    h("div", { class: "card" }, srBlock(w.sr), h("div", { class: "sv" }, w.sv), w.note ? h("div", { class: "note" }, "💡 " + w.note) : null),
+    h("div", { class: "card" }, srBlock(w.sr), h("div", { class: "sv" }, w.sv), w.note ? h("div", { class: "note" }, mixed("💡 " + w.note)) : null),
     h("div", { class: "buttons" }, h("button", { class: "primary", onclick: next }, "Nästa"), grammarButton(w.lesson)));
 }
 
@@ -296,7 +296,7 @@ function showQuiz(task) {
 
 function showRead(task) {
   const s = task.sentence;
-  const answer = h("div", { class: "hidden" }, h("div", { class: "sv" }, s.sv), s.note ? h("div", { class: "note" }, "💡 " + s.note) : null);
+  const answer = h("div", { class: "hidden" }, h("div", { class: "sv" }, s.sv), s.note ? h("div", { class: "note" }, mixed("💡 " + s.note)) : null);
   const nextBtn = h("button", { class: "primary hidden", onclick: next }, "Nästa");
   const showBtn = h("button", { class: "primary", onclick: () => {
     answer.classList.remove("hidden");
@@ -526,15 +526,20 @@ function showLesson(lesson) {
     h("div", { class: "lesson-list" }, words.map(w => h("div", { class: "lesson-item" },
       h("div", { class: "lesson-sr" }, w.sr, h("span", { class: "muted lesson-cyr" }, " " + toCyrillic(w.sr))),
       h("div", {}, w.sv),
-      w.note ? h("div", { class: "note lesson-note" }, w.note) : null))),
+      w.note ? h("div", { class: "note lesson-note" }, mixed(w.note)) : null))),
     h("p", { class: "step-label" }, "Meningar"),
     h("div", { class: "lesson-list" }, sentences.map(s => h("div", { class: "lesson-item" },
       h("div", { class: "lesson-sr" }, s.sr),
       h("div", {}, s.sv),
-      s.note ? h("div", { class: "note lesson-note" }, s.note) : null))));
+      s.note ? h("div", { class: "note lesson-note" }, mixed(s.note)) : null))));
 }
 
 // ---------- Grammatikfönster ----------
+// Text som blandar svenska och serbiska: *serbiska* blir kursivt
+function mixed(text) {
+  return text.split("*").map((part, i) => i % 2 ? h("em", {}, part) : part);
+}
+
 function grammarFor(lesson) {
   return GRAMMAR.filter(g => g.lessons.includes(lesson));
 }
@@ -550,10 +555,10 @@ function showGrammar(lesson) {
   const dialog = h("dialog", { class: "grammar", "aria-label": "Grammatik" },
     h("div", { class: "grammar-body" },
       grammarFor(lesson).map(g => h("section", {},
-        h("h2", {}, g.title),
-        g.text.map(t => h("p", {}, t)),
+        h("h2", {}, mixed(g.title)),
+        g.text.map(t => h("p", {}, mixed(t))),
         h("div", { class: "grammar-examples" }, g.examples.map(([sr, sv]) =>
-          h("div", { class: "word-row" }, h("span", {}, sr), h("span", { class: "muted" }, sv)))))),
+          h("div", { class: "word-row" }, h("span", {}, h("em", {}, sr)), h("span", { class: "muted" }, mixed(sv))))))),
       h("div", { class: "buttons" }, h("button", { class: "primary", onclick: closeDialog }, "Stäng"))));
   dialog.addEventListener("close", () => dialog.remove());  // Esc-tangenten
   dialog.addEventListener("click", e => { if (e.target === dialog) closeDialog(); });  // Tryck utanför stänger

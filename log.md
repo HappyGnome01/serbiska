@@ -115,3 +115,9 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 - Lektionssidor visar ord och meningar. Repetition flyttar dig inte. Kommande lektioner går bara att titta på.
 - `data/grammar.json` har 18 förklaringar för 38 lektioner, alla med `check: true`. Granskningslista: `raw/granska-grammatik.md`.
 - Testat automatiskt i webbläsaren: lägen, repetition, riktigt pass, grammatikfönster, telefonbredd och mörkt läge.
+
+## [2026-11-01] content | Granskning av grammatiken och kursiv serbiska
+- Pojkvännens granskning: *Nemam kafu* ändrades till *Nemam kafe* (partitiv genitiv). Regeln står nu under negation och genitiv. Övrigt godkändes och alla `check` togs bort.
+- Serbiska står nu i kursiv i `note` och `grammar.json`, märkt `*så här*`. Appen visar märkningen med funktionen `mixed`.
+- *Normativna gramatika srpskoga jezika* (Matica srpska) är grammatisk referens. Claude har inte tillgång till boken, så inget i appen är kontrollerat i den.
+- Grammatikfönstret stängs nu direkt, utan att ligga kvar osynligt.

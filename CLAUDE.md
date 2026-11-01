@@ -41,6 +41,8 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 | `raw/` | Privata råanteckningar, t.ex. ord hon hört (publiceras inte) |
 
 ## Språkinnehållet (data/)
+- **Grammatisk referens:** *Normativna gramatika srpskoga jezika* (Piper, Klajn, Dragićević; Matica srpska). Den väger tyngst i grammatikfrågor, och pojkvännens omdöme gäller vad som är naturligt. Claude har inte tillgång till boken: påstå aldrig att något är kontrollerat i den, utan skriv `"check": true` när du inte kan belägga regeln.
+- **Kursiv serbiska:** när svenska och serbiska blandas står serbiskan i kursiv. Gäller svar i chatten, `log.md`, wikin, `note` och texterna i `grammar.json`, där den märks `*så här*`.
 **words.json**: `{ id, lesson, theme, sr, sv, note?, check? }`
 **sentences.json**: `{ id, lesson, sr, sv, note?, alt?, check?, source? }`
 **grammar.json**: `{ id, title, lessons, text, examples, check? }`, där `lessons` är lektionsnummer, `text` en lista med stycken och `examples` par av serbiska och svenska.
