@@ -429,8 +429,7 @@
     "sr": "Čak i dijete zna to.",
     "sv": "Det vet till och med ett barn.",
     "note": "čak i = till och med. Ekaviskt: dete.",
-    "source": "tatoeba:4992730",
-    "check": true
+    "source": "tatoeba:4992730"
   },
   {
     "id": "l13-s5",
@@ -451,9 +450,8 @@
   {
     "id": "l14-s2",
     "lesson": 14,
-    "sr": "Ne mogu jer idem kući.",
-    "sv": "Jag kan inte eftersom jag ska hem.",
-    "check": true
+    "sr": "Ne mogu, jer idem kući.",
+    "sv": "Jag kan inte eftersom jag ska hem."
   },
   {
     "id": "l14-s3",
@@ -513,7 +511,6 @@
     "id": "l15-s5",
     "lesson": 15,
     "sr": "Šta da kažem?",
-    "sv": "Vad ska jag säga?",
-    "check": true
+    "sv": "Vad ska jag säga?"
   }
 ]

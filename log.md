@@ -69,3 +69,7 @@ Nästa steg:
 - Urvalet gjordes för hand ur 286 kortare kandidater. Svenska ordöversättningar är Claudes, utifrån Wiktionarys engelska.
 - Källor anges under Framsteg. Fältet `source` lades till i `sentences.json`.
 Nästa steg: användaren testar lektionerna och pojkvännen svarar på de tre markerade meningarna. Sedan beslut om utbyggnad till 300–500 ord, därefter nivåtestet.
+
+## [2026-11-01] content | Granskning av piloten
+- Pojkvännen godkände alla tre markerade meningarna. `check` togs bort.
+- `l14-s2` fick komma före *jer*: *Ne mogu, jer idem kući.*
