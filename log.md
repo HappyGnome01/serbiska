@@ -139,3 +139,6 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 
 ## [2026-11-01] fix | Igelkotten niger
 - Igelkotten fick ben som står still på marken. Kroppen sjunker ner över benen, lutar framåt och reser sig igen, i stället för att hela djuret svävar upp och ner.
+
+## [2026-11-01] fix | Igelkottens tomgångsanimation
+- Nigningen ersattes av en tomgång som i gamla Nintendo-spel: kroppen hoppar 2 pixlar mellan två lägen utan mjuka övergångar, och ögat blinkar var femte sekund.

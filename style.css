@@ -198,13 +198,18 @@ summary { cursor: pointer; font-weight: 600; }
 .hedgehog { position: absolute; z-index: 3; width: 58px; height: 46px; pointer-events: none; }
 .hedgehog.flip svg { transform: scaleX(-1); }
 .hedgehog svg { width: 100%; height: 100%; display: block; overflow: visible; }
-/* Nigning: kroppen sjunker ner över benen, lutar framåt och reser sig igen */
-.hedgehog-body { transform-box: fill-box; transform-origin: 50% 100%; animation: hedgehog-curtsy 2.8s ease-in-out infinite; }
-@keyframes hedgehog-curtsy {
-  0%, 45%, 100% { transform: none; }
-  20%, 27% { transform: translateY(5px) rotate(5deg); }
+/* Tomgång som i gamla spel: kroppen hoppar mellan två lägen utan mjuka övergångar, och ögat blinkar ibland */
+.hedgehog-body { animation: hedgehog-idle 1.2s step-end infinite; }
+.hedgehog-eye { transform-box: fill-box; transform-origin: center; animation: hedgehog-blink 4.8s step-end infinite; }
+@keyframes hedgehog-idle {
+  0% { transform: none; }
+  50% { transform: translateY(2px); }
 }
-@media (prefers-reduced-motion: reduce) { .hedgehog-body { animation: none; } }
+@keyframes hedgehog-blink {
+  0%, 96% { transform: none; }
+  92% { transform: scaleY(0.15); }
+}
+@media (prefers-reduced-motion: reduce) { .hedgehog-body, .hedgehog-eye { animation: none; } }
 
 /* Lektionssidan */
 .lesson-list { display: grid; gap: 8px; margin-bottom: 16px; }
