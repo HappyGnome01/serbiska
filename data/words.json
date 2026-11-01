@@ -569,5 +569,1720 @@
     "sr": "kažem",
     "sv": "jag säger",
     "note": "Från kazati. Du: kažeš."
+  },
+  {
+    "id": "l16-jedan",
+    "lesson": 16,
+    "theme": "Siffror 1–5",
+    "sr": "jedan",
+    "sv": "en / ett",
+    "note": "Kvinnligt: jedna. Neutrum: jedno."
+  },
+  {
+    "id": "l16-dva",
+    "lesson": 16,
+    "theme": "Siffror 1–5",
+    "sr": "dva",
+    "sv": "två",
+    "note": "Med kvinnliga ord: dvije (ekaviskt: dve)."
+  },
+  {
+    "id": "l16-tri",
+    "lesson": 16,
+    "theme": "Siffror 1–5",
+    "sr": "tri",
+    "sv": "tre"
+  },
+  {
+    "id": "l16-cetiri",
+    "lesson": 16,
+    "theme": "Siffror 1–5",
+    "sr": "četiri",
+    "sv": "fyra"
+  },
+  {
+    "id": "l16-pet",
+    "lesson": 16,
+    "theme": "Siffror 1–5",
+    "sr": "pet",
+    "sv": "fem"
+  },
+  {
+    "id": "l17-sest",
+    "lesson": 17,
+    "theme": "Siffror 6–10",
+    "sr": "šest",
+    "sv": "sex"
+  },
+  {
+    "id": "l17-sedam",
+    "lesson": 17,
+    "theme": "Siffror 6–10",
+    "sr": "sedam",
+    "sv": "sju"
+  },
+  {
+    "id": "l17-osam",
+    "lesson": 17,
+    "theme": "Siffror 6–10",
+    "sr": "osam",
+    "sv": "åtta"
+  },
+  {
+    "id": "l17-devet",
+    "lesson": 17,
+    "theme": "Siffror 6–10",
+    "sr": "devet",
+    "sv": "nio"
+  },
+  {
+    "id": "l17-deset",
+    "lesson": 17,
+    "theme": "Siffror 6–10",
+    "sr": "deset",
+    "sv": "tio"
+  },
+  {
+    "id": "l18-ponedjeljak",
+    "lesson": 18,
+    "theme": "Veckodagar",
+    "sr": "ponedjeljak",
+    "sv": "måndag",
+    "note": "Ekaviskt: ponedeljak. På måndag: u ponedjeljak."
+  },
+  {
+    "id": "l18-utorak",
+    "lesson": 18,
+    "theme": "Veckodagar",
+    "sr": "utorak",
+    "sv": "tisdag",
+    "note": "På tisdag: u utorak."
+  },
+  {
+    "id": "l18-srijeda",
+    "lesson": 18,
+    "theme": "Veckodagar",
+    "sr": "srijeda",
+    "sv": "onsdag",
+    "note": "Ekaviskt: sreda. På onsdag: u srijedu."
+  },
+  {
+    "id": "l18-cetvrtak",
+    "lesson": 18,
+    "theme": "Veckodagar",
+    "sr": "četvrtak",
+    "sv": "torsdag",
+    "note": "På torsdag: u četvrtak."
+  },
+  {
+    "id": "l18-petak",
+    "lesson": 18,
+    "theme": "Veckodagar",
+    "sr": "petak",
+    "sv": "fredag",
+    "note": "På fredag: u petak."
+  },
+  {
+    "id": "l19-subota",
+    "lesson": 19,
+    "theme": "Helg och kalender",
+    "sr": "subota",
+    "sv": "lördag",
+    "note": "På lördag: u subotu."
+  },
+  {
+    "id": "l19-nedjelja",
+    "lesson": 19,
+    "theme": "Helg och kalender",
+    "sr": "nedjelja",
+    "sv": "söndag",
+    "note": "Ekaviskt: nedelja. På söndag: u nedjelju."
+  },
+  {
+    "id": "l19-sedmica",
+    "lesson": 19,
+    "theme": "Helg och kalender",
+    "sr": "sedmica",
+    "sv": "vecka"
+  },
+  {
+    "id": "l19-mjesec",
+    "lesson": 19,
+    "theme": "Helg och kalender",
+    "sr": "mjesec",
+    "sv": "månad",
+    "note": "Ekaviskt: mesec. Betyder också måne."
+  },
+  {
+    "id": "l19-godina",
+    "lesson": 19,
+    "theme": "Helg och kalender",
+    "sr": "godina",
+    "sv": "år",
+    "note": "Flertal: godine. Ofta: pet godina."
+  },
+  {
+    "id": "l20-jutro",
+    "lesson": 20,
+    "theme": "Dygnet",
+    "sr": "jutro",
+    "sv": "morgon"
+  },
+  {
+    "id": "l20-dan",
+    "lesson": 20,
+    "theme": "Dygnet",
+    "sr": "dan",
+    "sv": "dag"
+  },
+  {
+    "id": "l20-vece",
+    "lesson": 20,
+    "theme": "Dygnet",
+    "sr": "veče",
+    "sv": "kväll"
+  },
+  {
+    "id": "l20-noc",
+    "lesson": 20,
+    "theme": "Dygnet",
+    "sr": "noć",
+    "sv": "natt"
+  },
+  {
+    "id": "l20-sat",
+    "lesson": 20,
+    "theme": "Dygnet",
+    "sr": "sat",
+    "sv": "timme / klocka",
+    "note": "Koliko je sati? = Vad är klockan?"
+  },
+  {
+    "id": "l21-juce",
+    "lesson": 21,
+    "theme": "Förr och senare",
+    "sr": "juče",
+    "sv": "igår",
+    "note": "I Bosnien även jučer."
+  },
+  {
+    "id": "l21-veceras",
+    "lesson": 21,
+    "theme": "Förr och senare",
+    "sr": "večeras",
+    "sv": "ikväll"
+  },
+  {
+    "id": "l21-kasno",
+    "lesson": 21,
+    "theme": "Förr och senare",
+    "sr": "kasno",
+    "sv": "sent"
+  },
+  {
+    "id": "l21-rano",
+    "lesson": 21,
+    "theme": "Förr och senare",
+    "sr": "rano",
+    "sv": "tidigt"
+  },
+  {
+    "id": "l21-vrijeme",
+    "lesson": 21,
+    "theme": "Förr och senare",
+    "sr": "vrijeme",
+    "sv": "tid / väder",
+    "note": "Ekaviskt: vreme."
+  },
+  {
+    "id": "l22-on",
+    "lesson": 22,
+    "theme": "Personer",
+    "sr": "on",
+    "sv": "han"
+  },
+  {
+    "id": "l22-ona",
+    "lesson": 22,
+    "theme": "Personer",
+    "sr": "ona",
+    "sv": "hon"
+  },
+  {
+    "id": "l22-mi",
+    "lesson": 22,
+    "theme": "Personer",
+    "sr": "mi",
+    "sv": "vi",
+    "note": "Kort form betyder också 'till mig': drago mi je."
+  },
+  {
+    "id": "l22-vi",
+    "lesson": 22,
+    "theme": "Personer",
+    "sr": "vi",
+    "sv": "ni",
+    "note": "Artigt till en person också: vi."
+  },
+  {
+    "id": "l22-oni",
+    "lesson": 22,
+    "theme": "Personer",
+    "sr": "oni",
+    "sv": "de"
+  },
+  {
+    "id": "l23-moj",
+    "lesson": 23,
+    "theme": "Mitt och ditt",
+    "sr": "moj",
+    "sv": "min",
+    "note": "Kvinnligt: moja. Neutrum: moje."
+  },
+  {
+    "id": "l23-tvoj",
+    "lesson": 23,
+    "theme": "Mitt och ditt",
+    "sr": "tvoj",
+    "sv": "din",
+    "note": "Kvinnligt: tvoja. Neutrum: tvoje."
+  },
+  {
+    "id": "l23-nas",
+    "lesson": 23,
+    "theme": "Mitt och ditt",
+    "sr": "naš",
+    "sv": "vår",
+    "note": "Kvinnligt: naša. Neutrum: naše."
+  },
+  {
+    "id": "l23-vas",
+    "lesson": 23,
+    "theme": "Mitt och ditt",
+    "sr": "vaš",
+    "sv": "er",
+    "note": "Kvinnligt: vaša. Neutrum: vaše."
+  },
+  {
+    "id": "l23-njihov",
+    "lesson": 23,
+    "theme": "Mitt och ditt",
+    "sr": "njihov",
+    "sv": "deras",
+    "note": "Kvinnligt: njihova."
+  },
+  {
+    "id": "l24-otac",
+    "lesson": 24,
+    "theme": "Närmaste familjen",
+    "sr": "otac",
+    "sv": "far",
+    "note": "Vardagligt: tata."
+  },
+  {
+    "id": "l24-majka",
+    "lesson": 24,
+    "theme": "Närmaste familjen",
+    "sr": "majka",
+    "sv": "mor",
+    "note": "Vardagligt: mama."
+  },
+  {
+    "id": "l24-sin",
+    "lesson": 24,
+    "theme": "Närmaste familjen",
+    "sr": "sin",
+    "sv": "son"
+  },
+  {
+    "id": "l24-kcerka",
+    "lesson": 24,
+    "theme": "Närmaste familjen",
+    "sr": "kćerka",
+    "sv": "dotter",
+    "note": "Även ćerka."
+  },
+  {
+    "id": "l24-muz",
+    "lesson": 24,
+    "theme": "Närmaste familjen",
+    "sr": "muž",
+    "sv": "make / man"
+  },
+  {
+    "id": "l25-tetka",
+    "lesson": 25,
+    "theme": "Släkten",
+    "sr": "tetka",
+    "sv": "faster / moster"
+  },
+  {
+    "id": "l25-ujak",
+    "lesson": 25,
+    "theme": "Släkten",
+    "sr": "ujak",
+    "sv": "morbror"
+  },
+  {
+    "id": "l25-stric",
+    "lesson": 25,
+    "theme": "Släkten",
+    "sr": "stric",
+    "sv": "farbror"
+  },
+  {
+    "id": "l25-unuk",
+    "lesson": 25,
+    "theme": "Släkten",
+    "sr": "unuk",
+    "sv": "barnbarn (pojke)",
+    "note": "Flicka: unuka."
+  },
+  {
+    "id": "l25-rodjak",
+    "lesson": 25,
+    "theme": "Släkten",
+    "sr": "rođak",
+    "sv": "kusin / släkting",
+    "note": "Om en kvinna: rođaka."
+  },
+  {
+    "id": "l26-soba",
+    "lesson": 26,
+    "theme": "Hemmet",
+    "sr": "soba",
+    "sv": "rum",
+    "note": "I rummet: u sobi."
+  },
+  {
+    "id": "l26-kuhinja",
+    "lesson": 26,
+    "theme": "Hemmet",
+    "sr": "kuhinja",
+    "sv": "kök",
+    "note": "I köket: u kuhinji."
+  },
+  {
+    "id": "l26-kupatilo",
+    "lesson": 26,
+    "theme": "Hemmet",
+    "sr": "kupatilo",
+    "sv": "badrum",
+    "note": "I badrummet: u kupatilu."
+  },
+  {
+    "id": "l26-vrata",
+    "lesson": 26,
+    "theme": "Hemmet",
+    "sr": "vrata",
+    "sv": "dörr",
+    "note": "Finns bara i flertal: vrata su otvorena."
+  },
+  {
+    "id": "l26-prozor",
+    "lesson": 26,
+    "theme": "Hemmet",
+    "sr": "prozor",
+    "sv": "fönster"
+  },
+  {
+    "id": "l27-sto",
+    "lesson": 27,
+    "theme": "Saker hemma",
+    "sr": "sto",
+    "sv": "bord",
+    "note": "I Bosnien Ã¤ven stol. Stol pÃ¥ svenska heter stolica."
+  },
+  {
+    "id": "l27-stolica",
+    "lesson": 27,
+    "theme": "Saker hemma",
+    "sr": "stolica",
+    "sv": "stol",
+    "note": "stolica = stol, sto = bord."
+  },
+  {
+    "id": "l27-krevet",
+    "lesson": 27,
+    "theme": "Saker hemma",
+    "sr": "krevet",
+    "sv": "säng",
+    "note": "I sängen: u krevetu."
+  },
+  {
+    "id": "l27-kljuc",
+    "lesson": 27,
+    "theme": "Saker hemma",
+    "sr": "ključ",
+    "sv": "nyckel"
+  },
+  {
+    "id": "l27-svjetlo",
+    "lesson": 27,
+    "theme": "Saker hemma",
+    "sr": "svjetlo",
+    "sv": "ljus / lampa",
+    "note": "Ekaviskt: svetlo."
+  },
+  {
+    "id": "l28-meso",
+    "lesson": 28,
+    "theme": "Mat",
+    "sr": "meso",
+    "sv": "kött"
+  },
+  {
+    "id": "l28-riba",
+    "lesson": 28,
+    "theme": "Mat",
+    "sr": "riba",
+    "sv": "fisk"
+  },
+  {
+    "id": "l28-sir",
+    "lesson": 28,
+    "theme": "Mat",
+    "sr": "sir",
+    "sv": "ost"
+  },
+  {
+    "id": "l28-jaje",
+    "lesson": 28,
+    "theme": "Mat",
+    "sr": "jaje",
+    "sv": "ägg",
+    "note": "Flertal: jaja."
+  },
+  {
+    "id": "l28-supa",
+    "lesson": 28,
+    "theme": "Mat",
+    "sr": "supa",
+    "sv": "soppa"
+  },
+  {
+    "id": "l29-voce",
+    "lesson": 29,
+    "theme": "Frukt och grönt",
+    "sr": "voće",
+    "sv": "frukt"
+  },
+  {
+    "id": "l29-povrce",
+    "lesson": 29,
+    "theme": "Frukt och grönt",
+    "sr": "povrće",
+    "sv": "grönsaker"
+  },
+  {
+    "id": "l29-jabuka",
+    "lesson": 29,
+    "theme": "Frukt och grönt",
+    "sr": "jabuka",
+    "sv": "äpple",
+    "note": "Ackusativ: jabuku."
+  },
+  {
+    "id": "l29-krompir",
+    "lesson": 29,
+    "theme": "Frukt och grönt",
+    "sr": "krompir",
+    "sv": "potatis"
+  },
+  {
+    "id": "l29-salata",
+    "lesson": 29,
+    "theme": "Frukt och grönt",
+    "sr": "salata",
+    "sv": "sallad",
+    "note": "Ackusativ: salatu."
+  },
+  {
+    "id": "l30-so",
+    "lesson": 30,
+    "theme": "I köket",
+    "sr": "so",
+    "sv": "salt"
+  },
+  {
+    "id": "l30-secer",
+    "lesson": 30,
+    "theme": "I köket",
+    "sr": "šećer",
+    "sv": "socker"
+  },
+  {
+    "id": "l30-ulje",
+    "lesson": 30,
+    "theme": "I köket",
+    "sr": "ulje",
+    "sv": "olja"
+  },
+  {
+    "id": "l30-pivo",
+    "lesson": 30,
+    "theme": "I köket",
+    "sr": "pivo",
+    "sv": "öl"
+  },
+  {
+    "id": "l30-vino",
+    "lesson": 30,
+    "theme": "I köket",
+    "sr": "vino",
+    "sv": "vin",
+    "note": "Glas vin: čaša vina."
+  },
+  {
+    "id": "l31-dorucak",
+    "lesson": 31,
+    "theme": "Måltider",
+    "sr": "doručak",
+    "sv": "frukost"
+  },
+  {
+    "id": "l31-rucak",
+    "lesson": 31,
+    "theme": "Måltider",
+    "sr": "ručak",
+    "sv": "lunch / middag mitt på dagen",
+    "note": "Dagens stora måltid i många familjer."
+  },
+  {
+    "id": "l31-vecera",
+    "lesson": 31,
+    "theme": "Måltider",
+    "sr": "večera",
+    "sv": "kvällsmat",
+    "note": "Ackusativ: večeru."
+  },
+  {
+    "id": "l31-kuham",
+    "lesson": 31,
+    "theme": "Måltider",
+    "sr": "kuham",
+    "sv": "jag lagar mat",
+    "note": "Från kuhati. I Serbien även kuvam."
+  },
+  {
+    "id": "l31-jedem",
+    "lesson": 31,
+    "theme": "Måltider",
+    "sr": "jedem",
+    "sv": "jag äter",
+    "note": "Från jesti. Du: jedeš."
+  },
+  {
+    "id": "l32-pijem",
+    "lesson": 32,
+    "theme": "Hunger och smak",
+    "sr": "pijem",
+    "sv": "jag dricker",
+    "note": "Från piti. Du: piješ."
+  },
+  {
+    "id": "l32-gladna",
+    "lesson": 32,
+    "theme": "Hunger och smak",
+    "sr": "gladna",
+    "sv": "hungrig",
+    "note": "Kvinna: gladna. Man: gladan."
+  },
+  {
+    "id": "l32-zedna",
+    "lesson": 32,
+    "theme": "Hunger och smak",
+    "sr": "žedna",
+    "sv": "törstig",
+    "note": "Kvinna: žedna. Man: žedan."
+  },
+  {
+    "id": "l32-sladak",
+    "lesson": 32,
+    "theme": "Hunger och smak",
+    "sr": "sladak",
+    "sv": "söt",
+    "note": "Kvinnligt: slatka. Neutrum: slatko."
+  },
+  {
+    "id": "l32-slan",
+    "lesson": 32,
+    "theme": "Hunger och smak",
+    "sr": "slan",
+    "sv": "salt (om smak)",
+    "note": "Neutrum: slano."
+  },
+  {
+    "id": "l33-dobar",
+    "lesson": 33,
+    "theme": "Beskriva 1",
+    "sr": "dobar",
+    "sv": "bra / god",
+    "note": "Kvinnligt: dobra. Neutrum: dobro."
+  },
+  {
+    "id": "l33-los",
+    "lesson": 33,
+    "theme": "Beskriva 1",
+    "sr": "loš",
+    "sv": "dålig",
+    "note": "Kvinnligt: loša. Neutrum: loše."
+  },
+  {
+    "id": "l33-veliki",
+    "lesson": 33,
+    "theme": "Beskriva 1",
+    "sr": "veliki",
+    "sv": "stor",
+    "note": "Kvinnligt: velika. Neutrum: veliko."
+  },
+  {
+    "id": "l33-mali",
+    "lesson": 33,
+    "theme": "Beskriva 1",
+    "sr": "mali",
+    "sv": "liten",
+    "note": "Kvinnligt: mala. Neutrum: malo."
+  },
+  {
+    "id": "l33-nov",
+    "lesson": 33,
+    "theme": "Beskriva 1",
+    "sr": "nov",
+    "sv": "ny",
+    "note": "Kvinnligt: nova. Neutrum: novo."
+  },
+  {
+    "id": "l34-star",
+    "lesson": 34,
+    "theme": "Beskriva 2",
+    "sr": "star",
+    "sv": "gammal",
+    "note": "Kvinnligt: stara. Neutrum: staro."
+  },
+  {
+    "id": "l34-mlad",
+    "lesson": 34,
+    "theme": "Beskriva 2",
+    "sr": "mlad",
+    "sv": "ung",
+    "note": "Kvinnligt: mlada."
+  },
+  {
+    "id": "l34-lijep",
+    "lesson": 34,
+    "theme": "Beskriva 2",
+    "sr": "lijep",
+    "sv": "vacker",
+    "note": "Ekaviskt: lep. Kvinnligt: lijepa."
+  },
+  {
+    "id": "l34-lak",
+    "lesson": 34,
+    "theme": "Beskriva 2",
+    "sr": "lak",
+    "sv": "lätt",
+    "note": "Neutrum: lako."
+  },
+  {
+    "id": "l34-tezak",
+    "lesson": 34,
+    "theme": "Beskriva 2",
+    "sr": "težak",
+    "sv": "svår / tung",
+    "note": "Neutrum: teško."
+  },
+  {
+    "id": "l35-bijel",
+    "lesson": 35,
+    "theme": "Färger",
+    "sr": "bijel",
+    "sv": "vit",
+    "note": "Ekaviskt: beo. Kvinnligt: bijela."
+  },
+  {
+    "id": "l35-crn",
+    "lesson": 35,
+    "theme": "Färger",
+    "sr": "crn",
+    "sv": "svart",
+    "note": "Kvinnligt: crna."
+  },
+  {
+    "id": "l35-crven",
+    "lesson": 35,
+    "theme": "Färger",
+    "sr": "crven",
+    "sv": "röd",
+    "note": "Kvinnligt: crvena."
+  },
+  {
+    "id": "l35-plav",
+    "lesson": 35,
+    "theme": "Färger",
+    "sr": "plav",
+    "sv": "blå",
+    "note": "Kvinnligt: plava."
+  },
+  {
+    "id": "l35-zelen",
+    "lesson": 35,
+    "theme": "Färger",
+    "sr": "zelen",
+    "sv": "grön",
+    "note": "Kvinnligt: zelena."
+  },
+  {
+    "id": "l36-sunce",
+    "lesson": 36,
+    "theme": "Väder",
+    "sr": "sunce",
+    "sv": "sol"
+  },
+  {
+    "id": "l36-kisa",
+    "lesson": 36,
+    "theme": "Väder",
+    "sr": "kiša",
+    "sv": "regn",
+    "note": "Pada kiša = det regnar."
+  },
+  {
+    "id": "l36-snijeg",
+    "lesson": 36,
+    "theme": "Väder",
+    "sr": "snijeg",
+    "sv": "snö",
+    "note": "Ekaviskt: sneg. Pada snijeg = det snöar."
+  },
+  {
+    "id": "l36-vjetar",
+    "lesson": 36,
+    "theme": "Väder",
+    "sr": "vjetar",
+    "sv": "vind",
+    "note": "Ekaviskt: vetar."
+  },
+  {
+    "id": "l36-toplo",
+    "lesson": 36,
+    "theme": "Väder",
+    "sr": "toplo",
+    "sv": "varmt"
+  },
+  {
+    "id": "l37-grad",
+    "lesson": 37,
+    "theme": "Platser",
+    "sr": "grad",
+    "sv": "stad",
+    "note": "I staden: u gradu."
+  },
+  {
+    "id": "l37-selo",
+    "lesson": 37,
+    "theme": "Platser",
+    "sr": "selo",
+    "sv": "by",
+    "note": "På landet: na selu."
+  },
+  {
+    "id": "l37-skola",
+    "lesson": 37,
+    "theme": "Platser",
+    "sr": "škola",
+    "sv": "skola",
+    "note": "I skolan: u školi."
+  },
+  {
+    "id": "l37-prodavnica",
+    "lesson": 37,
+    "theme": "Platser",
+    "sr": "prodavnica",
+    "sv": "affär",
+    "note": "I Bosnien även trgovina."
+  },
+  {
+    "id": "l37-ulica",
+    "lesson": 37,
+    "theme": "Platser",
+    "sr": "ulica",
+    "sv": "gata",
+    "note": "På gatan: na ulici."
+  },
+  {
+    "id": "l38-auto",
+    "lesson": 38,
+    "theme": "Resa",
+    "sr": "auto",
+    "sv": "bil"
+  },
+  {
+    "id": "l38-autobus",
+    "lesson": 38,
+    "theme": "Resa",
+    "sr": "autobus",
+    "sv": "buss"
+  },
+  {
+    "id": "l38-voz",
+    "lesson": 38,
+    "theme": "Resa",
+    "sr": "voz",
+    "sv": "tåg",
+    "note": "Med tåg: vozom."
+  },
+  {
+    "id": "l38-avion",
+    "lesson": 38,
+    "theme": "Resa",
+    "sr": "avion",
+    "sv": "flygplan"
+  },
+  {
+    "id": "l38-put",
+    "lesson": 38,
+    "theme": "Resa",
+    "sr": "put",
+    "sv": "väg / resa / gång",
+    "note": "Sretan put = trevlig resa."
+  },
+  {
+    "id": "l39-lijevo",
+    "lesson": 39,
+    "theme": "Vägen",
+    "sr": "lijevo",
+    "sv": "vänster",
+    "note": "Ekaviskt: levo."
+  },
+  {
+    "id": "l39-desno",
+    "lesson": 39,
+    "theme": "Vägen",
+    "sr": "desno",
+    "sv": "höger"
+  },
+  {
+    "id": "l39-pravo",
+    "lesson": 39,
+    "theme": "Vägen",
+    "sr": "pravo",
+    "sv": "rakt fram",
+    "note": "Betyder också 'rätt': imaš pravo."
+  },
+  {
+    "id": "l39-blizu",
+    "lesson": 39,
+    "theme": "Vägen",
+    "sr": "blizu",
+    "sv": "nära"
+  },
+  {
+    "id": "l39-daleko",
+    "lesson": 39,
+    "theme": "Vägen",
+    "sr": "daleko",
+    "sv": "långt bort"
+  },
+  {
+    "id": "l40-tamo",
+    "lesson": 40,
+    "theme": "Var någonstans",
+    "sr": "tamo",
+    "sv": "där / dit"
+  },
+  {
+    "id": "l40-gore",
+    "lesson": 40,
+    "theme": "Var någonstans",
+    "sr": "gore",
+    "sv": "uppe / upp"
+  },
+  {
+    "id": "l40-dolje",
+    "lesson": 40,
+    "theme": "Var någonstans",
+    "sr": "dolje",
+    "sv": "nere / ner",
+    "note": "Ekaviskt: dole."
+  },
+  {
+    "id": "l40-unutra",
+    "lesson": 40,
+    "theme": "Var någonstans",
+    "sr": "unutra",
+    "sv": "inne / in"
+  },
+  {
+    "id": "l40-napolju",
+    "lesson": 40,
+    "theme": "Var någonstans",
+    "sr": "napolju",
+    "sv": "ute"
+  },
+  {
+    "id": "l41-dolazim",
+    "lesson": 41,
+    "theme": "Komma och gå",
+    "sr": "dolazim",
+    "sv": "jag kommer",
+    "note": "Från dolaziti. Du: dolaziš."
+  },
+  {
+    "id": "l41-odlazim",
+    "lesson": 41,
+    "theme": "Komma och gå",
+    "sr": "odlazim",
+    "sv": "jag går iväg",
+    "note": "Från odlaziti."
+  },
+  {
+    "id": "l41-ostajem",
+    "lesson": 41,
+    "theme": "Komma och gå",
+    "sr": "ostajem",
+    "sv": "jag stannar",
+    "note": "Från ostajati."
+  },
+  {
+    "id": "l41-cekam",
+    "lesson": 41,
+    "theme": "Komma och gå",
+    "sr": "čekam",
+    "sv": "jag väntar",
+    "note": "Från čekati. Vänta! = čekaj!"
+  },
+  {
+    "id": "l41-vracam-se",
+    "lesson": 41,
+    "theme": "Komma och gå",
+    "sr": "vraćam se",
+    "sv": "jag kommer tillbaka",
+    "note": "Från vraćati se."
+  },
+  {
+    "id": "l42-govorim",
+    "lesson": 42,
+    "theme": "Prata och lära",
+    "sr": "govorim",
+    "sv": "jag talar",
+    "note": "Från govoriti. Du: govoriš."
+  },
+  {
+    "id": "l42-slusam",
+    "lesson": 42,
+    "theme": "Prata och lära",
+    "sr": "slušam",
+    "sv": "jag lyssnar",
+    "note": "Från slušati."
+  },
+  {
+    "id": "l42-citam",
+    "lesson": 42,
+    "theme": "Prata och lära",
+    "sr": "čitam",
+    "sv": "jag läser",
+    "note": "Från čitati."
+  },
+  {
+    "id": "l42-pisem",
+    "lesson": 42,
+    "theme": "Prata och lära",
+    "sr": "pišem",
+    "sv": "jag skriver",
+    "note": "Från pisati. Du: pišeš."
+  },
+  {
+    "id": "l42-ucim",
+    "lesson": 42,
+    "theme": "Prata och lära",
+    "sr": "učim",
+    "sv": "jag lär mig / pluggar",
+    "note": "Från učiti."
+  },
+  {
+    "id": "l43-dajem",
+    "lesson": 43,
+    "theme": "Ge och ta",
+    "sr": "dajem",
+    "sv": "jag ger",
+    "note": "Från davati. Ge mig: daj mi."
+  },
+  {
+    "id": "l43-uzimam",
+    "lesson": 43,
+    "theme": "Ge och ta",
+    "sr": "uzimam",
+    "sv": "jag tar",
+    "note": "Från uzimati. Ta! = uzmi!"
+  },
+  {
+    "id": "l43-kupujem",
+    "lesson": 43,
+    "theme": "Ge och ta",
+    "sr": "kupujem",
+    "sv": "jag köper",
+    "note": "Från kupovati."
+  },
+  {
+    "id": "l43-placam",
+    "lesson": 43,
+    "theme": "Ge och ta",
+    "sr": "plaćam",
+    "sv": "jag betalar",
+    "note": "Från plaćati."
+  },
+  {
+    "id": "l43-trazim",
+    "lesson": 43,
+    "theme": "Ge och ta",
+    "sr": "tražim",
+    "sv": "jag letar efter / söker",
+    "note": "Från tražiti."
+  },
+  {
+    "id": "l44-spavam",
+    "lesson": 44,
+    "theme": "Vardag",
+    "sr": "spavam",
+    "sv": "jag sover",
+    "note": "Från spavati."
+  },
+  {
+    "id": "l44-zivim",
+    "lesson": 44,
+    "theme": "Vardag",
+    "sr": "živim",
+    "sv": "jag bor / lever",
+    "note": "Från živjeti. Ekaviskt: živeti."
+  },
+  {
+    "id": "l44-sjedim",
+    "lesson": 44,
+    "theme": "Vardag",
+    "sr": "sjedim",
+    "sv": "jag sitter",
+    "note": "Från sjediti. Ekaviskt: sedim."
+  },
+  {
+    "id": "l44-stojim",
+    "lesson": 44,
+    "theme": "Vardag",
+    "sr": "stojim",
+    "sv": "jag står",
+    "note": "Från stajati."
+  },
+  {
+    "id": "l44-igram-se",
+    "lesson": 44,
+    "theme": "Vardag",
+    "sr": "igram se",
+    "sv": "jag leker",
+    "note": "Från igrati se."
+  },
+  {
+    "id": "l45-pomazem",
+    "lesson": 45,
+    "theme": "Hjälp och önskningar",
+    "sr": "pomažem",
+    "sv": "jag hjälper",
+    "note": "Från pomagati. Hjälp! = pomozi!"
+  },
+  {
+    "id": "l45-treba-mi",
+    "lesson": 45,
+    "theme": "Hjälp och önskningar",
+    "sr": "treba mi",
+    "sv": "jag behöver",
+    "note": "Ordagrant: det behövs för mig."
+  },
+  {
+    "id": "l45-svidja-mi-se",
+    "lesson": 45,
+    "theme": "Hjälp och önskningar",
+    "sr": "sviđa mi se",
+    "sv": "jag gillar det",
+    "note": "Ordagrant: det behagar mig."
+  },
+  {
+    "id": "l45-pitam",
+    "lesson": 45,
+    "theme": "Hjälp och önskningar",
+    "sr": "pitam",
+    "sv": "jag frågar",
+    "note": "Från pitati."
+  },
+  {
+    "id": "l45-nadam-se",
+    "lesson": 45,
+    "theme": "Hjälp och önskningar",
+    "sr": "nadam se",
+    "sv": "jag hoppas",
+    "note": "Från nadati se."
+  },
+  {
+    "id": "l46-tuzna",
+    "lesson": 46,
+    "theme": "Hur jag mår",
+    "sr": "tužna",
+    "sv": "ledsen",
+    "note": "Kvinna: tužna. Man: tužan."
+  },
+  {
+    "id": "l46-bolesna",
+    "lesson": 46,
+    "theme": "Hur jag mår",
+    "sr": "bolesna",
+    "sv": "sjuk",
+    "note": "Kvinna: bolesna. Man: bolestan."
+  },
+  {
+    "id": "l46-zdrava",
+    "lesson": 46,
+    "theme": "Hur jag mår",
+    "sr": "zdrava",
+    "sv": "frisk",
+    "note": "Kvinna: zdrava. Man: zdrav."
+  },
+  {
+    "id": "l46-spremna",
+    "lesson": 46,
+    "theme": "Hur jag mår",
+    "sr": "spremna",
+    "sv": "redo",
+    "note": "Kvinna: spremna. Man: spreman."
+  },
+  {
+    "id": "l46-zauzeta",
+    "lesson": 46,
+    "theme": "Hur jag mår",
+    "sr": "zauzeta",
+    "sv": "upptagen",
+    "note": "Kvinna: zauzeta. Man: zauzet."
+  },
+  {
+    "id": "l47-glava",
+    "lesson": 47,
+    "theme": "Kroppen",
+    "sr": "glava",
+    "sv": "huvud"
+  },
+  {
+    "id": "l47-ruka",
+    "lesson": 47,
+    "theme": "Kroppen",
+    "sr": "ruka",
+    "sv": "hand / arm",
+    "note": "Flertal: ruke."
+  },
+  {
+    "id": "l47-noga",
+    "lesson": 47,
+    "theme": "Kroppen",
+    "sr": "noga",
+    "sv": "fot / ben",
+    "note": "Flertal: noge."
+  },
+  {
+    "id": "l47-oko",
+    "lesson": 47,
+    "theme": "Kroppen",
+    "sr": "oko",
+    "sv": "öga",
+    "note": "Flertal: oči. Betyder också 'runt'."
+  },
+  {
+    "id": "l47-srce",
+    "lesson": 47,
+    "theme": "Kroppen",
+    "sr": "srce",
+    "sv": "hjärta"
+  },
+  {
+    "id": "l48-boli-me",
+    "lesson": 48,
+    "theme": "Hos läkaren",
+    "sr": "boli me",
+    "sv": "det gör ont",
+    "note": "Boli me glava = jag har ont i huvudet."
+  },
+  {
+    "id": "l48-doktor",
+    "lesson": 48,
+    "theme": "Hos läkaren",
+    "sr": "doktor",
+    "sv": "läkare"
+  },
+  {
+    "id": "l48-lijek",
+    "lesson": 48,
+    "theme": "Hos läkaren",
+    "sr": "lijek",
+    "sv": "medicin",
+    "note": "Ekaviskt: lek."
+  },
+  {
+    "id": "l48-bolnica",
+    "lesson": 48,
+    "theme": "Hos läkaren",
+    "sr": "bolnica",
+    "sv": "sjukhus",
+    "note": "På sjukhuset: u bolnici."
+  },
+  {
+    "id": "l48-pomoc",
+    "lesson": 48,
+    "theme": "Hos läkaren",
+    "sr": "pomoć",
+    "sv": "hjälp"
+  },
+  {
+    "id": "l49-i",
+    "lesson": 49,
+    "theme": "Småord 1",
+    "sr": "i",
+    "sv": "och / också"
+  },
+  {
+    "id": "l49-ili",
+    "lesson": 49,
+    "theme": "Småord 1",
+    "sr": "ili",
+    "sv": "eller"
+  },
+  {
+    "id": "l49-ako",
+    "lesson": 49,
+    "theme": "Småord 1",
+    "sr": "ako",
+    "sv": "om"
+  },
+  {
+    "id": "l49-dok",
+    "lesson": 49,
+    "theme": "Småord 1",
+    "sr": "dok",
+    "sv": "medan"
+  },
+  {
+    "id": "l49-nego",
+    "lesson": 49,
+    "theme": "Småord 1",
+    "sr": "nego",
+    "sv": "än / utan",
+    "note": "Veći nego ja = större än jag."
+  },
+  {
+    "id": "l50-samo",
+    "lesson": 50,
+    "theme": "Småord 2",
+    "sr": "samo",
+    "sv": "bara"
+  },
+  {
+    "id": "l50-opet",
+    "lesson": 50,
+    "theme": "Småord 2",
+    "sr": "opet",
+    "sv": "igen"
+  },
+  {
+    "id": "l50-vec",
+    "lesson": 50,
+    "theme": "Småord 2",
+    "sr": "već",
+    "sv": "redan"
+  },
+  {
+    "id": "l50-vrlo",
+    "lesson": 50,
+    "theme": "Småord 2",
+    "sr": "vrlo",
+    "sv": "mycket / väldigt"
+  },
+  {
+    "id": "l50-bas",
+    "lesson": 50,
+    "theme": "Småord 2",
+    "sr": "baš",
+    "sv": "verkligen / just"
+  },
+  {
+    "id": "l51-kako",
+    "lesson": 51,
+    "theme": "Fler frågeord",
+    "sr": "kako",
+    "sv": "hur"
+  },
+  {
+    "id": "l51-kakav",
+    "lesson": 51,
+    "theme": "Fler frågeord",
+    "sr": "kakav",
+    "sv": "vilken sorts",
+    "note": "Kvinnligt: kakva. Neutrum: kakvo."
+  },
+  {
+    "id": "l51-koji",
+    "lesson": 51,
+    "theme": "Fler frågeord",
+    "sr": "koji",
+    "sv": "vilken",
+    "note": "Kvinnligt: koja. Neutrum: koje."
+  },
+  {
+    "id": "l51-ciji",
+    "lesson": 51,
+    "theme": "Fler frågeord",
+    "sr": "čiji",
+    "sv": "vems",
+    "note": "Kvinnligt: čija. Neutrum: čije."
+  },
+  {
+    "id": "l51-odakle",
+    "lesson": 51,
+    "theme": "Fler frågeord",
+    "sr": "odakle",
+    "sv": "varifrån",
+    "note": "Odakle si? = Var kommer du ifrån?"
+  },
+  {
+    "id": "l52-sa",
+    "lesson": 52,
+    "theme": "Små ord före ord 1",
+    "sr": "sa",
+    "sv": "med",
+    "note": "Även s. Följs av instrumental: sa mlijekom."
+  },
+  {
+    "id": "l52-bez",
+    "lesson": 52,
+    "theme": "Små ord före ord 1",
+    "sr": "bez",
+    "sv": "utan",
+    "note": "Följs av genitiv: bez šećera."
+  },
+  {
+    "id": "l52-za",
+    "lesson": 52,
+    "theme": "Små ord före ord 1",
+    "sr": "za",
+    "sv": "för / till"
+  },
+  {
+    "id": "l52-od",
+    "lesson": 52,
+    "theme": "Små ord före ord 1",
+    "sr": "od",
+    "sv": "från / av",
+    "note": "Följs av genitiv."
+  },
+  {
+    "id": "l52-do",
+    "lesson": 52,
+    "theme": "Små ord före ord 1",
+    "sr": "do",
+    "sv": "till / fram till",
+    "note": "Följs av genitiv."
+  },
+  {
+    "id": "l53-na",
+    "lesson": 53,
+    "theme": "Små ord före ord 2",
+    "sr": "na",
+    "sv": "på"
+  },
+  {
+    "id": "l53-iz",
+    "lesson": 53,
+    "theme": "Små ord före ord 2",
+    "sr": "iz",
+    "sv": "från / ur",
+    "note": "Iz Švedske = från Sverige."
+  },
+  {
+    "id": "l53-kod",
+    "lesson": 53,
+    "theme": "Små ord före ord 2",
+    "sr": "kod",
+    "sv": "hos",
+    "note": "Kod kuće = hemma."
+  },
+  {
+    "id": "l53-poslije",
+    "lesson": 53,
+    "theme": "Små ord före ord 2",
+    "sr": "poslije",
+    "sv": "efter",
+    "note": "Ekaviskt: posle."
+  },
+  {
+    "id": "l53-prije",
+    "lesson": 53,
+    "theme": "Små ord före ord 2",
+    "sr": "prije",
+    "sv": "före",
+    "note": "Ekaviskt: pre."
+  },
+  {
+    "id": "l54-izvinite",
+    "lesson": 54,
+    "theme": "Bra fraser 1",
+    "sr": "izvinite",
+    "sv": "ursäkta / förlåt",
+    "note": "Artig form av izvini."
+  },
+  {
+    "id": "l54-naravno",
+    "lesson": 54,
+    "theme": "Bra fraser 1",
+    "sr": "naravno",
+    "sv": "självklart"
+  },
+  {
+    "id": "l54-stvarno",
+    "lesson": 54,
+    "theme": "Bra fraser 1",
+    "sr": "stvarno",
+    "sv": "verkligen",
+    "note": "Stvarno? = Verkligen?"
+  },
+  {
+    "id": "l54-nema-problema",
+    "lesson": 54,
+    "theme": "Bra fraser 1",
+    "sr": "nema problema",
+    "sv": "inga problem"
+  },
+  {
+    "id": "l54-u-redu",
+    "lesson": 54,
+    "theme": "Bra fraser 1",
+    "sr": "u redu",
+    "sv": "okej / i ordning",
+    "note": "Sve je u redu = allt är bra."
+  },
+  {
+    "id": "l55-hajde",
+    "lesson": 55,
+    "theme": "Bra fraser 2",
+    "sr": "hajde",
+    "sv": "kom igen / nu går vi"
+  },
+  {
+    "id": "l55-polako",
+    "lesson": 55,
+    "theme": "Bra fraser 2",
+    "sr": "polako",
+    "sv": "lugnt / sakta",
+    "note": "Sägs ofta för att lugna: ta det lugnt."
+  },
+  {
+    "id": "l55-svejedno",
+    "lesson": 55,
+    "theme": "Bra fraser 2",
+    "sr": "svejedno",
+    "sv": "det spelar ingen roll"
+  },
+  {
+    "id": "l55-dobrodosli",
+    "lesson": 55,
+    "theme": "Bra fraser 2",
+    "sr": "dobrodošli",
+    "sv": "välkomna",
+    "note": "Till en kvinna: dobrodošla."
+  },
+  {
+    "id": "l55-vidimo-se",
+    "lesson": 55,
+    "theme": "Bra fraser 2",
+    "sr": "vidimo se",
+    "sv": "vi ses"
+  },
+  {
+    "id": "l56-ime",
+    "lesson": 56,
+    "theme": "Viktiga saker",
+    "sr": "ime",
+    "sv": "namn"
+  },
+  {
+    "id": "l56-jezik",
+    "lesson": 56,
+    "theme": "Viktiga saker",
+    "sr": "jezik",
+    "sv": "språk",
+    "note": "Betyder också tunga."
+  },
+  {
+    "id": "l56-zemlja",
+    "lesson": 56,
+    "theme": "Viktiga saker",
+    "sr": "zemlja",
+    "sv": "land / jord"
+  },
+  {
+    "id": "l56-novac",
+    "lesson": 56,
+    "theme": "Viktiga saker",
+    "sr": "novac",
+    "sv": "pengar",
+    "note": "Vardagligt i Bosnien: pare."
+  },
+  {
+    "id": "l56-telefon",
+    "lesson": 56,
+    "theme": "Viktiga saker",
+    "sr": "telefon",
+    "sv": "telefon"
+  },
+  {
+    "id": "l57-pjesma",
+    "lesson": 57,
+    "theme": "Fest",
+    "sr": "pjesma",
+    "sv": "sång",
+    "note": "Ekaviskt: pesma."
+  },
+  {
+    "id": "l57-muzika",
+    "lesson": 57,
+    "theme": "Fest",
+    "sr": "muzika",
+    "sv": "musik",
+    "note": "Ackusativ: muziku."
+  },
+  {
+    "id": "l57-poklon",
+    "lesson": 57,
+    "theme": "Fest",
+    "sr": "poklon",
+    "sv": "present"
+  },
+  {
+    "id": "l57-gost",
+    "lesson": 57,
+    "theme": "Fest",
+    "sr": "gost",
+    "sv": "gäst",
+    "note": "Flertal: gosti."
+  },
+  {
+    "id": "l57-svadba",
+    "lesson": 57,
+    "theme": "Fest",
+    "sr": "svadba",
+    "sv": "bröllop"
+  },
+  {
+    "id": "l58-bozic",
+    "lesson": 58,
+    "theme": "Högtider",
+    "sr": "Božić",
+    "sv": "jul",
+    "note": "Ortodox jul firas 7 januari."
+  },
+  {
+    "id": "l58-uskrs",
+    "lesson": 58,
+    "theme": "Högtider",
+    "sr": "Uskrs",
+    "sv": "påsk",
+    "note": "Även Vaskrs."
+  },
+  {
+    "id": "l58-crkva",
+    "lesson": 58,
+    "theme": "Högtider",
+    "sr": "crkva",
+    "sv": "kyrka",
+    "note": "I kyrkan: u crkvi."
+  },
+  {
+    "id": "l58-svijeca",
+    "lesson": 58,
+    "theme": "Högtider",
+    "sr": "svijeća",
+    "sv": "ljus (stearin)",
+    "note": "Ekaviskt: sveća."
+  },
+  {
+    "id": "l58-obicaj",
+    "lesson": 58,
+    "theme": "Högtider",
+    "sr": "običaj",
+    "sv": "sed / tradition"
+  },
+  {
+    "id": "l59-zivot",
+    "lesson": 59,
+    "theme": "Livet",
+    "sr": "život",
+    "sv": "liv"
+  },
+  {
+    "id": "l59-ljubav",
+    "lesson": 59,
+    "theme": "Livet",
+    "sr": "ljubav",
+    "sv": "kärlek"
+  },
+  {
+    "id": "l59-prijateljica",
+    "lesson": 59,
+    "theme": "Livet",
+    "sr": "prijateljica",
+    "sv": "väninna"
+  },
+  {
+    "id": "l59-komsija",
+    "lesson": 59,
+    "theme": "Livet",
+    "sr": "komšija",
+    "sv": "granne"
+  },
+  {
+    "id": "l59-prica",
+    "lesson": 59,
+    "theme": "Livet",
+    "sr": "priča",
+    "sv": "berättelse",
+    "note": "Också: han/hon berättar."
+  },
+  {
+    "id": "l60-dobro-jutro",
+    "lesson": 60,
+    "theme": "Hälsa och säga hej då",
+    "sr": "dobro jutro",
+    "sv": "god morgon"
+  },
+  {
+    "id": "l60-dobro-vece",
+    "lesson": 60,
+    "theme": "Hälsa och säga hej då",
+    "sr": "dobro veče",
+    "sv": "god kväll"
+  },
+  {
+    "id": "l60-laku-noc",
+    "lesson": 60,
+    "theme": "Hälsa och säga hej då",
+    "sr": "laku noć",
+    "sv": "god natt"
+  },
+  {
+    "id": "l60-dovidjenja",
+    "lesson": 60,
+    "theme": "Hälsa och säga hej då",
+    "sr": "doviđenja",
+    "sv": "hej då / adjö",
+    "note": "Artigt."
+  },
+  {
+    "id": "l60-cujemo-se",
+    "lesson": 60,
+    "theme": "Hälsa och säga hej då",
+    "sr": "čujemo se",
+    "sv": "vi hörs"
   }
 ]

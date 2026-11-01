@@ -73,3 +73,19 @@ Nästa steg: användaren testar lektionerna och pojkvännen svarar på de tre ma
 ## [2026-11-01] content | Granskning av piloten
 - Pojkvännen godkände alla tre markerade meningarna. `check` togs bort.
 - `l14-s2` fick komma före *jer*: *Ne mogu, jer idem kući.*
+
+## [2026-11-01] fix | Flera rätta ordföljder
+- Pojkvännen: både *Hvala, dobro* och *Dobro, hvala* går bra, och det senare är mest naturligt. `l1-s4` ändrades och fältet `alt` lades till.
+- Användaren bekräftade att framstegen finns kvar efter omstart av hemskärmsappen.
+- "1 repetitioner" rättat.
+
+## [2026-11-01] feature | Graf under Framsteg
+- Siffror med förändring, staplar per dag eller vecka, tabellvy och val av period, i umamis stil. Inga nya beroenden.
+- Bygger på sparade pass, så formatet på framstegen är oförändrat. Färgerna klarade kontrollen för färgblindhet i ljust och mörkt läge.
+
+## [2026-11-01] content | Lektion 16–60
+- 225 nya ord och 225 nya meningar. Appen har nu 60 lektioner, 300 ord och 300 meningar.
+- 141 meningar kommer från Tatoeba, en del omvandlade till ijekaviska eller feminina former. 84 är egna och har `check: true`.
+- Wiktionary visade att *dole* är ekaviskt, så ordet blev *dolje*. Ekavisk skanning av alla meningar gav inga träffar.
+- Granskningslista för pojkvännen: `raw/granska-lektion-16-60.md`, med fem ordfrågor om vad familjen säger.
+Nästa steg: pojkvännen granskar listan, sedan nivåtestet.

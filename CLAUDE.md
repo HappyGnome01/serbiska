@@ -41,7 +41,7 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 
 ## Språkinnehållet (data/)
 **words.json**: `{ id, lesson, theme, sr, sv, note?, check? }`
-**sentences.json**: `{ id, lesson, sr, sv, note?, check?, source? }`
+**sentences.json**: `{ id, lesson, sr, sv, note?, alt?, check?, source? }`
 - id-format: `l<lektion>-<ord-utan-diakritiska-tecken>` och `l<lektion>-s<nummer>`.
 - Skriv **bara latin** i `sr`. Appen gör kyrilliska.
 - En lektion = **5 ord + 5 meningar**. Meningarna använder lektionens ord och i övrigt helst bara tidigare ord.
@@ -52,6 +52,7 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 - Skriv grammatiktips i `note` när ett ord böjs (t.ex. *kafa → kafu*).
 - Är du osäker på om något är korrekt och naturligt: säg det och sätt `"check": true` så hon kan fråga pojkvännen.
 - `source` anger var en mening kommer ifrån, t.ex. `tatoeba:3253759`. Egna meningar saknar `source` och får `"check": true`.
+- `alt` listar andra rätta ordföljder med samma ord, t.ex. `["Hvala, dobro."]`. Serbiskans ordföljd är fri, så lägg till `alt` när flera ordningar låter naturliga.
 - Meningar får inte börja med ett egennamn: "Bygg meningen" ger första ordet liten bokstav.
 - Kontrollera att JSON-filerna är giltiga efter varje ändring.
 

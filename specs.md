@@ -23,7 +23,7 @@ Inspirerat av Duolingo och modern språkdidaktik:
    - Flervalsfråga: "Vad betyder ordet?" (4 alternativ). Rätt → betygsätt Svårt/Bra/Lätt. Fel → räknas som "Kunde inte" och frågan kommer tillbaka sist.
 3. **Meningar – 5 meningar** med lektionens ord.
    - Läs och förstå: serbisk mening → "Visa översättning" + grammatiktips.
-   - Bygg meningen: svensk översättning visas, tryck på serbiska ordbrickor i rätt ordning (meningar med minst 2 ord). Varje ord har en tom rad och skiljetecknen står redan på plats. Brickorna saknar skiljetecken och första ordet har liten bokstav, så att de inte avslöjar ordningen.
+   - Bygg meningen: svensk översättning visas, tryck på serbiska ordbrickor i rätt ordning (meningar med minst 2 ord). Varje ord har en tom rad och skiljetecknen står redan på plats. Brickorna saknar skiljetecken och första ordet har liten bokstav, så att de inte avslöjar ordningen. En mening kan ha flera rätta ordföljder (fältet `alt`).
 4. **Klart:** sammanfattning och svit.
 
 Ord som får "Kunde inte" visas igen senare i samma pass (en gång) och först i kön nästa pass.
@@ -40,6 +40,7 @@ När alla lektioner är klara visas bara repetition och slumpade meningar, tills
 Intervall: 1 dag → 6 dagar → föregående × "lätthet" (startar på 2,5, minst 1,3).
 
 ## Dashboard ("Framsteg")
+- **Din utveckling:** välj 7 dagar, 30 dagar eller 3 månader. Visar pass, nya ord, repetitioner och aktiva dagar med förändring mot föregående period, plus staplar per dag (per vecka vid 3 månader) och en tabellvy. Bygger på de pass som redan sparas.
 - Antal ord per **senaste betyg**: Lätt, Bra, Svårt. "Kunde inte" visas inte.
 - Ord du har sett (av totalt), lektioner klara, antal pass, svit.
 - Utfällbara listor med orden i varje grupp.
@@ -52,8 +53,8 @@ Intervall: 1 dag → 6 dagar → föregående × "lätthet" (startar på 2,5, mi
   - En statisk sida (GitHub Pages) kan inte skriva till JSON-filerna. Därför sparas framsteg lokalt.
   - På iPhone har appen på hemskärmen en egen lagring, skild från Safari.
   - Om framsteg inte kan sparas eller läsas visas en röd varning överst.
-- Nu: 15 lektioner, 75 ord, 75 meningar.
-- **Källor:** lektion 11–15 bygger på frekvenslistan och Wiktionary (CC BY-SA 4.0) och på meningar från Tatoeba (CC BY 2.0 FR). Materialet hämtas när lektioner skapas och sparas i `data/`, appen anropar inga externa tjänster. Källorna anges under Framsteg.
+- Nu: 60 lektioner, 300 ord, 300 meningar.
+- **Källor:** lektion 11–60 bygger på frekvenslistan och Wiktionary (CC BY-SA 4.0) och på meningar från Tatoeba (CC BY 2.0 FR). Materialet hämtas när lektioner skapas och sparas i `data/`, appen anropar inga externa tjänster. Källorna anges under Framsteg.
 
 ## Teknik
 - Ren HTML/CSS/JavaScript, inga ramverk eller byggsteg.
