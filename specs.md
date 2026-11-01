@@ -20,7 +20,8 @@ Inspirerat av Duolingo och modern språkdidaktik:
 - Idag-sidan är en slingrande stig med en rund knapp per lektion, indelad i nivåer. Sidan öppnas vid din lektion: tidigare lektioner ligger uppåt, kommande nedåt.
 - Tassavtryck längs en mjuk kurva binder ihop knapparna inom en nivå, en tass per 30 pixlar fritt avstånd och med lika stora mellanrum. Mellan nivåer finns inga tassar. Tassarna går växelvis på varsin sida och pekar dit stigen går. Vägen fram till din lektion är grön, resten dämpad. En igelkott står vid din lektion med en stillsam tomgångsanimation: kroppen andas mjukt upp och ner och ögat blinkar ibland.
 - **Lägen:** gjord (grön med bock, du har gjort ett pass), överhoppad (streckad ring), din lektion (större och rosa), kommande (dämpad).
-- Överst står alltid Dagens pass med lektionens nummer och namn, plus sviten. Är dagens pass gjort står nästa pass där. Under finns Till min lektion, nivåtestet och Välj nivå.
+- Flikarna Idag och Framsteg ligger alltid kvar högst upp när du scrollar, på alla sidor.
+- Först på sidan står Dagens pass med lektionens nummer och namn, plus sviten. Kortet scrollar bort med sidan. Är dagens pass gjort står nästa pass där. Under finns Till min lektion, nivåtestet och Välj nivå.
 
 ## Lektionssidor
 - Tryck på en lektion för att se orden och meningarna.
@@ -71,7 +72,7 @@ Intervall: 1 dag → 6 dagar → föregående × "lätthet" (startar på 2,5, mi
 
 ## Dashboard ("Framsteg")
 - **Din utveckling:** välj 7 dagar, 30 dagar eller 3 månader. Visar pass, nya ord, repetitioner och aktiva dagar med förändring mot föregående period, plus staplar per dag (per vecka vid 3 månader) och en tabellvy. Bygger på de pass som redan sparas.
-- Samma stil som Idag: fast kort överst med ord du har sett och svit, lila rubrikband och runda knappar.
+- Samma stil som Idag: kort överst med ord du har sett och svit, lila rubrikband och runda knappar.
 - Antal ord per **senaste betyg** i runda knappar: Lätt, Bra, Svårt. "Kunde inte" visas inte. Ett tryck öppnar ett fönster med orden i gruppen.
 - Lektioner klara och antal pass.
 - **Exportera/importera** framsteg som JSON-fil (backup och flytt mellan enheter).

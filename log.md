@@ -143,3 +143,7 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 ## [2026-11-01] fix | Igelkottens tomgångsanimation
 - Nigningen ersattes av en tomgång som i gamla Nintendo-spel: kroppen hoppar 2 pixlar mellan två lägen utan mjuka övergångar, och ögat blinkar var femte sekund.
 - Stegen såg hackiga ut, så kroppen rör sig nu mjukt med 2,8 sekunder per andetag.
+
+## [2026-11-01] fix | Flikarna ligger kvar överst
+- Flikarna Idag och Framsteg ligger nu fast högst upp när man scrollar. Kortet med Dagens pass och kortet Dina framsteg scrollar bort med sidan.
+- Igelkottens andetag kortades från 2,8 till 1,8 sekunder, fortfarande mjukt.

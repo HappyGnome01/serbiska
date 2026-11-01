@@ -45,12 +45,16 @@ body {
   color: var(--text);
 }
 header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
   max-width: 520px;
   margin: 0 auto;
+  background: var(--bg);
 }
 h1 { font-size: 1.3rem; margin: 0; }
 nav { display: flex; gap: 6px; }
@@ -177,7 +181,7 @@ summary { cursor: pointer; font-weight: 600; }
 }
 
 /* Stigen på Idag */
-.today { position: sticky; top: 6px; z-index: 5; display: flex; gap: 12px; align-items: center; justify-content: space-between; background: var(--card); border-radius: 18px; padding: 10px 14px; margin: 8px 0; box-shadow: 0 3px 12px rgba(120,90,70,0.1); }
+.today { display: flex; gap: 12px; align-items: center; justify-content: space-between; background: var(--card); border-radius: 18px; padding: 10px 14px; margin: 8px 0; box-shadow: 0 3px 12px rgba(120,90,70,0.1); }
 .today-title { font-weight: 700; }
 .today-meta { font-size: 0.8rem; margin-top: 2px; }
 .today-streak { font-size: 0.85rem; white-space: nowrap; }
@@ -199,7 +203,7 @@ summary { cursor: pointer; font-weight: 600; }
 .hedgehog.flip svg { transform: scaleX(-1); }
 .hedgehog svg { width: 100%; height: 100%; display: block; overflow: visible; }
 /* Tomgång: kroppen andas mjukt upp och ner, och ögat blinkar ibland */
-.hedgehog-body { animation: hedgehog-idle 2.8s ease-in-out infinite; }
+.hedgehog-body { animation: hedgehog-idle 1.8s ease-in-out infinite; }
 .hedgehog-eye { transform-box: fill-box; transform-origin: center; animation: hedgehog-blink 4.8s step-end infinite; }
 @keyframes hedgehog-idle {
   0%, 100% { transform: none; }
