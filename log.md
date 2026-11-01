@@ -126,3 +126,9 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 - Stigen är nu en enda mjuk kurva utan knyck vid knapparna, ritad i riktiga pixlar och omritad när bredden ändras.
 - Strecken ersattes av tassavtryck. Avtryck som skulle hamna under knappar, rubriker eller igelkotten hoppas över. Knapparna står glesare så att det får plats tassar emellan.
 - Rättat: ordet "null" syntes på Idag och på lektionssidor, ett fel från bygget av stigen.
+
+## [2026-11-01] feature | Glesare tassar, passets namn och ny stil på Framsteg
+- Stigen har hälften så tätt mellan tassarna, fler svängar och kortare avstånd, så sidan blev kortare.
+- Dagens pass visar lektionens nummer och namn. Texten om antal repetitioner, nya ord och tid togs bort.
+- Framsteg har fått samma stil som Idag: fast kort överst, lila rubrikband och runda knappar.
+- Lätt, Bra och Svårt öppnar ett fönster med orden. Det ersätter de utfällbara listorna. Grammatiken använder samma fönster.

@@ -401,11 +401,12 @@ function lessonStatus(lesson) {
 const STATUS_TEXT = { current: "Din lektion", done: "Gjord", skipped: "Överhoppad", next: "Kommande" };
 
 // Stigens mått: höjd i pixlar per rad, sidled i procent av bredden
-const ROAD_ROW = 128;
-const ROAD_CURRENT = 190;  // Din lektion får plats för startknappen
+const ROAD_ROW = 98;
+const ROAD_CURRENT = 160;  // Din lektion får plats för startknappen
 const ROAD_LEVEL = 62;
-const ROAD_SWING = 30;
-const ROAD_STEP = 15;   // Pixlar mellan tassavtrycken
+const ROAD_SWING = 38;
+const ROAD_TURN = 0.9;  // Högre värde ger fler svängar
+const ROAD_STEP = 30;   // Pixlar mellan tassavtrycken
 const ROAD_SIDE = 6;    // Tassarna går växelvis på varsin sida om stigens mitt
 const ROAD_GAP = 6;     // Fritt utrymme runt knappar och rubriker
 
@@ -491,7 +492,7 @@ function roadmap(startLabel) {
       items.push(h("div", { class: "road-level", style: `top:${y}px` }, `Nivå ${level}`));
       y += ROAD_LEVEL;
     }
-    const x = 50 + Math.sin(i * 0.6) * ROAD_SWING;
+    const x = 50 + Math.sin(i * ROAD_TURN) * ROAD_SWING;
     const status = lessonStatus(lesson);
     const center = y + 46;
     points.push({ x, y: center, lesson });
@@ -539,15 +540,12 @@ function showHome(focus) {
   const s = buildSession();
   const doneToday = progress.sessions.some(x => x.date === dateStr(new Date()));
   const startLabel = doneToday ? "Kör ett pass till" : "Starta pass";
-  const parts = [];
-  if (s.review.length) parts.push(`${s.review.length} ${s.review.length === 1 ? "repetition" : "repetitioner"}`);
-  if (s.newWords.length) parts.push(`${s.newWords.length} nya ord`);
-  parts.push(`${s.sentences.length} meningar`);
+  const passName = s.lesson ? `Lektion ${s.lesson}: ${s.theme}` : "Repetition";
   fillMain(
     h("div", { class: "today" },
       h("div", {},
         h("div", { class: "today-title" }, doneToday ? "Dagens pass är klart ✅" : "Dagens pass"),
-        h("div", { class: "muted today-meta" }, parts.join(" · ") + (s.review.length > 8 ? " · ca 10–15 min" : " · ca 5–10 min"))),
+        h("div", { class: "muted today-meta" }, (doneToday ? "Nästa: " : "") + passName)),
       h("div", { class: "muted today-streak" }, streakText())),
     h("div", { class: "road-links" },
       s.lesson ? h("button", { class: "link-btn", onclick: () => scrollToLesson(s.lesson) }, "Till min lektion") : null,
@@ -608,20 +606,34 @@ function grammarButton(lesson) {
   return h("button", { class: "grammar-btn", onclick: () => showGrammar(lesson) }, "Förklara grammatiken");
 }
 
-function showGrammar(lesson) {
+// Modulfönster som stängs med knappen, Esc eller ett tryck utanför
+function showModal(label, content) {
   const closeDialog = () => { dialog.close(); dialog.remove(); };
-  const dialog = h("dialog", { class: "grammar", "aria-label": "Grammatik" },
-    h("div", { class: "grammar-body" },
-      grammarFor(lesson).map(g => h("section", {},
-        h("h2", {}, mixed(g.title)),
-        g.text.map(t => h("p", {}, mixed(t))),
-        h("div", { class: "grammar-examples" }, g.examples.map(([sr, sv]) =>
-          h("div", { class: "word-row" }, h("span", {}, h("em", {}, sr)), h("span", { class: "muted" }, mixed(sv))))))),
-      h("div", { class: "buttons" }, h("button", { class: "primary", onclick: closeDialog }, "Stäng"))));
+  const dialog = h("dialog", { class: "modal", "aria-label": label },
+    h("div", { class: "modal-body" }, content,
+      h("div", { class: "buttons modal-close" }, h("button", { class: "primary", onclick: closeDialog }, "Stäng"))));
   dialog.addEventListener("close", () => dialog.remove());  // Esc-tangenten
   dialog.addEventListener("click", e => { if (e.target === dialog) closeDialog(); });  // Tryck utanför stänger
   document.body.append(dialog);
   dialog.showModal();
+}
+
+function showGrammar(lesson) {
+  showModal("Grammatik", grammarFor(lesson).map(g => h("section", {},
+    h("h2", {}, mixed(g.title)),
+    g.text.map(t => h("p", {}, mixed(t))),
+    h("div", { class: "modal-list" }, g.examples.map(([sr, sv]) =>
+      h("div", { class: "word-row" }, h("span", {}, h("em", {}, sr)), h("span", { class: "muted" }, mixed(sv))))))));
+}
+
+// Orden med ett visst senaste betyg
+function showWords(label, list) {
+  showModal(`Ord: ${label}`, [
+    h("h2", {}, `${label} (${list.length})`),
+    list.length
+      ? h("div", { class: "modal-list" }, list.map(w =>
+          h("div", { class: "word-row" }, h("span", {}, h("em", {}, w.sr)), h("span", { class: "muted" }, w.sv))))
+      : h("p", { class: "muted" }, "Inga ord här än.")]);
 }
 
 // ---------- 9. Nivåtest ----------
@@ -880,11 +892,10 @@ function progressSection() {
   const buckets = chartBuckets(chartDays);
   const ranges = [[7, "7 dagar"], [30, "30 dagar"], [91, "3 månader"]];
   return h("div", {},
-    h("div", { class: "section-head" },
-      h("p", { class: "step-label" }, "Din utveckling"),
-      h("div", { class: "ranges" }, ranges.map(([days, label]) =>
-        h("button", { class: "range-btn" + (days === chartDays ? " active" : ""),
-          onclick: () => { chartDays = days; showDashboard(); } }, label)))),
+    h("div", { class: "section-title" }, "Din utveckling"),
+    h("div", { class: "ranges" }, ranges.map(([days, label]) =>
+      h("button", { class: "range-btn" + (days === chartDays ? " active" : ""),
+        onclick: () => { chartDays = days; showDashboard(); } }, label))),
     h("div", { class: "card chart-card" },
       h("div", { class: "metrics" },
         metric("Pass", now.sessions, before.sessions),
@@ -911,25 +922,27 @@ function showDashboard() {
 
   // Allt packas i en div så att listor och null hanteras av h()
   main.replaceChildren(h("div", {},
+    h("div", { class: "today" },
+      h("div", {},
+        h("div", { class: "today-title" }, "Dina framsteg"),
+        h("div", { class: "muted today-meta" }, `${seen.length} av ${WORDS.length} ord sedda`)),
+      h("div", { class: "muted today-streak" }, streakText())),
     progressSection(),
-    h("p", { class: "step-label", style: "margin-top:24px" }, "Ord du kan"),
+    h("div", { class: "section-title" }, "Ord du kan"),
     h("div", { class: "stats" }, groups.map(([label, cls, list]) =>
-      h("div", { class: "stat " + cls }, h("div", { class: "num" }, String(list.length)), h("div", { class: "muted" }, label)))),
+      h("button", { class: "stat " + cls, "aria-label": `${label}: ${list.length} ord. Visa orden.`, onclick: () => showWords(label, list) },
+        h("span", { class: "stat-num" }, String(list.length)), label))),
     h("div", { class: "card summary" },
-      h("div", {}, `📚 Ord du har sett: ${seen.length} av ${WORDS.length}`),
-      h("div", {}, `✅ Lektioner klara: ${lessonsDone} av ${lessons.length}`),
-      h("div", {}, `🗓️ Pass totalt: ${progress.sessions.length}`),
-      h("div", {}, "Svit: " + streakText())),
+      h("div", { class: "word-row" }, h("span", {}, "Lektioner klara"), h("span", { class: "muted" }, `${lessonsDone} av ${lessons.length}`)),
+      h("div", { class: "word-row" }, h("span", {}, "Pass totalt"), h("span", { class: "muted" }, String(progress.sessions.length)))),
     Object.values(progress.words).some(p => p.placed) ? h("div", { class: "buttons" },
       h("button", { class: "link-btn", onclick: undoPlacement }, "Ångra hoppet")) : null,
-    groups.map(([label, cls, list]) => list.length ? h("details", {},
-      h("summary", {}, `${label} (${list.length})`),
-      list.map(w => h("div", { class: "word-row" }, h("span", {}, w.sr), h("span", { class: "muted" }, w.sv)))) : null),
-    h("p", { class: "step-label", style: "margin-top:24px" }, "Säkerhetskopia"),
-    h("p", { class: "muted" }, "Framstegen sparas bara här. På iPhone är appen på hemskärmen och Safari skilda platser, så använd alltid samma. Exportera då och då som backup."),
-    h("div", { class: "buttons" },
-      h("button", { onclick: exportProgress }, "Exportera"),
-      h("button", { onclick: () => fileInput.click() }, "Importera")),
+    h("div", { class: "section-title" }, "Säkerhetskopia"),
+    h("div", { class: "card" },
+      h("p", { class: "muted backup-text" }, "Framstegen sparas bara här. På iPhone är appen på hemskärmen och Safari skilda platser, så använd alltid samma. Exportera då och då som backup."),
+      h("div", { class: "buttons" },
+        h("button", { class: "good", onclick: exportProgress }, "Exportera"),
+        h("button", { class: "easy", onclick: () => fileInput.click() }, "Importera"))),
     fileInput,
     h("p", { class: "muted credits" }, "Källor: meningar från ",
       h("a", { href: "https://tatoeba.org/" }, "Tatoeba"), " (CC BY 2.0 FR), vissa anpassade till ijekaviska. Ordkontroll och frekvens från ",

@@ -20,7 +20,7 @@ Inspirerat av Duolingo och modern språkdidaktik:
 - Idag-sidan är en slingrande stig med en rund knapp per lektion, indelad i nivåer. Sidan öppnas vid din lektion: tidigare lektioner ligger uppåt, kommande nedåt.
 - Tassavtryck längs en mjuk, sammanhängande kurva binder ihop knapparna. Tassarna går växelvis på varsin sida och pekar dit stigen går. Vägen fram till din lektion är grön, resten dämpad. En igelkott står vid din lektion.
 - **Lägen:** gjord (grön med bock, du har gjort ett pass), överhoppad (streckad ring), din lektion (större och rosa), kommande (dämpad).
-- Överst står alltid dagens pass och sviten, och under finns Till min lektion, nivåtestet och Välj nivå.
+- Överst står alltid Dagens pass med lektionens nummer och namn, plus sviten. Är dagens pass gjort står nästa pass där. Under finns Till min lektion, nivåtestet och Välj nivå.
 
 ## Lektionssidor
 - Tryck på en lektion för att se orden och meningarna.
@@ -33,7 +33,7 @@ Inspirerat av Duolingo och modern språkdidaktik:
 - Serbiska står i kursiv när den blandas med svenska, både här och i tipsen vid ord och meningar. I datafilerna märks den `*så här*`.
 
 ## Dagens pass (~5–10 min)
-1. **Repetition – 3 till 15 ord** från tidigare pass. Antalet växer med hur många ord som behöver befästas: överhoppade ord du inte övat på, och ord du senast gav "Kunde inte" eller "Svårt" (ett extra ord per 4 sådana, högst 15). Försenade ord kommer först, sedan ord att befästa, sist övriga. Visa ordet → "Visa svar" → betygsätt. Vid fler än 8 repetitioner visar startsidan ca 10–15 min.
+1. **Repetition – 3 till 15 ord** från tidigare pass. Antalet växer med hur många ord som behöver befästas: överhoppade ord du inte övat på, och ord du senast gav "Kunde inte" eller "Svårt" (ett extra ord per 4 sådana, högst 15). Försenade ord kommer först, sedan ord att befästa, sist övriga. Visa ordet → "Visa svar" → betygsätt.
 2. **Nya ord – 5 ord** från lektionen du är på. Efter passet går appen till nästa lektion.
    - Presentation: ordet, kyrilliska, översättning, tips.
    - Flervalsfråga: "Vad betyder ordet?" (4 alternativ). Rätt → betygsätt Svårt/Bra/Lätt. Fel → räknas som "Kunde inte" och frågan kommer tillbaka sist.
@@ -71,9 +71,9 @@ Intervall: 1 dag → 6 dagar → föregående × "lätthet" (startar på 2,5, mi
 
 ## Dashboard ("Framsteg")
 - **Din utveckling:** välj 7 dagar, 30 dagar eller 3 månader. Visar pass, nya ord, repetitioner och aktiva dagar med förändring mot föregående period, plus staplar per dag (per vecka vid 3 månader) och en tabellvy. Bygger på de pass som redan sparas.
-- Antal ord per **senaste betyg**: Lätt, Bra, Svårt. "Kunde inte" visas inte.
-- Ord du har sett (av totalt), lektioner klara, antal pass, svit.
-- Utfällbara listor med orden i varje grupp.
+- Samma stil som Idag: fast kort överst med ord du har sett och svit, lila rubrikband och runda knappar.
+- Antal ord per **senaste betyg** i runda knappar: Lätt, Bra, Svårt. "Kunde inte" visas inte. Ett tryck öppnar ett fönster med orden i gruppen.
+- Lektioner klara och antal pass.
 - **Exportera/importera** framsteg som JSON-fil (backup och flytt mellan enheter).
 
 ## Data
