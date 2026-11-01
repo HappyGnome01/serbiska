@@ -1,0 +1,198 @@
+[
+  {
+    "id": "biti",
+    "title": "Att vara: sam, si, je",
+    "lessons": [1, 22],
+    "text": [
+      "Verbet biti (att vara) används hela tiden, och de korta formerna ser olika ut för varje person.",
+      "Eftersom formen visar vem det gäller behövs sällan ja eller ti. Inte att vara blir nisam, nisi, nije."
+    ],
+    "examples": [["ja sam", "jag är"], ["ti si", "du är"], ["on, ona je", "han, hon är"], ["mi smo", "vi är"], ["vi ste", "ni är"], ["oni su", "de är"], ["nisam", "jag är inte"]],
+    "check": true
+  },
+  {
+    "id": "ti-vi",
+    "title": "Du och ni: ti och vi",
+    "lessons": [2, 54],
+    "text": [
+      "Ti säger du till vänner, barn och din partner. Vi använder du till äldre du inte känner väl, tills de själva säger att du kan säga ti.",
+      "Vi används också till flera personer. Verbet och uttrycket ändras med: izvini blir izvinite, och kako si blir kako ste."
+    ],
+    "examples": [["Izvini!", "Förlåt! (ti)"], ["Izvinite!", "Förlåt! (vi)"], ["Kako si?", "Hur mår du? (ti)"], ["Kako ste?", "Hur mår ni? (vi)"]],
+    "check": true
+  },
+  {
+    "id": "negation",
+    "title": "Säga nej: ne, nemam, nisam",
+    "lessons": [3, 12],
+    "text": [
+      "Ne står direkt före verbet. Tre vanliga verb smälter ihop med ne: imam blir nemam, sam blir nisam och hoću blir neću.",
+      "Ord som nikad (aldrig) och niko (ingen) vill också ha ne. Två nekningar tar inte ut varandra, så det är rätt att säga båda."
+    ],
+    "examples": [["Ne razumijem.", "Jag förstår inte."], ["Nemam kafu.", "Jag har inget kaffe."], ["Nikad ne pijem kafu.", "Jag dricker aldrig kaffe."]],
+    "check": true
+  },
+  {
+    "id": "korta-ord",
+    "title": "Korta ord: mi, me, se",
+    "lessons": [3, 45, 47, 48],
+    "text": [
+      "Små ord som mi, me, ti, te och se betonas inte och placeras nästan alltid som andra led i meningen.",
+      "Svenskans 'jag gillar' säger man ofta tvärtom på serbiska: det behagar mig. Mi betyder till mig (dativ), me betyder mig (ackusativ)."
+    ],
+    "examples": [["Drago mi je.", "Trevligt att träffas."], ["Treba mi lijek.", "Jag behöver medicin."], ["Sviđa mi se.", "Jag gillar det."], ["Boli me glava.", "Jag har ont i huvudet."]],
+    "check": true
+  },
+  {
+    "id": "genus",
+    "title": "Ordens kön",
+    "lessons": [4],
+    "text": [
+      "Varje substantiv är maskulint, femininum eller neutrum. Slutet på ordet avslöjar oftast vilket.",
+      "Slutar ordet på konsonant är det oftast maskulint. På -a är det oftast feminint. På -o eller -e är det oftast neutrum."
+    ],
+    "examples": [["brat", "maskulint"], ["sestra", "feminint"], ["mlijeko", "neutrum"]],
+    "check": true
+  },
+  {
+    "id": "possessiv",
+    "title": "Min och din",
+    "lessons": [5, 23],
+    "text": [
+      "Ord som moj (min) ändras efter ordet de hör till, inte efter personen som äger.",
+      "Du som kvinna säger alltså moj brat om din bror och moja sestra om din syster."
+    ],
+    "examples": [["moj brat", "min bror"], ["moja sestra", "min syster"], ["moje ime", "mitt namn"], ["naša kuća", "vårt hus"]],
+    "check": true
+  },
+  {
+    "id": "ackusativ",
+    "title": "Ackusativ: det du vill ha",
+    "lessons": [6, 8, 28, 29],
+    "text": [
+      "När något är föremål för en handling, det du vill ha, ser eller dricker, ändras slutet på ordet.",
+      "Ord på -a får -u. Levande maskulina ord får -a. Saker som slutar på konsonant ändras inte, och neutrum ändras inte heller."
+    ],
+    "examples": [["kafa → Hoćeš li kafu?", "Vill du ha kaffe?"], ["brat → Imaš li brata?", "Har du en bror?"], ["čaj → Pijem čaj.", "Jag dricker te."]],
+    "check": true
+  },
+  {
+    "id": "genitiv",
+    "title": "Genitiv: av, utan, från",
+    "lessons": [6, 30, 52],
+    "text": [
+      "Genitiv används för mängder och efter småord som bez (utan), od (från), do (till) och iz (ur, från).",
+      "Ord på -a får -e. Maskulina ord och neutrum får -a."
+    ],
+    "examples": [["voda → čaša vode", "ett glas vatten"], ["šećer → bez šećera", "utan socker"], ["vino → čaša vina", "ett glas vin"]],
+    "check": true
+  },
+  {
+    "id": "lokativ",
+    "title": "Lokativ: var något är",
+    "lessons": [5, 26, 37],
+    "text": [
+      "Efter u (i) och na (på) ändras ordet när du talar om var något finns.",
+      "Ord på -a får -i. Maskulina ord och neutrum får -u. Länder på -ska får -skoj."
+    ],
+    "examples": [["bašta → u bašti", "i trädgården"], ["grad → u gradu", "i staden"], ["Švedska → u Švedskoj", "i Sverige"]],
+    "check": true
+  },
+  {
+    "id": "instrumental",
+    "title": "Instrumental: med",
+    "lessons": [38, 52],
+    "text": [
+      "Efter sa (med) får ordet ett nytt slut. Samma form används för hur du tar dig någonstans, då utan sa.",
+      "De flesta ord får -om. Ord som slutar på mjuka ljud, som prijatelj, får -em."
+    ],
+    "examples": [["mlijeko → sa mlijekom", "med mjölk"], ["voz → vozom", "med tåg"], ["prijatelj → sa prijateljem", "med en vän"]],
+    "check": true
+  },
+  {
+    "id": "fragor",
+    "title": "Ställa frågor",
+    "lessons": [9, 11, 51],
+    "text": [
+      "En fråga kan börja med ett frågeord, som kako, gdje eller kada. Då behövs inget mer.",
+      "Ja-eller-nej-frågor får li direkt efter verbet, eller inleds med da li. Båda är rätt."
+    ],
+    "examples": [["Gdje je toalet?", "Var är toaletten?"], ["Imaš li brata?", "Har du en bror?"], ["Da li živiš ovdje?", "Bor du här?"]],
+    "check": true
+  },
+  {
+    "id": "presens",
+    "title": "Verbens ändelser",
+    "lessons": [11, 15, 41, 42],
+    "text": [
+      "Ändelsen visar vem som gör något, så ja och ti behövs sällan. Verb går i tre mönster: -am, -im och -em.",
+      "Börja med ändelserna för jag och du. De används mest i samtal."
+    ],
+    "examples": [["imam, imaš, ima", "jag, du, hen har"], ["imamo, imate, imaju", "vi, ni, de har"], ["radim, radiš, radi", "jag, du, hen jobbar"], ["radimo, radite, rade", "vi, ni, de jobbar"], ["pišem, pišeš, piše", "jag, du, hen skriver"], ["pišemo, pišete, pišu", "vi, ni, de skriver"]],
+    "check": true
+  },
+  {
+    "id": "da-verb",
+    "title": "Vill, kan, måste + da",
+    "lessons": [14, 45],
+    "text": [
+      "Efter verb som moram, mogu och želim kommer ofta da och ett böjt verb, inte en grundform som på svenska.",
+      "Du kan också höra grundformen, till exempel moram ići. Båda är rätt."
+    ],
+    "examples": [["Moram da idem.", "Jag måste gå."], ["Želim da budem sa tobom.", "Jag vill vara med dig."], ["Mogu li da pitam?", "Får jag fråga?"]],
+    "check": true
+  },
+  {
+    "id": "siffror",
+    "title": "Siffror ändrar ordet efter",
+    "lessons": [16, 17],
+    "text": [
+      "Efter 1 står ordet i grundform. Efter 2, 3 och 4 får det genitiv singular. Efter 5 och uppåt får det genitiv plural.",
+      "Två heter dva, men dvije före feminina ord."
+    ],
+    "examples": [["jedan brat", "en bror"], ["dva brata", "två bröder"], ["dvije mačke", "två katter"], ["pet kafa", "fem kaffe"]],
+    "check": true
+  },
+  {
+    "id": "imperativ",
+    "title": "Uppmaningar",
+    "lessons": [18, 26, 39, 43],
+    "text": [
+      "Till en person du säger ti slutar uppmaningen ofta på -i eller -j. Till flera, eller artigt, läggs -te till."
+    ],
+    "examples": [["Dođi!", "Kom!"], ["Dođite!", "Kom! (vi)"], ["Uzmi malo.", "Ta lite."], ["Slušaj!", "Lyssna!"]],
+    "check": true
+  },
+  {
+    "id": "datid",
+    "title": "Dåtid: det som hände",
+    "lessons": [20, 21, 43],
+    "text": [
+      "Dåtid byggs av sam, si, je och en form av verbet som slutar på -la för kvinnor och -o för män.",
+      "Du som kvinna säger alltså bila sam och kupila sam."
+    ],
+    "examples": [["Kupila sam knjigu.", "Jag köpte en bok. (kvinna)"], ["Kupio sam knjigu.", "Jag köpte en bok. (man)"], ["Juče je bilo toplo.", "Det var varmt igår."]],
+    "check": true
+  },
+  {
+    "id": "adjektiv",
+    "title": "Beskrivande ord",
+    "lessons": [33, 34, 35],
+    "text": [
+      "Ett adjektiv ändras efter ordet det beskriver. Maskulint saknar ofta ändelse, feminint får -a och neutrum får -o."
+    ],
+    "examples": [["dobar čovjek", "en bra man"], ["dobra žena", "en bra kvinna"], ["dobro vino", "ett bra vin"]],
+    "check": true
+  },
+  {
+    "id": "framtid",
+    "title": "Framtid: ću, ćeš",
+    "lessons": [54],
+    "text": [
+      "Framtid byggs med ću, ćeš, će och en grundform. Nekat blir det neću, nećeš, neće.",
+      "I vardagen säger man ofta presens med ett tidsord, till exempel Dolazim sutra."
+    ],
+    "examples": [["Naravno da ću ti pomoći.", "Självklart hjälper jag dig."], ["Dolazim sutra.", "Jag kommer imorgon."]],
+    "check": true
+  }
+]

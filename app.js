@@ -14,6 +14,7 @@ const DAY = 24 * 60 * 60 * 1000;
 
 let WORDS = [];       // Fylls från data/words.json
 let SENTENCES = [];   // Fylls från data/sentences.json
+let GRAMMAR = [];     // Fylls från data/grammar.json
 let progress = loadProgress();
 
 let session = null;   // Dagens pass
@@ -204,6 +205,18 @@ function startSession() {
   showTask();
 }
 
+// Repetition av en lektion: övar orden och meningarna, men flyttar dig inte på stigen
+function startPractice(lesson) {
+  const words = WORDS.filter(w => w.lesson === lesson);
+  const sentences = SENTENCES.filter(s => s.lesson === lesson);
+  session = { review: words, newWords: [], sentences, lesson, practice: true };
+  queue = shuffle(words).map(w => ({ type: "quiz", word: w }));
+  sentences.forEach(s => queue.push({ type: "read", sentence: s }));
+  sentences.filter(s => sentenceParts(s).length >= 2).forEach(s => queue.push({ type: "build", sentence: s }));
+  pos = 0;
+  showTask();
+}
+
 function next() { pos++; showTask(); }
 
 // Lägger tillbaka ett steg sist i kön (en gång) om du inte kunde det
@@ -254,7 +267,7 @@ function showIntro(task) {
   if (!progress.words[w.id]) { progress.words[w.id] = newProgress(); saveProgress(); }  // Markera som sett
   screen("Nytt ord",
     h("div", { class: "card" }, srBlock(w.sr), h("div", { class: "sv" }, w.sv), w.note ? h("div", { class: "note" }, "💡 " + w.note) : null),
-    h("div", { class: "buttons" }, h("button", { class: "primary", onclick: next }, "Nästa")));
+    h("div", { class: "buttons" }, h("button", { class: "primary", onclick: next }, "Nästa"), grammarButton(w.lesson)));
 }
 
 function showQuiz(task) {
@@ -290,7 +303,8 @@ function showRead(task) {
     nextBtn.classList.remove("hidden");
     showBtn.classList.add("hidden");
   } }, "Visa översättning");
-  screen("Läs och förstå", h("div", { class: "card" }, srBlock(s.sr, "sentence"), answer), h("div", { class: "buttons" }, showBtn, nextBtn));
+  screen("Läs och förstå", h("div", { class: "card" }, srBlock(s.sr, "sentence"), answer),
+    h("div", { class: "buttons" }, showBtn, nextBtn, grammarButton(s.lesson)));
 }
 
 function showBuild(task) {
@@ -336,7 +350,7 @@ function showBuild(task) {
 function showDone() {
   progress.sessions.push({ date: dateStr(new Date()), lesson: session.lesson,
     reviewed: session.review.length, newWords: session.newWords.length });
-  if (session.lesson) progress.currentLesson = session.lesson + 1;
+  if (session.lesson && !session.practice) progress.currentLesson = session.lesson + 1;
   saveProgress();
   main.replaceChildren(
     h("div", { class: "card" },
@@ -344,7 +358,7 @@ function showDone() {
       h("p", {}, `Du repeterade ${session.review.length} ord, lärde dig ${session.newWords.length} nya och övade på ${session.sentences.length} meningar.`),
       h("p", { class: "muted" }, streakText())),
     h("div", { class: "buttons" },
-      h("button", { class: "primary", onclick: showHome }, "Till startsidan"),
+      h("button", { class: "primary", onclick: () => showHome(session.practice ? session.lesson : undefined) }, "Till stigen"),
       h("button", { onclick: showDashboard }, "Se framsteg")));
 }
 
@@ -364,26 +378,186 @@ function streakText() {
   return `🔥 ${n} ${n === 1 ? "dag" : "dagar"} i rad`;
 }
 
-function showHome() {
+function allLessons() {
+  return [...new Set(WORDS.map(w => w.lesson))].sort((a, b) => a - b);
+}
+
+function lessonTheme(lesson) {
+  return WORDS.find(w => w.lesson === lesson).theme;
+}
+
+// Lektionens läge på stigen: current, done, skipped eller next
+function lessonStatus(lesson) {
+  if (lesson === currentLesson()) return "current";
+  if (progress.sessions.some(s => s.lesson === lesson)) return "done";
+  return WORDS.some(w => w.lesson === lesson && progress.words[w.id]) ? "skipped" : "next";
+}
+
+const STATUS_TEXT = { current: "Din lektion", done: "Gjord", skipped: "Överhoppad", next: "Kommande" };
+
+// Stigens mått: höjd i pixlar per rad, sidled i procent av bredden
+const ROAD_ROW = 92;
+const ROAD_CURRENT = 168;  // Din lektion får plats för startknappen
+const ROAD_LEVEL = 62;
+const ROAD_SWING = 30;
+
+const HEDGEHOG = `<svg viewBox="0 0 58 46" aria-hidden="true">
+  <path d="M5 34 L2 27 L8 26 L6 18 L13 20 L14 11 L21 15 L25 7 L30 14 L37 9 L38 18 L43 22 Q50 26 49 33 Q48 38 41 38 L12 38 Q6 38 5 34Z" fill="#a98c76"/>
+  <path d="M34 38 Q31 24 42 22 Q52 25 55 32 Q56 35 53 36 Q47 39 41 38Z" fill="#efdccb"/>
+  <circle cx="44" cy="29" r="1.8" fill="#4d4540"/>
+  <circle cx="55" cy="33" r="2" fill="#4d4540"/>
+  <ellipse cx="39" cy="33" rx="2.6" ry="1.7" fill="#e9b7ae"/>
+  <ellipse cx="20" cy="40" rx="4.5" ry="2.6" fill="#8d7360"/>
+  <ellipse cx="36" cy="40" rx="4.5" ry="2.6" fill="#8d7360"/>
+</svg>`;
+
+function svgEl(tag, attrs) {
+  const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+  return el;
+}
+
+// Mjuk kurva genom punkterna, som går rakt ut ur och in i varje knapp
+function roadPath(points) {
+  return points.map((p, i) => {
+    if (i === 0) return `M ${p.x} ${p.y}`;
+    const before = points[i - 1];
+    const middle = (before.y + p.y) / 2;
+    return `C ${before.x} ${middle} ${p.x} ${middle} ${p.x} ${p.y}`;
+  }).join(" ");
+}
+
+function roadmap(startLabel) {
+  const current = currentLesson();
+  const points = [];
+  const items = [];
+  let y = 0;
+  let level = 0;
+
+  allLessons().forEach((lesson, i) => {
+    if (lessonLevel(lesson) !== level) {
+      level = lessonLevel(lesson);
+      items.push(h("div", { class: "road-level", style: `top:${y}px` }, `Nivå ${level}`));
+      y += ROAD_LEVEL;
+    }
+    const x = 50 + Math.sin(i * 0.85) * ROAD_SWING;
+    const status = lessonStatus(lesson);
+    const center = y + 46;
+    points.push({ x, y: center, lesson });
+    items.push(h("button", { class: `node ${status}`, style: `left:${x}%;top:${center}px`, "data-lesson": lesson,
+      "aria-label": `Lektion ${lesson}: ${lessonTheme(lesson)}, ${STATUS_TEXT[status].toLowerCase()}`,
+      onclick: () => showLesson(lesson) },
+      String(lesson),
+      status === "done" ? h("span", { class: "node-check" }, "✓") : null));
+    if (status === "current") {
+      const onRight = x < 50;  // Igelkotten står på den sida där det finns plats
+      const hedgehog = h("div", { class: "hedgehog" + (onRight ? " flip" : ""),
+        style: `left:calc(${x}% ${onRight ? "+ 44px" : "- 102px"});top:${center - 23}px` });
+      hedgehog.innerHTML = HEDGEHOG;
+      items.push(hedgehog,
+        h("div", { class: "road-start", style: `top:${center + 48}px` },
+          h("button", { class: "primary", onclick: startSession }, startLabel)));
+    }
+    y += status === "current" ? ROAD_CURRENT : ROAD_ROW;
+  });
+
+  // Streckad stig: gången del fram till din lektion, resten dämpad
+  const stop = current ? points.findIndex(p => p.lesson === current) : points.length - 1;
+  const line = svgEl("svg", { class: "road-line", viewBox: `0 0 100 ${y}`, preserveAspectRatio: "none", height: y, "aria-hidden": "true" });
+  line.append(
+    svgEl("path", { class: "road-ahead", d: roadPath(points.slice(stop)) }),
+    svgEl("path", { class: "road-walked", d: roadPath(points.slice(0, stop + 1)) }));
+  return h("div", { class: "road", style: `height:${y}px` }, line, items);
+}
+
+function scrollToLesson(lesson) {
+  const node = main.querySelector(`[data-lesson="${lesson}"]`);
+  if (node) node.scrollIntoView({ block: "center" });
+}
+
+// focus = lektionen stigen ska visa, annars din egen
+function showHome(focus) {
   setNav("home");
   const s = buildSession();
   const doneToday = progress.sessions.some(x => x.date === dateStr(new Date()));
+  const startLabel = doneToday ? "Kör ett pass till" : "Starta pass";
   const parts = [];
   if (s.review.length) parts.push(`${s.review.length} ${s.review.length === 1 ? "repetition" : "repetitioner"}`);
   if (s.newWords.length) parts.push(`${s.newWords.length} nya ord`);
   parts.push(`${s.sentences.length} meningar`);
   main.replaceChildren(
-    h("div", { class: "card" },
-      h("p", { class: "step-label" }, s.lesson ? `Nivå ${lessonLevel(s.lesson)} · Lektion ${s.lesson}: ${s.theme}` : "Alla lektioner klara!"),
-      h("div", { class: "big" }, doneToday ? "Dagens pass är klart ✅" : "Dagens pass"),
-      h("p", { class: "muted" }, parts.join(" · ") + (s.review.length > 8 ? " · ca 10–15 min" : " · ca 5–10 min")),
-      s.lesson ? null : h("p", { class: "note" }, "Be Claude lägga till fler lektioner. Tills dess repeterar du.")),
-    h("div", { class: "buttons" },
-      h("button", { class: "primary", onclick: startSession }, doneToday ? "Kör ett pass till" : "Starta")),
-    h("p", { class: "center muted" }, streakText()),
-    h("div", { class: "buttons" },
+    h("div", { class: "today" },
+      h("div", {},
+        h("div", { class: "today-title" }, doneToday ? "Dagens pass är klart ✅" : "Dagens pass"),
+        h("div", { class: "muted today-meta" }, parts.join(" · ") + (s.review.length > 8 ? " · ca 10–15 min" : " · ca 5–10 min"))),
+      h("div", { class: "muted today-streak" }, streakText())),
+    h("div", { class: "road-links" },
+      s.lesson ? h("button", { class: "link-btn", onclick: () => scrollToLesson(s.lesson) }, "Till min lektion") : null,
       h("button", { class: "link-btn", onclick: startTest }, progress.placement ? "Gör om nivåtestet" : "Gör nivåtestet"),
-      h("button", { class: "link-btn", onclick: showLevelPicker }, "Välj nivå")));
+      h("button", { class: "link-btn", onclick: showLevelPicker }, "Välj nivå")),
+    s.lesson ? null : h("div", { class: "card" },
+      h("div", { class: "big" }, "Alla lektioner klara!"),
+      h("p", { class: "note" }, "Be Claude lägga till fler lektioner. Tills dess repeterar du."),
+      h("div", { class: "buttons" }, h("button", { class: "primary", onclick: startSession }, startLabel))),
+    roadmap(startLabel));
+  scrollToLesson(typeof focus === "number" ? focus : s.lesson);
+}
+
+// En lektion: se innehållet och repetera, utan att din plats ändras
+function showLesson(lesson) {
+  setNav(null);
+  const status = lessonStatus(lesson);
+  const words = WORDS.filter(w => w.lesson === lesson);
+  const sentences = SENTENCES.filter(s => s.lesson === lesson);
+  main.replaceChildren(
+    h("button", { class: "link-btn", onclick: () => showHome(lesson) }, "← Till stigen"),
+    h("div", { class: "card" },
+      h("p", { class: "step-label" }, `Nivå ${lessonLevel(lesson)} · ${STATUS_TEXT[status]}`),
+      h("div", { class: "big" }, `Lektion ${lesson}`),
+      h("p", { class: "muted" }, lessonTheme(lesson))),
+    h("div", { class: "buttons" },
+      grammarButton(lesson),
+      status === "current" ? h("button", { class: "primary", onclick: startSession }, "Starta pass") : null,
+      status === "done" || status === "skipped"
+        ? h("button", { class: "good", onclick: () => startPractice(lesson) }, "Repetera lektionen") : null),
+    status === "next" ? h("p", { class: "muted center" }, "Du kommer hit senare. Du kan titta redan nu.") : null,
+    status === "done" || status === "skipped" ? h("p", { class: "muted center" }, "Din plats på stigen ändras inte.") : null,
+    h("p", { class: "step-label" }, "Ord"),
+    h("div", { class: "lesson-list" }, words.map(w => h("div", { class: "lesson-item" },
+      h("div", { class: "lesson-sr" }, w.sr, h("span", { class: "muted lesson-cyr" }, " " + toCyrillic(w.sr))),
+      h("div", {}, w.sv),
+      w.note ? h("div", { class: "note lesson-note" }, w.note) : null))),
+    h("p", { class: "step-label" }, "Meningar"),
+    h("div", { class: "lesson-list" }, sentences.map(s => h("div", { class: "lesson-item" },
+      h("div", { class: "lesson-sr" }, s.sr),
+      h("div", {}, s.sv),
+      s.note ? h("div", { class: "note lesson-note" }, s.note) : null))));
+}
+
+// ---------- Grammatikfönster ----------
+function grammarFor(lesson) {
+  return GRAMMAR.filter(g => g.lessons.includes(lesson));
+}
+
+// Knapp för de som vill veta mer. Visas bara där det finns en förklaring.
+function grammarButton(lesson) {
+  if (!grammarFor(lesson).length) return null;
+  return h("button", { class: "grammar-btn", onclick: () => showGrammar(lesson) }, "Förklara grammatiken");
+}
+
+function showGrammar(lesson) {
+  const dialog = h("dialog", { class: "grammar", "aria-label": "Grammatik" },
+    h("div", { class: "grammar-body" },
+      grammarFor(lesson).map(g => h("section", {},
+        h("h2", {}, g.title),
+        g.text.map(t => h("p", {}, t)),
+        h("div", { class: "grammar-examples" }, g.examples.map(([sr, sv]) =>
+          h("div", { class: "word-row" }, h("span", {}, sr), h("span", { class: "muted" }, sv)))))),
+      h("div", { class: "buttons" }, h("button", { class: "primary", onclick: () => dialog.close() }, "Stäng"))));
+  dialog.addEventListener("close", () => dialog.remove());
+  dialog.addEventListener("click", e => { if (e.target === dialog) dialog.close(); });  // Tryck utanför stänger
+  document.body.append(dialog);
+  dialog.showModal();
 }
 
 // ---------- 9. Nivåtest ----------
@@ -720,19 +894,22 @@ function importProgress(file) {
 
 // ---------- 11. Navigering och start ----------
 function setNav(active) {
+  window.scrollTo(0, 0);  // Stigen är lång, så varje ny vy börjar överst
   document.getElementById("navHome").classList.toggle("active", active === "home");
   document.getElementById("navDash").classList.toggle("active", active === "dash");
 }
-document.getElementById("navHome").addEventListener("click", showHome);
+document.getElementById("navHome").addEventListener("click", () => showHome());
 document.getElementById("navDash").addEventListener("click", showDashboard);
 
 // Läs in ord och meningar, visa sedan startsidan
 Promise.all([
   fetch("data/words.json", { cache: "no-cache" }).then(r => r.json()),
-  fetch("data/sentences.json", { cache: "no-cache" }).then(r => r.json())
-]).then(([words, sentences]) => {
+  fetch("data/sentences.json", { cache: "no-cache" }).then(r => r.json()),
+  fetch("data/grammar.json", { cache: "no-cache" }).then(r => r.json()).catch(() => [])  // Appen fungerar utan
+]).then(([words, sentences, grammar]) => {
   WORDS = words;
   SENTENCES = sentences;
+  GRAMMAR = grammar;
   showHome();
 }).catch(() => {
   main.replaceChildren(h("div", { class: "card" },

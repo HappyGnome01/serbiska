@@ -1,26 +1,37 @@
 /* ===== Färger (ändra här för att byta tema) ===== */
 :root {
-  --bg: #f4f1ea;
-  --card: #ffffff;
-  --text: #222222;
-  --muted: #6b6b6b;
-  --primary: #2d3a4a;
-  --again: #c0392b;
-  --hard: #e67e22;
-  --good: #27ae60;
-  --easy: #2980b9;
-  --border: #e2ddd2;
+  --bg: #f7f1e8;
+  --card: #fffaf2;
+  --text: #4d4540;
+  --muted: #7a6f66;
+  --primary: #a8655a;
+  --on-primary: #fffaf2;
+  --border: #e8dfd1;
+  /* Pastellfärger: fyllning och text som hör ihop */
+  --again: #e9b7ae;  --on-again: #6b3a33;
+  --hard: #f0d6a8;   --on-hard: #6a4a1c;
+  --good: #b9cdb4;   --on-good: #3e5239;
+  --easy: #b8cce0;   --on-easy: #2f4a62;
+  --lav: #dfd2e3;    --on-lav: #5b4a62;
+  --good-line: #9db698;
   --chart-new: #2a78d6;
   --chart-review: #eb6834;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1b1d21;
-    --card: #262a30;
-    --text: #ececec;
-    --muted: #a0a0a0;
-    --primary: #8fb3d9;
-    --border: #3a3f47;
+    --bg: #2a2623;
+    --card: #35302c;
+    --text: #efe6dc;
+    --muted: #b5a99d;
+    --primary: #d9a196;
+    --on-primary: #2a2623;
+    --border: #4a433d;
+    --again: #6b3f3a;  --on-again: #f3cfc8;
+    --hard: #66502e;   --on-hard: #f3deb8;
+    --good: #46583f;   --on-good: #d3e3ce;
+    --easy: #3f5266;   --on-easy: #d2e0ee;
+    --lav: #4d4153;    --on-lav: #e6d9ea;
+    --good-line: #6d8566;
     --chart-new: #3987e5;
     --chart-review: #d95926;
   }
@@ -29,7 +40,7 @@
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
 }
@@ -43,18 +54,18 @@ header {
 }
 h1 { font-size: 1.3rem; margin: 0; }
 nav { display: flex; gap: 6px; }
-.nav-btn { background: transparent; color: var(--muted); padding: 8px 12px; border: 1px solid var(--border); }
-.nav-btn.active { background: var(--primary); color: var(--bg); border-color: var(--primary); }
+.nav-btn { background: transparent; color: var(--muted); padding: 8px 14px; border: 1px solid var(--border); border-radius: 999px; }
+.nav-btn.active { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
 
 main { max-width: 520px; margin: 0 auto; padding: 0 16px 40px; }
 
 /* Kort */
 .card {
   background: var(--card);
-  border-radius: 16px;
+  border-radius: 22px;
   padding: 24px;
   margin: 12px 0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  box-shadow: 0 3px 12px rgba(120,90,70,0.08);
   text-align: center;
 }
 .sr { font-size: 2rem; font-weight: 700; }
@@ -69,7 +80,7 @@ main { max-width: 520px; margin: 0 auto; padding: 0 16px 40px; }
 .hidden { display: none !important; }
 
 /* Förloppsindikator */
-.progress { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-top: 8px; }
+.progress { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin-top: 8px; }
 .bar { height: 100%; background: var(--good); transition: width 0.3s; }
 
 /* Knappar */
@@ -79,29 +90,30 @@ button {
   font-size: 1rem;
   padding: 12px 16px;
   border: none;
-  border-radius: 10px;
+  border-radius: 16px;
   cursor: pointer;
   background: var(--border);
   color: var(--text);
 }
 button:disabled { opacity: 0.5; cursor: default; }
-button.primary { background: var(--primary); color: var(--bg); min-width: 160px; }
-button.again { background: var(--again); color: #fff; }
-button.hard  { background: var(--hard);  color: #fff; }
-button.good  { background: var(--good);  color: #fff; }
-button.easy  { background: var(--easy);  color: #fff; }
+button.primary { background: var(--primary); color: var(--on-primary); min-width: 160px; }
+button.again { background: var(--again); color: var(--on-again); }
+button.hard  { background: var(--hard);  color: var(--on-hard); }
+button.good  { background: var(--good);  color: var(--on-good); }
+button.easy  { background: var(--easy);  color: var(--on-easy); }
 button.link-btn { background: transparent; color: var(--muted); font-size: 0.9rem; text-decoration: underline; padding: 6px 10px; }
 
 /* Flervalsfrågor */
 .options { display: grid; gap: 8px; }
 .option { background: var(--card); border: 2px solid var(--border); text-align: left; }
-.option.correct { border-color: var(--good); background: rgba(39,174,96,0.15); opacity: 1; }
-.option.wrong { border-color: var(--again); background: rgba(192,57,43,0.15); opacity: 1; }
+.option:disabled { color: var(--text); }
+.option.correct { border-color: var(--good-line); background: var(--good); color: var(--on-good); opacity: 1; }
+.option.wrong { border-color: var(--again); background: var(--again); color: var(--on-again); opacity: 1; }
 .level-title { font-weight: 600; }
 .level-themes { font-size: 0.85rem; margin-top: 2px; }
 .feedback { text-align: center; font-weight: 600; }
-.feedback.ok { color: var(--good); }
-.feedback.bad { color: var(--again); }
+.feedback.ok { background: var(--good); color: var(--on-good); border-radius: 14px; padding: 8px 12px; }
+.feedback.bad { background: var(--again); color: var(--on-again); border-radius: 14px; padding: 8px 12px; }
 
 /* Ordbrickor för "bygg meningen" */
 .tiles { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; min-height: 52px; padding: 8px 0; }
@@ -111,17 +123,17 @@ button.link-btn { background: transparent; color: var(--muted); font-size: 0.9re
 .slot { display: inline-block; width: 72px; height: 44px; border-bottom: 2px solid var(--muted); }
 
 /* Varning när framsteg inte kan sparas */
-.warning { background: var(--again); color: #fff; padding: 10px 16px; text-align: center; font-size: 0.95rem; }
+.warning { background: var(--again); color: var(--on-again); padding: 10px 16px; text-align: center; font-size: 0.95rem; }
 
 /* Dashboard */
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.stat { background: var(--card); border-radius: 12px; padding: 14px 6px; text-align: center; border-top: 5px solid var(--border); }
+.stat { background: var(--card); border-radius: 16px; padding: 14px 6px; text-align: center; border-top: 5px solid var(--border); }
 .stat .num { font-size: 1.8rem; font-weight: 700; }
 .stat.easy { border-top-color: var(--easy); }
 .stat.good { border-top-color: var(--good); }
 .stat.hard { border-top-color: var(--hard); }
 .summary { text-align: left; line-height: 1.8; }
-details { background: var(--card); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+details { background: var(--card); border-radius: 18px; padding: 12px 16px; margin: 8px 0; }
 summary { cursor: pointer; font-weight: 600; }
 .word-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); gap: 12px; }
 .word-row:last-child { border-bottom: none; }
@@ -136,8 +148,8 @@ summary { cursor: pointer; font-weight: 600; }
 .metric-label { color: var(--muted); font-size: 0.8rem; }
 .metric-value { font-size: 1.7rem; font-weight: 700; line-height: 1.3; font-variant-numeric: tabular-nums; }
 .delta { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 1px 6px; border-radius: 5px; }
-.delta.up { color: var(--good); background: rgba(39,174,96,0.15); }
-.delta.down { color: var(--again); background: rgba(192,57,43,0.15); }
+.delta.up { color: var(--on-good); background: var(--good); }
+.delta.down { color: var(--on-again); background: var(--again); }
 .chart { margin-top: 20px; }
 .chart-area { display: flex; gap: 8px; height: 170px; }
 .chart-axis { display: flex; flex-direction: column; justify-content: space-between; color: var(--muted); font-size: 0.75rem; text-align: right; min-width: 20px; margin: -7px 0; }
@@ -162,6 +174,48 @@ summary { cursor: pointer; font-weight: 600; }
 @media (max-width: 420px) {
   .metrics { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* Stigen på Idag */
+.today { position: sticky; top: 6px; z-index: 5; display: flex; gap: 12px; align-items: center; justify-content: space-between; background: var(--card); border-radius: 18px; padding: 10px 14px; margin: 8px 0; box-shadow: 0 3px 12px rgba(120,90,70,0.1); }
+.today-title { font-weight: 700; }
+.today-meta { font-size: 0.8rem; margin-top: 2px; }
+.today-streak { font-size: 0.85rem; white-space: nowrap; }
+.road-links { display: flex; flex-wrap: wrap; justify-content: center; }
+.road { position: relative; margin: 12px 0 24px; }
+.road-line { position: absolute; inset: 0; width: 100%; pointer-events: none; }
+.road-line path { fill: none; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 2 13; vector-effect: non-scaling-stroke; }
+.road-walked { stroke: var(--good-line); }
+.road-ahead { stroke: var(--muted); opacity: 0.45; }
+.road-level { position: absolute; left: 0; right: 0; z-index: 2; background: var(--lav); color: var(--on-lav); border-radius: 14px; padding: 8px 12px; text-align: center; font-weight: 600; font-size: 0.9rem; }
+.node { position: absolute; z-index: 2; width: 58px; height: 58px; padding: 0; border-radius: 50%; border: 3px solid; font-weight: 700; transform: translate(-50%, -50%); }
+.node.done { background: var(--good); border-color: var(--good-line); color: var(--on-good); }
+.node.skipped { background: var(--bg); border-color: var(--good-line); border-style: dashed; color: var(--on-good); }
+.node.next { background: var(--bg); border-color: var(--border); color: var(--muted); }
+.node.current { width: 74px; height: 74px; font-size: 1.3rem; background: var(--again); border-color: var(--primary); color: var(--on-again); }
+.node-check { position: absolute; right: -4px; top: -4px; width: 22px; height: 22px; line-height: 18px; border-radius: 50%; background: var(--card); border: 2px solid var(--good-line); color: var(--on-good); font-size: 0.75rem; }
+.road-start { position: absolute; z-index: 3; left: 0; right: 0; display: flex; justify-content: center; }
+.hedgehog { position: absolute; z-index: 3; width: 58px; height: 46px; pointer-events: none; animation: hedgehog-bob 2.4s ease-in-out infinite; }
+.hedgehog.flip svg { transform: scaleX(-1); }
+.hedgehog svg { width: 100%; height: 100%; display: block; }
+@keyframes hedgehog-bob { 50% { translate: 0 -4px; } }
+@media (prefers-reduced-motion: reduce) { .hedgehog { animation: none; } }
+
+/* Lektionssidan */
+.lesson-list { display: grid; gap: 8px; margin-bottom: 16px; }
+.lesson-item { background: var(--card); border-radius: 16px; padding: 10px 14px; }
+.lesson-sr { font-weight: 700; }
+.lesson-cyr { font-weight: 400; font-size: 0.85rem; }
+.lesson-note { margin-top: 4px; font-size: 0.85rem; }
+
+/* Grammatikfönstret */
+button.grammar-btn { background: var(--lav); color: var(--on-lav); }
+dialog.grammar { border: none; padding: 0; border-radius: 24px; background: var(--card); color: var(--text); width: min(480px, calc(100vw - 32px)); max-height: 80vh; }
+dialog.grammar::backdrop { background: rgba(77,69,64,0.45); }
+.grammar-body { padding: 20px; }
+.grammar-body h2 { font-size: 1.15rem; margin: 0 0 8px; }
+.grammar-body section { margin-bottom: 20px; }
+.grammar-body p { margin: 0 0 10px; line-height: 1.5; }
+.grammar-examples { background: var(--bg); border-radius: 14px; padding: 4px 12px; }
 
 .credits { font-size: 0.8rem; margin-top: 24px; }
 .credits a { color: inherit; }

@@ -108,3 +108,10 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 - `progress.currentLesson` är nytt och håller reda på lektionen. Äldre framsteg utan fältet fungerar som förut.
 - Nytt nivåtest ger valet att byta eller stanna, även till en lägre nivå. "Välj nivå" på startsidan byter nivå manuellt.
 - Ord med riktiga framsteg ändras aldrig av ett nivåbyte. Testat automatiskt åt båda håll i webbläsaren.
+
+## [2026-11-01] feature | Stig, tema, lektionssidor och grammatik
+- Nytt tema med dämpade pastellfärger och runda former, i ljust och mörkt läge.
+- Idag är nu en stig med 60 lektioner, streckad linje, nivårubriker och en igelkott vid din lektion.
+- Lektionssidor visar ord och meningar. Repetition flyttar dig inte. Kommande lektioner går bara att titta på.
+- `data/grammar.json` har 18 förklaringar för 38 lektioner, alla med `check: true`. Granskningslista: `raw/granska-grammatik.md`.
+- Testat automatiskt i webbläsaren: lägen, repetition, riktigt pass, grammatikfönster, telefonbredd och mörkt läge.

@@ -16,6 +16,21 @@ Inspirerat av Duolingo och modern språkdidaktik:
 - **Behovsstyrt innehåll:** teman från verkliga situationer: hälsningar, familj, mat, fester.
 - **Korta dagliga pass och direkt feedback.** Svit (🔥) som motivation.
 
+## Idag: stigen
+- Idag-sidan är en slingrande stig med en rund knapp per lektion, indelad i nivåer. Sidan öppnas vid din lektion: tidigare lektioner ligger uppåt, kommande nedåt.
+- En streckad linje binder ihop knapparna. Vägen fram till din lektion är grön, resten dämpad. En igelkott står vid din lektion.
+- **Lägen:** gjord (grön med bock, du har gjort ett pass), överhoppad (streckad ring), din lektion (större och rosa), kommande (dämpad).
+- Överst står alltid dagens pass och sviten, och under finns Till min lektion, nivåtestet och Välj nivå.
+
+## Lektionssidor
+- Tryck på en lektion för att se orden och meningarna.
+- **Gjord eller överhoppad:** Repetera lektionen ger flervalsfrågor, läsning och Bygg meningen. Din plats ändras inte. Ett repetitionspass räknas i grafen och sviten, och en överhoppad lektion blir gjord.
+- **Kommande:** bara titta. Orden räknas inte som sedda.
+
+## Grammatik
+- Knappen **Förklara grammatiken** visas på lektionssidan och i stegen Nytt ord och Läs och förstå, när lektionen har en förklaring.
+- Den öppnar ett fönster med kort förklaring och exempel. Innehållet finns i `data/grammar.json`.
+
 ## Dagens pass (~5–10 min)
 1. **Repetition – 3 till 15 ord** från tidigare pass. Antalet växer med hur många ord som behöver befästas: överhoppade ord du inte övat på, och ord du senast gav "Kunde inte" eller "Svårt" (ett extra ord per 4 sådana, högst 15). Försenade ord kommer först, sedan ord att befästa, sist övriga. Visa ordet → "Visa svar" → betygsätt. Vid fler än 8 repetitioner visar startsidan ca 10–15 min.
 2. **Nya ord – 5 ord** från lektionen du är på. Efter passet går appen till nästa lektion.

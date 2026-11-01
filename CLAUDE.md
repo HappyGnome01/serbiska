@@ -32,6 +32,7 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 | `app.js` | All logik: pass, repetitionsalgoritm, dashboard |
 | `data/words.json` | Ordförråd (JSON-databasen) |
 | `data/sentences.json` | Exempelmeningar |
+| `data/grammar.json` | Grammatikförklaringar kopplade till lektioner |
 | `specs.md` | Vad appen ska göra |
 | `process.md` | Hur vi arbetar, steg för steg |
 | `log.md` | Logg över allt som gjorts (bara tillägg, inget raderas) |
@@ -42,6 +43,7 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 ## Språkinnehållet (data/)
 **words.json**: `{ id, lesson, theme, sr, sv, note?, check? }`
 **sentences.json**: `{ id, lesson, sr, sv, note?, alt?, check?, source? }`
+**grammar.json**: `{ id, title, lessons, text, examples, check? }`, där `lessons` är lektionsnummer, `text` en lista med stycken och `examples` par av serbiska och svenska.
 - id-format: `l<lektion>-<ord-utan-diakritiska-tecken>` och `l<lektion>-s<nummer>`.
 - Skriv **bara latin** i `sr`. Appen gör kyrilliska.
 - En lektion = **5 ord + 5 meningar**. Meningarna använder lektionens ord och i övrigt helst bara tidigare ord.
