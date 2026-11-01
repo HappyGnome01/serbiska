@@ -4,7 +4,9 @@
 // =====================================================================
 
 // ---------- 1. Inställningar ----------
-const REVIEW_PER_SESSION = 3;     // Gamla ord att repetera per pass
+const MIN_REVIEWS = 3;            // Minsta antal repetitioner per pass
+const MAX_REVIEWS = 15;           // Högsta antal repetitioner per pass
+const WORDS_PER_REVIEW = 4;       // En extra repetition per så här många ord att befästa
 const NEW_PER_SESSION = 5;        // Nya ord per pass
 const SENTENCES_PER_SESSION = 5;  // Meningar per pass
 const STORAGE_KEY = "serbiska-progress-v1";
@@ -24,6 +26,7 @@ const main = document.getElementById("main");
 // progress.words[id] = { reps, interval, ease, due, lastGrade, placed? }
 // progress.sessions  = [{ date, lesson, reviewed, newWords }]
 // progress.placement = { date, level, lesson, correct, total } (finns efter nivåtestet)
+// progress.currentLesson = nästa lektion (saknas tills du gjort ett pass eller bytt nivå)
 function loadProgress() {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
@@ -134,19 +137,44 @@ function gradeButtons(onGrade, includeFail) {
 }
 
 // ---------- 6. Bygg dagens pass ----------
-function buildSession() {
-  // 3 ord från tidigare pass: de som är mest "försenade" först
-  const review = WORDS.filter(w => progress.words[w.id])
-    .sort((a, b) => progress.words[a.id].due - progress.words[b.id].due)
-    .slice(0, REVIEW_PER_SESSION);
+// Ord att befästa: överhoppade ord du inte övat på, eller ord du senast tyckte var svåra
+function needsWork(p) {
+  return p.placed || p.lastGrade === 1 || p.lastGrade === 3;
+}
 
-  // Nya ord: nästa lektion som har ord du inte sett
+// Fler ord att befästa ger fler repetitioner per pass
+function reviewCount() {
+  const backlog = Object.values(progress.words).filter(needsWork).length;
+  return Math.min(MAX_REVIEWS, Math.max(MIN_REVIEWS, Math.ceil(backlog / WORDS_PER_REVIEW)));
+}
+
+// Ordning: först försenade ord, sedan ord att befästa, sist övriga
+function reviewRank(p) {
+  if (p.due <= Date.now()) return 0;
+  return needsWork(p) ? 1 : 2;
+}
+
+// Lektionen du är på. Utan sparad lektion: den första med ord du inte sett.
+function currentLesson() {
+  if (progress.currentLesson <= Math.max(...WORDS.map(w => w.lesson))) return progress.currentLesson;
   const unseen = WORDS.filter(w => !progress.words[w.id]);
-  if (unseen.length === 0) {
+  return unseen.length ? Math.min(...unseen.map(w => w.lesson)) : null;
+}
+
+function buildSession() {
+  const lesson = currentLesson();
+  const newWords = WORDS.filter(w => w.lesson === lesson).slice(0, NEW_PER_SESSION);
+
+  const review = WORDS.filter(w => progress.words[w.id] && !newWords.includes(w))
+    .sort((a, b) => {
+      const [p, q] = [progress.words[a.id], progress.words[b.id]];
+      return reviewRank(p) - reviewRank(q) || p.due - q.due;
+    })
+    .slice(0, reviewCount());
+
+  if (!lesson) {
     return { review, newWords: [], sentences: shuffle(SENTENCES).slice(0, SENTENCES_PER_SESSION), lesson: null };
   }
-  const lesson = Math.min(...unseen.map(w => w.lesson));
-  const newWords = unseen.filter(w => w.lesson === lesson).slice(0, NEW_PER_SESSION);
   const sentences = SENTENCES.filter(s => s.lesson === lesson).slice(0, SENTENCES_PER_SESSION);
   return { review, newWords, sentences, lesson, theme: newWords[0].theme };
 }
@@ -308,6 +336,7 @@ function showBuild(task) {
 function showDone() {
   progress.sessions.push({ date: dateStr(new Date()), lesson: session.lesson,
     reviewed: session.review.length, newWords: session.newWords.length });
+  if (session.lesson) progress.currentLesson = session.lesson + 1;
   saveProgress();
   main.replaceChildren(
     h("div", { class: "card" },
@@ -345,15 +374,16 @@ function showHome() {
   parts.push(`${s.sentences.length} meningar`);
   main.replaceChildren(
     h("div", { class: "card" },
-      h("p", { class: "step-label" }, s.lesson ? `Lektion ${s.lesson}: ${s.theme}` : "Alla lektioner klara!"),
+      h("p", { class: "step-label" }, s.lesson ? `Nivå ${lessonLevel(s.lesson)} · Lektion ${s.lesson}: ${s.theme}` : "Alla lektioner klara!"),
       h("div", { class: "big" }, doneToday ? "Dagens pass är klart ✅" : "Dagens pass"),
-      h("p", { class: "muted" }, parts.join(" · ") + " · ca 5–10 min"),
+      h("p", { class: "muted" }, parts.join(" · ") + (s.review.length > 8 ? " · ca 10–15 min" : " · ca 5–10 min")),
       s.lesson ? null : h("p", { class: "note" }, "Be Claude lägga till fler lektioner. Tills dess repeterar du.")),
     h("div", { class: "buttons" },
       h("button", { class: "primary", onclick: startSession }, doneToday ? "Kör ett pass till" : "Starta")),
     h("p", { class: "center muted" }, streakText()),
-    h("div", { class: "buttons" }, h("button", { class: "link-btn", onclick: startTest },
-      progress.placement ? "Gör om nivåtestet" : "Är det för lätt? Gör nivåtestet")));
+    h("div", { class: "buttons" },
+      h("button", { class: "link-btn", onclick: startTest }, progress.placement ? "Gör om nivåtestet" : "Gör nivåtestet"),
+      h("button", { class: "link-btn", onclick: showLevelPicker }, "Välj nivå")));
 }
 
 // ---------- 9. Nivåtest ----------
@@ -367,10 +397,12 @@ const START_LEVEL = 2;
 
 let test = null;
 
-function levelOf(item) { return Math.ceil(item.lesson / LESSONS_PER_LEVEL); }
+function lessonLevel(lesson) { return Math.ceil(lesson / LESSONS_PER_LEVEL); }
+function levelOf(item) { return lessonLevel(item.lesson); }
+function lastLessonNumber() { return Math.max(...WORDS.map(w => w.lesson)); }
 
 function startTest() {
-  const levels = Math.ceil(Math.max(...WORDS.map(w => w.lesson)) / LESSONS_PER_LEVEL);
+  const levels = lessonLevel(lastLessonNumber());
   test = { levels, level: Math.min(START_LEVEL, levels), scores: {}, asked: [], questions: [], index: 0 };
   setNav(null);
   main.replaceChildren(
@@ -428,51 +460,83 @@ function showTestResult() {
   const lastLesson = level * LESSONS_PER_LEVEL;
   const total = test.asked.length;
   const correct = test.asked.filter(a => a.correct).length;
-  const nextLesson = buildSession().lesson;  // null = alla lektioner är redan klara
-  const canSkip = nextLesson !== null && lastLesson >= nextLesson;
-  progress.placement = { date: dateStr(new Date()), level, lesson: lastLesson + 1, correct, total };
+  const allLevels = level === test.levels;
+  const suggested = lastLesson + 1;
+  const current = currentLesson() || lastLessonNumber() + 1;  // Efter sista lektionen = allt klart
+  const change = lessonLevel(current) !== lessonLevel(suggested);
+  const missed = new Set(test.asked.filter(a => a.word && !a.correct).map(a => a.word.id));
+  progress.placement = { date: dateStr(new Date()), level, lesson: suggested, correct, total };
   saveProgress();
 
-  const allLevels = level === test.levels;
   setNav(null);
   main.replaceChildren(
     h("div", { class: "card" },
       h("p", { class: "step-label" }, `${correct} rätt av ${total}`),
       h("div", { class: "big" }, level ? `Du klarar lektion 1–${lastLesson}` : "Börja från början"),
-      h("p", {}, canSkip
-        ? (allLevels ? "Du kan hoppa över alla lektioner och bara repetera." : `Du kan börja på lektion ${lastLesson + 1}.`)
-        : (level ? "Du är redan där, så du fortsätter som vanligt." : "Lektion 1 är rätt ställe att börja på.")),
+      h("p", {}, change
+        ? (allLevels ? "Du kan hoppa över alla lektioner och bara repetera." : `Testet föreslår lektion ${suggested}.`)
+        : "Du är redan på rätt nivå."),
+      change && current <= lastLessonNumber() ? h("p", { class: "muted" }, `Du är nu på lektion ${current}.`) : null,
       h("p", { class: "muted" }, "Testet är en uppskattning. Det mäter orden i appen, inte en officiell nivå."),
-      canSkip ? h("p", { class: "note" }, "Orden du hoppar över kommer tillbaka i repetitionen.") : null),
+      change ? h("p", { class: "note" }, levelChangeNote) : null),
     h("div", { class: "buttons" },
-      canSkip ? h("button", { class: "primary", onclick: () => applyPlacement(lastLesson + 1) },
-        allLevels ? "Hoppa över allt" : `Börja på lektion ${lastLesson + 1}`) : null,
-      h("button", { class: canSkip ? "" : "primary", onclick: showHome }, canSkip ? "Fortsätt där jag är" : "Till startsidan")));
+      change ? h("button", { class: "primary", onclick: () => moveToLesson(suggested, missed) },
+        allLevels ? "Hoppa över allt" : `Byt till lektion ${suggested}`) : null,
+      h("button", { class: change ? "" : "primary", onclick: showHome },
+        change ? (current <= lastLessonNumber() ? `Stanna på lektion ${current}` : "Stanna där jag är") : "Till startsidan")));
 }
 
-// Markerar alla ord före startlektionen som sedda. Ord med riktiga framsteg lämnas orörda.
-function applyPlacement(lesson) {
-  const missed = new Set(test.asked.filter(a => a.word && !a.correct).map(a => a.word.id));
-  WORDS.filter(w => w.lesson < lesson && !progress.words[w.id]).forEach(w => {
-    const known = !missed.has(w.id);
-    progress.words[w.id] = {
-      reps: known ? 2 : 0,
-      interval: known ? 6 : 0,
-      ease: 2.5,
-      due: Date.now() + (known ? (1 + Math.random() * 13) * DAY : 0),  // Fel svar repeteras först
-      lastGrade: null,
-      placed: true
-    };
+const levelChangeNote = "Ord du redan har övat på sparas. Överhoppade ord kommer tillbaka i repetitionen.";
+
+// Flyttar dig till en lektion, framåt eller bakåt. Ord med riktiga framsteg lämnas alltid orörda.
+function moveToLesson(lesson, missed = new Set()) {
+  WORDS.forEach(w => {
+    const p = progress.words[w.id];
+    if (w.lesson >= lesson && p && p.placed) delete progress.words[w.id];  // Bakåt: blir nya ord igen
+    if (w.lesson < lesson && !p) {
+      const known = !missed.has(w.id);
+      progress.words[w.id] = {
+        reps: known ? 2 : 0,
+        interval: known ? 6 : 0,
+        ease: 2.5,
+        due: Date.now() + (known ? (1 + Math.random() * 13) * DAY : 0),  // Fel svar repeteras först
+        lastGrade: null,
+        placed: true
+      };
+    }
   });
+  progress.currentLesson = lesson;
   saveProgress();
   showHome();
 }
 
-// Tar bort ord som testet hoppade över och som du inte har övat på än
+// Välj själv vilken nivå du vill jobba på
+function showLevelPicker() {
+  const levels = lessonLevel(lastLessonNumber());
+  const lesson = currentLesson();
+  const currentLevel = lesson ? lessonLevel(lesson) : null;
+  const rows = Array.from({ length: levels }, (_, i) => i + 1).map(level => {
+    const first = (level - 1) * LESSONS_PER_LEVEL + 1;
+    const themes = [...new Set(WORDS.filter(w => lessonLevel(w.lesson) === level).map(w => w.theme))];
+    const here = level === currentLevel;
+    return h("button", { class: "option level-option", ...(here ? { disabled: "" } : {}), onclick: () => moveToLesson(first) },
+      h("div", { class: "level-title" }, `Nivå ${level} · lektion ${first}–${first + LESSONS_PER_LEVEL - 1}` + (here ? " · du är här" : "")),
+      h("div", { class: "muted level-themes" }, themes.slice(0, 4).join(", ")));
+  });
+  setNav(null);
+  main.replaceChildren(
+    h("p", { class: "step-label center" }, "Välj nivå"),
+    h("p", { class: "muted center" }, levelChangeNote),
+    h("div", { class: "options" }, rows),
+    h("div", { class: "buttons" }, h("button", { onclick: showHome }, "Tillbaka")));
+}
+
+// Tar bort ord du hoppat över och inte har övat på
 function undoPlacement() {
-  if (!confirm("Ångra nivåtestet? Ord du inte har övat på blir nya igen. Dina övriga framsteg påverkas inte.")) return;
+  if (!confirm("Ångra hoppet? Ord du inte har övat på blir nya igen. Dina övriga framsteg påverkas inte.")) return;
   Object.keys(progress.words).filter(id => progress.words[id].placed).forEach(id => delete progress.words[id]);
   delete progress.placement;
+  delete progress.currentLesson;
   saveProgress();
   showDashboard();
 }
@@ -619,7 +683,7 @@ function showDashboard() {
       h("div", {}, `🗓️ Pass totalt: ${progress.sessions.length}`),
       h("div", {}, "Svit: " + streakText())),
     Object.values(progress.words).some(p => p.placed) ? h("div", { class: "buttons" },
-      h("button", { class: "link-btn", onclick: undoPlacement }, "Ångra nivåtestet")) : null,
+      h("button", { class: "link-btn", onclick: undoPlacement }, "Ångra hoppet")) : null,
     groups.map(([label, cls, list]) => list.length ? h("details", {},
       h("summary", {}, `${label} (${list.length})`),
       list.map(w => h("div", { class: "word-row" }, h("span", {}, w.sr), h("span", { class: "muted" }, w.sv)))) : null),

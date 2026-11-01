@@ -17,8 +17,8 @@ Inspirerat av Duolingo och modern språkdidaktik:
 - **Korta dagliga pass och direkt feedback.** Svit (🔥) som motivation.
 
 ## Dagens pass (~5–10 min)
-1. **Repetition – 3 ord** från tidigare pass, de mest försenade först. Visa ordet → "Visa svar" → betygsätt.
-2. **Nya ord – 5 ord** från nästa lektion.
+1. **Repetition – 3 till 15 ord** från tidigare pass. Antalet växer med hur många ord som behöver befästas: överhoppade ord du inte övat på, och ord du senast gav "Kunde inte" eller "Svårt" (ett extra ord per 4 sådana, högst 15). Försenade ord kommer först, sedan ord att befästa, sist övriga. Visa ordet → "Visa svar" → betygsätt. Vid fler än 8 repetitioner visar startsidan ca 10–15 min.
+2. **Nya ord – 5 ord** från lektionen du är på. Efter passet går appen till nästa lektion.
    - Presentation: ordet, kyrilliska, översättning, tips.
    - Flervalsfråga: "Vad betyder ordet?" (4 alternativ). Rätt → betygsätt Svårt/Bra/Lätt. Fel → räknas som "Kunde inte" och frågan kommer tillbaka sist.
 3. **Meningar – 5 meningar** med lektionens ord.
@@ -33,10 +33,15 @@ När alla lektioner är klara visas bara repetition och slumpade meningar, tills
 Hittar var du ska börja, och nås via en länk på startsidan. Tar 3–5 minuter.
 - En nivå är 10 lektioner. Varje nivå har 4 frågor: 3 ord och 1 mening, med svarsalternativ från samma nivå och knappen "Vet inte".
 - Testet börjar på nivå 2. Minst 3 rätt ger nästa nivå, annars nivån under, tills gränsen är hittad. Det ger 8–20 frågor.
-- Resultatet visas som lektioner, inte som en officiell nivå som A1 eller A2. Du väljer själv om du vill hoppa dit eller fortsätta där du är.
-- Vid hopp blir ord i tidigare lektioner sedda och kommer tillbaka i repetitionen. Ord du svarat fel på repeteras först. Ord du redan övat på ändras inte, och passhistoriken påverkas inte.
-- "Ångra nivåtestet" under Framsteg tar bort ord som testet hoppade över och som du inte har övat på.
-- Testet kan göras om, men flyttar dig aldrig bakåt.
+- Resultatet visas som lektioner, inte som en officiell nivå som A1 eller A2.
+- Testet kan göras om. Föreslår det en annan nivå, uppåt eller nedåt, väljer du "Byt till lektion X" eller "Stanna på lektion Y". Samma nivå ger inget byte.
+
+## Byta nivå
+- **Välj nivå** på startsidan visar alla nivåer med teman. Ett tryck flyttar dig till nivåns första lektion.
+- **Framåt:** ord i tidigare lektioner blir sedda och kommer tillbaka i repetitionen. Ord du svarat fel på i testet repeteras först.
+- **Bakåt:** överhoppade ord du inte övat på blir nya igen. En lektion du redan gjort visas på nytt.
+- Ord du redan övat på ändras aldrig av ett nivåbyte, och passhistoriken påverkas inte.
+- **Ångra hoppet** under Framsteg tar bort överhoppade ord du inte har övat på och går tillbaka till första lektionen med ord du inte sett.
 
 ## Betygssystem
 | Knapp | Värde | Effekt |

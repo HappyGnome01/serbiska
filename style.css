@@ -97,6 +97,8 @@ button.link-btn { background: transparent; color: var(--muted); font-size: 0.9re
 .option { background: var(--card); border: 2px solid var(--border); text-align: left; }
 .option.correct { border-color: var(--good); background: rgba(39,174,96,0.15); opacity: 1; }
 .option.wrong { border-color: var(--again); background: rgba(192,57,43,0.15); opacity: 1; }
+.level-title { font-weight: 600; }
+.level-themes { font-size: 0.85rem; margin-top: 2px; }
 .feedback { text-align: center; font-weight: 600; }
 .feedback.ok { color: var(--good); }
 .feedback.bad { color: var(--again); }

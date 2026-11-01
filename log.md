@@ -102,3 +102,9 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 - Ord som hoppas över sparas som sedda med `placed: true` och kommer tillbaka i repetitionen. `progress.placement` är nytt, gamla framsteg fungerar som förut.
 - Ångra finns under Framsteg.
 - Automatiskt testat i webbläsaren: alla vägar, befintliga framsteg, ångra, omtest och hopp över allt.
+
+## [2026-11-01] feature | Fler repetitioner och fritt nivåval
+- Repetitioner per pass går från 3 till 15 beroende på överhoppade och svåra ord.
+- `progress.currentLesson` är nytt och håller reda på lektionen. Äldre framsteg utan fältet fungerar som förut.
+- Nytt nivåtest ger valet att byta eller stanna, även till en lägre nivå. "Välj nivå" på startsidan byter nivå manuellt.
+- Ord med riktiga framsteg ändras aldrig av ett nivåbyte. Testat automatiskt åt båda håll i webbläsaren.
