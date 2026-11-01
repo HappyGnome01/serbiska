@@ -163,3 +163,12 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 - Två cirklar visar ord du kan av orden i klara lektioner och av alla ord i appen.
 - Lektioner klara räknar nu lektioner med gjort pass, samma som Översikt och cirklarna.
 - De runda knapparna Lätt, Bra och Svårt visades som fyllda rutor och är nu runda.
+
+## [2026-11-01] feature | Översikt visar nivåer utan att byta
+- Ett tryck på en nivå under Översikt visar nivån på stigen under Idag, utan att din lektion ändras. Fliken Idag går tillbaka till igelkotten. Nivåbytet togs därmed bort ur appen, Ångra hoppet finns kvar.
+- Texten om antal klara lektioner togs bort under Översikt, baren är kvar.
+- Cirklarna flyttades ovanför Din utveckling.
+- Svårt är rosa i graf och runda knappar under Framsteg. Knappen Svårt i passet är kvar i gult.
+
+## [2026-11-01] content | Förslag på lektion 61-80
+- 100 ord i 20 lektioner skrivna till `raw/forslag-lektion-61-80.md`. Inget är inlagt i appen, orden ska granskas först. Ingen dubblett mot appens 300 ord.

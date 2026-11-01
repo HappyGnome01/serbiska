@@ -554,7 +554,7 @@ function roadmap(startLabel) {
   allLessons().forEach((lesson, i) => {
     if (lessonLevel(lesson) !== level) {
       level = lessonLevel(lesson);
-      items.push(h("div", { class: "road-level", style: `top:${y}px` }, `Nivå ${level}`));
+      items.push(h("div", { class: "road-level", "data-level": level, style: `top:${y}px` }, `Nivå ${level}`));
       y += ROAD_LEVEL;
     }
     const x = 50 + Math.sin(i * ROAD_TURN) * ROAD_SWING;
@@ -698,29 +698,6 @@ const LESSONS_PER_LEVEL = 10;
 function lessonLevel(lesson) { return Math.ceil(lesson / LESSONS_PER_LEVEL); }
 function lastLessonNumber() { return Math.max(...WORDS.map(w => w.lesson)); }
 
-const levelChangeNote = "Ord du redan har övat på sparas. Överhoppade ord kommer tillbaka i repetitionen.";
-
-// Flyttar dig till en lektion, framåt eller bakåt. Ord med riktiga framsteg lämnas alltid orörda.
-function moveToLesson(lesson) {
-  WORDS.forEach(w => {
-    const p = progress.words[w.id];
-    if (w.lesson >= lesson && p && p.placed) delete progress.words[w.id];  // Bakåt: blir nya ord igen
-    if (w.lesson < lesson && !p) {
-      progress.words[w.id] = {
-        reps: 2,
-        interval: 6,
-        ease: 2.5,
-        due: Date.now() + (1 + Math.random() * 13) * DAY,
-        lastGrade: null,
-        placed: true
-      };
-    }
-  });
-  progress.currentLesson = lesson;
-  saveProgress();
-  showHome();
-}
-
 // Översikt: hur långt du kommit på varje nivå, och välj själv var du vill jobba
 function showLevelPicker() {
   const levels = lessonLevel(lastLessonNumber());
@@ -732,17 +709,22 @@ function showLevelPicker() {
     const here = level === currentLevel;
     const lessons = allLessons().filter(l => lessonLevel(l) === level);
     const done = doneLessons().filter(l => lessonLevel(l) === level).length;
-    return h("button", { class: "option level-option", ...(here ? { disabled: "" } : {}), onclick: () => moveToLesson(first) },
+    return h("button", { class: "option level-option", onclick: () => showLevel(level) },
       h("div", { class: "level-title" }, `Nivå ${level} · lektion ${first}–${first + LESSONS_PER_LEVEL - 1}` + (here ? " · du är här" : "")),
       h("div", { class: "muted level-themes" }, themes.slice(0, 4).join(", ")),
-      h("div", { class: "progress" }, h("div", { class: "bar", style: `width:${done / lessons.length * 100}%` })),
-      h("div", { class: "muted level-themes" }, `${done} av ${lessons.length} lektioner klara`));
+      h("div", { class: "progress", role: "img", "aria-label": `${done} av ${lessons.length} lektioner klara` },
+        h("div", { class: "bar", style: `width:${done / lessons.length * 100}%` })));
   });
   setNav("levels");
   main.replaceChildren(
     h("p", { class: "step-label center" }, "Översikt"),
-    h("p", { class: "muted center" }, levelChangeNote),
     h("div", { class: "options" }, rows));
+}
+
+// Visar en nivå på stigen. Din plats ändras inte.
+function showLevel(level) {
+  showHome();
+  main.querySelector(`[data-level="${level}"]`).scrollIntoView();
 }
 
 // Tar bort ord du hoppat över och inte har övat på
@@ -901,6 +883,9 @@ function showDashboard() {
   const lessons = allLessons();
   const done = doneLessons();
   const wordsDone = WORDS.filter(w => done.includes(w.lesson));
+  const rings = h("div", { class: "rings" },
+    progressRing(knownWords(wordsDone).length, wordsDone.length, "Ord du kan i klara lektioner"),
+    progressRing(knownWords().length, WORDS.length, "Ord du kan i hela appen"));
 
   const fileInput = h("input", { type: "file", accept: ".json", class: "hidden",
     onchange: e => { if (e.target.files[0]) importProgress(e.target.files[0]); } });
@@ -912,11 +897,9 @@ function showDashboard() {
         h("div", { class: "today-title" }, "Dina framsteg"),
         h("div", { class: "muted today-meta" }, `${seen.length} av ${WORDS.length} ord sedda`)),
       h("div", { class: "muted today-streak" }, streakText())),
+    rings,
     progressSection(),
     h("div", { class: "section-title" }, "Ord du kan"),
-    h("div", { class: "rings" },
-      progressRing(knownWords(wordsDone).length, wordsDone.length, "I klara lektioner"),
-      progressRing(knownWords().length, WORDS.length, "I hela appen")),
     h("div", { class: "stats" }, groups.map(([label, cls, list]) =>
       h("button", { class: "stat " + cls, "aria-label": `${label}: ${list.length} ord. Visa orden.`, onclick: () => showWords(label, list) },
         h("span", { class: "stat-num" }, String(list.length)), label))),

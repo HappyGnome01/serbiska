@@ -53,13 +53,11 @@ Bredvid rubriken Serbiska står 🔥 med antal dagar i rad och 🍃 med antal or
 Ord som får "Kunde inte" visas igen senare i samma pass (en gång) och först i kön nästa pass.
 När alla lektioner är klara visas bara repetition och slumpade meningar, tills nya lektioner läggs till.
 
-## Byta nivå
+## Översikt
 - En nivå är 10 lektioner.
-- Fliken **Översikt** visar alla nivåer med teman och en bar med hur många lektioner som är klara. Klar betyder att du gjort ett pass på lektionen, så överhoppade lektioner räknas inte. Ett tryck på en nivå flyttar dig till dess första lektion.
-- **Framåt:** ord i tidigare lektioner blir sedda och kommer tillbaka i repetitionen.
-- **Bakåt:** överhoppade ord du inte övat på blir nya igen. En lektion du redan gjort visas på nytt.
-- Ord du redan övat på ändras aldrig av ett nivåbyte, och passhistoriken påverkas inte.
-- **Ångra hoppet** under Framsteg tar bort överhoppade ord du inte har övat på och går tillbaka till första lektionen med ord du inte sett.
+- Fliken **Översikt** visar alla nivåer med teman och en bar med hur många lektioner som är klara. Klar betyder att du gjort ett pass på lektionen, så överhoppade lektioner räknas inte.
+- Ett tryck på en nivå visar den på stigen under Idag. Din lektion ändras inte. Tryck på Idag för att komma tillbaka till igelkotten.
+- Det går inte längre att byta nivå i appen. Har du hoppat över lektioner tidigare finns **Ångra hoppet** under Framsteg: det tar bort överhoppade ord du inte har övat på och går tillbaka till första lektionen med ord du inte sett.
 
 ## Betygssystem
 | Knapp | Värde | Effekt |
@@ -73,8 +71,8 @@ Intervall: 1 dag → 6 dagar → föregående × "lätthet" (startar på 2,5, mi
 
 ## Dashboard ("Framsteg")
 - **Din utveckling:** välj 7 dagar, 30 dagar eller 3 månader. Visar pass, nya ord, repetitioner och aktiva dagar med förändring mot föregående period.
-- **Grafen:** staplade staplar per dag (per vecka vid 3 månader) med alla ord i Lätt, Bra och Svårt som de såg ut när dagen slutade, i samma färger som knapparna. Har en tabellvy. Från och med nu sparas läget varje dag. Dagar innan dess är en uppskattning utifrån senaste betyget på varje ord.
-- **Cirklarna:** ord du kan (Lätt eller Bra) av alla ord i lektioner du gjort pass på, och av alla ord i appen.
+- **Grafen:** staplade staplar per dag (per vecka vid 3 månader) med alla ord i Lätt, Bra och Svårt som de såg ut när dagen slutade, i samma färger som de runda knapparna. Svårt är rosa där, men knappen Svårt i passet är kvar i gult eftersom Kunde inte är rosa. Har en tabellvy. Från och med nu sparas läget varje dag. Dagar innan dess är en uppskattning utifrån senaste betyget på varje ord.
+- **Cirklarna** står överst, ovanför Din utveckling: ord du kan (Lätt eller Bra) av alla ord i lektioner du gjort pass på, och av alla ord i appen.
 - Samma stil som Idag: kort överst med ord du har sett och svit, lila rubrikband och runda knappar.
 - Antal ord per **senaste betyg** i runda knappar: Lätt, Bra, Svårt. "Kunde inte" visas inte. Ett tryck öppnar ett fönster med orden i gruppen.
 - Lektioner klara och antal pass.
