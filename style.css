@@ -198,11 +198,11 @@ summary { cursor: pointer; font-weight: 600; }
 .hedgehog { position: absolute; z-index: 3; width: 58px; height: 46px; pointer-events: none; }
 .hedgehog.flip svg { transform: scaleX(-1); }
 .hedgehog svg { width: 100%; height: 100%; display: block; overflow: visible; }
-/* Tomgång som i gamla spel: kroppen hoppar mellan två lägen utan mjuka övergångar, och ögat blinkar ibland */
-.hedgehog-body { animation: hedgehog-idle 1.2s step-end infinite; }
+/* Tomgång: kroppen andas mjukt upp och ner, och ögat blinkar ibland */
+.hedgehog-body { animation: hedgehog-idle 2.8s ease-in-out infinite; }
 .hedgehog-eye { transform-box: fill-box; transform-origin: center; animation: hedgehog-blink 4.8s step-end infinite; }
 @keyframes hedgehog-idle {
-  0% { transform: none; }
+  0%, 100% { transform: none; }
   50% { transform: translateY(2px); }
 }
 @keyframes hedgehog-blink {
