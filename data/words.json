@@ -762,8 +762,7 @@
     "lesson": 21,
     "theme": "Förr och senare",
     "sr": "juče",
-    "sv": "igår",
-    "note": "I Bosnien även jučer."
+    "sv": "igår"
   },
   {
     "id": "l21-veceras",
@@ -991,7 +990,7 @@
     "theme": "Saker hemma",
     "sr": "sto",
     "sv": "bord",
-    "note": "I Bosnien Ã¤ven stol. Stol pÃ¥ svenska heter stolica."
+    "note": "Stol på svenska heter stolica."
   },
   {
     "id": "l27-stolica",
@@ -1157,12 +1156,12 @@
     "note": "Ackusativ: večeru."
   },
   {
-    "id": "l31-kuham",
+    "id": "l31-kuvam",
     "lesson": 31,
     "theme": "Måltider",
-    "sr": "kuham",
+    "sr": "kuvam",
     "sv": "jag lagar mat",
-    "note": "Från kuhati. I Serbien även kuvam."
+    "note": "Från kuvati. Du: kuvaš."
   },
   {
     "id": "l31-jedem",
@@ -1400,7 +1399,7 @@
     "theme": "Platser",
     "sr": "prodavnica",
     "sv": "affär",
-    "note": "I Bosnien även trgovina."
+    "note": "Även trgovina, men prodavnica är vanligare."
   },
   {
     "id": "l37-ulica",
@@ -2183,12 +2182,12 @@
     "note": "Ortodox jul firas 7 januari."
   },
   {
-    "id": "l58-uskrs",
+    "id": "l58-vaskrs",
     "lesson": 58,
     "theme": "Högtider",
-    "sr": "Uskrs",
+    "sr": "Vaskrs",
     "sv": "påsk",
-    "note": "Även Vaskrs."
+    "note": "Även Uskrs, men Vaskrs är vanligare."
   },
   {
     "id": "l58-crkva",

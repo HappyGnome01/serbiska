@@ -548,38 +548,33 @@
     "lesson": 16,
     "sr": "Imam četiri brata.",
     "sv": "Jag har fyra bröder.",
-    "note": "Efter 2–4 får ordet genitiv singular: brata.",
-    "check": true
+    "note": "Efter 2–4 får ordet genitiv singular: brata."
   },
   {
     "id": "l16-s5",
     "lesson": 16,
     "sr": "Pet kafa, molim.",
     "sv": "Fem kaffe, tack.",
-    "note": "Efter 5 och uppåt får ordet genitiv plural.",
-    "check": true
+    "note": "Efter 5 och uppåt får ordet genitiv plural."
   },
   {
     "id": "l17-s1",
     "lesson": 17,
     "sr": "Imam šest godina.",
     "sv": "Jag är sex år.",
-    "note": "Ordagrant: jag har sex år.",
-    "check": true
+    "note": "Ordagrant: jag har sex år."
   },
   {
     "id": "l17-s2",
     "lesson": 17,
     "sr": "Imam sedam prijatelja.",
-    "sv": "Jag har sju vänner.",
-    "check": true
+    "sv": "Jag har sju vänner."
   },
   {
     "id": "l17-s3",
     "lesson": 17,
     "sr": "Osam kafa, molim.",
-    "sv": "Åtta kaffe, tack.",
-    "check": true
+    "sv": "Åtta kaffe, tack."
   },
   {
     "id": "l17-s4",
@@ -602,24 +597,21 @@
     "lesson": 18,
     "sr": "Danas je ponedjeljak.",
     "sv": "Idag är det måndag.",
-    "alt": ["Ponedjeljak je danas."],
-    "check": true
+    "alt": ["Ponedjeljak je danas."]
   },
   {
     "id": "l18-s2",
     "lesson": 18,
     "sr": "Sutra je utorak.",
     "sv": "Imorgon är det tisdag.",
-    "alt": ["Utorak je sutra."],
-    "check": true
+    "alt": ["Utorak je sutra."]
   },
   {
     "id": "l18-s3",
     "lesson": 18,
     "sr": "Dođi u srijedu.",
     "sv": "Kom på onsdag.",
-    "note": "srijeda → u srijedu (ackusativ).",
-    "check": true
+    "note": "srijeda → u srijedu (ackusativ)."
   },
   {
     "id": "l18-s4",
@@ -656,16 +648,14 @@
     "lesson": 19,
     "sr": "Idem kući za sedmicu.",
     "sv": "Jag åker hem om en vecka.",
-    "note": "za = om (tid)",
-    "check": true
+    "note": "za = om (tid)"
   },
   {
     "id": "l19-s4",
     "lesson": 19,
     "sr": "Idem u Švedsku za mjesec dana.",
     "sv": "Jag åker till Sverige om en månad.",
-    "note": "Ekaviskt: mesec.",
-    "check": true
+    "note": "Ekaviskt: mesec."
   },
   {
     "id": "l19-s5",
@@ -694,16 +684,14 @@
     "id": "l20-s3",
     "lesson": 20,
     "sr": "Veče je lijepo.",
-    "sv": "Kvällen är fin.",
-    "check": true
+    "sv": "Kvällen är fin."
   },
   {
     "id": "l20-s4",
     "lesson": 20,
     "sr": "Noć je duga.",
     "sv": "Natten är lång.",
-    "note": "duga = lång (kvinnligt)",
-    "check": true
+    "note": "duga = lång (kvinnligt)"
   },
   {
     "id": "l20-s5",
@@ -724,8 +712,7 @@
     "id": "l21-s2",
     "lesson": 21,
     "sr": "Šta radiš večeras?",
-    "sv": "Vad gör du ikväll?",
-    "check": true
+    "sv": "Vad gör du ikväll?"
   },
   {
     "id": "l21-s3",
@@ -768,15 +755,13 @@
     "id": "l22-s3",
     "lesson": 22,
     "sr": "Mi smo ovdje.",
-    "sv": "Vi är här.",
-    "check": true
+    "sv": "Vi är här."
   },
   {
     "id": "l22-s4",
     "lesson": 22,
     "sr": "Ko ste vi?",
-    "sv": "Vilka är ni?",
-    "check": true
+    "sv": "Vilka är ni?"
   },
   {
     "id": "l22-s5",
@@ -819,8 +804,7 @@
     "id": "l23-s5",
     "lesson": 23,
     "sr": "To je njihova kuća.",
-    "sv": "Det är deras hus.",
-    "check": true
+    "sv": "Det är deras hus."
   },
   {
     "id": "l24-s1",
@@ -848,22 +832,19 @@
     "id": "l24-s4",
     "lesson": 24,
     "sr": "Ona je moja kćerka.",
-    "sv": "Hon är min dotter.",
-    "check": true
+    "sv": "Hon är min dotter."
   },
   {
     "id": "l24-s5",
     "lesson": 24,
     "sr": "Gdje je tvoj muž?",
-    "sv": "Var är din man?",
-    "check": true
+    "sv": "Var är din man?"
   },
   {
     "id": "l25-s1",
     "lesson": 25,
     "sr": "Ovo je moja tetka.",
-    "sv": "Det här är min faster.",
-    "check": true
+    "sv": "Det här är min faster."
   },
   {
     "id": "l25-s2",
@@ -876,22 +857,19 @@
     "id": "l25-s3",
     "lesson": 25,
     "sr": "Moj stric ima veliku kuću.",
-    "sv": "Min farbror har ett stort hus.",
-    "check": true
+    "sv": "Min farbror har ett stort hus."
   },
   {
     "id": "l25-s4",
     "lesson": 25,
     "sr": "Baka ima pet unuka.",
-    "sv": "Farmor har fem barnbarn.",
-    "check": true
+    "sv": "Farmor har fem barnbarn."
   },
   {
     "id": "l25-s5",
     "lesson": 25,
     "sr": "On je moj rođak.",
-    "sv": "Han är min kusin.",
-    "check": true
+    "sv": "Han är min kusin."
   },
   {
     "id": "l26-s1",
@@ -912,8 +890,7 @@
     "id": "l26-s3",
     "lesson": 26,
     "sr": "Gdje je kupatilo?",
-    "sv": "Var är badrummet?",
-    "check": true
+    "sv": "Var är badrummet?"
   },
   {
     "id": "l26-s4",
@@ -951,23 +928,20 @@
     "id": "l27-s3",
     "lesson": 27,
     "sr": "Idem u krevet.",
-    "sv": "Jag går och lägger mig.",
-    "check": true
+    "sv": "Jag går och lägger mig."
   },
   {
     "id": "l27-s4",
     "lesson": 27,
     "sr": "Gdje je ključ?",
-    "sv": "Var är nyckeln?",
-    "check": true
+    "sv": "Var är nyckeln?"
   },
   {
     "id": "l27-s5",
     "lesson": 27,
     "sr": "Ugasi svjetlo.",
     "sv": "Släck ljuset.",
-    "note": "ugasi = släck!",
-    "check": true
+    "note": "ugasi = släck!"
   },
   {
     "id": "l28-s1",
@@ -989,15 +963,13 @@
     "id": "l28-s3",
     "lesson": 28,
     "sr": "Volim sir.",
-    "sv": "Jag tycker om ost.",
-    "check": true
+    "sv": "Jag tycker om ost."
   },
   {
     "id": "l28-s4",
     "lesson": 28,
     "sr": "Hoćeš li jaje?",
-    "sv": "Vill du ha ett ägg?",
-    "check": true
+    "sv": "Vill du ha ett ägg?"
   },
   {
     "id": "l28-s5",
@@ -1011,8 +983,7 @@
     "id": "l29-s1",
     "lesson": 29,
     "sr": "Volim voće.",
-    "sv": "Jag tycker om frukt.",
-    "check": true
+    "sv": "Jag tycker om frukt."
   },
   {
     "id": "l29-s2",
@@ -1032,38 +1003,33 @@
     "id": "l29-s4",
     "lesson": 29,
     "sr": "Hoćeš li krompir?",
-    "sv": "Vill du ha potatis?",
-    "check": true
+    "sv": "Vill du ha potatis?"
   },
   {
     "id": "l29-s5",
     "lesson": 29,
     "sr": "Salata je ukusna.",
-    "sv": "Salladen är god.",
-    "check": true
+    "sv": "Salladen är god."
   },
   {
     "id": "l30-s1",
     "lesson": 30,
-    "sr": "Dodaj mi so, molim.",
+    "sr": "Dodaj mi so, molim te.",
     "sv": "Kan du skicka saltet, tack.",
-    "note": "dodaj = räck, skicka",
-    "check": true
+    "note": "dodaj = räck, skicka. Molim te är den informella formen av molim."
   },
   {
     "id": "l30-s2",
     "lesson": 30,
-    "sr": "Kafa bez šećera, molim.",
+    "sr": "Kafa bez šećera, molim te.",
     "sv": "Kaffe utan socker, tack.",
-    "note": "šećer → bez šećera (genitiv).",
-    "check": true
+    "note": "šećer → bez šećera (genitiv)."
   },
   {
     "id": "l30-s3",
     "lesson": 30,
     "sr": "Imaš li ulje?",
-    "sv": "Har du olja?",
-    "check": true
+    "sv": "Har du olja?"
   },
   {
     "id": "l30-s4",
@@ -1084,8 +1050,7 @@
     "id": "l31-s1",
     "lesson": 31,
     "sr": "Šta ima za doručak?",
-    "sv": "Vad finns det till frukost?",
-    "check": true
+    "sv": "Vad finns det till frukost?"
   },
   {
     "id": "l31-s2",
@@ -1105,10 +1070,8 @@
   {
     "id": "l31-s4",
     "lesson": 31,
-    "sr": "Mama kuha ručak.",
-    "sv": "Mamma lagar lunch.",
-    "note": "I Serbien även kuva.",
-    "check": true
+    "sr": "Mama kuva ručak.",
+    "sv": "Mamma lagar lunch."
   },
   {
     "id": "l31-s5",
@@ -1150,8 +1113,7 @@
     "id": "l32-s5",
     "lesson": 32,
     "sr": "Supa je slana.",
-    "sv": "Soppan är salt.",
-    "check": true
+    "sv": "Soppan är salt."
   },
   {
     "id": "l33-s1",
@@ -1179,8 +1141,7 @@
     "id": "l33-s4",
     "lesson": 33,
     "sr": "Ova soba je mala.",
-    "sv": "Det här rummet är litet.",
-    "check": true
+    "sv": "Det här rummet är litet."
   },
   {
     "id": "l33-s5",
@@ -1194,8 +1155,7 @@
     "id": "l34-s1",
     "lesson": 34,
     "sr": "Moj djed je star.",
-    "sv": "Min farfar är gammal.",
-    "check": true
+    "sv": "Min farfar är gammal."
   },
   {
     "id": "l34-s2",
@@ -1246,8 +1206,7 @@
     "id": "l35-s3",
     "lesson": 35,
     "sr": "Volim crveno vino.",
-    "sv": "Jag gillar rött vin.",
-    "check": true
+    "sv": "Jag gillar rött vin."
   },
   {
     "id": "l35-s4",
@@ -1261,16 +1220,14 @@
     "lesson": 35,
     "sr": "Trava je zelena.",
     "sv": "Gräset är grönt.",
-    "note": "trava = gräs",
-    "check": true
+    "note": "trava = gräs"
   },
   {
     "id": "l36-s1",
     "lesson": 36,
     "sr": "Sunce sija.",
     "sv": "Solen skiner.",
-    "note": "sija = skiner",
-    "check": true
+    "note": "sija = skiner"
   },
   {
     "id": "l36-s2",
@@ -1285,16 +1242,14 @@
     "lesson": 36,
     "sr": "Pada snijeg.",
     "sv": "Det snöar.",
-    "note": "Ekaviskt: sneg.",
-    "check": true
+    "note": "Ekaviskt: sneg."
   },
   {
     "id": "l36-s4",
     "lesson": 36,
     "sr": "Danas je jak vjetar.",
     "sv": "Det blåser hårt idag.",
-    "note": "jak = stark",
-    "check": true
+    "note": "jak = stark"
   },
   {
     "id": "l36-s5",
@@ -1314,8 +1269,7 @@
     "id": "l37-s2",
     "lesson": 37,
     "sr": "Baka živi na selu.",
-    "sv": "Farmor bor på landet.",
-    "check": true
+    "sv": "Farmor bor på landet."
   },
   {
     "id": "l37-s3",
@@ -1328,8 +1282,7 @@
     "id": "l37-s4",
     "lesson": 37,
     "sr": "Idem u prodavnicu.",
-    "sv": "Jag går till affären.",
-    "check": true
+    "sv": "Jag går till affären."
   },
   {
     "id": "l37-s5",
@@ -1366,32 +1319,28 @@
     "lesson": 38,
     "sr": "Idem avionom.",
     "sv": "Jag åker flyg.",
-    "note": "avion → avionom (med flyg).",
-    "check": true
+    "note": "avion → avionom (med flyg)."
   },
   {
     "id": "l38-s5",
     "lesson": 38,
     "sr": "Sretan put!",
     "sv": "Trevlig resa!",
-    "note": "I Serbien: srećan put.",
-    "check": true
+    "note": "I Serbien: srećan put."
   },
   {
     "id": "l39-s1",
     "lesson": 39,
     "sr": "Idi lijevo.",
     "sv": "Gå åt vänster.",
-    "note": "idi = gå!",
-    "check": true
+    "note": "idi = gå!"
   },
   {
     "id": "l39-s2",
     "lesson": 39,
     "sr": "Skreni desno.",
     "sv": "Sväng höger.",
-    "note": "skreni = sväng!",
-    "check": true
+    "note": "skreni = sväng!"
   },
   {
     "id": "l39-s3",
@@ -1404,15 +1353,13 @@
     "id": "l39-s4",
     "lesson": 39,
     "sr": "Kuća je blizu.",
-    "sv": "Huset ligger nära.",
-    "check": true
+    "sv": "Huset ligger nära."
   },
   {
     "id": "l39-s5",
     "lesson": 39,
     "sr": "Daleko je.",
-    "sv": "Det är långt bort.",
-    "check": true
+    "sv": "Det är långt bort."
   },
   {
     "id": "l40-s1",
@@ -1425,8 +1372,7 @@
     "id": "l40-s2",
     "lesson": 40,
     "sr": "Idem gore.",
-    "sv": "Jag går upp.",
-    "check": true
+    "sv": "Jag går upp."
   },
   {
     "id": "l40-s3",
@@ -1456,16 +1402,14 @@
     "lesson": 41,
     "sr": "Dolazim sutra.",
     "sv": "Jag kommer imorgon.",
-    "alt": ["Sutra dolazim."],
-    "check": true
+    "alt": ["Sutra dolazim."]
   },
   {
     "id": "l41-s2",
     "lesson": 41,
     "sr": "Odlazim u ponedjeljak.",
     "sv": "Jag åker på måndag.",
-    "alt": ["U ponedjeljak odlazim."],
-    "check": true
+    "alt": ["U ponedjeljak odlazim."]
   },
   {
     "id": "l41-s3",
@@ -1522,8 +1466,7 @@
     "id": "l42-s5",
     "lesson": 42,
     "sr": "Učim srpski.",
-    "sv": "Jag lär mig serbiska.",
-    "check": true
+    "sv": "Jag lär mig serbiska."
   },
   {
     "id": "l43-s1",
@@ -1589,8 +1532,7 @@
     "id": "l44-s4",
     "lesson": 44,
     "sr": "Stojim ovdje.",
-    "sv": "Jag står här.",
-    "check": true
+    "sv": "Jag står här."
   },
   {
     "id": "l44-s5",
@@ -1647,15 +1589,13 @@
     "id": "l46-s2",
     "lesson": 46,
     "sr": "Bolesna sam.",
-    "sv": "Jag är sjuk.",
-    "check": true
+    "sv": "Jag är sjuk."
   },
   {
     "id": "l46-s3",
     "lesson": 46,
     "sr": "Zdrava sam.",
-    "sv": "Jag är frisk.",
-    "check": true
+    "sv": "Jag är frisk."
   },
   {
     "id": "l46-s4",
@@ -1668,8 +1608,7 @@
     "id": "l46-s5",
     "lesson": 46,
     "sr": "Danas sam zauzeta.",
-    "sv": "Jag är upptagen idag.",
-    "check": true
+    "sv": "Jag är upptagen idag."
   },
   {
     "id": "l47-s1",
@@ -1689,9 +1628,9 @@
   {
     "id": "l47-s3",
     "lesson": 47,
-    "sr": "Noga me boli.",
+    "sr": "Boli me noga.",
     "sv": "Det gör ont i foten.",
-    "check": true
+    "alt": ["Noga me boli."]
   },
   {
     "id": "l47-s4",
@@ -1726,8 +1665,7 @@
     "lesson": 48,
     "sr": "Treba mi lijek.",
     "sv": "Jag behöver medicin.",
-    "note": "Ekaviskt: lek.",
-    "check": true
+    "note": "Ekaviskt: lek."
   },
   {
     "id": "l48-s4",
@@ -1761,24 +1699,21 @@
   {
     "id": "l49-s3",
     "lesson": 49,
-    "sr": "Dođi ako možeš.",
-    "sv": "Kom om du kan.",
-    "check": true
+    "sr": "Dođi, ako možeš.",
+    "sv": "Kom om du kan."
   },
   {
     "id": "l49-s4",
     "lesson": 49,
     "sr": "Jedi dok je toplo.",
-    "sv": "Ät medan det är varmt.",
-    "check": true
+    "sv": "Ät medan det är varmt."
   },
   {
     "id": "l49-s5",
     "lesson": 49,
     "sr": "Bolje nego juče.",
     "sv": "Bättre än igår.",
-    "note": "bolje = bättre",
-    "check": true
+    "note": "bolje = bättre"
   },
   {
     "id": "l50-s1",
@@ -1858,7 +1793,7 @@
     "lesson": 52,
     "sr": "Idem sa tobom.",
     "sv": "Jag följer med dig.",
-    "check": true
+    "note": "Man kan också säga: Idem s tobom."
   },
   {
     "id": "l52-s2",
@@ -1872,24 +1807,20 @@
     "id": "l52-s3",
     "lesson": 52,
     "sr": "Ovo je za tebe.",
-    "sv": "Det här är till dig.",
-    "check": true
+    "sv": "Det här är till dig."
   },
   {
     "id": "l52-s4",
     "lesson": 52,
     "sr": "Ovo je od mame.",
     "sv": "Det här är från mamma.",
-    "note": "mama → od mame (genitiv).",
-    "check": true
+    "note": "mama → od mame (genitiv)."
   },
   {
     "id": "l52-s5",
     "lesson": 52,
-    "sr": "Do sutra!",
-    "sv": "Vi ses imorgon!",
-    "note": "Ordagrant: till imorgon.",
-    "check": true
+    "sr": "Vidimo se sutra!",
+    "sv": "Vi ses imorgon!"
   },
   {
     "id": "l53-s1",
@@ -1904,8 +1835,7 @@
     "lesson": 53,
     "sr": "Ja sam iz Švedske.",
     "sv": "Jag är från Sverige.",
-    "note": "Švedska → iz Švedske (genitiv).",
-    "check": true
+    "note": "Švedska → iz Švedske (genitiv)."
   },
   {
     "id": "l53-s3",
@@ -1934,8 +1864,7 @@
     "id": "l54-s1",
     "lesson": 54,
     "sr": "Izvinite, gdje je toalet?",
-    "sv": "Ursäkta, var är toaletten?",
-    "check": true
+    "sv": "Ursäkta, var är toaletten?"
   },
   {
     "id": "l54-s2",
@@ -1984,15 +1913,13 @@
     "id": "l55-s3",
     "lesson": 55,
     "sr": "Meni je svejedno.",
-    "sv": "Det spelar ingen roll för mig.",
-    "check": true
+    "sv": "Det spelar ingen roll för mig."
   },
   {
     "id": "l55-s4",
     "lesson": 55,
     "sr": "Dobrodošli u našu kuću!",
-    "sv": "Välkomna till vårt hus!",
-    "check": true
+    "sv": "Välkomna till vårt hus!"
   },
   {
     "id": "l55-s5",
@@ -2020,8 +1947,7 @@
     "id": "l56-s3",
     "lesson": 56,
     "sr": "Ovo je lijepa zemlja.",
-    "sv": "Det här är ett vackert land.",
-    "check": true
+    "sv": "Det här är ett vackert land."
   },
   {
     "id": "l56-s4",
@@ -2034,8 +1960,7 @@
     "id": "l56-s5",
     "lesson": 56,
     "sr": "Gdje je moj telefon?",
-    "sv": "Var är min telefon?",
-    "check": true
+    "sv": "Var är min telefon?"
   },
   {
     "id": "l57-s1",
@@ -2056,22 +1981,19 @@
     "id": "l57-s3",
     "lesson": 57,
     "sr": "Ovo je poklon za tebe.",
-    "sv": "Det här är en present till dig.",
-    "check": true
+    "sv": "Det här är en present till dig."
   },
   {
     "id": "l57-s4",
     "lesson": 57,
     "sr": "Gosti dolaze večeras.",
-    "sv": "Gästerna kommer ikväll.",
-    "check": true
+    "sv": "Gästerna kommer ikväll."
   },
   {
     "id": "l57-s5",
     "lesson": 57,
     "sr": "Svadba je u subotu.",
-    "sv": "Bröllopet är på lördag.",
-    "check": true
+    "sv": "Bröllopet är på lördag."
   },
   {
     "id": "l58-s1",
@@ -2084,31 +2006,29 @@
   {
     "id": "l58-s2",
     "lesson": 58,
-    "sr": "Sretan Uskrs!",
+    "sr": "Sretan Vaskrs!",
     "sv": "Glad påsk!",
+    "note": "Även Uskrs.",
     "source": "tatoeba:3188083"
   },
   {
     "id": "l58-s3",
     "lesson": 58,
     "sr": "Crkva je blizu.",
-    "sv": "Kyrkan ligger nära.",
-    "check": true
+    "sv": "Kyrkan ligger nära."
   },
   {
     "id": "l58-s4",
     "lesson": 58,
     "sr": "Upali svijeću.",
     "sv": "Tänd ett ljus.",
-    "note": "upali = tänd!",
-    "check": true
+    "note": "upali = tänd!"
   },
   {
     "id": "l58-s5",
     "lesson": 58,
     "sr": "To je naš običaj.",
-    "sv": "Det är vår sed.",
-    "check": true
+    "sv": "Det är vår sed."
   },
   {
     "id": "l59-s1",
@@ -2135,8 +2055,7 @@
     "id": "l59-s4",
     "lesson": 59,
     "sr": "Ko je tvoj komšija?",
-    "sv": "Vem är din granne?",
-    "check": true
+    "sv": "Vem är din granne?"
   },
   {
     "id": "l59-s5",
@@ -2170,14 +2089,12 @@
     "id": "l60-s4",
     "lesson": 60,
     "sr": "Doviđenja, vidimo se sutra!",
-    "sv": "Hej då, vi ses imorgon!",
-    "check": true
+    "sv": "Hej då, vi ses imorgon!"
   },
   {
     "id": "l60-s5",
     "lesson": 60,
     "sr": "Čujemo se sutra!",
-    "sv": "Vi hörs imorgon!",
-    "check": true
+    "sv": "Vi hörs imorgon!"
   }
 ]

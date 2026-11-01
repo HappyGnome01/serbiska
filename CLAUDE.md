@@ -48,6 +48,8 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 - **Nybörjarnivå:** korta meningar, vanliga ord, fraser som helheter ("chunks", t.ex. *drago mi je*) snarare än grammatikregler.
 - Teman utgår från verkliga situationer med familj och vänner.
 - **Ijekaviska former.** Skriv ekavisk form i `note` när den skiljer sig.
+- **Ordval som granskats:** *kuvam* (inte kuham), *juče* (inte jučer), *sto* (inte stol), *Vaskrs* före Uskrs, *prodavnica* före trgovina.
+- **Informellt:** *molim te*, inte bara *molim*, när man ber någon man säger du till om något.
 - **Feminina former** när användaren pratar om sig själv (*sita sam, umorna, sretna*).
 - Skriv grammatiktips i `note` när ett ord böjs (t.ex. *kafa → kafu*).
 - Är du osäker på om något är korrekt och naturligt: säg det och sätt `"check": true` så hon kan fråga pojkvännen.

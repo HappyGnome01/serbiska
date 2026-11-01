@@ -89,3 +89,10 @@ Nästa steg: användaren testar lektionerna och pojkvännen svarar på de tre ma
 - Wiktionary visade att *dole* är ekaviskt, så ordet blev *dolje*. Ekavisk skanning av alla meningar gav inga träffar.
 - Granskningslista för pojkvännen: `raw/granska-lektion-16-60.md`, med fem ordfrågor om vad familjen säger.
 Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
+
+## [2026-11-01] content | Granskning av lektion 16–60
+- Pojkvännens ordval: *kuvam*, *juče*, *sto*, *Vaskrs* före Uskrs och *prodavnica* före trgovina. Reglerna står i `CLAUDE.md`.
+- Ändrade meningar: `l30-s1`, `l30-s2` (molim te), `l31-s4`, `l47-s3`, `l49-s3`, `l52-s1`, `l52-s5`, `l58-s2`. Hans "l20-s2" tolkades som `l30-s2`.
+- Övriga markerade meningar godkändes, och alla `check` togs bort.
+- `l52-s5` innehåller inte längre lektionens ord *do*.
+- Rättat: trasiga tecken i anteckningen till *sto*.
