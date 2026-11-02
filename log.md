@@ -206,3 +206,23 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 
 ## [2026-11-02] publish | Lektion 61-100
 - 100 lektioner, 500 ord och 500 meningar pushade till GitHub Pages. De 200 nya meningarna är ogranskade och har `check: true`.
+
+## [2026-11-02] feature | Svårare svarsalternativ, 3D och Navigering
+- Fel svar i flervalsfrågor väljs bland ord som liknar rätt svar i stavning, tema, kategori eller ordtyp.
+- Ny färgskala med högre kontrast, och 3D-kanter på knappar, kort och stigens cirklar.
+- Framsteg: texten om sedda ord och siffrorna över grafen är borttagna. Första cirkeln visar gjorda lektioner.
+- Översikt heter Navigering och ligger före Framsteg. Klara nivåer blir lila med grön bock.
+
+## [2026-11-02] feature | Mjukare 3D och rör
+- Knappar, kort och stigens cirklar fick mjukare 3D och rundare hörn. Barer och ringar ser ut som runda rör.
+- Lektioner klara och Pass totalt är borttagna från Framsteg, och Ord du kan heter Ditt ordförråd.
+- Bockarna på lektioner och nivåer är borttagna. Nivån du är på i Navigering är ljusare lila.
+
+## [2026-11-02] feature | Tomma rör, 3D-staplar och igelkott
+- Cirklarna heter Avklarade lektioner och Ord du lärt dig.
+- Tomma barer och ringar ser ut som ljusa rör i stället för hål. Grafens staplar har 3D.
+- Ringarna under Träna har ljus bakgrund inuti.
+- Igelkotten har fått ljus, skugga och glans i ögat.
+
+## [2026-11-02] publish | Ny stil, Navigering och svårare alternativ
+- Svårare svarsalternativ, ny 3D-stil med rör, Navigering med klara nivåer, enklare Framsteg och 3D-igelkott pushade till GitHub Pages.

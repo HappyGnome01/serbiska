@@ -1,35 +1,47 @@
 /* ===== Färger (ändra här för att byta tema) ===== */
 :root {
-  --bg: #f7f1e8;
-  --card: #fffaf2;
-  --text: #4d4540;
-  --muted: #7a6f66;
-  --primary: #a8655a;
-  --on-primary: #fffaf2;
-  --border: #e8dfd1;
-  /* Pastellfärger: fyllning och text som hör ihop */
-  --again: #e9b7ae;  --on-again: #6b3a33;
-  --hard: #f0d6a8;   --on-hard: #6a4a1c;
-  --good: #b9cdb4;   --on-good: #3e5239;
-  --easy: #b8cce0;   --on-easy: #2f4a62;
-  --lav: #dfd2e3;    --on-lav: #5b4a62;
-  --good-line: #9db698;
+  --bg: #f3e9db;
+  --card: #fffdf8;
+  --text: #2f2925;
+  --muted: #62574e;
+  --primary: #94483c;
+  --on-primary: #ffffff;
+  --border: #d9cbb8;
+  /* Pastellfärger: fyllning, text och den mörkare kanten som ger 3D-känslan */
+  --again: #eba79b;  --on-again: #5a2a23;  --again-edge: #c97f72;
+  --hard: #f2cb83;   --on-hard: #56390f;   --hard-edge: #cfa459;
+  --good: #a3c49a;   --on-good: #2b4026;   --good-edge: #7fa576;
+  --easy: #a2c1df;   --on-easy: #1f3a52;   --easy-edge: #7c9fc2;
+  --lav: #d3bfdc;    --on-lav: #46324f;    --lav-edge: #ad94b9;
+  --lav-light: #eee4f3;  /* Nivån du är på */
+  --good-line: #6f9a67;
+  --primary-edge: #6e3329;
+  --edge: #bfae98;       /* Skuggan längst ner på neutrala knappar */
+  --shine: rgba(255,255,255,0.6);  /* Ljuset längst upp på knappar */
+  --tube: 0.75;  --tube-soft: 0.3;  /* Glansen på tomma rör */
+  --shadow: rgba(90,60,40,0.16);
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #2a2623;
-    --card: #35302c;
-    --text: #efe6dc;
-    --muted: #b5a99d;
-    --primary: #d9a196;
-    --on-primary: #2a2623;
-    --border: #4a433d;
-    --again: #6b3f3a;  --on-again: #f3cfc8;
-    --hard: #66502e;   --on-hard: #f3deb8;
-    --good: #46583f;   --on-good: #d3e3ce;
-    --easy: #3f5266;   --on-easy: #d2e0ee;
-    --lav: #4d4153;    --on-lav: #e6d9ea;
-    --good-line: #6d8566;
+    --bg: #1f1b18;
+    --card: #2e2824;
+    --text: #f8f1e8;
+    --muted: #c9bdb0;
+    --primary: #e8a99d;
+    --on-primary: #2a1a15;
+    --border: #5a5048;
+    --again: #7a3f38;  --on-again: #ffdcd4;  --again-edge: #552a25;
+    --hard: #75591f;   --on-hard: #ffe9c0;   --hard-edge: #4f3b14;
+    --good: #4a6541;   --on-good: #def0d8;   --good-edge: #31462b;
+    --easy: #3f5e7d;   --on-easy: #dcebf8;   --easy-edge: #2a4057;
+    --lav: #5a4765;    --on-lav: #f0e3f5;    --lav-edge: #3d2f45;
+    --lav-light: #806a8c;
+    --good-line: #84a87b;
+    --primary-edge: #a86f64;
+    --edge: #3c342d;
+    --shine: rgba(255,255,255,0.18);
+    --tube: 0.2;  --tube-soft: 0.06;
+    --shadow: rgba(0,0,0,0.4);
   }
 }
 
@@ -65,10 +77,11 @@ h1 { font-size: 1.3rem; margin: 0; }
   padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
   background: var(--card);
   border-top: 1px solid var(--border);
+  box-shadow: 0 -6px 16px var(--shadow);
 }
 .nav-btn { flex: 1; max-width: 160px; display: flex; justify-content: center; padding: 6px; background: transparent; color: var(--muted); }
 .nav-btn svg { display: block; width: 32px; height: 32px; }
-.nav-btn.active { background: var(--primary); color: var(--on-primary); }
+button.nav-btn.active { background: var(--primary); color: var(--on-primary); --edge: var(--primary-edge); }
 
 /* Plats under innehållet så att flikarna inte täcker det sista */
 main { max-width: 520px; margin: 0 auto; padding: 0 16px calc(96px + env(safe-area-inset-bottom)); }
@@ -79,7 +92,7 @@ main { max-width: 520px; margin: 0 auto; padding: 0 16px calc(96px + env(safe-ar
   border-radius: 22px;
   padding: 24px;
   margin: 12px 0;
-  box-shadow: 0 3px 12px rgba(120,90,70,0.08);
+  box-shadow: inset 0 2px 3px -1px var(--shine), 0 2px 4px var(--shadow), 0 10px 22px var(--shadow);
   text-align: center;
 }
 .sr { font-size: 2rem; font-weight: 700; }
@@ -94,38 +107,54 @@ main { max-width: 520px; margin: 0 auto; padding: 0 16px calc(96px + env(safe-ar
 .hidden { display: none !important; }
 
 /* Förloppsindikator */
-.progress { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin-top: 8px; }
-.bar { height: 100%; background: var(--good); transition: width 0.3s; }
+/* Ett runt rör: det tomma röret är ljust och blankt, fyllningen har samma ljus och skugga */
+.progress { height: 14px; border-radius: 7px; overflow: hidden; margin-top: 8px; background-color: var(--border); background-image: linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(255,255,255,var(--tube)) 30%, rgba(255,255,255,var(--tube-soft)) 60%, rgba(0,0,0,0.12) 100%); box-shadow: 0 1px 2px var(--shadow); }
+.bar { height: 100%; border-radius: 7px; background-color: var(--good-line); background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(255,255,255,0.55) 28%, rgba(255,255,255,0.05) 58%, rgba(0,0,0,0.25) 100%); transition: width 0.3s; }
 
 /* Knappar */
 .buttons { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 12px 0; }
 button {
   font: inherit;
   font-size: 1rem;
-  padding: 12px 16px;
+  padding: 12px 18px;
   border: none;
-  border-radius: 16px;
+  border-radius: 24px;
   cursor: pointer;
   background: var(--border);
   color: var(--text);
+  font-weight: 600;
+  transition: transform 0.1s, box-shadow 0.1s;
 }
+/* Mjuk kudde: ljus upptill, färgad skugga nedtill och en suddig skugga under */
+button, .node, .stat-num, .road-level, .section-title {
+  box-shadow: inset 0 3px 5px -2px var(--shine), inset 0 -6px 8px -3px var(--edge), 0 5px 10px var(--shadow);
+}
+/* Knappen trycks ner. :where gör att platta knappar kan stänga av det nedan. */
+button:where(:active:not(:disabled)) { transform: translateY(2px); box-shadow: inset 0 3px 6px var(--shadow), 0 1px 3px var(--shadow); }
 button:disabled { opacity: 0.5; cursor: default; }
-button.primary { background: var(--primary); color: var(--on-primary); min-width: 160px; }
-button.again { background: var(--again); color: var(--on-again); }
-button.hard  { background: var(--hard);  color: var(--on-hard); }
-button.good  { background: var(--good);  color: var(--on-good); }
-button.easy  { background: var(--easy);  color: var(--on-easy); }
+button.primary { background: var(--primary); color: var(--on-primary); min-width: 160px; --edge: var(--primary-edge); }
+button.again { background: var(--again); color: var(--on-again); --edge: var(--again-edge); }
+button.hard  { background: var(--hard);  color: var(--on-hard);  --edge: var(--hard-edge); }
+button.good  { background: var(--good);  color: var(--on-good);  --edge: var(--good-edge); }
+button.easy  { background: var(--easy);  color: var(--on-easy);  --edge: var(--easy-edge); }
 button.link-btn { background: transparent; color: var(--muted); font-size: 0.9rem; text-decoration: underline; padding: 6px 10px; }
+/* Platta knappar: ikoner, länkar och runda knappar som har en egen form */
+button.link-btn, button.stat, button.train-btn, button.nav-btn:not(.active), button.chart-col, button.range-btn:not(.active), .header-stats button { box-shadow: none; transform: none; }
 
 /* Flervalsfrågor */
-.options { display: grid; gap: 8px; }
-.option { background: var(--card); border: 2px solid var(--border); text-align: left; }
+.options { display: grid; gap: 10px; }
+.option { background: var(--card); border: 2px solid var(--border); text-align: left; font-weight: 500; }
 .option:disabled { color: var(--text); }
-.option.correct { border-color: var(--good-line); background: var(--good); color: var(--on-good); opacity: 1; }
-.option.wrong { border-color: var(--again); background: var(--again); color: var(--on-again); opacity: 1; }
+button.option.correct { border-color: var(--good-line); background: var(--good); color: var(--on-good); opacity: 1; --edge: var(--good-edge); }
+button.option.wrong { border-color: var(--again-edge); background: var(--again); color: var(--on-again); opacity: 1; --edge: var(--again-edge); }
 .level-title { font-weight: 600; }
 .level-themes { font-size: 0.85rem; margin-top: 2px; }
 .level-option .progress { margin-top: 10px; }
+/* Klar nivå är lila, nivån du är på ljusare lila */
+button.level-done, button.level-here { border-color: var(--lav-edge); color: var(--on-lav); --edge: var(--lav-edge); }
+button.level-done { background: var(--lav); }
+button.level-here { background: var(--lav-light); }
+.level-done .muted, .level-here .muted { color: var(--on-lav); }
 .feedback { text-align: center; font-weight: 600; }
 .feedback.ok { background: var(--good); color: var(--on-good); border-radius: 14px; padding: 8px 12px; }
 .feedback.bad { background: var(--again); color: var(--on-again); border-radius: 14px; padding: 8px 12px; }
@@ -133,7 +162,7 @@ button.link-btn { background: transparent; color: var(--muted); font-size: 0.9re
 /* Ordbrickor för "bygg meningen" */
 .tiles { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; min-height: 52px; padding: 8px 0; }
 .answer-row { align-items: flex-end; }
-.tile { background: var(--card); border: 2px solid var(--border); font-weight: 600; }
+.tile { background: var(--card); border: 2px solid var(--border); }
 .slot-group { display: inline-flex; align-items: flex-end; gap: 2px; font-size: 1.2rem; font-weight: 600; }
 .slot { display: inline-block; width: 72px; height: 44px; border-bottom: 2px solid var(--muted); }
 
@@ -144,9 +173,11 @@ button.link-btn { background: transparent; color: var(--muted); font-size: 0.9re
 .section-title { margin: 24px 0 12px; }
 .rings { display: flex; justify-content: center; gap: 28px; margin: 20px 0; }
 .ring { flex: 0 1 130px; text-align: center; }
+.ring-defs { position: absolute; }
+.ring-circle, .train-ring { filter: drop-shadow(0 3px 2px var(--shadow)); }
 .ring-circle { position: relative; }
 .ring-svg { display: block; width: 100%; transform: rotate(-90deg); }
-.ring-svg circle { fill: none; stroke-width: 9; stroke-linecap: round; }
+.ring-svg circle { fill: none; stroke-width: 10; stroke-linecap: round; }
 .ring-track { stroke: var(--border); }
 .ring-value { stroke: var(--good-line); }
 .ring-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.8rem; }
@@ -154,13 +185,12 @@ button.link-btn { background: transparent; color: var(--muted); font-size: 0.9re
 .ring-label { margin-top: 6px; font-size: 0.85rem; }
 .stats { display: flex; justify-content: center; gap: 20px; }
 button.stat { display: flex; flex-direction: column; align-items: center; gap: 6px; background: transparent; padding: 0; color: var(--muted); font-size: 0.9rem; }
-.stat-num { display: flex; align-items: center; justify-content: center; width: 74px; height: 74px; border-radius: 50%; font-size: 1.4rem; font-weight: 700; box-shadow: 0 3px 12px rgba(120,90,70,0.12); }
-.stat.easy .stat-num { background: var(--easy); color: var(--on-easy); }
-.stat.good .stat-num { background: var(--good); color: var(--on-good); }
-.stat.hard .stat-num { background: var(--again); color: var(--on-again); }
-.summary { text-align: left; padding: 10px 18px; }
+.stat-num { display: flex; align-items: center; justify-content: center; width: 74px; height: 74px; border-radius: 50%; font-size: 1.4rem; font-weight: 700; }
+.stat.easy .stat-num { background: var(--easy); color: var(--on-easy); --edge: var(--easy-edge); }
+.stat.good .stat-num { background: var(--good); color: var(--on-good); --edge: var(--good-edge); }
+.stat.hard .stat-num { background: var(--again); color: var(--on-again); --edge: var(--again-edge); }
 .backup-text { margin-top: 0; font-size: 0.9rem; }
-details { background: var(--card); border-radius: 22px; padding: 12px 16px; margin: 8px 0; box-shadow: 0 3px 12px rgba(120,90,70,0.08); }
+details { background: var(--card); border-radius: 22px; padding: 12px 16px; margin: 12px 0; box-shadow: inset 0 2px 3px -1px var(--shine), 0 2px 4px var(--shadow), 0 10px 22px var(--shadow); }
 summary { cursor: pointer; font-weight: 600; }
 .word-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); gap: 12px; }
 .word-row:last-child { border-bottom: none; }
@@ -168,15 +198,8 @@ summary { cursor: pointer; font-weight: 600; }
 /* Utvecklingsgrafen */
 .ranges { display: flex; justify-content: center; gap: 4px; }
 .range-btn { background: transparent; color: var(--muted); font-size: 0.85rem; padding: 6px 12px; border-radius: 999px; }
-.range-btn.active { background: var(--lav); color: var(--on-lav); }
+button.range-btn.active { background: var(--lav); color: var(--on-lav); --edge: var(--lav-edge); }
 .chart-card { text-align: left; padding: 20px 16px; }
-.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.metric-label { color: var(--muted); font-size: 0.8rem; }
-.metric-value { font-size: 1.7rem; font-weight: 700; line-height: 1.3; font-variant-numeric: tabular-nums; }
-.delta { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 1px 8px; border-radius: 999px; }
-.delta.up { color: var(--on-good); background: var(--good); }
-.delta.down { color: var(--on-again); background: var(--again); }
-.chart { margin-top: 20px; }
 .chart-area { display: flex; gap: 8px; height: 170px; }
 .chart-axis { display: flex; flex-direction: column; justify-content: space-between; color: var(--muted); font-size: 0.75rem; text-align: right; min-width: 20px; margin: -7px 0; }
 .chart-plot { position: relative; flex: 1; display: flex; align-items: flex-end; gap: 3px; min-width: 0; }
@@ -186,37 +209,34 @@ summary { cursor: pointer; font-weight: 600; }
 /* Hela kolumnen går att trycka på, även när stapeln är låg */
 .chart-col { position: relative; display: flex; flex-direction: column-reverse; gap: 2px; width: 100%; height: 100%; padding: 0; background: transparent; border-radius: 4px 4px 0 0; }
 .chart-col::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 170px; }
-.chart-seg { display: block; flex-basis: 0; min-height: 2px; }
-.chart-seg.easy, .swatch.easy { background: var(--easy); }
-.chart-seg.good, .swatch.good { background: var(--good); }
-.chart-seg.hard, .swatch.hard { background: var(--again); }
+/* Staplarna ser ut som runda pelare: ljus i mitten av vänstra sidan, skugga i kanterna */
+.chart-seg { display: block; flex-basis: 0; min-height: 2px; background-image: linear-gradient(90deg, rgba(0,0,0,0.14) 0%, rgba(255,255,255,0.5) 32%, rgba(255,255,255,0.05) 62%, rgba(0,0,0,0.2) 100%); }
+.chart-seg.easy, .swatch.easy { background-color: var(--easy); }
+.chart-seg.good, .swatch.good { background-color: var(--good); }
+.chart-seg.hard, .swatch.hard { background-color: var(--again); }
 .chart-seg:nth-last-child(2) { border-radius: 4px 4px 0 0; }
 .chart-tip { position: absolute; top: -8px; transform: translate(-50%, -100%); z-index: 2; background: var(--text); color: var(--bg); font-size: 0.8rem; padding: 5px 9px; border-radius: 6px; white-space: nowrap; pointer-events: none; }
 .chart-labels { display: flex; gap: 3px; margin: 6px 0 0 28px; color: var(--muted); font-size: 0.75rem; }
 .chart-labels span { flex: 1; min-width: 0; text-align: center; white-space: nowrap; }
 .chart-legend { display: flex; gap: 16px; justify-content: center; margin-top: 12px; color: var(--muted); font-size: 0.85rem; }
 .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
-@media (max-width: 420px) {
-  .metrics { grid-template-columns: repeat(2, 1fr); }
-}
 
 /* Stigen på Idag */
-.today { display: flex; gap: 12px; align-items: center; justify-content: space-between; background: var(--card); border-radius: 18px; padding: 10px 14px; margin: 8px 0; box-shadow: 0 3px 12px rgba(120,90,70,0.1); }
+.today { display: flex; gap: 12px; align-items: center; justify-content: space-between; background: var(--card); border-radius: 18px; padding: 10px 14px; margin: 8px 0; box-shadow: inset 0 2px 3px -1px var(--shine), 0 2px 4px var(--shadow), 0 10px 22px var(--shadow); }
 .today-title { font-weight: 700; }
-.today-meta { font-size: 0.8rem; margin-top: 2px; }
 .today-streak { font-size: 0.85rem; white-space: nowrap; }
 .road { position: relative; margin: 12px 0 24px; }
 .road-line { position: absolute; inset: 0; width: 100%; pointer-events: none; }
 .road-walked { fill: var(--good-line); }
 .road-ahead { fill: var(--muted); opacity: 0.6; }
-.road-level, .section-title { background: var(--lav); color: var(--on-lav); border-radius: 14px; padding: 8px 12px; text-align: center; font-weight: 600; font-size: 0.9rem; }
+.road-level, .section-title { background: var(--lav); color: var(--on-lav); border-radius: 14px; padding: 8px 12px; text-align: center; font-weight: 700; font-size: 0.9rem; --edge: var(--lav-edge); }
 .road-level { position: absolute; left: 0; right: 0; z-index: 2; }
 .node { position: absolute; z-index: 2; width: 58px; height: 58px; padding: 0; border-radius: 50%; border: 3px solid; font-weight: 700; transform: translate(-50%, -50%); }
-.node.done { background: var(--good); border-color: var(--good-line); color: var(--on-good); }
-.node.skipped { background: var(--bg); border-color: var(--good-line); border-style: dashed; color: var(--on-good); }
-.node.next { background: var(--bg); border-color: var(--border); color: var(--muted); }
-.node.current { width: 74px; height: 74px; font-size: 1.3rem; background: var(--again); border-color: var(--primary); color: var(--on-again); }
-.node-check { position: absolute; right: -4px; top: -4px; width: 22px; height: 22px; line-height: 18px; border-radius: 50%; background: var(--card); border: 2px solid var(--good-line); color: var(--on-good); font-size: 0.75rem; }
+button.node:active { transform: translate(-50%, calc(-50% + 2px)); box-shadow: inset 0 3px 6px var(--shadow), 0 1px 3px var(--shadow); }
+.node.done { background: var(--good); border-color: var(--good-line); color: var(--on-good); --edge: var(--good-edge); }
+.node.skipped { background: var(--card); border-color: var(--good-line); border-style: dashed; color: var(--on-good); }
+.node.next { background: var(--card); border-color: var(--border); color: var(--muted); }
+.node.current { width: 74px; height: 74px; font-size: 1.3rem; background: var(--again); border-color: var(--primary); color: var(--on-again); --edge: var(--primary-edge); }
 .road-start { position: absolute; z-index: 3; left: 0; right: 0; display: flex; justify-content: center; }
 .hedgehog { position: absolute; z-index: 3; width: 58px; height: 46px; pointer-events: none; }
 .hedgehog.flip svg { transform: scaleX(-1); }
@@ -236,6 +256,7 @@ summary { cursor: pointer; font-weight: 600; }
 .flip-stage { height: 124px; display: flex; align-items: flex-end; justify-content: center; }
 .hedgehog-flip { width: 72px; animation: hedgehog-flip 1.7s ease-in-out 3; }
 .hedgehog-flip svg { width: 100%; display: block; overflow: visible; }
+.hedgehog-flip .hedgehog-shadow { display: none; }  /* Skuggan ska inte snurra med */
 @keyframes hedgehog-flip {
   0%   { transform: translateY(0) rotate(0deg) scaleY(1); }
   14%  { transform: translateY(4px) rotate(0deg) scaleY(0.82); }
@@ -249,7 +270,7 @@ summary { cursor: pointer; font-weight: 600; }
 
 /* Lektionssidan */
 .lesson-list { display: grid; gap: 8px; margin-bottom: 16px; }
-.lesson-item { background: var(--card); border-radius: 16px; padding: 10px 14px; }
+.lesson-item { background: var(--card); border-radius: 16px; padding: 10px 14px; box-shadow: inset 0 2px 3px -1px var(--shine), 0 2px 4px var(--shadow), 0 6px 14px var(--shadow); }
 .lesson-sr { font-weight: 700; }
 .lesson-cyr { font-weight: 400; font-size: 0.85rem; }
 /* Markera som gjord: betygen som inte valts tonas ner */
@@ -260,6 +281,7 @@ summary { cursor: pointer; font-weight: 600; }
 .train-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 8px; margin: 14px 0 22px; }
 button.train-btn { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; background: transparent; color: var(--text); padding: 0; font-weight: 400; }
 .train-ring { position: relative; display: block; width: 84px; margin-bottom: 4px; }
+.train-ring::before { content: ""; position: absolute; inset: 6%; border-radius: 50%; background: var(--card); }
 .train-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; }
 .train-title { font-size: 0.85rem; font-weight: 600; line-height: 1.2; }
 .train-detail { font-size: 0.75rem; }
@@ -271,9 +293,9 @@ button.train-btn { display: flex; flex-direction: column; align-items: center; g
 .lesson-note { margin-top: 4px; font-size: 0.85rem; }
 
 /* Modulfönster: grammatik och ordlistor */
-button.grammar-btn { background: var(--lav); color: var(--on-lav); }
-dialog.modal { border: none; padding: 0; border-radius: 24px; background: var(--card); color: var(--text); width: min(480px, calc(100vw - 32px)); max-height: 80vh; }
-dialog.modal::backdrop { background: rgba(77,69,64,0.45); }
+button.grammar-btn { background: var(--lav); color: var(--on-lav); --edge: var(--lav-edge); }
+dialog.modal { border: none; padding: 0; border-radius: 24px; background: var(--card); color: var(--text); width: min(480px, calc(100vw - 32px)); max-height: 80vh; box-shadow: 0 18px 36px rgba(0,0,0,0.3); }
+dialog.modal::backdrop { background: rgba(47,41,37,0.6); }
 .modal-body { padding: 20px 20px 0; }
 .modal-body h2 { font-size: 1.15rem; margin: 0 0 8px; }
 .modal-body section { margin-bottom: 20px; }

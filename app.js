@@ -321,10 +321,51 @@ function showIntro(task) {
     h("div", { class: "buttons" }, h("button", { class: "primary", onclick: next }, "Nästa"), grammarButton(w.lesson)));
 }
 
+// Hur lika två texter stavas, från 0 till 1 (räknar hur många bokstäver som måste ändras)
+function spellingLikeness(a, b) {
+  let row = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    const nextRow = [i];
+    for (let j = 1; j <= b.length; j++) {
+      nextRow[j] = Math.min(row[j] + 1, nextRow[j - 1] + 1, row[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    row = nextRow;
+  }
+  return 1 - row[b.length] / Math.max(a.length, b.length, 1);
+}
+
+// Sorts ord: fråga, uppmaning, verb, fras eller enstaka ord
+function wordKind(w) {
+  if (w.sr.endsWith("?")) return "question";
+  if (w.sr.endsWith("!")) return "command";
+  if (w.sv.startsWith("jag ")) return "verb";
+  return w.sr.includes(" ") ? "phrase" : "word";
+}
+
+function sharesCategory(a, b) {
+  return CATEGORIES.some(c => c.lessons && c.lessons.includes(a.lesson) && c.lessons.includes(b.lesson));
+}
+
+// Högre poäng = lättare att förväxla med rätt svar
+function confusionScore(w, x) {
+  return spellingLikeness(w.sr, x.sr) * 3 + spellingLikeness(w.sv, x.sv) * 2 +
+    (w.theme === x.theme ? 2 : 0) + (sharesCategory(w, x) ? 1.5 : 0) + (wordKind(w) === wordKind(x) ? 1.5 : 0);
+}
+
+// Tre felaktiga svar bland de 8 ord som mest liknar rätt svar, slumpade så att frågan varierar.
+// Svar som innehåller varandra ("jag vill" och "jag vill, ja gärna") kan båda vara rätt och hoppas över.
+function wrongOptionsFor(w) {
+  const candidates = WORDS.filter(x => x.id !== w.id && !x.sv.includes(w.sv) && !w.sv.includes(x.sv))
+    .map(x => ({ word: x, score: confusionScore(w, x) }))
+    .sort((a, b) => b.score - a.score);
+  const seen = new Set();
+  const unique = candidates.filter(({ word }) => !seen.has(word.sv) && seen.add(word.sv));
+  return shuffle(unique.slice(0, 8)).slice(0, 3).map(({ word }) => word);
+}
+
 function showQuiz(task) {
   const w = task.word;
-  const wrongOptions = shuffle(WORDS.filter(x => x.id !== w.id && x.sv !== w.sv)).slice(0, 3);
-  const options = shuffle([w, ...wrongOptions]);
+  const options = shuffle([w, ...wrongOptionsFor(w)]);
   const after = h("div");
   const buttons = options.map(o => h("button", { class: "option", onclick: () => choose(o) }, o.sv));
 
@@ -518,18 +559,44 @@ const PAW = "M-3.6 2a3.6 3 0 1 0 7.2 0a3.6 3 0 1 0-7.2 0Z" +
 
 // Benen står still och kroppen rör sig, så att igelkotten stannar på marken
 const HEDGEHOG = `<svg viewBox="0 0 58 46" aria-hidden="true">
-  <g fill="#8d7360">
+  <defs>
+    <radialGradient id="hogBack" cx="0.42" cy="0.2" r="0.9">
+      <stop offset="0" stop-color="#dcc5b0"/>
+      <stop offset="0.5" stop-color="#a98c76"/>
+      <stop offset="1" stop-color="#6a5142"/>
+    </radialGradient>
+    <radialGradient id="hogFace" cx="0.55" cy="0.25" r="0.85">
+      <stop offset="0" stop-color="#fff8ef"/>
+      <stop offset="0.55" stop-color="#efdccb"/>
+      <stop offset="1" stop-color="#c4a68e"/>
+    </radialGradient>
+    <linearGradient id="hogLeg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a58a76"/>
+      <stop offset="1" stop-color="#65503f"/>
+    </linearGradient>
+    <radialGradient id="hogCheek">
+      <stop offset="0" stop-color="#eaa89c"/>
+      <stop offset="1" stop-color="#eaa89c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse class="hedgehog-shadow" cx="30" cy="44.6" rx="24" ry="2.2" fill="#000" opacity="0.2"/>
+  <g fill="url(#hogLeg)">
     <rect x="17" y="33" width="6" height="11" rx="3"/>
     <rect x="33" y="33" width="6" height="11" rx="3"/>
     <ellipse cx="21" cy="43.2" rx="5" ry="2.4"/>
     <ellipse cx="37" cy="43.2" rx="5" ry="2.4"/>
   </g>
   <g class="hedgehog-body">
-    <path d="M5 34 L2 27 L8 26 L6 18 L13 20 L14 11 L21 15 L25 7 L30 14 L37 9 L38 18 L43 22 Q50 26 49 33 Q48 38 41 38 L12 38 Q6 38 5 34Z" fill="#a98c76"/>
-    <path d="M34 38 Q31 24 42 22 Q52 25 55 32 Q56 35 53 36 Q47 39 41 38Z" fill="#efdccb"/>
-    <circle class="hedgehog-eye" cx="44" cy="29" r="1.8" fill="#4d4540"/>
-    <circle cx="55" cy="33" r="2" fill="#4d4540"/>
-    <ellipse cx="39" cy="33" rx="2.6" ry="1.7" fill="#e9b7ae"/>
+    <path d="M5 34 L2 27 L8 26 L6 18 L13 20 L14 11 L21 15 L25 7 L30 14 L37 9 L38 18 L43 22 Q50 26 49 33 Q48 38 41 38 L12 38 Q6 38 5 34Z" fill="url(#hogBack)"/>
+    <path d="M11 30 L9 24 M18 28 L17 20 M25 26 L26 16 M32 27 L34 18" stroke="#fff" stroke-opacity="0.35" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+    <path d="M34 38 Q31 24 42 22 Q52 25 55 32 Q56 35 53 36 Q47 39 41 38Z" fill="url(#hogFace)"/>
+    <g class="hedgehog-eye">
+      <circle cx="44" cy="29" r="1.9" fill="#2f2925"/>
+      <circle cx="44.7" cy="28.3" r="0.6" fill="#fff"/>
+    </g>
+    <circle cx="55" cy="33" r="2.1" fill="#2f2925"/>
+    <circle cx="55.6" cy="32.3" r="0.6" fill="#fff" opacity="0.8"/>
+    <ellipse cx="40" cy="33.5" rx="3.6" ry="2.6" fill="url(#hogCheek)"/>
   </g>
 </svg>`;
 
@@ -610,8 +677,7 @@ function roadmap(startLabel) {
     items.push(h("button", { class: `node ${status}`, style: `left:${x}%;top:${center}px`, "data-lesson": lesson,
       "aria-label": `Lektion ${lesson}: ${lessonTheme(lesson)}, ${STATUS_TEXT[status].toLowerCase()}`,
       onclick: () => showLesson(lesson) },
-      String(lesson),
-      status === "done" ? h("span", { class: "node-check" }, "✓") : null));
+      String(lesson)));
     if (status === "current") {
       const onRight = x < 50;  // Igelkotten står på den sida där det finns plats
       const hedgehog = h("div", { class: "hedgehog" + (onRight ? " flip" : ""),
@@ -829,7 +895,7 @@ const LESSONS_PER_LEVEL = 10;
 function lessonLevel(lesson) { return Math.ceil(lesson / LESSONS_PER_LEVEL); }
 function lastLessonNumber() { return Math.max(...WORDS.map(w => w.lesson)); }
 
-// Översikt: hur långt du kommit på varje nivå, och välj själv var du vill jobba
+// Navigering: hur långt du kommit på varje nivå, och välj själv var du vill jobba
 function showLevelPicker() {
   const levels = lessonLevel(lastLessonNumber());
   const lesson = currentLesson();
@@ -840,7 +906,9 @@ function showLevelPicker() {
     const here = level === currentLevel;
     const lessons = allLessons().filter(l => lessonLevel(l) === level);
     const done = doneLessons().filter(l => lessonLevel(l) === level).length;
-    return h("button", { class: "option level-option", onclick: () => showLevel(level) },
+    const finished = done === lessons.length;
+    return h("button", { class: "option level-option" + (finished ? " level-done" : "") + (here ? " level-here" : ""),
+      onclick: () => showLevel(level), "aria-label": `Nivå ${level}${finished ? ", klar" : ""}${here ? ", du är här" : ""}` },
       h("div", { class: "level-title" }, `Nivå ${level} · lektion ${first}–${first + LESSONS_PER_LEVEL - 1}` + (here ? " · du är här" : "")),
       h("div", { class: "muted level-themes" }, themes.slice(0, 4).join(", ")),
       h("div", { class: "progress", role: "img", "aria-label": `${done} av ${lessons.length} lektioner klara` },
@@ -848,7 +916,7 @@ function showLevelPicker() {
   });
   setNav("levels");
   main.replaceChildren(
-    h("p", { class: "step-label center" }, "Översikt"),
+    h("p", { class: "step-label center" }, "Navigering"),
     h("div", { class: "options" }, rows));
 }
 
@@ -938,18 +1006,6 @@ function daysAgo(n) {
   return d;
 }
 
-// Summerar alla pass mellan två dagar (räknat i dagar bakåt från idag)
-function sumSessions(fromAgo, toAgo) {
-  const from = dateStr(daysAgo(fromAgo)), to = dateStr(daysAgo(toAgo));
-  const list = studySessions().filter(s => s.date >= from && s.date <= to);
-  return {
-    sessions: list.length,
-    newWords: list.reduce((sum, s) => sum + s.newWords, 0),
-    reviewed: list.reduce((sum, s) => sum + s.reviewed, 0),
-    activeDays: new Set(list.map(s => s.date)).size
-  };
-}
-
 // En stapel per dag, eller per vecka när perioden är längre än 30 dagar
 function chartBuckets(days) {
   const step = days > 30 ? 7 : 1;
@@ -970,20 +1026,6 @@ function chartBuckets(days) {
 function niceMax(value) {
   const scale = 10 ** Math.floor(Math.log10(Math.max(value, 1)));
   return [2, 4, 6, 8, 10].map(n => n * scale).find(n => n >= value) || scale * 2;
-}
-
-// Liten etikett som visar förändringen mot föregående period
-function deltaPill(now, before) {
-  if (!before) return null;
-  const change = Math.round((now - before) / before * 100);
-  return h("span", { class: "delta " + (change < 0 ? "down" : "up") }, `${change < 0 ? "↓" : "↑"} ${Math.abs(change)} %`);
-}
-
-function metric(label, now, before) {
-  return h("div", { class: "metric" },
-    h("div", { class: "metric-label" }, label),
-    h("div", { class: "metric-value" }, String(now)),
-    deltaPill(now, before));
 }
 
 function chartColumn(bucket, tip) {
@@ -1029,28 +1071,28 @@ function progressChart(buckets) {
 function ringSvg(share) {
   const radius = 42;
   const length = 2 * Math.PI * radius;
-  const circle = cls => svgEl("circle", { class: cls, cx: 50, cy: 50, r: radius });
+  const circle = (cls, stroke) => svgEl("circle", { class: cls, cx: 50, cy: 50, r: radius, ...(stroke ? { stroke } : {}) });
   const ring = svgEl("svg", { class: "ring-svg", viewBox: "0 0 100 100", "aria-hidden": "true" });
-  ring.append(circle("ring-track"));
+  ring.append(circle("ring-track"), circle("", "url(#ringDent)"));
   if (share) {
-    const value = circle("ring-value");
-    value.setAttribute("stroke-dasharray", `${share * length} ${length}`);
-    ring.append(value);
+    // Färgen och ljuset ovanpå får samma längd, så att ringen ser ut som ett rör som fylls
+    [circle("ring-value"), circle("", "url(#ringShine)")].forEach(part => {
+      part.setAttribute("stroke-dasharray", `${share * length} ${length}`);
+      ring.append(part);
+    });
   }
   return ring;
 }
 
-// Cirkel som fylls i takt med hur många ord du kan av ett totalt antal
+// Cirkel som fylls i takt med hur mycket du gjort av ett totalt antal
 function progressRing(known, total, label) {
-  return h("div", { class: "ring", role: "img", "aria-label": `${label}: ${known} av ${total} ord` },
+  return h("div", { class: "ring", role: "img", "aria-label": `${label}: ${known} av ${total}` },
     h("div", { class: "ring-circle" }, ringSvg(known / total),
       h("div", { class: "ring-text" }, h("span", { class: "ring-num" }, String(known)), h("span", { class: "muted" }, `av ${total}`))),
     h("div", { class: "muted ring-label" }, label));
 }
 
 function progressSection() {
-  const now = sumSessions(chartDays - 1, 0);
-  const before = sumSessions(chartDays * 2 - 1, chartDays);
   const buckets = chartBuckets(chartDays);
   const withWords = buckets.filter(b => b.total);
   const ranges =[[7, "7 dagar"], [30, "30 dagar"], [91, "3 månader"]];
@@ -1060,11 +1102,6 @@ function progressSection() {
       h("button", { class: "range-btn" + (days === chartDays ? " active" : ""),
         onclick: () => { chartDays = days; showDashboard(); } }, label))),
     h("div", { class: "card chart-card" },
-      h("div", { class: "metrics" },
-        metric("Pass", now.sessions, before.sessions),
-        metric("Nya ord", now.newWords, before.newWords),
-        metric("Repetitioner", now.reviewed, before.reviewed),
-        metric("Aktiva dagar", now.activeDays, before.activeDays)),
       withWords.length ? progressChart(buckets) : h("p", { class: "muted" }, "Inga ord med betyg än.")),
     withWords.length ? h("details", {},
       h("summary", {}, "Visa som tabell"),
@@ -1079,10 +1116,9 @@ function showDashboard() {
   const groups = [["Lätt", "easy", byGrade(5)], ["Bra", "good", byGrade(4)], ["Svårt", "hard", byGrade(3)]];
   const lessons = allLessons();
   const done = doneLessons();
-  const wordsDone = WORDS.filter(w => done.includes(w.lesson));
   const rings = h("div", { class: "rings" },
-    progressRing(knownWords(wordsDone).length, wordsDone.length, "Ord du kan i klara lektioner"),
-    progressRing(knownWords().length, WORDS.length, "Ord du kan i hela appen"));
+    progressRing(done.length, lessons.length, "Avklarade lektioner"),
+    progressRing(knownWords().length, WORDS.length, "Ord du lärt dig"));
 
   const fileInput = h("input", { type: "file", accept: ".json", class: "hidden",
     onchange: e => { if (e.target.files[0]) importProgress(e.target.files[0]); } });
@@ -1090,19 +1126,14 @@ function showDashboard() {
   // Allt packas i en div så att listor och null hanteras av h()
   main.replaceChildren(h("div", {},
     h("div", { class: "today" },
-      h("div", {},
-        h("div", { class: "today-title" }, "Dina framsteg"),
-        h("div", { class: "muted today-meta" }, `${seen.length} av ${WORDS.length} ord sedda`)),
+      h("div", { class: "today-title" }, "Dina framsteg"),
       h("div", { class: "muted today-streak" }, streakText())),
     rings,
     progressSection(),
-    h("div", { class: "section-title" }, "Ord du kan"),
+    h("div", { class: "section-title" }, "Ditt ordförråd"),
     h("div", { class: "stats" }, groups.map(([label, cls, list]) =>
       h("button", { class: "stat " + cls, "aria-label": `${label}: ${list.length} ord. Visa orden.`, onclick: () => showWords(label, list) },
         h("span", { class: "stat-num" }, String(list.length)), label))),
-    h("div", { class: "card summary" },
-      h("div", { class: "word-row" }, h("span", {}, "Lektioner klara"), h("span", { class: "muted" }, `${done.length} av ${lessons.length}`)),
-      h("div", { class: "word-row" }, h("span", {}, "Pass totalt"), h("span", { class: "muted" }, String(studySessions().length)))),
     Object.values(progress.words).some(p => p.placed) ? h("div", { class: "buttons" },
       h("button", { class: "link-btn", onclick: undoPlacement }, "Ångra hoppet")) : null,
     h("div", { class: "section-title" }, "Säkerhetskopia"),

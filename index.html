@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#f7f1e8">
+  <meta name="theme-color" content="#f3e9db">
   <!-- Gör att appen ser ut som en app när den läggs på hemskärmen -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Serbiska">
@@ -21,6 +21,24 @@
 
   <!-- Allt innehåll ritas här av app.js -->
   <main id="main"><p class="muted center">Laddar…</p></main>
+
+  <!-- Ljus och skugga som gör att ringarna ser ut som runda rör -->
+  <svg class="ring-defs" width="0" height="0" aria-hidden="true">
+    <defs>
+      <radialGradient id="ringShine" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="47">
+        <stop offset="0.787" stop-color="#000" stop-opacity="0.22"/>
+        <stop offset="0.87" stop-color="#fff" stop-opacity="0.5"/>
+        <stop offset="0.93" stop-color="#fff" stop-opacity="0.05"/>
+        <stop offset="1" stop-color="#000" stop-opacity="0.25"/>
+      </radialGradient>
+      <radialGradient id="ringDent" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="47">
+        <stop offset="0.787" stop-color="#000" stop-opacity="0.14"/>
+        <stop offset="0.87" stop-color="#fff" style="stop-opacity: var(--tube)"/>
+        <stop offset="0.93" stop-color="#fff" style="stop-opacity: var(--tube-soft)"/>
+        <stop offset="1" stop-color="#000" stop-opacity="0.14"/>
+      </radialGradient>
+    </defs>
+  </svg>
 
   <!-- Flikarna längst ner. Ikonerna ritas här, namnen hörs i skärmläsare. -->
   <nav class="tabs">
@@ -44,16 +62,16 @@
         <circle cx="16" cy="12.5" r="5.5"/>
       </svg>
     </button>
+    <button id="navLevels" class="nav-btn" aria-label="Navigering" title="Navigering">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" aria-hidden="true">
+        <circle cx="13.5" cy="13.5" r="9"/>
+        <path d="M20.5 20.5 28 28"/>
+      </svg>
+    </button>
     <button id="navDash" class="nav-btn" aria-label="Framsteg" title="Framsteg">
       <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
         <path d="M4 10l6.5 5.5L16 5l5.5 10.5L28 10l-2.5 13h-19Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
         <rect x="6" y="25" width="20" height="3" rx="1.5"/>
-      </svg>
-    </button>
-    <button id="navLevels" class="nav-btn" aria-label="Översikt" title="Översikt">
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" aria-hidden="true">
-        <circle cx="13.5" cy="13.5" r="9"/>
-        <path d="M20.5 20.5 28 28"/>
       </svg>
     </button>
   </nav>
