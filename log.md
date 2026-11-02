@@ -197,3 +197,12 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 
 ## [2026-11-02] publish | Träna, Markera som gjord och kullerbytta
 - Allt från dagens arbetspass pushat till GitHub Pages. De 200 ordförslagen ligger kvar privat i `raw/` och är inte inlagda.
+
+## [2026-11-02] content | Lektion 61-100
+- 200 ord och 200 meningar inlagda i `data/`, så appen har 100 lektioner, 500 ord och 500 meningar.
+- Alla nya meningar är egna och har `check: true`, eftersom de inte är granskade.
+- Kategorierna under Träna och grammatikförklaringarna är kopplade till de nya lektionerna. Fyra nya kategorier: Samtal, Jobb och studier, Kläder och handla, Djur och natur.
+- Kontroll: giltig JSON, 5+5 i alla lektioner, inga dubbletter utom *sto*, inga ekaviska former i listan som söktes.
+
+## [2026-11-02] publish | Lektion 61-100
+- 100 lektioner, 500 ord och 500 meningar pushade till GitHub Pages. De 200 nya meningarna är ogranskade och har `check: true`.

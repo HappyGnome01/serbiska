@@ -2283,5 +2283,1480 @@
     "theme": "Hälsa och säga hej då",
     "sr": "čujemo se",
     "sv": "vi hörs"
+  },
+  {
+    "id": "l61-sam",
+    "lesson": 61,
+    "theme": "Att vara",
+    "sr": "sam",
+    "sv": "jag är",
+    "note": "Står inte först i meningen: *Umorna sam*."
+  },
+  {
+    "id": "l61-si",
+    "lesson": 61,
+    "theme": "Att vara",
+    "sr": "si",
+    "sv": "du är",
+    "note": "Står inte först i meningen: *Gdje si?*"
+  },
+  {
+    "id": "l61-je",
+    "lesson": 61,
+    "theme": "Att vara",
+    "sr": "je",
+    "sv": "han, hon, det är",
+    "note": "Står inte först i meningen: *Lijepo je*."
+  },
+  {
+    "id": "l61-nisam",
+    "lesson": 61,
+    "theme": "Att vara",
+    "sr": "nisam",
+    "sv": "jag är inte"
+  },
+  {
+    "id": "l61-nije",
+    "lesson": 61,
+    "theme": "Att vara",
+    "sr": "nije",
+    "sv": "han, hon, det är inte"
+  },
+  {
+    "id": "l62-bila-sam",
+    "lesson": 62,
+    "theme": "I går 1",
+    "sr": "bila sam",
+    "sv": "jag var",
+    "note": "Man: *bio sam*."
+  },
+  {
+    "id": "l62-imala-sam",
+    "lesson": 62,
+    "theme": "I går 1",
+    "sr": "imala sam",
+    "sv": "jag hade",
+    "note": "Man: *imao sam*."
+  },
+  {
+    "id": "l62-isla-sam",
+    "lesson": 62,
+    "theme": "I går 1",
+    "sr": "išla sam",
+    "sv": "jag gick, åkte",
+    "note": "Man: *išao sam*."
+  },
+  {
+    "id": "l62-vidjela-sam",
+    "lesson": 62,
+    "theme": "I går 1",
+    "sr": "vidjela sam",
+    "sv": "jag såg",
+    "note": "Ekaviskt: *videla sam*. Man: *vidio sam*."
+  },
+  {
+    "id": "l62-rekla-sam",
+    "lesson": 62,
+    "theme": "I går 1",
+    "sr": "rekla sam",
+    "sv": "jag sa",
+    "note": "Man: *rekao sam*."
+  },
+  {
+    "id": "l63-radila-sam",
+    "lesson": 63,
+    "theme": "I går 2",
+    "sr": "radila sam",
+    "sv": "jag gjorde, jobbade",
+    "note": "Man: *radio sam*."
+  },
+  {
+    "id": "l63-jela-sam",
+    "lesson": 63,
+    "theme": "I går 2",
+    "sr": "jela sam",
+    "sv": "jag åt",
+    "note": "Man: *jeo sam*."
+  },
+  {
+    "id": "l63-dosla-sam",
+    "lesson": 63,
+    "theme": "I går 2",
+    "sr": "došla sam",
+    "sv": "jag kom",
+    "note": "Man: *došao sam*."
+  },
+  {
+    "id": "l63-kupila-sam",
+    "lesson": 63,
+    "theme": "I går 2",
+    "sr": "kupila sam",
+    "sv": "jag köpte",
+    "note": "Man: *kupio sam*."
+  },
+  {
+    "id": "l63-zaboravila-sam",
+    "lesson": 63,
+    "theme": "I går 2",
+    "sr": "zaboravila sam",
+    "sv": "jag glömde",
+    "note": "Man: *zaboravio sam*."
+  },
+  {
+    "id": "l64-hocu",
+    "lesson": 64,
+    "theme": "Det som kommer",
+    "sr": "hoću",
+    "sv": "jag vill, ja gärna"
+  },
+  {
+    "id": "l64-necu",
+    "lesson": 64,
+    "theme": "Det som kommer",
+    "sr": "neću",
+    "sv": "jag vill inte",
+    "note": "Kan låta bestämt."
+  },
+  {
+    "id": "l64-bice",
+    "lesson": 64,
+    "theme": "Det som kommer",
+    "sr": "biće",
+    "sv": "det blir",
+    "note": "*Biće lijepo.*"
+  },
+  {
+    "id": "l64-vidjecemo",
+    "lesson": 64,
+    "theme": "Det som kommer",
+    "sr": "vidjećemo",
+    "sv": "vi får se",
+    "note": "Ekaviskt: *videćemo*."
+  },
+  {
+    "id": "l64-doci-cu",
+    "lesson": 64,
+    "theme": "Det som kommer",
+    "sr": "doći ću",
+    "sv": "jag kommer"
+  },
+  {
+    "id": "l65-sta-ima",
+    "lesson": 65,
+    "theme": "Småprat",
+    "sr": "šta ima?",
+    "sv": "läget?",
+    "note": "Vardagligt."
+  },
+  {
+    "id": "l65-kako-ide",
+    "lesson": 65,
+    "theme": "Småprat",
+    "sr": "kako ide?",
+    "sv": "hur går det?"
+  },
+  {
+    "id": "l65-nije-lose",
+    "lesson": 65,
+    "theme": "Småprat",
+    "sr": "nije loše",
+    "sv": "inte illa"
+  },
+  {
+    "id": "l65-tako-je",
+    "lesson": 65,
+    "theme": "Småprat",
+    "sr": "tako je",
+    "sv": "så är det"
+  },
+  {
+    "id": "l65-ne-znam",
+    "lesson": 65,
+    "theme": "Småprat",
+    "sr": "ne znam",
+    "sv": "jag vet inte"
+  },
+  {
+    "id": "l66-izvoli",
+    "lesson": 66,
+    "theme": "På besök",
+    "sr": "izvoli",
+    "sv": "varsågod",
+    "note": "Artigt eller till flera: *izvolite*."
+  },
+  {
+    "id": "l66-udji",
+    "lesson": 66,
+    "theme": "På besök",
+    "sr": "uđi!",
+    "sv": "kom in!",
+    "note": "Artigt eller till flera: *uđite!*"
+  },
+  {
+    "id": "l66-sjedi",
+    "lesson": 66,
+    "theme": "På besök",
+    "sr": "sjedi!",
+    "sv": "sätt dig!",
+    "note": "Ekaviskt: *sedi!* Artigt eller till flera: *sjedite!*"
+  },
+  {
+    "id": "l66-samo-malo",
+    "lesson": 66,
+    "theme": "På besök",
+    "sr": "samo malo",
+    "sv": "vänta lite"
+  },
+  {
+    "id": "l66-hvala-na-pozivu",
+    "lesson": 66,
+    "theme": "På besök",
+    "sr": "hvala na pozivu",
+    "sv": "tack för inbjudan"
+  },
+  {
+    "id": "l67-posluzi-se",
+    "lesson": 67,
+    "theme": "Vid bordet 2",
+    "sr": "posluži se",
+    "sv": "ta för dig"
+  },
+  {
+    "id": "l67-uzmi-jos",
+    "lesson": 67,
+    "theme": "Vid bordet 2",
+    "sr": "uzmi još",
+    "sv": "ta mer"
+  },
+  {
+    "id": "l67-dosta-je",
+    "lesson": 67,
+    "theme": "Vid bordet 2",
+    "sr": "dosta je",
+    "sv": "det räcker"
+  },
+  {
+    "id": "l67-ne-mogu-vise",
+    "lesson": 67,
+    "theme": "Vid bordet 2",
+    "sr": "ne mogu više",
+    "sv": "jag orkar inte mer"
+  },
+  {
+    "id": "l67-bilo-je-odlicno",
+    "lesson": 67,
+    "theme": "Vid bordet 2",
+    "sr": "bilo je odlično",
+    "sv": "det var jättegott"
+  },
+  {
+    "id": "l68-sarma",
+    "lesson": 68,
+    "theme": "Maten på bordet",
+    "sr": "sarma",
+    "sv": "kåldolmar"
+  },
+  {
+    "id": "l68-cevapi",
+    "lesson": 68,
+    "theme": "Maten på bordet",
+    "sr": "ćevapi",
+    "sv": "grillade köttrullar"
+  },
+  {
+    "id": "l68-pita",
+    "lesson": 68,
+    "theme": "Maten på bordet",
+    "sr": "pita",
+    "sv": "paj",
+    "note": "I Bosnien är *burek* bara köttpaj, och *pita* resten."
+  },
+  {
+    "id": "l68-ajvar",
+    "lesson": 68,
+    "theme": "Maten på bordet",
+    "sr": "ajvar",
+    "sv": "paprikaröra"
+  },
+  {
+    "id": "l68-kajmak",
+    "lesson": 68,
+    "theme": "Maten på bordet",
+    "sr": "kajmak",
+    "sv": "syrad gräddost"
+  },
+  {
+    "id": "l69-tanjir",
+    "lesson": 69,
+    "theme": "Duka bordet",
+    "sr": "tanjir",
+    "sv": "tallrik"
+  },
+  {
+    "id": "l69-casa",
+    "lesson": 69,
+    "theme": "Duka bordet",
+    "sr": "čaša",
+    "sv": "glas"
+  },
+  {
+    "id": "l69-viljuska",
+    "lesson": 69,
+    "theme": "Duka bordet",
+    "sr": "viljuška",
+    "sv": "gaffel"
+  },
+  {
+    "id": "l69-noz",
+    "lesson": 69,
+    "theme": "Duka bordet",
+    "sr": "nož",
+    "sv": "kniv"
+  },
+  {
+    "id": "l69-kasika",
+    "lesson": 69,
+    "theme": "Duka bordet",
+    "sr": "kašika",
+    "sv": "sked"
+  },
+  {
+    "id": "l70-solja",
+    "lesson": 70,
+    "theme": "Kaffestunden",
+    "sr": "šolja",
+    "sv": "kopp"
+  },
+  {
+    "id": "l70-sok",
+    "lesson": 70,
+    "theme": "Kaffestunden",
+    "sr": "sok",
+    "sv": "saft, juice"
+  },
+  {
+    "id": "l70-kolac",
+    "lesson": 70,
+    "theme": "Kaffestunden",
+    "sr": "kolač",
+    "sv": "kaka, bakverk"
+  },
+  {
+    "id": "l70-torta",
+    "lesson": 70,
+    "theme": "Kaffestunden",
+    "sr": "torta",
+    "sv": "tårta"
+  },
+  {
+    "id": "l70-slatko",
+    "lesson": 70,
+    "theme": "Kaffestunden",
+    "sr": "slatko",
+    "sv": "syltad frukt",
+    "note": "En gästfrihetssymbol som erbjuds när man kommer hem till någon."
+  },
+  {
+    "id": "l71-svaka-cast",
+    "lesson": 71,
+    "theme": "Beröm",
+    "sr": "svaka čast",
+    "sv": "bra gjort",
+    "note": "Ordagrant: all heder."
+  },
+  {
+    "id": "l71-bravo",
+    "lesson": 71,
+    "theme": "Beröm",
+    "sr": "bravo",
+    "sv": "bravo"
+  },
+  {
+    "id": "l71-odlicno",
+    "lesson": 71,
+    "theme": "Beröm",
+    "sr": "odlično",
+    "sv": "utmärkt"
+  },
+  {
+    "id": "l71-predivno",
+    "lesson": 71,
+    "theme": "Beröm",
+    "sr": "predivno",
+    "sv": "underbart"
+  },
+  {
+    "id": "l71-zanimljivo",
+    "lesson": 71,
+    "theme": "Beröm",
+    "sr": "zanimljivo",
+    "sv": "intressant"
+  },
+  {
+    "id": "l72-slazem-se",
+    "lesson": 72,
+    "theme": "Tycka till",
+    "sr": "slažem se",
+    "sv": "jag håller med"
+  },
+  {
+    "id": "l72-nisam-sigurna",
+    "lesson": 72,
+    "theme": "Tycka till",
+    "sr": "nisam sigurna",
+    "sv": "jag är inte säker",
+    "note": "Man: *nisam siguran*."
+  },
+  {
+    "id": "l72-tacno",
+    "lesson": 72,
+    "theme": "Tycka till",
+    "sr": "tačno",
+    "sv": "exakt, stämmer"
+  },
+  {
+    "id": "l72-ne-vjerujem",
+    "lesson": 72,
+    "theme": "Tycka till",
+    "sr": "ne vjerujem",
+    "sv": "jag tror inte det",
+    "note": "Ekaviskt: *ne verujem*."
+  },
+  {
+    "id": "l72-zavisi",
+    "lesson": 72,
+    "theme": "Tycka till",
+    "sr": "zavisi",
+    "sv": "det beror på"
+  },
+  {
+    "id": "l73-ljuta",
+    "lesson": 73,
+    "theme": "Känslor 2",
+    "sr": "ljuta",
+    "sv": "arg",
+    "note": "Man: *ljut*."
+  },
+  {
+    "id": "l73-zabrinuta",
+    "lesson": 73,
+    "theme": "Känslor 2",
+    "sr": "zabrinuta",
+    "sv": "orolig",
+    "note": "Man: *zabrinut*."
+  },
+  {
+    "id": "l73-mirna",
+    "lesson": 73,
+    "theme": "Känslor 2",
+    "sr": "mirna",
+    "sv": "lugn",
+    "note": "Man: *miran*."
+  },
+  {
+    "id": "l73-zaljubljena",
+    "lesson": 73,
+    "theme": "Känslor 2",
+    "sr": "zaljubljena",
+    "sv": "förälskad",
+    "note": "Man: *zaljubljen*."
+  },
+  {
+    "id": "l73-nedostajes-mi",
+    "lesson": 73,
+    "theme": "Känslor 2",
+    "sr": "nedostaješ mi",
+    "sv": "jag saknar dig"
+  },
+  {
+    "id": "l74-svekrva",
+    "lesson": 74,
+    "theme": "Ingift släkt",
+    "sr": "svekrva",
+    "sv": "svärmor",
+    "note": "Mannens mamma."
+  },
+  {
+    "id": "l74-svekar",
+    "lesson": 74,
+    "theme": "Ingift släkt",
+    "sr": "svekar",
+    "sv": "svärfar",
+    "note": "Mannens pappa."
+  },
+  {
+    "id": "l74-snaja",
+    "lesson": 74,
+    "theme": "Ingift släkt",
+    "sr": "snaja",
+    "sv": "svärdotter, svägerska",
+    "note": "Vanligast. Även *snajka* och *snaha*."
+  },
+  {
+    "id": "l74-zet",
+    "lesson": 74,
+    "theme": "Ingift släkt",
+    "sr": "zet",
+    "sv": "svärson, svåger"
+  },
+  {
+    "id": "l74-kum",
+    "lesson": 74,
+    "theme": "Ingift släkt",
+    "sr": "kum",
+    "sv": "best man, gudfar",
+    "note": "Viktig relation, *kum* och *kuma*."
+  },
+  {
+    "id": "l75-svedska",
+    "lesson": 75,
+    "theme": "Länder",
+    "sr": "Švedska",
+    "sv": "Sverige"
+  },
+  {
+    "id": "l75-svedjanka",
+    "lesson": 75,
+    "theme": "Länder",
+    "sr": "Šveđanka",
+    "sv": "svenska (kvinna)",
+    "note": "Man: *Šveđanin*."
+  },
+  {
+    "id": "l75-svedski",
+    "lesson": 75,
+    "theme": "Länder",
+    "sr": "švedski",
+    "sv": "svenska (språket)"
+  },
+  {
+    "id": "l75-srbija",
+    "lesson": 75,
+    "theme": "Länder",
+    "sr": "Srbija",
+    "sv": "Serbien"
+  },
+  {
+    "id": "l75-bosna",
+    "lesson": 75,
+    "theme": "Länder",
+    "sr": "Bosna",
+    "sv": "Bosnien"
+  },
+  {
+    "id": "l76-kancelarija",
+    "lesson": 76,
+    "theme": "Jobbet",
+    "sr": "kancelarija",
+    "sv": "kontor"
+  },
+  {
+    "id": "l76-sef",
+    "lesson": 76,
+    "theme": "Jobbet",
+    "sr": "šef",
+    "sv": "chef",
+    "note": "Kvinna: *šefica*."
+  },
+  {
+    "id": "l76-kolega",
+    "lesson": 76,
+    "theme": "Jobbet",
+    "sr": "kolega",
+    "sv": "kollega",
+    "note": "Kvinna: *koleginica*."
+  },
+  {
+    "id": "l76-plata",
+    "lesson": 76,
+    "theme": "Jobbet",
+    "sr": "plata",
+    "sv": "lön"
+  },
+  {
+    "id": "l76-firma",
+    "lesson": 76,
+    "theme": "Jobbet",
+    "sr": "firma",
+    "sv": "företag"
+  },
+  {
+    "id": "l77-fakultet",
+    "lesson": 77,
+    "theme": "Studier",
+    "sr": "fakultet",
+    "sv": "universitet, fakultet"
+  },
+  {
+    "id": "l77-studentkinja",
+    "lesson": 77,
+    "theme": "Studier",
+    "sr": "studentkinja",
+    "sv": "student (kvinna)",
+    "note": "Man: *student*."
+  },
+  {
+    "id": "l77-ispit",
+    "lesson": 77,
+    "theme": "Studier",
+    "sr": "ispit",
+    "sv": "prov, tenta"
+  },
+  {
+    "id": "l77-uciteljica",
+    "lesson": 77,
+    "theme": "Studier",
+    "sr": "učiteljica",
+    "sv": "lärare (kvinna)",
+    "note": "Man: *učitelj*."
+  },
+  {
+    "id": "l77-knjiga",
+    "lesson": 77,
+    "theme": "Studier",
+    "sr": "knjiga",
+    "sv": "bok"
+  },
+  {
+    "id": "l78-zanimanje",
+    "lesson": 78,
+    "theme": "Yrken",
+    "sr": "zanimanje",
+    "sv": "yrke"
+  },
+  {
+    "id": "l78-medicinska-sestra",
+    "lesson": 78,
+    "theme": "Yrken",
+    "sr": "medicinska sestra",
+    "sv": "sjuksköterska"
+  },
+  {
+    "id": "l78-konobar",
+    "lesson": 78,
+    "theme": "Yrken",
+    "sr": "konobar",
+    "sv": "servitör"
+  },
+  {
+    "id": "l78-vozac",
+    "lesson": 78,
+    "theme": "Yrken",
+    "sr": "vozač",
+    "sv": "förare"
+  },
+  {
+    "id": "l78-programer",
+    "lesson": 78,
+    "theme": "Yrken",
+    "sr": "programer",
+    "sv": "programmerare"
+  },
+  {
+    "id": "l79-slobodno-vrijeme",
+    "lesson": 79,
+    "theme": "Fritid",
+    "sr": "slobodno vrijeme",
+    "sv": "fritid",
+    "note": "Ekaviskt: *slobodno vreme*."
+  },
+  {
+    "id": "l79-film",
+    "lesson": 79,
+    "theme": "Fritid",
+    "sr": "film",
+    "sv": "film"
+  },
+  {
+    "id": "l79-fudbal",
+    "lesson": 79,
+    "theme": "Fritid",
+    "sr": "fudbal",
+    "sv": "fotboll"
+  },
+  {
+    "id": "l79-setnja",
+    "lesson": 79,
+    "theme": "Fritid",
+    "sr": "šetnja",
+    "sv": "promenad"
+  },
+  {
+    "id": "l79-odmor",
+    "lesson": 79,
+    "theme": "Fritid",
+    "sr": "odmor",
+    "sv": "semester, vila"
+  },
+  {
+    "id": "l80-haljina",
+    "lesson": 80,
+    "theme": "Kläder",
+    "sr": "haljina",
+    "sv": "klänning"
+  },
+  {
+    "id": "l80-kosulja",
+    "lesson": 80,
+    "theme": "Kläder",
+    "sr": "košulja",
+    "sv": "skjorta"
+  },
+  {
+    "id": "l80-cipele",
+    "lesson": 80,
+    "theme": "Kläder",
+    "sr": "cipele",
+    "sv": "skor"
+  },
+  {
+    "id": "l80-jakna",
+    "lesson": 80,
+    "theme": "Kläder",
+    "sr": "jakna",
+    "sv": "jacka"
+  },
+  {
+    "id": "l80-kaput",
+    "lesson": 80,
+    "theme": "Kläder",
+    "sr": "kaput",
+    "sv": "kappa"
+  },
+  {
+    "id": "l81-pijaca",
+    "lesson": 81,
+    "theme": "Handla",
+    "sr": "pijaca",
+    "sv": "torg, marknad"
+  },
+  {
+    "id": "l81-cijena",
+    "lesson": 81,
+    "theme": "Handla",
+    "sr": "cijena",
+    "sv": "pris",
+    "note": "Ekaviskt: *cena*."
+  },
+  {
+    "id": "l81-jeftino",
+    "lesson": 81,
+    "theme": "Handla",
+    "sr": "jeftino",
+    "sv": "billigt"
+  },
+  {
+    "id": "l81-skupo",
+    "lesson": 81,
+    "theme": "Handla",
+    "sr": "skupo",
+    "sv": "dyrt"
+  },
+  {
+    "id": "l81-popust",
+    "lesson": 81,
+    "theme": "Handla",
+    "sr": "popust",
+    "sv": "rabatt"
+  },
+  {
+    "id": "l82-pas",
+    "lesson": 82,
+    "theme": "Djur",
+    "sr": "pas",
+    "sv": "hund"
+  },
+  {
+    "id": "l82-macka",
+    "lesson": 82,
+    "theme": "Djur",
+    "sr": "mačka",
+    "sv": "katt"
+  },
+  {
+    "id": "l82-jez",
+    "lesson": 82,
+    "theme": "Djur",
+    "sr": "jež",
+    "sv": "igelkott",
+    "note": "Appens maskot."
+  },
+  {
+    "id": "l82-krava",
+    "lesson": 82,
+    "theme": "Djur",
+    "sr": "krava",
+    "sv": "ko"
+  },
+  {
+    "id": "l82-kokoska",
+    "lesson": 82,
+    "theme": "Djur",
+    "sr": "kokoška",
+    "sv": "höna"
+  },
+  {
+    "id": "l83-basta",
+    "lesson": 83,
+    "theme": "Natur",
+    "sr": "bašta",
+    "sv": "trädgård"
+  },
+  {
+    "id": "l83-rijeka",
+    "lesson": 83,
+    "theme": "Natur",
+    "sr": "rijeka",
+    "sv": "flod",
+    "note": "Ekaviskt: *reka*."
+  },
+  {
+    "id": "l83-planina",
+    "lesson": 83,
+    "theme": "Natur",
+    "sr": "planina",
+    "sv": "berg"
+  },
+  {
+    "id": "l83-more",
+    "lesson": 83,
+    "theme": "Natur",
+    "sr": "more",
+    "sv": "hav"
+  },
+  {
+    "id": "l83-jezero",
+    "lesson": 83,
+    "theme": "Natur",
+    "sr": "jezero",
+    "sv": "sjö"
+  },
+  {
+    "id": "l84-pozovi-me",
+    "lesson": 84,
+    "theme": "Hålla kontakten",
+    "sr": "pozovi me",
+    "sv": "ring mig"
+  },
+  {
+    "id": "l84-javi-se",
+    "lesson": 84,
+    "theme": "Hålla kontakten",
+    "sr": "javi se",
+    "sv": "hör av dig"
+  },
+  {
+    "id": "l84-poruka",
+    "lesson": 84,
+    "theme": "Hålla kontakten",
+    "sr": "poruka",
+    "sv": "meddelande"
+  },
+  {
+    "id": "l84-slika",
+    "lesson": 84,
+    "theme": "Hålla kontakten",
+    "sr": "slika",
+    "sv": "bild, foto"
+  },
+  {
+    "id": "l84-broj",
+    "lesson": 84,
+    "theme": "Hålla kontakten",
+    "sr": "broj",
+    "sv": "nummer"
+  },
+  {
+    "id": "l85-ne-razumijem",
+    "lesson": 85,
+    "theme": "När du inte förstår",
+    "sr": "ne razumijem",
+    "sv": "jag förstår inte",
+    "note": "Ekaviskt: *ne razumem*."
+  },
+  {
+    "id": "l85-ponovi-molim-te",
+    "lesson": 85,
+    "theme": "När du inte förstår",
+    "sr": "ponovi, molim te",
+    "sv": "säg det igen, snälla",
+    "note": "Artigt eller till flera: *ponovite, molim vas*. Mer formellt: *Izvinite, možete li ponoviti?*"
+  },
+  {
+    "id": "l85-sta-to-znaci",
+    "lesson": 85,
+    "theme": "När du inte förstår",
+    "sr": "šta to znači?",
+    "sv": "vad betyder det?"
+  },
+  {
+    "id": "l85-kako-se-kaze",
+    "lesson": 85,
+    "theme": "När du inte förstår",
+    "sr": "kako se kaže?",
+    "sv": "hur säger man?"
+  },
+  {
+    "id": "l85-govori-polako",
+    "lesson": 85,
+    "theme": "När du inte förstår",
+    "sr": "govori polako",
+    "sv": "prata långsamt",
+    "note": "Artigt eller till flera: *govorite polako*."
+  },
+  {
+    "id": "l86-ti",
+    "lesson": 86,
+    "theme": "Det här och allt",
+    "sr": "ti",
+    "sv": "du"
+  },
+  {
+    "id": "l86-ovo",
+    "lesson": 86,
+    "theme": "Det här och allt",
+    "sr": "ovo",
+    "sv": "det här"
+  },
+  {
+    "id": "l86-to",
+    "lesson": 86,
+    "theme": "Det här och allt",
+    "sr": "to",
+    "sv": "det där, det"
+  },
+  {
+    "id": "l86-sve",
+    "lesson": 86,
+    "theme": "Det här och allt",
+    "sr": "sve",
+    "sv": "allt"
+  },
+  {
+    "id": "l86-nesto",
+    "lesson": 86,
+    "theme": "Det här och allt",
+    "sr": "nešto",
+    "sv": "något"
+  },
+  {
+    "id": "l87-nista",
+    "lesson": 87,
+    "theme": "Ingen och alla",
+    "sr": "ništa",
+    "sv": "ingenting",
+    "note": "Serbiskan nekar två gånger: *Ne znam ništa*."
+  },
+  {
+    "id": "l87-niko",
+    "lesson": 87,
+    "theme": "Ingen och alla",
+    "sr": "niko",
+    "sv": "ingen",
+    "note": "Serbiskan nekar två gånger: *Niko ne zna*."
+  },
+  {
+    "id": "l87-neko",
+    "lesson": 87,
+    "theme": "Ingen och alla",
+    "sr": "neko",
+    "sv": "någon"
+  },
+  {
+    "id": "l87-svi",
+    "lesson": 87,
+    "theme": "Ingen och alla",
+    "sr": "svi",
+    "sv": "alla"
+  },
+  {
+    "id": "l87-zajedno",
+    "lesson": 87,
+    "theme": "Ingen och alla",
+    "sr": "zajedno",
+    "sv": "tillsammans"
+  },
+  {
+    "id": "l88-jesi-li",
+    "lesson": 88,
+    "theme": "Ställa frågor",
+    "sr": "jesi li?",
+    "sv": "är du?",
+    "note": "*Jesi li gladna?*"
+  },
+  {
+    "id": "l88-imas-li",
+    "lesson": 88,
+    "theme": "Ställa frågor",
+    "sr": "imaš li?",
+    "sv": "har du?"
+  },
+  {
+    "id": "l88-hoces-li",
+    "lesson": 88,
+    "theme": "Ställa frågor",
+    "sr": "hoćeš li?",
+    "sv": "vill du?",
+    "note": "*Hoćeš li kafu?*"
+  },
+  {
+    "id": "l88-mozes-li",
+    "lesson": 88,
+    "theme": "Ställa frågor",
+    "sr": "možeš li?",
+    "sv": "kan du?"
+  },
+  {
+    "id": "l88-da-li",
+    "lesson": 88,
+    "theme": "Ställa frågor",
+    "sr": "da li",
+    "sv": "frågeord som inleder ja/nej-frågor",
+    "note": "*Da li si gladna?* betyder samma sak som *Jesi li gladna?*"
+  },
+  {
+    "id": "l89-cekaj",
+    "lesson": 89,
+    "theme": "Uppmaningar",
+    "sr": "čekaj!",
+    "sv": "vänta!",
+    "note": "Artigt eller till flera: *čekajte!*"
+  },
+  {
+    "id": "l89-gledaj",
+    "lesson": 89,
+    "theme": "Uppmaningar",
+    "sr": "gledaj!",
+    "sv": "titta!",
+    "note": "Artigt eller till flera: *gledajte!*"
+  },
+  {
+    "id": "l89-slusaj",
+    "lesson": 89,
+    "theme": "Uppmaningar",
+    "sr": "slušaj!",
+    "sv": "lyssna!",
+    "note": "Artigt eller till flera: *slušajte!*"
+  },
+  {
+    "id": "l89-dodji",
+    "lesson": 89,
+    "theme": "Uppmaningar",
+    "sr": "dođi!",
+    "sv": "kom!",
+    "note": "Artigt eller till flera: *dođite!*"
+  },
+  {
+    "id": "l89-idemo",
+    "lesson": 89,
+    "theme": "Uppmaningar",
+    "sr": "idemo!",
+    "sv": "nu går vi!",
+    "note": "Samma form som vi går: *idemo*."
+  },
+  {
+    "id": "l90-malo",
+    "lesson": 90,
+    "theme": "Hur mycket och hur ofta",
+    "sr": "malo",
+    "sv": "lite"
+  },
+  {
+    "id": "l90-puno",
+    "lesson": 90,
+    "theme": "Hur mycket och hur ofta",
+    "sr": "puno",
+    "sv": "mycket",
+    "note": "Vardagligare än *mnogo*."
+  },
+  {
+    "id": "l90-cesto",
+    "lesson": 90,
+    "theme": "Hur mycket och hur ofta",
+    "sr": "često",
+    "sv": "ofta"
+  },
+  {
+    "id": "l90-ponekad",
+    "lesson": 90,
+    "theme": "Hur mycket och hur ofta",
+    "sr": "ponekad",
+    "sv": "ibland"
+  },
+  {
+    "id": "l90-obicno",
+    "lesson": 90,
+    "theme": "Hur mycket och hur ofta",
+    "sr": "obično",
+    "sv": "vanligtvis"
+  },
+  {
+    "id": "l91-jedanaest",
+    "lesson": 91,
+    "theme": "Tal 11-30",
+    "sr": "jedanaest",
+    "sv": "elva"
+  },
+  {
+    "id": "l91-dvanaest",
+    "lesson": 91,
+    "theme": "Tal 11-30",
+    "sr": "dvanaest",
+    "sv": "tolv"
+  },
+  {
+    "id": "l91-petnaest",
+    "lesson": 91,
+    "theme": "Tal 11-30",
+    "sr": "petnaest",
+    "sv": "femton"
+  },
+  {
+    "id": "l91-dvadeset",
+    "lesson": 91,
+    "theme": "Tal 11-30",
+    "sr": "dvadeset",
+    "sv": "tjugo"
+  },
+  {
+    "id": "l91-trideset",
+    "lesson": 91,
+    "theme": "Tal 11-30",
+    "sr": "trideset",
+    "sv": "trettio"
+  },
+  {
+    "id": "l92-pedeset",
+    "lesson": 92,
+    "theme": "Stora tal",
+    "sr": "pedeset",
+    "sv": "femtio"
+  },
+  {
+    "id": "l92-sto",
+    "lesson": 92,
+    "theme": "Stora tal",
+    "sr": "sto",
+    "sv": "hundra",
+    "note": "Samma form som *sto* (bord)."
+  },
+  {
+    "id": "l92-hiljada",
+    "lesson": 92,
+    "theme": "Stora tal",
+    "sr": "hiljada",
+    "sv": "tusen"
+  },
+  {
+    "id": "l92-marka",
+    "lesson": 92,
+    "theme": "Stora tal",
+    "sr": "marka",
+    "sv": "mark (pengar)",
+    "note": "Valutan i Bosnien."
+  },
+  {
+    "id": "l92-koliko-kosta",
+    "lesson": 92,
+    "theme": "Stora tal",
+    "sr": "koliko košta?",
+    "sv": "vad kostar det?"
+  },
+  {
+    "id": "l93-januar",
+    "lesson": 93,
+    "theme": "Månader 1",
+    "sr": "januar",
+    "sv": "januari"
+  },
+  {
+    "id": "l93-februar",
+    "lesson": 93,
+    "theme": "Månader 1",
+    "sr": "februar",
+    "sv": "februari"
+  },
+  {
+    "id": "l93-mart",
+    "lesson": 93,
+    "theme": "Månader 1",
+    "sr": "mart",
+    "sv": "mars"
+  },
+  {
+    "id": "l93-april",
+    "lesson": 93,
+    "theme": "Månader 1",
+    "sr": "april",
+    "sv": "april"
+  },
+  {
+    "id": "l93-maj",
+    "lesson": 93,
+    "theme": "Månader 1",
+    "sr": "maj",
+    "sv": "maj"
+  },
+  {
+    "id": "l94-jun",
+    "lesson": 94,
+    "theme": "Månader 2",
+    "sr": "jun",
+    "sv": "juni",
+    "note": "Även *juni*."
+  },
+  {
+    "id": "l94-jul",
+    "lesson": 94,
+    "theme": "Månader 2",
+    "sr": "jul",
+    "sv": "juli",
+    "note": "Även *juli*."
+  },
+  {
+    "id": "l94-avgust",
+    "lesson": 94,
+    "theme": "Månader 2",
+    "sr": "avgust",
+    "sv": "augusti"
+  },
+  {
+    "id": "l94-septembar",
+    "lesson": 94,
+    "theme": "Månader 2",
+    "sr": "septembar",
+    "sv": "september"
+  },
+  {
+    "id": "l94-oktobar",
+    "lesson": 94,
+    "theme": "Månader 2",
+    "sr": "oktobar",
+    "sv": "oktober"
+  },
+  {
+    "id": "l95-novembar",
+    "lesson": 95,
+    "theme": "Födelsedag",
+    "sr": "novembar",
+    "sv": "november"
+  },
+  {
+    "id": "l95-decembar",
+    "lesson": 95,
+    "theme": "Födelsedag",
+    "sr": "decembar",
+    "sv": "december"
+  },
+  {
+    "id": "l95-rodjendan",
+    "lesson": 95,
+    "theme": "Födelsedag",
+    "sr": "rođendan",
+    "sv": "födelsedag"
+  },
+  {
+    "id": "l95-rodjena-sam",
+    "lesson": 95,
+    "theme": "Födelsedag",
+    "sr": "rođena sam",
+    "sv": "jag är född",
+    "note": "Man: *rođen sam*."
+  },
+  {
+    "id": "l95-koliko-imas-godina",
+    "lesson": 95,
+    "theme": "Födelsedag",
+    "sr": "koliko imaš godina?",
+    "sv": "hur gammal är du?",
+    "note": "Svaret: *Imam ... godina*."
+  },
+  {
+    "id": "l96-proljece",
+    "lesson": 96,
+    "theme": "Årstider",
+    "sr": "proljeće",
+    "sv": "vår",
+    "note": "Ekaviskt: *proleće*."
+  },
+  {
+    "id": "l96-ljeto",
+    "lesson": 96,
+    "theme": "Årstider",
+    "sr": "ljeto",
+    "sv": "sommar",
+    "note": "Ekaviskt: *leto*."
+  },
+  {
+    "id": "l96-jesen",
+    "lesson": 96,
+    "theme": "Årstider",
+    "sr": "jesen",
+    "sv": "höst"
+  },
+  {
+    "id": "l96-zima",
+    "lesson": 96,
+    "theme": "Årstider",
+    "sr": "zima",
+    "sv": "vinter"
+  },
+  {
+    "id": "l96-praznik",
+    "lesson": 96,
+    "theme": "Årstider",
+    "sr": "praznik",
+    "sv": "helgdag"
+  },
+  {
+    "id": "l97-sretan-rodjendan",
+    "lesson": 97,
+    "theme": "Lyckönskningar",
+    "sr": "sretan rođendan",
+    "sv": "grattis på födelsedagen",
+    "note": "Även *srećan rođendan*."
+  },
+  {
+    "id": "l97-sretna-nova-godina",
+    "lesson": 97,
+    "theme": "Lyckönskningar",
+    "sr": "sretna Nova godina",
+    "sv": "gott nytt år",
+    "note": "Även *srećna Nova godina*."
+  },
+  {
+    "id": "l97-sretna-slava",
+    "lesson": 97,
+    "theme": "Lyckönskningar",
+    "sr": "sretna slava",
+    "sv": "glad *slava*",
+    "note": "Även *srećna slava*."
+  },
+  {
+    "id": "l97-sve-najbolje",
+    "lesson": 97,
+    "theme": "Lyckönskningar",
+    "sr": "sve najbolje",
+    "sv": "allt gott"
+  },
+  {
+    "id": "l97-na-zdravlje",
+    "lesson": 97,
+    "theme": "Lyckönskningar",
+    "sr": "na zdravlje",
+    "sv": "skål, prosit"
+  },
+  {
+    "id": "l98-hristos-se-rodi",
+    "lesson": 98,
+    "theme": "Högtidsfraser",
+    "sr": "Hristos se rodi",
+    "sv": "Kristus är född",
+    "note": "Hälsning vid *Božić*."
+  },
+  {
+    "id": "l98-vaistinu-se-rodi",
+    "lesson": 98,
+    "theme": "Högtidsfraser",
+    "sr": "vaistinu se rodi",
+    "sv": "han är sannerligen född",
+    "note": "Svaret på hälsningen vid *Božić*."
+  },
+  {
+    "id": "l98-hristos-vaskrse",
+    "lesson": 98,
+    "theme": "Högtidsfraser",
+    "sr": "Hristos vaskrse",
+    "sv": "Kristus är uppstånden",
+    "note": "Hälsning vid *Vaskrs*."
+  },
+  {
+    "id": "l98-vaistinu-vaskrse",
+    "lesson": 98,
+    "theme": "Högtidsfraser",
+    "sr": "vaistinu vaskrse",
+    "sv": "han är sannerligen uppstånden",
+    "note": "Svaret på hälsningen vid *Vaskrs*."
+  },
+  {
+    "id": "l98-moje-saucesce",
+    "lesson": 98,
+    "theme": "Högtidsfraser",
+    "sr": "moje saučešće",
+    "sv": "jag beklagar sorgen"
+  },
+  {
+    "id": "l99-djeca",
+    "lesson": 99,
+    "theme": "Stora händelser",
+    "sr": "djeca",
+    "sv": "barn (flera)",
+    "note": "Ekaviskt: *deca*. Ett barn: *dijete*."
+  },
+  {
+    "id": "l99-roditelji",
+    "lesson": 99,
+    "theme": "Stora händelser",
+    "sr": "roditelji",
+    "sv": "föräldrar"
+  },
+  {
+    "id": "l99-beba",
+    "lesson": 99,
+    "theme": "Stora händelser",
+    "sr": "beba",
+    "sv": "bebis"
+  },
+  {
+    "id": "l99-trudna",
+    "lesson": 99,
+    "theme": "Stora händelser",
+    "sr": "trudna",
+    "sv": "gravid"
+  },
+  {
+    "id": "l99-udata",
+    "lesson": 99,
+    "theme": "Stora händelser",
+    "sr": "udata",
+    "sv": "gift (kvinna)",
+    "note": "Man: *oženjen*."
+  },
+  {
+    "id": "l100-mogu-li-pomoci",
+    "lesson": 100,
+    "theme": "Hjälpa till hemma",
+    "sr": "mogu li pomoći?",
+    "sv": "kan jag hjälpa till?"
+  },
+  {
+    "id": "l100-sudje",
+    "lesson": 100,
+    "theme": "Hjälpa till hemma",
+    "sr": "suđe",
+    "sv": "disk, porslin",
+    "note": "*Perem suđe*."
+  },
+  {
+    "id": "l100-perem",
+    "lesson": 100,
+    "theme": "Hjälpa till hemma",
+    "sr": "perem",
+    "sv": "jag diskar, tvättar"
+  },
+  {
+    "id": "l100-cistim",
+    "lesson": 100,
+    "theme": "Hjälpa till hemma",
+    "sr": "čistim",
+    "sv": "jag städar"
+  },
+  {
+    "id": "l100-gotovo",
+    "lesson": 100,
+    "theme": "Hjälpa till hemma",
+    "sr": "gotovo",
+    "sv": "klart",
+    "note": "Om dig själv: *gotova sam*."
   }
 ]

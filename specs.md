@@ -41,7 +41,7 @@ Bredvid rubriken Serbiska står 🔥 med antal dagar i rad och 🍃 med antal or
 
 ## Träna
 - Fliken **Träna** har runda knappar i fyra grupper: Svåra ord, Ämnen, Grammatik och Småord. Kategorierna finns i `data/categories.json` och pekar på lektioner eller på enskilda meningar.
-- **Ringen** visar hur stor andel av kategorins ord du kan (Lätt eller Bra). Dåtid och Framtid har bara meningar, så där visar ringen meningar du byggt rätt. Vid Svåra ord visar ringen andelen betygsatta ord som inte är svåra.
+- **Ringen** visar hur stor andel av kategorins ord du kan (Lätt eller Bra). Vid en kategori som bara har meningar visar ringen meningar du byggt rätt. Vid Svåra ord visar ringen andelen betygsatta ord som inte är svåra.
 - **Alla ord** i en kategori kan övas, även från lektioner du inte nått. Ord du aldrig sett presenteras innan frågan. Undantag: **Svåra ord** består bara av ord du senast gav Kunde inte eller Svårt.
 - Ett pass är upp till 8 flervalsfrågor och 3 Bygg meningen, ord du inte kan först. Kategorier med bara meningar ger upp till 8 Bygg meningen.
 - Betygen sparas som vanligt och passet räknas i sviten. Din plats på stigen ändras inte, och lektioner längre fram förblir kommande även om du tränat på deras ord.
@@ -99,8 +99,8 @@ Intervall: 1 dag → 6 dagar → föregående × "lätthet" (startar på 2,5, mi
   - En statisk sida (GitHub Pages) kan inte skriva till JSON-filerna. Därför sparas framsteg lokalt.
   - På iPhone har appen på hemskärmen en egen lagring, skild från Safari.
   - Om framsteg inte kan sparas eller läsas visas en röd varning överst.
-- Nu: 60 lektioner, 300 ord, 300 meningar.
-- **Källor:** lektion 11–60 bygger på frekvenslistan och Wiktionary (CC BY-SA 4.0) och på meningar från Tatoeba (CC BY 2.0 FR). Materialet hämtas när lektioner skapas och sparas i `data/`, appen anropar inga externa tjänster. Källorna anges under Framsteg.
+- Nu: 100 lektioner, 500 ord, 500 meningar.
+- **Källor:** lektion 11–60 bygger på frekvenslistan och Wiktionary (CC BY-SA 4.0) och på meningar från Tatoeba (CC BY 2.0 FR). Lektion 61–100 är Claudes egna ordval och meningar, märkta `check` tills de är granskade. Materialet hämtas när lektioner skapas och sparas i `data/`, appen anropar inga externa tjänster. Källorna anges under Framsteg.
 
 ## Teknik
 - Ren HTML/CSS/JavaScript, inga ramverk eller byggsteg.

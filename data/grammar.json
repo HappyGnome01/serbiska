@@ -2,7 +2,7 @@
   {
     "id": "biti",
     "title": "Att vara: *sam, si, je*",
-    "lessons": [1, 22],
+    "lessons": [1, 22, 61],
     "text": [
       "Verbet *biti* (att vara) används hela tiden, och de korta formerna ser olika ut för varje person.",
       "Eftersom formen visar vem det gäller behövs sällan *ja* eller *ti*. Inte att vara blir *nisam, nisi, nije*."
@@ -22,7 +22,7 @@
   {
     "id": "negation",
     "title": "Säga nej: *ne, nemam, nisam*",
-    "lessons": [3, 12],
+    "lessons": [3, 12, 61, 87],
     "text": [
       "*Ne* står direkt före verbet. Tre vanliga verb smälter ihop med *ne*: *imam* blir *nemam*, *sam* blir *nisam* och *hoću* blir *neću*.",
       "Efter *nemam* står ordet i genitiv när du menar att du inte har något alls av det (partitiv genitiv): *kafa* blir *kafe*.",
@@ -83,7 +83,7 @@
   {
     "id": "lokativ",
     "title": "Lokativ: var något är",
-    "lessons": [5, 26, 37],
+    "lessons": [5, 26, 37, 93, 94, 95],
     "text": [
       "Efter *u* (i) och *na* (på) ändras ordet när du talar om var något finns.",
       "Ord på -*a* får -*i*. Maskulina ord och neutrum får -*u*. Länder på -*ska* får -*skoj*."
@@ -103,7 +103,7 @@
   {
     "id": "fragor",
     "title": "Ställa frågor",
-    "lessons": [9, 11, 51],
+    "lessons": [9, 11, 51, 88],
     "text": [
       "En fråga kan börja med ett frågeord, som *kako, gdje* eller *kada*. Då behövs inget mer.",
       "Ja-eller-nej-frågor får *li* direkt efter verbet, eller inleds med *da li*. Båda är rätt."
@@ -133,7 +133,7 @@
   {
     "id": "siffror",
     "title": "Siffror ändrar ordet efter",
-    "lessons": [16, 17],
+    "lessons": [16, 17, 91, 92],
     "text": [
       "Efter 1 står ordet i grundform. Efter 2, 3 och 4 får det genitiv singular. Efter 5 och uppåt får det genitiv plural.",
       "Två heter *dva*, men *dvije* före feminina ord."
@@ -143,7 +143,7 @@
   {
     "id": "imperativ",
     "title": "Uppmaningar",
-    "lessons": [18, 26, 39, 43],
+    "lessons": [18, 26, 39, 43, 66, 89],
     "text": [
       "Till en person du säger *ti* till slutar uppmaningen ofta på -*i* eller -*j*. Till flera, eller artigt, läggs -*te* till."
     ],
@@ -152,7 +152,7 @@
   {
     "id": "datid",
     "title": "Dåtid: det som hände",
-    "lessons": [20, 21, 43],
+    "lessons": [20, 21, 43, 62, 63],
     "text": [
       "Dåtid byggs av *sam, si, je* och en form av verbet som slutar på -*la* för kvinnor och -*o* för män.",
       "Du som kvinna säger alltså *bila sam* och *kupila sam*."
@@ -171,7 +171,7 @@
   {
     "id": "framtid",
     "title": "Framtid: *ću, ćeš*",
-    "lessons": [54],
+    "lessons": [54, 64],
     "text": [
       "Framtid byggs med *ću, ćeš, će* och en grundform. Nekat blir det *neću, nećeš, neće*.",
       "I vardagen säger man ofta presens med ett tidsord, till exempel *Dolazim sutra*."
