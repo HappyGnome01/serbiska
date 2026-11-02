@@ -172,3 +172,28 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 
 ## [2026-11-01] content | Förslag på lektion 61-80
 - 100 ord i 20 lektioner skrivna till `raw/forslag-lektion-61-80.md`. Inget är inlagt i appen, orden ska granskas först. Ingen dubblett mot appens 300 ord.
+
+## [2026-11-02] content | Förslag på lektion 81-100
+- 100 ord till i 20 lektioner skrivna till `raw/forslag-lektion-81-100.md`, så förslagen är nu 200 ord. Nivå 9 handlar om att föra samtal, nivå 10 om familjens år. Inget är inlagt i appen, orden ska granskas först.
+- Ingen dubblett mot appen eller första förslaget, utom *sto* (hundra), som skrivs som *sto* (bord) och behålls medvetet.
+- *ti* saknades i appen och ligger nu i lektion 82.
+
+## [2026-11-02] content | Svar från pojkvännen
+- Svaren är införda i ordförslagen: *marka*, *avgust*, *vidjećemo*, *snaja*, ny text för *slatko*. Inga frågor är kvar.
+- Att vara, dåtid och framtid flyttades till lektion 61-64 i förslaget, övriga lektioner följer efter.
+- `l2-s5` ändrades från *Izvini, molim?* till *Izvini?*. Ordvalen står i `CLAUDE.md`.
+
+## [2026-11-02] feature | Markera som gjord, kullerbytta och informationsfönster
+- Lektionssidan har knappen Markera som gjord, där du bara betygsätter orden. Det ger ingen svit och räknas inte som pass. Nytt valfritt fält `marked` på passen, befintliga framsteg påverkas inte.
+- Igelkotten gör en kullerbytta när en hel nivå blir gjord.
+- 🔥 och 🍃 öppnar fönster med mer information.
+- Framsteg fick en krona som ikon.
+
+## [2026-11-02] feature | Fliken Träna
+- Ny flik med ek-ikon och 22 runda knappar: Svåra ord, 14 ämnen, nutid, dåtid och framtid och 4 grupper småord. Ringen runt knappen visar hur mycket du gjort.
+- Kategorierna ligger i nya `data/categories.json`. Alla ord får övas, utom Svåra ord som bara har ord du betygsatt som svåra.
+- Nytt valfritt fält `builtSentences` sparar meningar du byggt rätt. Befintliga framsteg påverkas inte.
+- Lektioner längre fram än din lektion visas nu alltid som kommande, så att träning inte gör dem streckade.
+
+## [2026-11-02] publish | Träna, Markera som gjord och kullerbytta
+- Allt från dagens arbetspass pushat till GitHub Pages. De 200 ordförslagen ligger kvar privat i `raw/` och är inte inlagda.

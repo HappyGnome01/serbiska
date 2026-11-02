@@ -25,15 +25,29 @@ Inspirerat av Duolingo och modern språkdidaktik:
 ## Flikar
 Flikarna ligger alltid längst ner på skärmen, på alla sidor, och visas som ikoner:
 - **Två tassavtryck:** Idag.
-- **Träd:** Framsteg.
+- **Ek:** Träna.
+- **Krona:** Framsteg.
 - **Förstoringsglas:** Översikt.
 
-Bredvid rubriken Serbiska står 🔥 med antal dagar i rad och 🍃 med antal ord du kan: ord vars senaste betyg är Lätt eller Bra.
+Bredvid rubriken Serbiska står 🔥 med antal dagar i rad och 🍃 med antal ord du kan: ord vars senaste betyg är Lätt eller Bra. Ett tryck öppnar ett fönster med mer information:
+- **🔥:** om du gjort ett pass idag, de senaste sju dagarna, längsta sviten och antal dagar du pluggat.
+- **🍃:** antal ord i Lätt, Bra och Svårt, hur många ord som ska repeteras nu och listan med orden du kan.
 
 ## Lektionssidor
 - Tryck på en lektion för att se orden och meningarna.
 - **Gjord eller överhoppad:** Repetera lektionen ger flervalsfrågor, läsning och Bygg meningen. Din plats ändras inte. Ett repetitionspass räknas i grafen och sviten, och en överhoppad lektion blir gjord.
-- **Kommande:** bara titta. Orden räknas inte som sedda.
+- **Kommande:** titta. Orden räknas inte som sedda.
+- **Markera som gjord** finns på alla lektioner som inte är gjorda. Du anger Svårt, Bra eller Lätt för varje ord, och orden kommer sedan med i repetitionerna. Lektionen blir gjord utan att du gör passet. Det ger ingen svit och räknas inte som pass. Är det din lektion går du vidare, annars ändras inte din plats. Efter ett pass hoppar appen över lektioner som redan är gjorda.
+
+## Träna
+- Fliken **Träna** har runda knappar i fyra grupper: Svåra ord, Ämnen, Grammatik och Småord. Kategorierna finns i `data/categories.json` och pekar på lektioner eller på enskilda meningar.
+- **Ringen** visar hur stor andel av kategorins ord du kan (Lätt eller Bra). Dåtid och Framtid har bara meningar, så där visar ringen meningar du byggt rätt. Vid Svåra ord visar ringen andelen betygsatta ord som inte är svåra.
+- **Alla ord** i en kategori kan övas, även från lektioner du inte nått. Ord du aldrig sett presenteras innan frågan. Undantag: **Svåra ord** består bara av ord du senast gav Kunde inte eller Svårt.
+- Ett pass är upp till 8 flervalsfrågor och 3 Bygg meningen, ord du inte kan först. Kategorier med bara meningar ger upp till 8 Bygg meningen.
+- Betygen sparas som vanligt och passet räknas i sviten. Din plats på stigen ändras inte, och lektioner längre fram förblir kommande även om du tränat på deras ord.
+
+## Nivå klar
+När sista lektionen på en nivå blir gjord visas ett fönster där igelkotten gör en kullerbytta. Överhoppade lektioner räknas inte som gjorda, så hela nivån måste vara gjord.
 
 ## Grammatik
 - Knappen **Förklara grammatiken** visas på lektionssidan och i stegen Nytt ord och Läs och förstå, när lektionen har en förklaring.

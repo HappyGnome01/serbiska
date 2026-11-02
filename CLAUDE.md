@@ -33,6 +33,7 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 | `data/words.json` | Ordförråd (JSON-databasen) |
 | `data/sentences.json` | Exempelmeningar |
 | `data/grammar.json` | Grammatikförklaringar kopplade till lektioner |
+| `data/categories.json` | Kategorierna under Träna. Nya lektioner och meningar i dåtid eller framtid läggs till här. |
 | `specs.md` | Vad appen ska göra |
 | `process.md` | Hur vi arbetar, steg för steg |
 | `log.md` | Logg över allt som gjorts (bara tillägg, inget raderas) |
@@ -52,7 +53,7 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 - **Nybörjarnivå:** korta meningar, vanliga ord, fraser som helheter ("chunks", t.ex. *drago mi je*) snarare än grammatikregler.
 - Teman utgår från verkliga situationer med familj och vänner.
 - **Ijekaviska former.** Skriv ekavisk form i `note` när den skiljer sig.
-- **Ordval som granskats:** *kuvam* (inte kuham), *juče* (inte jučer), *sto* (inte stol), *Vaskrs* före Uskrs, *prodavnica* före trgovina.
+- **Ordval som granskats:** *kuvam* (inte kuham), *juče* (inte jučer), *sto* (inte stol), *Vaskrs* före Uskrs, *prodavnica* före trgovina, *marka* (inte dinar), *avgust* (inte august), *vidjećemo* (inte vidjet ćemo), *snaja* före snajka och snaha, *Izvini?* eller *Molim?* (inte Izvini, molim?).
 - **Informellt:** *molim te*, inte bara *molim*, när man ber någon man säger du till om något.
 - **Feminina former** när användaren pratar om sig själv (*sita sam, umorna, sretna*).
 - Skriv grammatiktips i `note` när ett ord böjs (t.ex. *kafa → kafu*).

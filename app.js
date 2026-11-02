@@ -9,12 +9,15 @@ const MAX_REVIEWS = 15;           // Högsta antal repetitioner per pass
 const WORDS_PER_REVIEW = 4;       // En extra repetition per så här många ord att befästa
 const NEW_PER_SESSION = 5;        // Nya ord per pass
 const SENTENCES_PER_SESSION = 5;  // Meningar per pass
+const TRAIN_WORDS = 8;            // Ord per träningspass
+const TRAIN_SENTENCES = 3;        // Meningar per träningspass, utöver orden
 const STORAGE_KEY = "serbiska-progress-v1";
 const DAY = 24 * 60 * 60 * 1000;
 
 let WORDS = [];       // Fylls från data/words.json
 let SENTENCES = [];   // Fylls från data/sentences.json
 let GRAMMAR = [];     // Fylls från data/grammar.json
+let CATEGORIES = [];  // Fylls från data/categories.json
 let progress = loadProgress();
 
 let session = null;   // Dagens pass
@@ -25,10 +28,11 @@ const main = document.getElementById("main");
 
 // ---------- 2. Spara och ladda framsteg ----------
 // progress.words[id] = { reps, interval, ease, due, lastGrade, placed? }
-// progress.sessions  = [{ date, lesson, reviewed, newWords }]
+// progress.sessions  = [{ date, lesson, reviewed, newWords, marked? }], marked = lektionen markerades som gjord utan pass
 // progress.placement = gammalt resultat från nivåtestet, som är borttaget. Används inte längre.
 // progress.currentLesson = nästa lektion (saknas tills du gjort ett pass eller bytt nivå)
 // progress.gradeDays = { "ÅÅÅÅ-MM-DD": { easy, good, hard } }, antal ord per betyg när dagen slutade
+// progress.builtSentences = { id: true }, meningar du byggt rätt (saknas i äldre framsteg)
 function loadProgress() {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
@@ -380,6 +384,10 @@ function showBuild(task) {
     // Serbiskans ordföljd är fri, så en mening kan ha flera rätta svar (fältet alt)
     const wordsOf = sr => sentenceParts({ sr }).map(p => p.word.toLowerCase()).join(" ");
     const ok = [s.sr, ...(s.alt || [])].map(wordsOf).includes(slots.map(t => t.word.toLowerCase()).join(" "));
+    if (ok) {
+      progress.builtSentences = { ...progress.builtSentences, [s.id]: true };
+      saveProgress();
+    }
     answerRow.querySelectorAll("button").forEach(b => b.disabled = true);
     checkBtn.classList.add("hidden");
     // h() hoppar över null, därför packas allt i en div
@@ -394,10 +402,25 @@ function showBuild(task) {
     answerRow, poolRow, h("div", { class: "buttons" }, checkBtn), result);
 }
 
+// Sparar att en lektion gjorts. Svarar med nivån om lektionen var den sista som saknades där.
+function addSession(entry) {
+  const wasDone = progress.sessions.some(s => s.lesson === entry.lesson);
+  progress.sessions.push(entry);
+  if (!entry.lesson || wasDone) return null;
+  const level = lessonLevel(entry.lesson);
+  const levelDone = allLessons().filter(l => lessonLevel(l) === level).every(l => doneLessons().includes(l));
+  return levelDone ? level : null;
+}
+
+// Nästa lektion du inte gjort, så att du inte hamnar på en du redan markerat som gjord
+function lessonAfter(lesson) {
+  return allLessons().find(l => l > lesson && !doneLessons().includes(l)) || lastLessonNumber() + 1;
+}
+
 function showDone() {
-  progress.sessions.push({ date: dateStr(new Date()), lesson: session.lesson,
+  const finishedLevel = addSession({ date: dateStr(new Date()), lesson: session.lesson,
     reviewed: session.review.length, newWords: session.newWords.length });
-  if (session.lesson && !session.practice) progress.currentLesson = session.lesson + 1;
+  if (session.lesson && !session.practice) progress.currentLesson = lessonAfter(session.lesson);
   saveProgress();
   updateHeader();
   main.replaceChildren(
@@ -406,13 +429,21 @@ function showDone() {
       h("p", {}, `Du repeterade ${session.review.length} ord, lärde dig ${session.newWords.length} nya och övade på ${session.sentences.length} meningar.`),
       h("p", { class: "muted" }, streakText())),
     h("div", { class: "buttons" },
-      h("button", { class: "primary", onclick: () => showHome(session.practice ? session.lesson : undefined) }, "Till stigen"),
+      session.trained
+        ? h("button", { class: "primary", onclick: showTraining }, "Till Träna")
+        : h("button", { class: "primary", onclick: () => showHome(session.practice ? session.lesson : undefined) }, "Till stigen"),
       h("button", { onclick: showDashboard }, "Se framsteg")));
+  if (finishedLevel) celebrateLevel(finishedLevel);
 }
 
 // ---------- 8. Startsidan ----------
+// Pass du verkligen gjort. Lektioner du bara markerat som gjorda ger inte svit eller statistik.
+function studySessions() {
+  return progress.sessions.filter(s => !s.marked);
+}
+
 function streak() {
-  const days = new Set(progress.sessions.map(s => s.date));
+  const days = new Set(studySessions().map(s => s.date));
   const d = new Date();
   if (!days.has(dateStr(d))) d.setDate(d.getDate() - 1);  // Svit räknas även om du inte kört idag än
   let count = 0;
@@ -424,6 +455,19 @@ function streak() {
 function streakText() {
   const n = streak();
   return `🔥 ${n} ${n === 1 ? "dag" : "dagar"} i rad`;
+}
+
+// Den längsta sviten du haft
+function longestStreak() {
+  const days = [...new Set(studySessions().map(s => s.date))].sort();
+  let best = 0, run = 0, before = null;
+  days.forEach(day => {
+    const time = new Date(day + "T12:00").getTime();
+    run = before && Math.round((time - before) / DAY) === 1 ? run + 1 : 1;
+    best = Math.max(best, run);
+    before = time;
+  });
+  return best;
 }
 
 function allLessons() {
@@ -438,6 +482,8 @@ function lessonTheme(lesson) {
 function lessonStatus(lesson) {
   if (lesson === currentLesson()) return "current";
   if (progress.sessions.some(s => s.lesson === lesson)) return "done";
+  // Lektioner längre fram är kommande även om du tränat på deras ord under Träna
+  if (currentLesson() && lesson > currentLesson()) return "next";
   return WORDS.some(w => w.lesson === lesson && progress.words[w.id]) ? "skipped" : "next";
 }
 
@@ -603,7 +649,7 @@ function scrollToLesson(lesson) {
 function showHome(focus) {
   setNav("home");
   const s = buildSession();
-  const doneToday = progress.sessions.some(x => x.date === dateStr(new Date()));
+  const doneToday = studySessions().some(x => x.date === dateStr(new Date()));
   const startLabel = doneToday ? "Kör ett pass till" : "Starta pass";
   fillMain(
     s.lesson ? null : h("div", { class: "card" },
@@ -630,7 +676,8 @@ function showLesson(lesson) {
       grammarButton(lesson),
       status === "current" ? h("button", { class: "primary", onclick: startSession }, "Starta pass") : null,
       status === "done" || status === "skipped"
-        ? h("button", { class: "good", onclick: () => startPractice(lesson) }, "Repetera lektionen") : null),
+        ? h("button", { class: "good", onclick: () => startPractice(lesson) }, "Repetera lektionen") : null,
+      status === "done" ? null : h("button", { onclick: () => showMarkDone(lesson) }, "Markera som gjord")),
     status === "next" ? h("p", { class: "muted center" }, "Du kommer hit senare. Du kan titta redan nu.") : null,
     status === "done" || status === "skipped" ? h("p", { class: "muted center" }, "Din plats på stigen ändras inte.") : null,
     h("p", { class: "step-label" }, "Ord"),
@@ -643,6 +690,90 @@ function showLesson(lesson) {
       h("div", { class: "lesson-sr" }, s.sr),
       h("div", {}, s.sv),
       s.note ? h("div", { class: "note lesson-note" }, mixed(s.note)) : null))));
+}
+
+// Markera en lektion som gjord: ange bara hur väl du kan varje ord
+function showMarkDone(lesson) {
+  setNav(null);
+  const words = WORDS.filter(w => w.lesson === lesson);
+  const picked = {};
+  const saveBtn = h("button", { class: "primary", disabled: "disabled", onclick: save }, "Spara");
+
+  function row(w) {
+    const group = h("div", { class: "mark-grades" });
+    const choices = [[3, "Svårt", "hard"], [4, "Bra", "good"], [5, "Lätt", "easy"]].map(([q, label, cls]) =>
+      h("button", { class: cls, onclick: e => {
+        picked[w.id] = q;
+        group.classList.add("chosen");
+        group.querySelectorAll("button").forEach(b => b.classList.toggle("picked", b === e.currentTarget));
+        saveBtn.disabled = Object.keys(picked).length < words.length;
+      } }, label));
+    group.append(...choices);
+    return h("div", { class: "lesson-item" },
+      h("div", { class: "lesson-sr" }, w.sr, h("span", { class: "muted lesson-cyr" }, " " + toCyrillic(w.sr))),
+      h("div", {}, w.sv),
+      group);
+  }
+
+  function save() {
+    const wasCurrent = lesson === currentLesson();
+    words.forEach(w => gradeWord(w.id, picked[w.id]));
+    const finishedLevel = addSession({ date: dateStr(new Date()), lesson, reviewed: 0, newWords: 0, marked: true });
+    if (wasCurrent) progress.currentLesson = lessonAfter(lesson);
+    saveProgress();
+    showHome(wasCurrent ? undefined : lesson);
+    if (finishedLevel) celebrateLevel(finishedLevel);
+  }
+
+  fillMain(
+    h("button", { class: "link-btn", onclick: () => showLesson(lesson) }, "← Tillbaka"),
+    h("div", { class: "card" },
+      h("div", { class: "big" }, `Lektion ${lesson}`),
+      h("p", { class: "muted" }, "Hur väl kan du orden? Orden kommer sedan med i repetitionerna.")),
+    h("div", { class: "lesson-list" }, words.map(row)),
+    h("div", { class: "buttons" }, saveBtn));
+}
+
+// Kullerbytta när alla lektioner på en nivå är gjorda
+function celebrateLevel(level) {
+  const hedgehog = h("div", { class: "hedgehog-flip" });
+  hedgehog.innerHTML = HEDGEHOG;
+  showModal(`Nivå ${level} klar`, [
+    h("div", { class: "flip-stage" }, hedgehog),
+    h("h2", { class: "center" }, `Nivå ${level} klar! 🎉`),
+    h("p", { class: "center muted" }, `Du har gjort alla ${LESSONS_PER_LEVEL} lektioner på nivån.`)]);
+}
+
+// ---------- Fönstren för sviten och orden du kan ----------
+function showStreakInfo() {
+  const days = new Set(studySessions().map(s => s.date));
+  const today = dateStr(new Date());
+  const week = [6, 5, 4, 3, 2, 1, 0].map(ago => daysAgo(ago));
+  showModal("Din svit", [
+    h("h2", {}, streakText()),
+    h("p", {}, days.has(today) ? "Du har gjort ett pass idag. Sviten är säker." : "Gör ett pass idag så håller du sviten vid liv."),
+    h("div", { class: "week-dots" }, week.map(d => h("div", { class: "week-dot" },
+      h("span", {}, days.has(dateStr(d)) ? "🔥" : "·"),
+      d.toLocaleDateString("sv-SE", { weekday: "short" })))),
+    h("div", { class: "modal-list" },
+      h("div", { class: "word-row" }, h("span", {}, "Längsta sviten"), h("span", { class: "muted" }, `${longestStreak()} ${longestStreak() === 1 ? "dag" : "dagar"}`)),
+      h("div", { class: "word-row" }, h("span", {}, "Dagar du pluggat"), h("span", { class: "muted" }, String(days.size)))),
+    h("p", { class: "muted" }, "Varje dag med ett pass eller en repetition räknas. Sviten bryts om en hel dag går utan.")]);
+}
+
+function showKnownInfo() {
+  const known = knownWords();
+  const byGrade = g => WORDS.filter(w => progress.words[w.id] && progress.words[w.id].lastGrade === g);
+  const due = WORDS.filter(w => progress.words[w.id] && progress.words[w.id].due <= Date.now()).length;
+  showModal("Ord du kan", [
+    h("h2", {}, `🍃 ${known.length} av ${WORDS.length} ord`),
+    h("p", {}, "Du kan ett ord när du senast gav det Lätt eller Bra."),
+    h("div", { class: "modal-list" },
+      [["Lätt", byGrade(5).length], ["Bra", byGrade(4).length], ["Svårt", byGrade(3).length], ["Att repetera nu", due]].map(([label, count]) =>
+        h("div", { class: "word-row" }, h("span", {}, label), h("span", { class: "muted" }, String(count))))),
+    known.length ? h("h2", {}, "Orden") : null,
+    known.length ? h("div", { class: "modal-list" }, known.map(w =>
+      h("div", { class: "word-row" }, h("span", {}, h("em", {}, w.sr)), h("span", { class: "muted" }, w.sv)))) : null]);
 }
 
 // ---------- Grammatikfönster ----------
@@ -737,6 +868,67 @@ function undoPlacement() {
   showDashboard();
 }
 
+// ---------- Träna ----------
+function categoryWords(category) {
+  return WORDS.filter(w => (category.lessons || []).includes(w.lesson));
+}
+
+function categorySentences(category) {
+  return SENTENCES.filter(s => category.sentences ? category.sentences.includes(s.id) : category.lessons.includes(s.lesson));
+}
+
+// Ord du senast tyckte var svåra eller inte kunde. Bara ord du betygsatt räknas.
+function hardWords() {
+  return WORDS.filter(w => progress.words[w.id] && [1, 3].includes(progress.words[w.id].lastGrade));
+}
+
+// Hur mycket du gjort: ord du kan, eller meningar du byggt rätt när kategorin bara har meningar
+function categoryProgress(category) {
+  const words = categoryWords(category);
+  if (words.length) return { done: knownWords(words).length, total: words.length, unit: "ord" };
+  const sentences = categorySentences(category);
+  const built = progress.builtSentences || {};
+  return { done: sentences.filter(s => built[s.id]).length, total: sentences.length, unit: "meningar" };
+}
+
+// Ord du inte kan än kommer först. Ord du aldrig sett presenteras innan frågan.
+function startTraining(words, sentences) {
+  if (!progress.currentLesson && currentLesson()) progress.currentLesson = currentLesson();  // Nya ord får inte flytta din plats
+  const picked = shuffle(words).sort((a, b) => knownWords([a]).length - knownWords([b]).length).slice(0, TRAIN_WORDS);
+  const built = shuffle(sentences).filter(s => sentenceParts(s).length >= 2).slice(0, picked.length ? TRAIN_SENTENCES : TRAIN_WORDS);
+  session = { review: picked, newWords: [], sentences: built, lesson: null, practice: true, trained: true };
+  queue = picked.filter(w => !progress.words[w.id]).map(w => ({ type: "intro", word: w }));
+  shuffle(picked).forEach(w => queue.push({ type: "quiz", word: w }));
+  built.forEach(s => queue.push({ type: "build", sentence: s }));
+  pos = 0;
+  showTask();
+}
+
+function trainButton(title, icon, share, detail, start) {
+  return h("button", { class: "train-btn", "aria-label": `${title}: ${detail}`, ...(start ? { onclick: start } : { disabled: "disabled" }) },
+    h("span", { class: "train-ring" }, ringSvg(share), h("span", { class: "train-icon", "aria-hidden": "true" }, icon)),
+    h("span", { class: "train-title" }, title),
+    h("span", { class: "muted train-detail" }, detail));
+}
+
+function showTraining() {
+  setNav("train");
+  const hard = hardWords();
+  const graded = WORDS.filter(w => progress.words[w.id] && progress.words[w.id].lastGrade).length;
+  const groups = [...new Set(CATEGORIES.map(c => c.group))];
+  fillMain(
+    h("div", { class: "section-title" }, "Svåra ord"),
+    h("div", { class: "train-grid" }, trainButton("Svåra ord", "🌵", graded ? 1 - hard.length / graded : 0,
+      `${hard.length} ord`, hard.length ? () => startTraining(hard, []) : null)),
+    ...groups.map(group => [
+      h("div", { class: "section-title" }, group),
+      h("div", { class: "train-grid" }, CATEGORIES.filter(c => c.group === group).map(c => {
+        const { done, total, unit } = categoryProgress(c);
+        return trainButton(c.title, c.icon, total ? done / total : 0, `${done} av ${total} ${unit}`,
+          total ? () => startTraining(categoryWords(c), categorySentences(c)) : null);
+      }))]).flat());
+}
+
 // ---------- 10. Dashboard ----------
 let chartDays = 7;  // Vald period i grafen: 7, 30 eller 91 dagar
 
@@ -749,7 +941,7 @@ function daysAgo(n) {
 // Summerar alla pass mellan två dagar (räknat i dagar bakåt från idag)
 function sumSessions(fromAgo, toAgo) {
   const from = dateStr(daysAgo(fromAgo)), to = dateStr(daysAgo(toAgo));
-  const list = progress.sessions.filter(s => s.date >= from && s.date <= to);
+  const list = studySessions().filter(s => s.date >= from && s.date <= to);
   return {
     sessions: list.length,
     newWords: list.reduce((sum, s) => sum + s.newWords, 0),
@@ -833,20 +1025,25 @@ function progressChart(buckets) {
       h("span", {}, h("i", { class: "swatch hard" }), "Svårt")));
 }
 
-// Cirkel som fylls i takt med hur många ord du kan av ett totalt antal
-function progressRing(known, total, label) {
+// Ring som fylls till en viss andel, från 0 till 1
+function ringSvg(share) {
   const radius = 42;
   const length = 2 * Math.PI * radius;
   const circle = cls => svgEl("circle", { class: cls, cx: 50, cy: 50, r: radius });
   const ring = svgEl("svg", { class: "ring-svg", viewBox: "0 0 100 100", "aria-hidden": "true" });
   ring.append(circle("ring-track"));
-  if (known) {
+  if (share) {
     const value = circle("ring-value");
-    value.setAttribute("stroke-dasharray", `${known / total * length} ${length}`);
+    value.setAttribute("stroke-dasharray", `${share * length} ${length}`);
     ring.append(value);
   }
+  return ring;
+}
+
+// Cirkel som fylls i takt med hur många ord du kan av ett totalt antal
+function progressRing(known, total, label) {
   return h("div", { class: "ring", role: "img", "aria-label": `${label}: ${known} av ${total} ord` },
-    h("div", { class: "ring-circle" }, ring,
+    h("div", { class: "ring-circle" }, ringSvg(known / total),
       h("div", { class: "ring-text" }, h("span", { class: "ring-num" }, String(known)), h("span", { class: "muted" }, `av ${total}`))),
     h("div", { class: "muted ring-label" }, label));
 }
@@ -905,7 +1102,7 @@ function showDashboard() {
         h("span", { class: "stat-num" }, String(list.length)), label))),
     h("div", { class: "card summary" },
       h("div", { class: "word-row" }, h("span", {}, "Lektioner klara"), h("span", { class: "muted" }, `${done.length} av ${lessons.length}`)),
-      h("div", { class: "word-row" }, h("span", {}, "Pass totalt"), h("span", { class: "muted" }, String(progress.sessions.length)))),
+      h("div", { class: "word-row" }, h("span", {}, "Pass totalt"), h("span", { class: "muted" }, String(studySessions().length)))),
     Object.values(progress.words).some(p => p.placed) ? h("div", { class: "buttons" },
       h("button", { class: "link-btn", onclick: undoPlacement }, "Ångra hoppet")) : null,
     h("div", { class: "section-title" }, "Säkerhetskopia"),
@@ -945,6 +1142,7 @@ function importProgress(file) {
 function setNav(active) {
   window.scrollTo(0, 0);  // Stigen är lång, så varje ny vy börjar överst
   document.getElementById("navHome").classList.toggle("active", active === "home");
+  document.getElementById("navTrain").classList.toggle("active", active === "train");
   document.getElementById("navDash").classList.toggle("active", active === "dash");
   document.getElementById("navLevels").classList.toggle("active", active === "levels");
   updateHeader();
@@ -957,18 +1155,23 @@ function updateHeader() {
 }
 
 document.getElementById("navHome").addEventListener("click", () => showHome());
+document.getElementById("navTrain").addEventListener("click", showTraining);
 document.getElementById("navDash").addEventListener("click", showDashboard);
 document.getElementById("navLevels").addEventListener("click", showLevelPicker);
+document.getElementById("streakCount").addEventListener("click", showStreakInfo);
+document.getElementById("knownCount").addEventListener("click", showKnownInfo);
 
 // Läs in ord och meningar, visa sedan startsidan
 Promise.all([
   fetch("data/words.json", { cache: "no-cache" }).then(r => r.json()),
   fetch("data/sentences.json", { cache: "no-cache" }).then(r => r.json()),
-  fetch("data/grammar.json", { cache: "no-cache" }).then(r => r.json()).catch(() => [])  // Appen fungerar utan
-]).then(([words, sentences, grammar]) => {
+  fetch("data/grammar.json", { cache: "no-cache" }).then(r => r.json()).catch(() => []),  // Appen fungerar utan
+  fetch("data/categories.json", { cache: "no-cache" }).then(r => r.json()).catch(() => [])
+]).then(([words, sentences, grammar, categories]) => {
   WORDS = words;
   SENTENCES = sentences;
   GRAMMAR = grammar;
+  CATEGORIES = categories;
   seedGradeDays();
   showHome();
 }).catch(() => {
