@@ -226,3 +226,16 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 
 ## [2026-11-02] publish | Ny stil, Navigering och svårare alternativ
 - Svårare svarsalternativ, ny 3D-stil med rör, Navigering med klara nivåer, enklare Framsteg och 3D-igelkott pushade till GitHub Pages.
+
+## [2026-11-03] feature | Tillbaka, låst översta rad och 7 lektioner per nivå
+- Tillbaka-knapp i passen: visar förra övningen och ångrar svaret där.
+- Översta raden ligger kvar vid scroll och visar 🦔 med din lektion.
+- En nivå är 7 lektioner, så det blir 15 nivåer. Navigering visar inte längre lektionsintervallet.
+
+## [2026-11-03] feature | Lektionsfönster, betyg direkt och ljud
+- 🦔 öppnar ett fönster om lektionen du är på.
+- Tillbaka (←) står först bland knapparna. Repetitionen har Kan inte, Svår, Bra och Lätt direkt i stället för Visa svar.
+- 🔊 vid ord och meningar. Spelar en ljudfil om den finns, annars enhetens röst. Skriptet `tools/make-audio.ps1` skapar AI-ljud med Azure Speech när en nyckel finns. Inga filer är skapade än: datorn har ingen serbisk röst och det finns ingen nyckel.
+
+## [2026-11-03] publish | Tillbaka, 7 lektioner per nivå och ljudknapp
+- Allt sedan förra pushen pushat till GitHub Pages. Grammatik per ord och mening är inte byggd.

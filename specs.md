@@ -29,7 +29,8 @@ Flikarna ligger alltid längst ner på skärmen, på alla sidor, och visas som i
 - **Förstoringsglas:** Navigering.
 - **Krona:** Framsteg.
 
-Bredvid rubriken Serbiska står 🔥 med antal dagar i rad och 🍃 med antal ord du kan: ord vars senaste betyg är Lätt eller Bra. Ett tryck öppnar ett fönster med mer information:
+Raden överst ligger kvar när du scrollar. Bredvid rubriken Serbiska står 🦔 med din lektion, 🔥 med antal dagar i rad och 🍃 med antal ord du kan: ord vars senaste betyg är Lätt eller Bra. Ett tryck öppnar ett fönster med mer information:
+- **🦔:** lektionen du är på, dess tema, var på nivån du är, hur många som är kvar på nivån, avklarade och överhoppade lektioner, och en knapp till stigen.
 - **🔥:** om du gjort ett pass idag, de senaste sju dagarna, längsta sviten och antal dagar du pluggat.
 - **🍃:** antal ord i Lätt, Bra och Svårt, hur många ord som ska repeteras nu och listan med orden du kan.
 
@@ -55,7 +56,7 @@ När sista lektionen på en nivå blir gjord visas ett fönster där igelkotten 
 - Serbiska står i kursiv när den blandas med svenska, både här och i tipsen vid ord och meningar. I datafilerna märks den `*så här*`.
 
 ## Dagens pass (~5–10 min)
-1. **Repetition – 3 till 15 ord** från tidigare pass. Antalet växer med hur många ord som behöver befästas: överhoppade ord du inte övat på, och ord du senast gav "Kunde inte" eller "Svårt" (ett extra ord per 4 sådana, högst 15). Försenade ord kommer först, sedan ord att befästa, sist övriga. Visa ordet → "Visa svar" → betygsätt.
+1. **Repetition – 3 till 15 ord** från tidigare pass. Antalet växer med hur många ord som behöver befästas: överhoppade ord du inte övat på, och ord du senast gav "Kan inte" eller "Svår" (ett extra ord per 4 sådana, högst 15). Försenade ord kommer först, sedan ord att befästa, sist övriga. Visa ordet → betygsätt direkt med Kan inte, Svår, Bra eller Lätt → svaret visas → Nästa.
 2. **Nya ord – 5 ord** från lektionen du är på. Efter passet går appen till nästa lektion.
    - Presentation: ordet, kyrilliska, översättning, tips.
    - Flervalsfråga: "Vad betyder ordet?" (4 alternativ). De fel svaren väljs bland ord som liknar rätt svar i stavning, tema, kategori eller ordtyp, med lite slump. Rätt → betygsätt Svårt/Bra/Lätt. Fel → räknas som "Kunde inte" och frågan kommer tillbaka sist.
@@ -64,20 +65,27 @@ När sista lektionen på en nivå blir gjord visas ett fönster där igelkotten 
    - Bygg meningen: svensk översättning visas, tryck på serbiska ordbrickor i rätt ordning (meningar med minst 2 ord). Varje ord har en tom rad och skiljetecknen står redan på plats. Brickorna saknar skiljetecken och första ordet har liten bokstav, så att de inte avslöjar ordningen. En mening kan ha flera rätta ordföljder (fältet `alt`).
 4. **Klart:** sammanfattning och svit.
 
+**Tillbaka** (←) står först bland knapparna från andra steget. Den visar förra övningen igen och ångrar svaren sedan dess, så att du kan svara om.
+
 Ord som får "Kunde inte" visas igen senare i samma pass (en gång) och först i kön nästa pass.
 När alla lektioner är klara visas bara repetition och slumpade meningar, tills nya lektioner läggs till.
 
 ## Navigering
-- En nivå är 10 lektioner.
-- Fliken **Navigering** visar alla nivåer med teman och en bar med hur många lektioner som är klara. Klar betyder att du gjort ett pass på lektionen, så överhoppade lektioner räknas inte. En helt klar nivå är lila och nivån du är på ljusare lila.
+- En nivå är 7 lektioner. Med 100 lektioner blir det 15 nivåer, och den sista har 2 lektioner.
+- Fliken **Navigering** visar alla nivåer med nivånummer, teman och en bar med hur många lektioner som är klara. Klar betyder att du gjort ett pass på lektionen, så överhoppade lektioner räknas inte. En helt klar nivå är lila och nivån du är på ljusare lila.
 - Ett tryck på en nivå visar den på stigen under Idag. Din lektion ändras inte. Tryck på Idag för att komma tillbaka till igelkotten.
 - Det går inte längre att byta nivå i appen. Har du hoppat över lektioner tidigare finns **Ångra hoppet** under Framsteg: det tar bort överhoppade ord du inte har övat på och går tillbaka till första lektionen med ord du inte sett.
+
+## Ljud
+- 🔊 finns vid ord och meningar i passen och på lektionssidan.
+- Finns en ljudfil i `audio/` (listad i `data/audio.json`) spelas den. Annars används enhetens serbiska, bosniska eller kroatiska röst. Saknas båda visas ett fönster om det.
+- AI-ljudfilerna skapas med `tools/make-audio.ps1` och Azure Speech. Det kräver en egen nyckel, som aldrig sparas i projektet.
 
 ## Betygssystem
 | Knapp | Värde | Effekt |
 |---|---|---|
-| Kunde inte | 1 | Börja om, visas snart igen |
-| Svårt | 3 | Kort intervall |
+| Kan inte | 1 | Börja om, visas snart igen |
+| Svår | 3 | Kort intervall |
 | Bra | 4 | Normalt intervall |
 | Lätt | 5 | Längre intervall |
 
@@ -111,7 +119,6 @@ GitHub Pages från ett publikt repo. `raw/` publiceras aldrig (`.gitignore`). Se
 
 ## Inte med i version 1
 - Inloggning eller synk mellan enheter
-- Ljud och uttal
 - Skrivövningar (skriv det serbiska ordet själv)
 
 ## Backlog (idéer framåt)

@@ -109,9 +109,45 @@ function toCyrillic(text) {
   return out;
 }
 
-// Visar serbisk text med kyrilliska under
-function srBlock(text, extraClass = "") {
-  return [h("div", { class: "sr " + extraClass }, text), h("div", { class: "cyr" }, toCyrillic(text))];
+// Visar serbisk text med kyrilliska under, och en ljudknapp när id finns
+function srBlock(text, extraClass = "", id = null) {
+  return [h("div", { class: "sr " + extraClass }, text), h("div", { class: "cyr" }, toCyrillic(text)),
+    id ? h("div", { class: "speak-row" }, speakButton(id, text)) : null];
+}
+
+// ---------- Ljud ----------
+// Ljudfiler skapas av tools/make-audio.ps1 och listas i data/audio.json.
+// Saknas en fil används enhetens egen serbiska, bosniska eller kroatiska röst om den finns.
+let AUDIO = new Set();
+
+function serbianVoice() {
+  if (!("speechSynthesis" in window)) return null;
+  const voices = speechSynthesis.getVoices();
+  return ["sr", "bs", "hr"].map(code => voices.find(v => v.lang.toLowerCase().startsWith(code))).find(Boolean) || null;
+}
+
+function speak(id, text) {
+  if (AUDIO.has(id)) {
+    new Audio(`audio/${id}.mp3`).play().catch(() => {});
+    return;
+  }
+  const voice = serbianVoice();
+  if (!voice) {
+    showModal("Inget ljud än", [h("h2", {}, "Inget ljud än"),
+      h("p", {}, "Ljudfilen är inte skapad än, och den här enheten har ingen serbisk, bosnisk eller kroatisk röst.")]);
+    return;
+  }
+  speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.voice = voice;
+  utterance.lang = voice.lang;
+  utterance.rate = 0.85;  // Lite långsammare än vanligt tal
+  speechSynthesis.speak(utterance);
+}
+
+function speakButton(id, text) {
+  return h("button", { class: "speak-btn", "aria-label": `Lyssna: ${text}`,
+    onclick: e => { e.stopPropagation(); speak(id, text); } }, "🔊");
 }
 
 // ---------- 5. Repetitionsalgoritmen (förenklad SM-2) ----------
@@ -181,10 +217,11 @@ function gradesOn(date) {
   return last ? progress.gradeDays[last] : { easy: 0, good: 0, hard: 0 };
 }
 
-function gradeButtons(onGrade, includeFail) {
-  const defs = [[1, "Kunde inte", "again"], [3, "Svårt", "hard"], [4, "Bra", "good"], [5, "Lätt", "easy"]]
+// first = knapp som läggs först i raden, till exempel Tillbaka
+function gradeButtons(onGrade, includeFail, first = null) {
+  const defs = [[1, "Kan inte", "again"], [3, "Svår", "hard"], [4, "Bra", "good"], [5, "Lätt", "easy"]]
     .filter(d => includeFail || d[0] !== 1);
-  return h("div", { class: "buttons" },
+  return h("div", { class: "buttons grade-row" }, first,
     defs.map(([q, label, cls]) => h("button", { class: cls, onclick: () => onGrade(q) }, label)));
 }
 
@@ -270,6 +307,37 @@ function startPractice(lesson) {
 
 function next() { pos++; showTask(); }
 
+// Läget innan varje steg visades, så att Tillbaka kan ångra svaret och visa steget igen
+let snapshots = [];
+
+// Hela ordlistan sparas, så att även ett svar på steget du lämnar ångras
+function takeSnapshot() {
+  const today = dateStr(new Date());
+  snapshots[pos] = {
+    words: JSON.stringify(progress.words),
+    gradeDay: progress.gradeDays[today] ? { ...progress.gradeDays[today] } : null,
+    built: { ...progress.builtSentences },
+    queueLength: queue.length
+  };
+}
+
+function back() {
+  pos--;
+  const s = snapshots[pos];
+  const today = dateStr(new Date());
+  progress.words = JSON.parse(s.words);
+  if (s.gradeDay) progress.gradeDays[today] = s.gradeDay; else delete progress.gradeDays[today];
+  progress.builtSentences = s.built;
+  queue.length = s.queueLength;  // Tar bort omtaget som ett fel svar lade till
+  saveProgress();
+  showTask();
+}
+
+// Tillbaka står först bland stegets knappar, från andra steget
+function backButton() {
+  return pos > 0 ? h("button", { class: "back-btn", "aria-label": "Tillbaka till förra övningen", title: "Tillbaka", onclick: back }, "←") : null;
+}
+
 // Lägger tillbaka ett steg sist i kön (en gång) om du inte kunde det
 function retryLater(task) {
   if (!task.retry) queue.push({ ...task, retry: true });
@@ -278,6 +346,7 @@ function retryLater(task) {
 function showTask() {
   if (pos >= queue.length) return showDone();
   const task = queue[pos];
+  takeSnapshot();
   if (task.type === "review") showReview(task);
   if (task.type === "intro") showIntro(task);
   if (task.type === "quiz") showQuiz(task);
@@ -296,29 +365,27 @@ function screen(label, ...content) {
 }
 
 // ---------- 7. Stegen i passet ----------
+// Du betygsätter direkt hur väl du kan ordet. Sedan visas svaret så att du kan kontrollera.
 function showReview(task) {
   const w = task.word;
   const answer = h("div", { class: "hidden" }, h("div", { class: "sv" }, w.sv), w.note ? h("div", { class: "note" }, mixed(w.note)) : null);
+  const hint = h("p", { class: "muted center" }, "Hur väl kan du ordet?");
+  const nextRow = h("div", { class: "buttons hidden" }, backButton(), h("button", { class: "primary", onclick: next }, "Nästa"));
   const grades = gradeButtons(q => {
     gradeWord(w.id, q);
     if (q === 1) retryLater(task);
-    next();
-  }, true);
-  grades.classList.add("hidden");
-  const showBtn = h("button", { class: "primary", onclick: () => {
-    answer.classList.remove("hidden");
-    grades.classList.remove("hidden");
-    showBtn.classList.add("hidden");
-  } }, "Visa svar");
-  screen("Repetition", h("div", { class: "card" }, srBlock(w.sr), answer), h("div", { class: "buttons" }, showBtn), grades);
+    [answer, nextRow].forEach(el => el.classList.remove("hidden"));
+    [grades, hint].forEach(el => el.classList.add("hidden"));
+  }, true, backButton());
+  screen("Repetition", h("div", { class: "card" }, srBlock(w.sr, "", w.id), answer), hint, grades, nextRow);
 }
 
 function showIntro(task) {
   const w = task.word;
   if (!progress.words[w.id]) { progress.words[w.id] = newProgress(); saveProgress(); }  // Markera som sett
   screen("Nytt ord",
-    h("div", { class: "card" }, srBlock(w.sr), h("div", { class: "sv" }, w.sv), w.note ? h("div", { class: "note" }, mixed("💡 " + w.note)) : null),
-    h("div", { class: "buttons" }, h("button", { class: "primary", onclick: next }, "Nästa"), grammarButton(w.lesson)));
+    h("div", { class: "card" }, srBlock(w.sr, "", w.id), h("div", { class: "sv" }, w.sv), w.note ? h("div", { class: "note" }, mixed("💡 " + w.note)) : null),
+    h("div", { class: "buttons" }, backButton(), h("button", { class: "primary", onclick: next }, "Nästa"), grammarButton(w.lesson)));
 }
 
 // Hur lika två texter stavas, från 0 till 1 (räknar hur många bokstäver som måste ändras)
@@ -366,7 +433,7 @@ function wrongOptionsFor(w) {
 function showQuiz(task) {
   const w = task.word;
   const options = shuffle([w, ...wrongOptionsFor(w)]);
-  const after = h("div");
+  const after = h("div", {}, pos > 0 ? h("div", { class: "buttons" }, backButton()) : null);
   const buttons = options.map(o => h("button", { class: "option", onclick: () => choose(o) }, o.sv));
 
   function choose(o) {
@@ -374,16 +441,16 @@ function showQuiz(task) {
     buttons[options.indexOf(w)].classList.add("correct");
     if (o.id === w.id) {
       after.replaceChildren(h("p", { class: "feedback ok" }, "Rätt! Hur lätt var det?"),
-        gradeButtons(q => { gradeWord(w.id, q); next(); }, false));
+        gradeButtons(q => { gradeWord(w.id, q); next(); }, false, backButton()));
     } else {
       buttons[options.indexOf(o)].classList.add("wrong");
       gradeWord(w.id, 1);
       retryLater(task);
       after.replaceChildren(h("p", { class: "feedback bad" }, "Inte riktigt – ordet kommer tillbaka strax."),
-        h("div", { class: "buttons" }, h("button", { class: "primary", onclick: next }, "Fortsätt")));
+        h("div", { class: "buttons" }, backButton(), h("button", { class: "primary", onclick: next }, "Fortsätt")));
     }
   }
-  screen("Vad betyder ordet?", h("div", { class: "card" }, srBlock(w.sr)), h("div", { class: "options" }, buttons), after);
+  screen("Vad betyder ordet?", h("div", { class: "card" }, srBlock(w.sr, "", w.id)), h("div", { class: "options" }, buttons), after);
 }
 
 function showRead(task) {
@@ -395,8 +462,8 @@ function showRead(task) {
     nextBtn.classList.remove("hidden");
     showBtn.classList.add("hidden");
   } }, "Visa översättning");
-  screen("Läs och förstå", h("div", { class: "card" }, srBlock(s.sr, "sentence"), answer),
-    h("div", { class: "buttons" }, showBtn, nextBtn, grammarButton(s.lesson)));
+  screen("Läs och förstå", h("div", { class: "card" }, srBlock(s.sr, "sentence", s.id), answer),
+    h("div", { class: "buttons" }, backButton(), showBtn, nextBtn, grammarButton(s.lesson)));
 }
 
 function showBuild(task) {
@@ -434,13 +501,13 @@ function showBuild(task) {
     // h() hoppar över null, därför packas allt i en div
     result.replaceChildren(h("div", {},
       h("p", { class: ok ? "feedback ok" : "feedback bad" }, ok ? "Rätt! 🎉" : "Nästan! Rätt ordning:"),
-      ok ? null : h("div", { class: "card" }, srBlock(s.sr, "sentence")),
+      ok ? null : h("div", { class: "card" }, srBlock(s.sr, "sentence", s.id)),
       h("div", { class: "buttons" }, h("button", { class: "primary", onclick: next }, "Nästa"))));
   }
 
   draw();
   screen("Bygg meningen", h("div", { class: "card" }, h("div", { class: "sv" }, s.sv)),
-    answerRow, poolRow, h("div", { class: "buttons" }, checkBtn), result);
+    answerRow, poolRow, h("div", { class: "buttons" }, backButton(), checkBtn), result);
 }
 
 // Sparar att en lektion gjorts. Svarar med nivån om lektionen var den sista som saknades där.
@@ -748,12 +815,12 @@ function showLesson(lesson) {
     status === "done" || status === "skipped" ? h("p", { class: "muted center" }, "Din plats på stigen ändras inte.") : null,
     h("p", { class: "step-label" }, "Ord"),
     h("div", { class: "lesson-list" }, words.map(w => h("div", { class: "lesson-item" },
-      h("div", { class: "lesson-sr" }, w.sr, h("span", { class: "muted lesson-cyr" }, " " + toCyrillic(w.sr))),
+      h("div", { class: "lesson-sr" }, w.sr, h("span", { class: "muted lesson-cyr" }, " " + toCyrillic(w.sr)), speakButton(w.id, w.sr)),
       h("div", {}, w.sv),
       w.note ? h("div", { class: "note lesson-note" }, mixed(w.note)) : null))),
     h("p", { class: "step-label" }, "Meningar"),
     h("div", { class: "lesson-list" }, sentences.map(s => h("div", { class: "lesson-item" },
-      h("div", { class: "lesson-sr" }, s.sr),
+      h("div", { class: "lesson-sr" }, s.sr, speakButton(s.id, s.sr)),
       h("div", {}, s.sv),
       s.note ? h("div", { class: "note lesson-note" }, mixed(s.note)) : null))));
 }
@@ -807,10 +874,35 @@ function celebrateLevel(level) {
   showModal(`Nivå ${level} klar`, [
     h("div", { class: "flip-stage" }, hedgehog),
     h("h2", { class: "center" }, `Nivå ${level} klar! 🎉`),
-    h("p", { class: "center muted" }, `Du har gjort alla ${LESSONS_PER_LEVEL} lektioner på nivån.`)]);
+    h("p", { class: "center muted" }, `Du har gjort alla ${allLessons().filter(l => lessonLevel(l) === level).length} lektioner på nivån.`)]);
 }
 
-// ---------- Fönstren för sviten och orden du kan ----------
+// ---------- Fönstren för din lektion, sviten och orden du kan ----------
+function showLessonInfo() {
+  const lesson = currentLesson();
+  const done = doneLessons();
+  const total = allLessons().length;
+  const goToRoad = () => { document.querySelector("dialog.modal").close(); showHome(); };
+  if (!lesson) {
+    showModal("Din lektion", [h("h2", {}, "🦔 Alla lektioner klara"),
+      h("p", {}, "Du har kommit igenom alla lektioner. Passen repeterar nu ord och meningar.")]);
+    return;
+  }
+  const level = lessonLevel(lesson);
+  const inLevel = allLessons().filter(l => lessonLevel(l) === level);
+  const skipped = allLessons().filter(l => lessonStatus(l) === "skipped").length;
+  showModal("Din lektion", [
+    h("h2", {}, `🦔 Lektion ${lesson} av ${total}`),
+    h("p", {}, `Igelkotten står vid lektionen du är på: ${lessonTheme(lesson)}. Nästa pass lär dig dess ord och meningar.`),
+    h("div", { class: "modal-list" },
+      [["Nivå", `${level}, lektion ${inLevel.indexOf(lesson) + 1} av ${inLevel.length}`],
+       ["Kvar på nivån", String(inLevel.filter(l => !done.includes(l)).length)],
+       ["Avklarade lektioner", `${done.length} av ${total}`],
+       ["Överhoppade lektioner", String(skipped)]].map(([label, value]) =>
+        h("div", { class: "word-row" }, h("span", {}, label), h("span", { class: "muted" }, value)))),
+    h("div", { class: "buttons" }, h("button", { class: "good", onclick: goToRoad }, "Visa på stigen"))]);
+}
+
 function showStreakInfo() {
   const days = new Set(studySessions().map(s => s.date));
   const today = dateStr(new Date());
@@ -889,8 +981,8 @@ function showWords(label, list) {
 }
 
 // ---------- 9. Nivåer ----------
-// En nivå = 10 lektioner
-const LESSONS_PER_LEVEL = 10;
+// En nivå = 7 lektioner
+const LESSONS_PER_LEVEL = 7;
 
 function lessonLevel(lesson) { return Math.ceil(lesson / LESSONS_PER_LEVEL); }
 function lastLessonNumber() { return Math.max(...WORDS.map(w => w.lesson)); }
@@ -901,7 +993,6 @@ function showLevelPicker() {
   const lesson = currentLesson();
   const currentLevel = lesson ? lessonLevel(lesson) : null;
   const rows = Array.from({ length: levels }, (_, i) => i + 1).map(level => {
-    const first = (level - 1) * LESSONS_PER_LEVEL + 1;
     const themes = [...new Set(WORDS.filter(w => lessonLevel(w.lesson) === level).map(w => w.theme))];
     const here = level === currentLevel;
     const lessons = allLessons().filter(l => lessonLevel(l) === level);
@@ -909,7 +1000,7 @@ function showLevelPicker() {
     const finished = done === lessons.length;
     return h("button", { class: "option level-option" + (finished ? " level-done" : "") + (here ? " level-here" : ""),
       onclick: () => showLevel(level), "aria-label": `Nivå ${level}${finished ? ", klar" : ""}${here ? ", du är här" : ""}` },
-      h("div", { class: "level-title" }, `Nivå ${level} · lektion ${first}–${first + LESSONS_PER_LEVEL - 1}` + (here ? " · du är här" : "")),
+      h("div", { class: "level-title" }, `Nivå ${level}` + (here ? " · du är här" : "")),
       h("div", { class: "muted level-themes" }, themes.slice(0, 4).join(", ")),
       h("div", { class: "progress", role: "img", "aria-label": `${done} av ${lessons.length} lektioner klara` },
         h("div", { class: "bar", style: `width:${done / lessons.length * 100}%` })));
@@ -1179,8 +1270,12 @@ function setNav(active) {
   updateHeader();
 }
 
-// Raden bredvid rubriken: svit och ord du kan (senaste betyg Lätt eller Bra)
+// Raden bredvid rubriken: din lektion, svit och ord du kan (senaste betyg Lätt eller Bra)
 function updateHeader() {
+  const lesson = currentLesson();
+  const lessonBtn = document.getElementById("lessonCount");
+  lessonBtn.textContent = `🦔 ${lesson || "✓"}`;
+  lessonBtn.setAttribute("aria-label", lesson ? `Din lektion: ${lesson}. Visa mer.` : "Alla lektioner klara. Visa mer.");
   document.getElementById("streakCount").textContent = `🔥 ${streak()}`;
   document.getElementById("knownCount").textContent = `🍃 ${knownWords().length}`;
 }
@@ -1189,6 +1284,7 @@ document.getElementById("navHome").addEventListener("click", () => showHome());
 document.getElementById("navTrain").addEventListener("click", showTraining);
 document.getElementById("navDash").addEventListener("click", showDashboard);
 document.getElementById("navLevels").addEventListener("click", showLevelPicker);
+document.getElementById("lessonCount").addEventListener("click", showLessonInfo);
 document.getElementById("streakCount").addEventListener("click", showStreakInfo);
 document.getElementById("knownCount").addEventListener("click", showKnownInfo);
 
@@ -1197,8 +1293,10 @@ Promise.all([
   fetch("data/words.json", { cache: "no-cache" }).then(r => r.json()),
   fetch("data/sentences.json", { cache: "no-cache" }).then(r => r.json()),
   fetch("data/grammar.json", { cache: "no-cache" }).then(r => r.json()).catch(() => []),  // Appen fungerar utan
-  fetch("data/categories.json", { cache: "no-cache" }).then(r => r.json()).catch(() => [])
-]).then(([words, sentences, grammar, categories]) => {
+  fetch("data/categories.json", { cache: "no-cache" }).then(r => r.json()).catch(() => []),
+  fetch("data/audio.json", { cache: "no-cache" }).then(r => r.json()).catch(() => [])
+]).then(([words, sentences, grammar, categories, audio]) => {
+  AUDIO = new Set(audio);
   WORDS = words;
   SENTENCES = sentences;
   GRAMMAR = grammar;

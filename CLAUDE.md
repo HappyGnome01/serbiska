@@ -33,6 +33,9 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 | `data/words.json` | Ordförråd (JSON-databasen) |
 | `data/sentences.json` | Exempelmeningar |
 | `data/grammar.json` | Grammatikförklaringar kopplade till lektioner |
+| `data/audio.json` | Lista över ord och meningar som har en ljudfil |
+| `audio/` | AI-ljudfiler, en per ord och mening (`<id>.mp3`) |
+| `tools/make-audio.ps1` | Skapar ljudfilerna med Azure Speech. Nyckeln läggs i miljövariabler, aldrig i en fil. |
 | `data/categories.json` | Kategorierna under Träna. Nya lektioner och meningar i dåtid eller framtid läggs till här. |
 | `specs.md` | Vad appen ska göra |
 | `process.md` | Hur vi arbetar, steg för steg |
