@@ -47,9 +47,10 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 ## Språkinnehållet (data/)
 - **Grammatisk referens:** *Normativna gramatika srpskoga jezika* (Piper, Klajn, Dragićević; Matica srpska). Den väger tyngst i grammatikfrågor, och pojkvännens omdöme gäller vad som är naturligt. Claude har inte tillgång till boken: påstå aldrig att något är kontrollerat i den, utan skriv `"check": true` när du inte kan belägga regeln.
 - **Kursiv serbiska:** när svenska och serbiska blandas står serbiskan i kursiv. Gäller svar i chatten, `log.md`, wikin, `note` och texterna i `grammar.json`, där den märks `*så här*`.
-**words.json**: `{ id, lesson, theme, sr, sv, note?, check? }`
-**sentences.json**: `{ id, lesson, sr, sv, note?, alt?, check?, source? }`
-**grammar.json**: `{ id, title, lessons, text, examples, check? }`, där `lessons` är lektionsnummer, `text` en lista med stycken och `examples` par av serbiska och svenska.
+**words.json**: `{ id, lesson, theme, sr, sv, note?, check?, grammar? }`
+**sentences.json**: `{ id, lesson, sr, sv, note?, alt?, check?, source?, grammar? }`
+**grammar.json**: `{ id, title, lessons, text, examples, check? }`, där `lessons` är lektionerna där regeln tas upp, `text` en lista med stycken och `examples` par av serbiska och svenska.
+- `grammar` i ord och meningar listar id från `grammar.json` som gäller just det ordet eller den meningen. Det är det appen visar. Koppla bara det som syns i ordet eller meningen: *danas* får ingen, *Idem kući* får `presens`, `oregelbundna` och `kuci`. Nya ord och meningar ska få fältet när de läggs till.
 - id-format: `l<lektion>-<ord-utan-diakritiska-tecken>` och `l<lektion>-s<nummer>`.
 - Skriv **bara latin** i `sr`. Appen gör kyrilliska.
 - En lektion = **5 ord + 5 meningar**. Meningarna använder lektionens ord och i övrigt helst bara tidigare ord.

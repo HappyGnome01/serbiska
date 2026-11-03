@@ -239,3 +239,24 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 
 ## [2026-11-03] publish | Tillbaka, 7 lektioner per nivå och ljudknapp
 - Allt sedan förra pushen pushat till GitHub Pages. Grammatik per ord och mening är inte byggd.
+
+## [2026-11-03] content | Grammatik per ord och mening
+- Nytt fält `grammar` i `words.json` och `sentences.json`. 212 ord och 477 meningar pekar på de förklaringar som gäller just dem, resten har ingen.
+- Kopplingarna föreslogs av regler (ord som *sam*, *li*, *u/na*, böjningstips i noten) och lästes sedan igenom. Ett 60-tal rättades för hand.
+- Fyra nya förklaringar med `check: true`: *kući/kod kuće*, vart eller var, plural, oregelbundna verb.
+- Appen visar Förklara grammatiken bara när ordet eller meningen har en förklaring. Lektionssidan visar alla förklaringar i lektionen.
+
+## [2026-11-03] fix | Kroatisk röst hittades inte
+- Appen frågade efter telefonens röster bara i ögonblicket du tryckte, när listan ofta är tom på iPhone. Nu laddas listan i förväg, och är den tom får telefonen välja röst för kroatiska.
+- Både *hr-HR* och *hr_HR* känns igen. Hittas ingen passande röst visar fönstret vilka språk telefonen har.
+
+## [2026-11-03] feature | Grammatik via tipset och startknapp vid igelkotten
+- Knappen Förklara grammatiken är borttagen. Tipset med 💡 öppnar förklaringen när det finns en, i passen och på lektionssidan.
+- Starta pass står bredvid igelkotten (74 av 100 lektioner), på andra sidan om lektionen (7) eller under, på en plats utan stigen (19). Kontrollerat för alla 100 lektioner i telefonbredd.
+
+## [2026-11-03] feature | Starta pass på motsatt sida av stigen
+- Knappen står på motsatt sida av stigen mot igelkotten, och höjden anpassas efter var det finns plats. Igelkotten flyttar till den trånga sidan när den ryms där.
+- Kontrollerat för alla 100 lektioner i telefonbredd: 55 på motsatt sida (81 i samma höjd som lektionen), 45 bredvid igelkotten där lektionen står för nära kanten. Ingen knapp täcker stigen, en lektion eller nivårubriken.
+
+## [2026-11-03] publish | Grammatik per ord, röst och startknapp
+- Grammatik per ord och mening, grammatik via tipset, rättad röstsökning och startknappen på motsatt sida pushade till GitHub Pages.

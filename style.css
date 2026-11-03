@@ -155,7 +155,11 @@ button.good  { background: var(--good);  color: var(--on-good);  --edge: var(--g
 button.easy  { background: var(--easy);  color: var(--on-easy);  --edge: var(--easy-edge); }
 button.link-btn { background: transparent; color: var(--muted); font-size: 0.9rem; text-decoration: underline; padding: 6px 10px; }
 /* Platta knappar: ikoner, länkar och runda knappar som har en egen form */
-button.link-btn, button.stat, button.train-btn, button.nav-btn:not(.active), button.chart-col, button.range-btn:not(.active), .header-stats button { box-shadow: none; transform: none; }
+button.link-btn, button.stat, button.train-btn, button.nav-btn:not(.active), button.chart-col, button.range-btn:not(.active), .header-stats button, button.note-link { box-shadow: none; transform: none; }
+/* Tipset med glödlampan går att trycka på när det finns en grammatikförklaring */
+button.note-link { display: block; width: 100%; background: none; padding: 0; border-radius: 0; font: inherit; font-size: 0.95rem; font-weight: 400; color: var(--muted); text-align: inherit; text-decoration: underline dotted; text-underline-offset: 3px; cursor: pointer; }
+button.note-link.lesson-note { font-size: 0.85rem; }
+.note-more { color: var(--primary); font-weight: 700; text-decoration: none; }
 
 /* Flervalsfrågor */
 .options { display: grid; gap: 10px; }
@@ -253,7 +257,7 @@ button.node:active { transform: translate(-50%, calc(-50% + 2px)); box-shadow: i
 .node.skipped { background: var(--card); border-color: var(--good-line); border-style: dashed; color: var(--on-good); }
 .node.next { background: var(--card); border-color: var(--border); color: var(--muted); }
 .node.current { width: 74px; height: 74px; font-size: 1.3rem; background: var(--again); border-color: var(--primary); color: var(--on-again); --edge: var(--primary-edge); }
-.road-start { position: absolute; z-index: 3; left: 0; right: 0; display: flex; justify-content: center; }
+button.road-start-btn { position: absolute; z-index: 3; min-width: 0; padding: 11px 18px; white-space: nowrap; }
 .hedgehog { position: absolute; z-index: 3; width: 58px; height: 46px; pointer-events: none; }
 .hedgehog.flip svg { transform: scaleX(-1); }
 .hedgehog svg { width: 100%; height: 100%; display: block; overflow: visible; }
@@ -309,7 +313,6 @@ button.train-btn { display: flex; flex-direction: column; align-items: center; g
 .lesson-note { margin-top: 4px; font-size: 0.85rem; }
 
 /* Modulfönster: grammatik och ordlistor */
-button.grammar-btn { background: var(--lav); color: var(--on-lav); --edge: var(--lav-edge); }
 dialog.modal { border: none; padding: 0; border-radius: 24px; background: var(--card); color: var(--text); width: min(480px, calc(100vw - 32px)); max-height: 80vh; box-shadow: 0 18px 36px rgba(0,0,0,0.3); }
 dialog.modal::backdrop { background: rgba(47,41,37,0.6); }
 .modal-body { padding: 20px 20px 0; }

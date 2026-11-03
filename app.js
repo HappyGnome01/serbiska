@@ -120,10 +120,22 @@ function srBlock(text, extraClass = "", id = null) {
 // Saknas en fil används enhetens egen serbiska, bosniska eller kroatiska röst om den finns.
 let AUDIO = new Set();
 
+const VOICE_LANGS = ["sr", "bs", "hr"];
+
+// Telefonen laddar sina röster i efterhand, så listan hämtas i förväg och igen när den ändras
+function loadVoices() {
+  if (!("speechSynthesis" in window)) return [];
+  return speechSynthesis.getVoices();
+}
+if ("speechSynthesis" in window) {
+  loadVoices();
+  speechSynthesis.addEventListener?.("voiceschanged", loadVoices);
+}
+
 function serbianVoice() {
-  if (!("speechSynthesis" in window)) return null;
-  const voices = speechSynthesis.getVoices();
-  return ["sr", "bs", "hr"].map(code => voices.find(v => v.lang.toLowerCase().startsWith(code))).find(Boolean) || null;
+  const voices = loadVoices();
+  // Både "hr-HR" och "hr_HR" förekommer
+  return VOICE_LANGS.map(code => voices.find(v => v.lang.toLowerCase().replace("_", "-").startsWith(code))).find(Boolean) || null;
 }
 
 function speak(id, text) {
@@ -131,18 +143,26 @@ function speak(id, text) {
     new Audio(`audio/${id}.mp3`).play().catch(() => {});
     return;
   }
+  if (!("speechSynthesis" in window)) return showNoVoice([]);
+  const voices = loadVoices();
   const voice = serbianVoice();
-  if (!voice) {
-    showModal("Inget ljud än", [h("h2", {}, "Inget ljud än"),
-      h("p", {}, "Ljudfilen är inte skapad än, och den här enheten har ingen serbisk, bosnisk eller kroatisk röst.")]);
-    return;
-  }
+  // En tom lista betyder oftast att telefonen inte visar sina röster, inte att de saknas.
+  // Då väljer telefonen själv en röst utifrån språket.
+  if (!voice && voices.length) return showNoVoice(voices);
   speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.voice = voice;
-  utterance.lang = voice.lang;
+  if (voice) utterance.voice = voice;
+  utterance.lang = voice ? voice.lang : "hr-HR";
   utterance.rate = 0.85;  // Lite långsammare än vanligt tal
   speechSynthesis.speak(utterance);
+}
+
+// Visar vilka språk telefonen har röster för, så att det går att se varför ingen passar
+function showNoVoice(voices) {
+  const langs = [...new Set(voices.map(v => v.lang))].sort();
+  showModal("Inget ljud än", [h("h2", {}, "Inget ljud än"),
+    h("p", {}, "Ljudfilen är inte skapad än, och appen hittar ingen serbisk, bosnisk eller kroatisk röst."),
+    langs.length ? h("p", { class: "muted" }, `Röster på enheten: ${langs.join(", ")}`) : null]);
 }
 
 function speakButton(id, text) {
@@ -368,7 +388,7 @@ function screen(label, ...content) {
 // Du betygsätter direkt hur väl du kan ordet. Sedan visas svaret så att du kan kontrollera.
 function showReview(task) {
   const w = task.word;
-  const answer = h("div", { class: "hidden" }, h("div", { class: "sv" }, w.sv), w.note ? h("div", { class: "note" }, mixed(w.note)) : null);
+  const answer = h("div", { class: "hidden" }, h("div", { class: "sv" }, w.sv), noteLine(w));
   const hint = h("p", { class: "muted center" }, "Hur väl kan du ordet?");
   const nextRow = h("div", { class: "buttons hidden" }, backButton(), h("button", { class: "primary", onclick: next }, "Nästa"));
   const grades = gradeButtons(q => {
@@ -384,8 +404,8 @@ function showIntro(task) {
   const w = task.word;
   if (!progress.words[w.id]) { progress.words[w.id] = newProgress(); saveProgress(); }  // Markera som sett
   screen("Nytt ord",
-    h("div", { class: "card" }, srBlock(w.sr, "", w.id), h("div", { class: "sv" }, w.sv), w.note ? h("div", { class: "note" }, mixed("💡 " + w.note)) : null),
-    h("div", { class: "buttons" }, backButton(), h("button", { class: "primary", onclick: next }, "Nästa"), grammarButton(w.lesson)));
+    h("div", { class: "card" }, srBlock(w.sr, "", w.id), h("div", { class: "sv" }, w.sv), noteLine(w)),
+    h("div", { class: "buttons" }, backButton(), h("button", { class: "primary", onclick: next }, "Nästa")));
 }
 
 // Hur lika två texter stavas, från 0 till 1 (räknar hur många bokstäver som måste ändras)
@@ -455,7 +475,7 @@ function showQuiz(task) {
 
 function showRead(task) {
   const s = task.sentence;
-  const answer = h("div", { class: "hidden" }, h("div", { class: "sv" }, s.sv), s.note ? h("div", { class: "note" }, mixed("💡 " + s.note)) : null);
+  const answer = h("div", { class: "hidden" }, h("div", { class: "sv" }, s.sv), noteLine(s));
   const nextBtn = h("button", { class: "primary hidden", onclick: next }, "Nästa");
   const showBtn = h("button", { class: "primary", onclick: () => {
     answer.classList.remove("hidden");
@@ -463,7 +483,7 @@ function showRead(task) {
     showBtn.classList.add("hidden");
   } }, "Visa översättning");
   screen("Läs och förstå", h("div", { class: "card" }, srBlock(s.sr, "sentence", s.id), answer),
-    h("div", { class: "buttons" }, backButton(), showBtn, nextBtn, grammarButton(s.lesson)));
+    h("div", { class: "buttons" }, backButton(), showBtn, nextBtn));
 }
 
 function showBuild(task) {
@@ -609,7 +629,9 @@ function knownWords(list = WORDS) {
 
 // Stigens mått: höjd i pixlar per rad, sidled i procent av bredden
 const ROAD_ROW = 98;
-const ROAD_CURRENT = 160;  // Din lektion får plats för startknappen
+const ROAD_CURRENT = 130;  // Din lektion får plats för startknappen om den hamnar under lektionen
+const HOG_OFFSET = 44;     // Avstånd från mitten av din lektion till igelkotten
+const HOG_WIDTH = 58;
 const ROAD_LEVEL = 62;
 const ROAD_SWING = 38;
 const ROAD_TURN = 0.9;  // Högre värde ger fler svängar
@@ -691,7 +713,7 @@ function drawPaws(road, points, stop) {
     return { left: r.left - box.left, right: r.right - box.left, top: r.top - box.top, bottom: r.bottom - box.top };
   });
   const radii = rects(".node").map(n => (n.right - n.left) / 2);
-  const blocks = rects(".road-start button, .hedgehog");
+  const blocks = rects(".road-start-btn, .hedgehog");
   const isFree = (x, y) =>
     !blocks.some(b => x > b.left - ROAD_GAP && x < b.right + ROAD_GAP && y > b.top - ROAD_GAP && y < b.bottom + ROAD_GAP);
 
@@ -730,6 +752,7 @@ function roadmap(startLabel) {
   const items = [];
   let y = 0;
   let level = 0;
+  let start = null;  // Startknappen och var den ska stå, när din lektion finns på stigen
 
   allLessons().forEach((lesson, i) => {
     if (lessonLevel(lesson) !== level) {
@@ -746,13 +769,12 @@ function roadmap(startLabel) {
       onclick: () => showLesson(lesson) },
       String(lesson)));
     if (status === "current") {
-      const onRight = x < 50;  // Igelkotten står på den sida där det finns plats
-      const hedgehog = h("div", { class: "hedgehog" + (onRight ? " flip" : ""),
-        style: `left:calc(${x}% ${onRight ? "+ 44px" : "- 102px"});top:${center - 23}px` });
+      // Igelkotten och knappen får sina platser när bredden är känd, i placeStartButton
+      const hedgehog = h("div", { class: "hedgehog", style: `top:${center - 23}px` });
       hedgehog.innerHTML = HEDGEHOG;
-      items.push(hedgehog,
-        h("div", { class: "road-start", style: `top:${center + 48}px` },
-          h("button", { class: "primary", onclick: startSession }, startLabel)));
+      const button = h("button", { class: "primary road-start-btn", onclick: startSession }, startLabel);
+      items.push(hedgehog, button);
+      start = { x, center, hedgehog, button, lesson };
     }
     y += status === "current" ? ROAD_CURRENT : ROAD_ROW;
   });
@@ -761,6 +783,8 @@ function roadmap(startLabel) {
   const stop = current ? points.findIndex(p => p.lesson === current) : points.length - 1;
   const line = svgEl("svg", { class: "road-line", height: y, "aria-hidden": "true" });
   const road = h("div", { class: "road", style: `height:${y}px` }, line, items);
+  // Alla lektioner på din nivå, eftersom stigen bara går mellan dem
+  if (start) start.neighbours = points.filter(p => lessonLevel(p.lesson) === lessonLevel(start.lesson));
 
   // Avtrycken ritas när bredden är känd och om igen när den ändras
   let drawnWidth = 0;
@@ -768,9 +792,78 @@ function roadmap(startLabel) {
     const width = road.clientWidth;
     if (!width || width === drawnWidth) return;
     drawnWidth = width;
+    if (start) placeStartButton(road, start);  // Först, så att tassarna inte hamnar under knappen
     drawPaws(road, points, stop);
   }).observe(road);
   return road;
+}
+
+// Startknappen står på motsatt sida av stigen mot igelkotten. Höjden väljs efter var det finns plats:
+// först i samma höjd som din lektion, sedan allt längre upp eller ner tills knappen ryms
+// utan att täcka stigen, lektionerna, igelkotten eller nivårubriken.
+const START_ROAD_MARGIN = 16;  // Fritt avstånd mellan knappen och stigens mitt, så att tassarna syns
+const START_MAX_SHIFT = 160;   // Längst upp eller ner från din lektion som knappen får flyttas
+
+function placeStartButton(road, { x, center, hedgehog, button, neighbours }) {
+  const width = road.clientWidth;
+  const w = button.offsetWidth, hgt = button.offsetHeight;
+  const nodeX = x / 100 * width;
+  // Knappen vill ha den breda sidan av din lektion. Igelkotten tar då den trånga sidan om den ryms där,
+  // annars får den också stå på den breda sidan.
+  const wideRight = nodeX < width / 2;
+  const hogFitsNarrow = wideRight ? nodeX - HOG_OFFSET - HOG_WIDTH >= 0 : nodeX + HOG_OFFSET + HOG_WIDTH <= width;
+  const hogRight = hogFitsNarrow ? !wideRight : wideRight;
+  hedgehog.style.left = `${hogRight ? nodeX + HOG_OFFSET : nodeX - HOG_OFFSET - HOG_WIDTH}px`;
+  hedgehog.classList.toggle("flip", hogRight);  // Igelkotten tittar mot din lektion
+  const onRight = hogRight;
+  const side = onRight ? -1 : 1;  // Igelkotten till höger ger knappen till vänster, och tvärtom
+  const box = road.getBoundingClientRect();
+  const local = el => { const r = el.getBoundingClientRect(); return { left: r.left - box.left, right: r.right - box.left, top: r.top - box.top, bottom: r.bottom - box.top }; };
+  const blocked = [".node", ".hedgehog", ".road-level"].flatMap(sel => [...road.querySelectorAll(sel)].map(local));
+
+  // Stigen förenklad till raka linjer mellan lektionerna på din nivå
+  const path = neighbours.map(p => ({ x: p.x / 100 * width, y: p.y })).sort((a, b) => a.y - b.y);
+  const pathX = y => {
+    if (y <= path[0].y) return path[0].x;
+    for (let i = 1; i < path.length; i++) {
+      if (y <= path[i].y) return path[i - 1].x + (path[i].x - path[i - 1].x) * (y - path[i - 1].y) / (path[i].y - path[i - 1].y);
+    }
+    return path[path.length - 1].x;
+  };
+  const crossesRoad = (left, top) => {
+    for (let y = top - START_ROAD_MARGIN; y <= top + hgt + START_ROAD_MARGIN; y += 2) {
+      if (y < path[0].y - START_ROAD_MARGIN || y > path[path.length - 1].y + START_ROAD_MARGIN) continue;
+      const px = pathX(Math.min(Math.max(y, path[0].y), path[path.length - 1].y));
+      if (px > left - START_ROAD_MARGIN && px < left + w + START_ROAD_MARGIN) return true;
+    }
+    return false;
+  };
+  const free = (left, top) => left >= 0 && left + w <= width && top >= 0 &&
+    !blocked.some(b => left < b.right + ROAD_GAP && left + w > b.left - ROAD_GAP && top < b.bottom + ROAD_GAP && top + hgt > b.top - ROAD_GAP) &&
+    !crossesRoad(left, top);
+
+  // Höjder att prova, närmast din lektion först
+  const offsets = [0];
+  for (let d = 8; d <= START_MAX_SHIFT; d += 8) offsets.push(d, -d);
+  for (const dy of offsets) {
+    const top = center + dy - hgt / 2;
+    const px = pathX(center + dy);
+    // Nära stigen först, sedan längre ut åt samma håll
+    for (let gap = START_ROAD_MARGIN; gap <= width; gap += 8) {
+      const left = side < 0 ? px - gap - w : px + gap;
+      if (left < 0 || left + w > width) break;
+      if (free(left, top)) {
+        button.style.left = `${left}px`;
+        button.style.top = `${top}px`;
+        return;
+      }
+    }
+  }
+  // Ingen plats på den sidan: bredvid igelkotten, eller så nära den som går
+  const hog = local(road.querySelector(".hedgehog"));
+  const left = onRight ? hog.right + ROAD_GAP : hog.left - ROAD_GAP - w;
+  button.style.left = `${Math.min(Math.max(left, 0), width - w)}px`;
+  button.style.top = `${center - hgt / 2}px`;
 }
 
 function scrollToLesson(lesson) {
@@ -806,7 +899,6 @@ function showLesson(lesson) {
       h("div", { class: "big" }, `Lektion ${lesson}`),
       h("p", { class: "muted" }, lessonTheme(lesson))),
     h("div", { class: "buttons" },
-      grammarButton(lesson),
       status === "current" ? h("button", { class: "primary", onclick: startSession }, "Starta pass") : null,
       status === "done" || status === "skipped"
         ? h("button", { class: "good", onclick: () => startPractice(lesson) }, "Repetera lektionen") : null,
@@ -817,12 +909,12 @@ function showLesson(lesson) {
     h("div", { class: "lesson-list" }, words.map(w => h("div", { class: "lesson-item" },
       h("div", { class: "lesson-sr" }, w.sr, h("span", { class: "muted lesson-cyr" }, " " + toCyrillic(w.sr)), speakButton(w.id, w.sr)),
       h("div", {}, w.sv),
-      w.note ? h("div", { class: "note lesson-note" }, mixed(w.note)) : null))),
+      noteLine(w, "lesson-note")))),
     h("p", { class: "step-label" }, "Meningar"),
     h("div", { class: "lesson-list" }, sentences.map(s => h("div", { class: "lesson-item" },
       h("div", { class: "lesson-sr" }, s.sr, speakButton(s.id, s.sr)),
       h("div", {}, s.sv),
-      s.note ? h("div", { class: "note lesson-note" }, mixed(s.note)) : null))));
+      noteLine(s, "lesson-note")))));
 }
 
 // Markera en lektion som gjord: ange bara hur väl du kan varje ord
@@ -940,14 +1032,22 @@ function mixed(text) {
   return text.split("*").map((part, i) => i % 2 ? h("em", {}, part) : part);
 }
 
-function grammarFor(lesson) {
-  return GRAMMAR.filter(g => g.lessons.includes(lesson));
+// Förklaringarna som gäller just de här orden och meningarna (fältet grammar), i den ordning de står där
+function grammarFor(items) {
+  const ids = [...new Set(items.flatMap(item => item.grammar || []))];
+  return ids.map(id => GRAMMAR.find(g => g.id === id)).filter(Boolean);
 }
 
-// Knapp för de som vill veta mer. Visas bara där det finns en förklaring.
-function grammarButton(lesson) {
-  if (!grammarFor(lesson).length) return null;
-  return h("button", { class: "grammar-btn", onclick: () => showGrammar(lesson) }, "Förklara grammatiken");
+// Tipset med glödlampan. Har ordet eller meningen en grammatikförklaring går tipset att trycka på
+// och öppnar förklaringen. Saknas tips men finns en förklaring står det bara "Grammatik".
+function noteLine(item, extraClass = "") {
+  const hasGrammar = grammarFor([item]).length > 0;
+  if (!item.note && !hasGrammar) return null;
+  const text = mixed("💡 " + (item.note || "Grammatik"));
+  if (!hasGrammar) return h("div", { class: `note ${extraClass}` }, text);
+  return h("button", { class: `note note-link ${extraClass}`, "aria-label": `${item.note || "Grammatik"}. Förklara grammatiken.`,
+    onclick: e => { e.stopPropagation(); showGrammar([item]); } },
+    text, h("span", { class: "note-more", "aria-hidden": "true" }, " ›"));
 }
 
 // Modulfönster som stängs med knappen, Esc eller ett tryck utanför
@@ -962,8 +1062,8 @@ function showModal(label, content) {
   dialog.showModal();
 }
 
-function showGrammar(lesson) {
-  showModal("Grammatik", grammarFor(lesson).map(g => h("section", {},
+function showGrammar(items) {
+  showModal("Grammatik", grammarFor(items).map(g => h("section", {},
     h("h2", {}, mixed(g.title)),
     g.text.map(t => h("p", {}, mixed(t))),
     h("div", { class: "modal-list" }, g.examples.map(([sr, sv]) =>

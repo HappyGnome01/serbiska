@@ -18,9 +18,9 @@ Inspirerat av Duolingo och modern språkdidaktik:
 
 ## Idag: stigen
 - Idag-sidan är en slingrande stig med en rund knapp per lektion, indelad i nivåer. Sidan öppnas vid din lektion: tidigare lektioner ligger uppåt, kommande nedåt.
-- Tassavtryck längs en mjuk kurva binder ihop knapparna inom en nivå, en tass per 30 pixlar fritt avstånd och med lika stora mellanrum. Mellan nivåer finns inga tassar. Tassarna går växelvis på varsin sida och pekar dit stigen går. Vägen fram till din lektion är grön, resten dämpad. En igelkott står vid din lektion med en stillsam tomgångsanimation: kroppen andas mjukt upp och ner och ögat blinkar ibland.
+- Tassavtryck längs en mjuk kurva binder ihop knapparna inom en nivå, en tass per 30 pixlar fritt avstånd och med lika stora mellanrum. Mellan nivåer finns inga tassar. Tassarna går växelvis på varsin sida och pekar dit stigen går. Vägen fram till din lektion är grön, resten dämpad. En igelkott står vid din lektion, på den trånga sidan när den ryms där, med en stillsam tomgångsanimation: kroppen andas mjukt upp och ner och ögat blinkar ibland.
 - **Lägen:** gjord (grön, du har gjort ett pass), överhoppad (streckad ring), din lektion (större och rosa), kommande (dämpad).
-- Pass startas med knappen vid din lektion på stigen.
+- Pass startas med knappen vid din lektion på stigen. Knappen står på motsatt sida av stigen mot igelkotten, på den breda sidan av din lektion, och igelkotten på den trånga sidan när den ryms där. Höjden väljs efter var det finns plats: helst samma höjd som lektionen, annars upp till 160 pixlar upp eller ner, utan att täcka stigen, lektionerna, igelkotten eller nivårubriken. Står lektionen så nära kanten att igelkotten inte ryms på den trånga sidan, står knappen bredvid igelkotten.
 
 ## Flikar
 Flikarna ligger alltid längst ner på skärmen, på alla sidor, och visas som ikoner:
@@ -51,7 +51,8 @@ Raden överst ligger kvar när du scrollar. Bredvid rubriken Serbiska står 🦔
 När sista lektionen på en nivå blir gjord visas ett fönster där igelkotten gör en kullerbytta. Överhoppade lektioner räknas inte som gjorda, så hela nivån måste vara gjord.
 
 ## Grammatik
-- Knappen **Förklara grammatiken** visas på lektionssidan och i stegen Nytt ord och Läs och förstå, när lektionen har en förklaring.
+- Varje ord och mening pekar själv på de förklaringar som gäller just den (fältet `grammar`). Har ordet eller meningen en förklaring går tipset med 💡 att trycka på (prickad understrykning och ›), och då öppnas förklaringen. Saknas tips står det bara "💡 Grammatik". Det gäller i passen och på lektionssidan. Det finns ingen separat grammatikknapp. *Danas* har ingen, och *Idem kući* visar verbens ändelser, oregelbundna verb och *kući*.
+- På lektionssidan har varje ord och mening sitt eget tips med förklaring.
 - Den öppnar ett fönster med kort förklaring och exempel. Innehållet finns i `data/grammar.json`.
 - Serbiska står i kursiv när den blandas med svenska, både här och i tipsen vid ord och meningar. I datafilerna märks den `*så här*`.
 
@@ -78,7 +79,7 @@ När alla lektioner är klara visas bara repetition och slumpade meningar, tills
 
 ## Ljud
 - 🔊 finns vid ord och meningar i passen och på lektionssidan.
-- Finns en ljudfil i `audio/` (listad i `data/audio.json`) spelas den. Annars används enhetens serbiska, bosniska eller kroatiska röst. Saknas båda visas ett fönster om det.
+- Finns en ljudfil i `audio/` (listad i `data/audio.json`) spelas den. Annars används enhetens serbiska, bosniska eller kroatiska röst. Visar telefonen ingen röstlista alls, som ofta på iPhone, får telefonen välja röst för kroatiska. Har den bara röster för andra språk visas ett fönster med vilka språk som finns.
 - AI-ljudfilerna skapas med `tools/make-audio.ps1` och Azure Speech. Det kräver en egen nyckel, som aldrig sparas i projektet.
 
 ## Betygssystem

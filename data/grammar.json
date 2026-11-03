@@ -177,5 +177,49 @@
       "I vardagen säger man ofta presens med ett tidsord, till exempel *Dolazim sutra*."
     ],
     "examples": [["Naravno da ću ti pomoći.", "Självklart hjälper jag dig."], ["Dolazim sutra.", "Jag kommer imorgon."]]
+  },
+  {
+    "id": "kuci",
+    "title": "Hem och hemma: *kući, kod kuće*",
+    "lessons": [13],
+    "text": [
+      "*Kuća* betyder hus. När du går eller åker hem säger du *kući*. När du är hemma säger du *kod kuće*.",
+      "Det är fasta uttryck, så lär dig dem som de är."
+    ],
+    "examples": [["Idem kući.", "Jag går hem."], ["Bila sam kod kuće.", "Jag var hemma."], ["Obično jedem kod kuće.", "Jag äter vanligtvis hemma."]],
+    "check": true
+  },
+  {
+    "id": "vart-var",
+    "title": "Vart eller var: *u Srbiju, u Srbiji*",
+    "lessons": [19, 75],
+    "text": [
+      "Efter *u* (i, till) och *na* (på, till) beror slutet på ordet på om du är på väg dit eller redan är där.",
+      "På väg dit står ordet i ackusativ: *Idem u Srbiju*. Redan där står det i lokativ: *U Srbiji je lijepo*."
+    ],
+    "examples": [["Idem na pijacu.", "Jag går till torget."], ["Na odmoru sam.", "Jag är på semester."], ["Idem u Srbiju.", "Jag åker till Serbien."], ["Sjedimo u bašti.", "Vi sitter i trädgården."]],
+    "check": true
+  },
+  {
+    "id": "plural",
+    "title": "Flera: plural",
+    "lessons": [13, 68],
+    "text": [
+      "Maskulina ord får oftast -*i*: *ćevap* blir *ćevapi*. Feminina ord på -*a* får -*e*: *cipela* blir *cipele*. Neutrum får -*a*: *selo* blir *sela*.",
+      "Några vanliga ord är oregelbundna: *čovjek* blir *ljudi* och *dijete* blir *djeca*."
+    ],
+    "examples": [["ćevap → ćevapi", "grillad köttrulle, flera"], ["kokoška → kokoške", "höna, höns"], ["dijete → djeca", "barn, flera barn"], ["čovjek → ljudi", "människa, människor"]],
+    "check": true
+  },
+  {
+    "id": "oregelbundna",
+    "title": "Oregelbundna verb: *idem, mogu, hoću*",
+    "lessons": [11, 64],
+    "text": [
+      "De vanligaste verben följer inte mönstren. Lär dig dem som de är.",
+      "*Ići* (gå, åka) blir *idem* i presens och *išla sam* i dåtid."
+    ],
+    "examples": [["idem, ideš, ide", "jag går, du går, hen går"], ["mogu, možeš, može", "jag kan, du kan, hen kan"], ["hoću, hoćeš, hoće", "jag vill, du vill, hen vill"], ["jedem, pijem", "jag äter, jag dricker"]],
+    "check": true
   }
 ]

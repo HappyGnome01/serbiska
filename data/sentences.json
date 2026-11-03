@@ -3,21 +3,24 @@
     "id": "l1-s1",
     "lesson": 1,
     "sr": "Zdravo, kako si?",
-    "sv": "Hej, hur mår du?"
+    "sv": "Hej, hur mår du?",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l1-s2",
     "lesson": 1,
     "sr": "Dobro sam, hvala.",
     "sv": "Jag mår bra, tack.",
-    "note": "*sam* = jag är"
+    "note": "*sam* = jag är",
+    "grammar": ["biti"]
   },
   {
     "id": "l1-s3",
     "lesson": 1,
     "sr": "Dobar dan, kako ste?",
     "sv": "God dag, hur mår ni?",
-    "note": "*ste* är den artiga formen. Använd den till äldre."
+    "note": "*ste* är den artiga formen. Använd den till äldre.",
+    "grammar": ["biti", "ti-vi", "fragor"]
   },
   {
     "id": "l1-s4",
@@ -31,14 +34,16 @@
     "lesson": 1,
     "sr": "Dobro, a ti?",
     "sv": "Bra, och du?",
-    "note": "*a* = och (när man vänder på frågan)"
+    "note": "*a* = och (när man vänder på frågan)",
+    "grammar": ["ti-vi"]
   },
   {
     "id": "l2-s1",
     "lesson": 2,
     "sr": "Može kafa?",
     "sv": "Vill du ha kaffe?",
-    "note": "Ordagrant: går det med kaffe?"
+    "note": "Ordagrant: går det med kaffe?",
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l2-s2",
@@ -50,151 +55,174 @@
     "id": "l2-s3",
     "lesson": 2,
     "sr": "Ne, hvala.",
-    "sv": "Nej tack."
+    "sv": "Nej tack.",
+    "grammar": ["negation"]
   },
   {
     "id": "l2-s4",
     "lesson": 2,
     "sr": "Da, može.",
-    "sv": "Ja, gärna."
+    "sv": "Ja, gärna.",
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l2-s5",
     "lesson": 2,
     "sr": "Izvini?",
-    "sv": "Förlåt, vad sa du?"
+    "sv": "Förlåt, vad sa du?",
+    "grammar": ["ti-vi"]
   },
   {
     "id": "l3-s1",
     "lesson": 3,
     "sr": "Zovem se Ana.",
     "sv": "Jag heter Ana.",
-    "note": "Byt Ana mot ditt eget namn när du övar högt."
+    "note": "Byt Ana mot ditt eget namn när du övar högt.",
+    "grammar": ["korta-ord", "presens"]
   },
   {
     "id": "l3-s2",
     "lesson": 3,
     "sr": "Kako se zoveš?",
-    "sv": "Vad heter du?"
+    "sv": "Vad heter du?",
+    "grammar": ["korta-ord", "fragor"]
   },
   {
     "id": "l3-s3",
     "lesson": 3,
     "sr": "Drago mi je!",
-    "sv": "Trevligt att träffas!"
+    "sv": "Trevligt att träffas!",
+    "grammar": ["biti", "korta-ord"]
   },
   {
     "id": "l3-s4",
     "lesson": 3,
     "sr": "Ne razumijem.",
-    "sv": "Jag förstår inte."
+    "sv": "Jag förstår inte.",
+    "grammar": ["negation", "presens"]
   },
   {
     "id": "l3-s5",
     "lesson": 3,
     "sr": "Ja ne govorim dobro srpski.",
     "sv": "Jag pratar inte så bra serbiska.",
-    "note": "*govorim* = jag pratar"
+    "note": "*govorim* = jag pratar",
+    "grammar": ["negation", "presens"]
   },
   {
     "id": "l4-s1",
     "lesson": 4,
     "sr": "Ovo je mama.",
     "sv": "Det här är mamma.",
-    "note": "*ovo je* = det här är"
+    "note": "*ovo je* = det här är",
+    "grammar": ["biti"]
   },
   {
     "id": "l4-s2",
     "lesson": 4,
     "sr": "Tata je ovdje.",
     "sv": "Pappa är här.",
-    "alt": ["Ovdje je tata."]
+    "alt": ["Ovdje je tata."],
+    "grammar": ["biti"]
   },
   {
     "id": "l4-s3",
     "lesson": 4,
     "sr": "Imaš li brata?",
     "sv": "Har du en bror?",
-    "note": "*brat* → *brata* efter 'har du' (ackusativ)."
+    "note": "*brat* → *brata* efter 'har du' (ackusativ).",
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l4-s4",
     "lesson": 4,
     "sr": "Moja sestra je u Švedskoj.",
     "sv": "Min syster är i Sverige.",
-    "note": "*Švedska* → *u Švedskoj* (lokativ: var något är)."
+    "note": "*Švedska* → *u Švedskoj* (lokativ: var något är).",
+    "grammar": ["biti", "possessiv", "lokativ", "vart-var"]
   },
   {
     "id": "l4-s5",
     "lesson": 4,
     "sr": "Velika porodica!",
-    "sv": "En stor familj!"
+    "sv": "En stor familj!",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l5-s1",
     "lesson": 5,
     "sr": "Ovo je baka.",
-    "sv": "Det här är farmor."
+    "sv": "Det här är farmor.",
+    "grammar": ["biti"]
   },
   {
     "id": "l5-s2",
     "lesson": 5,
     "sr": "Djed je u bašti.",
     "sv": "Farfar är i trädgården.",
-    "note": "*bašta* → *u bašti* (lokativ)."
+    "note": "*bašta* → *u bašti* (lokativ).",
+    "grammar": ["biti", "lokativ", "vart-var"]
   },
   {
     "id": "l5-s3",
     "lesson": 5,
     "sr": "Ja sam njegova djevojka.",
     "sv": "Jag är hans flickvän.",
-    "note": "*njegova* = hans"
+    "note": "*njegova* = hans",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l5-s4",
     "lesson": 5,
     "sr": "On je moj momak.",
-    "sv": "Han är min pojkvän."
+    "sv": "Han är min pojkvän.",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l5-s5",
     "lesson": 5,
     "sr": "Ovo je moj prijatelj.",
-    "sv": "Det här är min vän."
+    "sv": "Det här är min vän.",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l6-s1",
     "lesson": 6,
     "sr": "Hoćeš li kafu?",
     "sv": "Vill du ha kaffe?",
-    "note": "*kafa* → *kafu* efter 'vill du ha' (ackusativ)."
+    "note": "*kafa* → *kafu* efter 'vill du ha' (ackusativ).",
+    "grammar": ["ackusativ", "fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l6-s2",
     "lesson": 6,
     "sr": "Čašu vode, molim.",
     "sv": "Ett glas vatten, tack.",
-    "note": "*voda* → *vode*: 'ett glas av vatten' (genitiv)."
+    "note": "*voda* → *vode*: 'ett glas av vatten' (genitiv).",
+    "grammar": ["genitiv"]
   },
   {
     "id": "l6-s3",
     "lesson": 6,
     "sr": "Kafa sa mlijekom.",
     "sv": "Kaffe med mjölk.",
-    "note": "*mlijeko* → *mlijekom* efter *sa* = med (instrumental)."
+    "note": "*mlijeko* → *mlijekom* efter *sa* = med (instrumental).",
+    "grammar": ["instrumental"]
   },
   {
     "id": "l6-s4",
     "lesson": 6,
     "sr": "Ovo je domaći hljeb.",
     "sv": "Det här är hembakat bröd.",
-    "note": "*domaći* = hemgjord"
+    "note": "*domaći* = hemgjord",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l6-s5",
     "lesson": 6,
     "sr": "Ne pijem kafu, može čaj?",
-    "sv": "Jag dricker inte kaffe, går det bra med te?"
+    "sv": "Jag dricker inte kaffe, går det bra med te?",
+    "grammar": ["negation", "ackusativ", "presens", "oregelbundna"]
   },
   {
     "id": "l7-s1",
@@ -207,26 +235,30 @@
     "lesson": 7,
     "sr": "Ovo je jako ukusno!",
     "sv": "Det här är jättegott!",
-    "note": "*jako* = väldigt"
+    "note": "*jako* = väldigt",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l7-s3",
     "lesson": 7,
     "sr": "Hoćeš li još?",
-    "sv": "Vill du ha mer?"
+    "sv": "Vill du ha mer?",
+    "grammar": ["fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l7-s4",
     "lesson": 7,
     "sr": "Hvala, sita sam.",
-    "sv": "Tack, jag är mätt."
+    "sv": "Tack, jag är mätt.",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l7-s5",
     "lesson": 7,
     "sr": "Jedi, jedi!",
     "sv": "Ät, ät!",
-    "note": "Klassiskt från värdar och mor- och farföräldrar."
+    "note": "Klassiskt från värdar och mor- och farföräldrar.",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l8-s1",
@@ -239,14 +271,16 @@
     "lesson": 8,
     "sr": "Hoćeš li rakiju?",
     "sv": "Vill du ha rakija?",
-    "note": "*rakija* → *rakiju* (ackusativ)."
+    "note": "*rakija* → *rakiju* (ackusativ).",
+    "grammar": ["ackusativ", "fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l8-s3",
     "lesson": 8,
     "sr": "Sretna slava!",
     "sv": "Glad slava!",
-    "note": "Lyckönskan när du kommer till en *slava*."
+    "note": "Lyckönskan när du kommer till en *slava*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l8-s4",
@@ -259,78 +293,90 @@
     "lesson": 8,
     "sr": "Sretno na putu!",
     "sv": "Trevlig resa!",
-    "note": "Ordagrant: lycka till på vägen."
+    "note": "Ordagrant: lycka till på vägen.",
+    "grammar": ["lokativ", "vart-var"]
   },
   {
     "id": "l9-s1",
     "lesson": 9,
     "sr": "Šta je ovo?",
-    "sv": "Vad är det här?"
+    "sv": "Vad är det här?",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l9-s2",
     "lesson": 9,
     "sr": "Ko je to?",
-    "sv": "Vem är det?"
+    "sv": "Vem är det?",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l9-s3",
     "lesson": 9,
     "sr": "Gdje je toalet?",
-    "sv": "Var är toaletten?"
+    "sv": "Var är toaletten?",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l9-s4",
     "lesson": 9,
     "sr": "Kada dolaziš?",
-    "sv": "När kommer du?"
+    "sv": "När kommer du?",
+    "grammar": ["fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l9-s5",
     "lesson": 9,
     "sr": "Koliko imaš godina?",
     "sv": "Hur gammal är du?",
-    "note": "Ordagrant: hur många år har du?"
+    "note": "Ordagrant: hur många år har du?",
+    "grammar": ["genitiv", "fragor", "presens"]
   },
   {
     "id": "l10-s1",
     "lesson": 10,
     "sr": "Lijepo je ovdje.",
     "sv": "Det är fint här.",
-    "alt": ["Ovdje je lijepo."]
+    "alt": ["Ovdje je lijepo."],
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l10-s2",
     "lesson": 10,
     "sr": "Volim te.",
-    "sv": "Jag älskar dig."
+    "sv": "Jag älskar dig.",
+    "grammar": ["korta-ord", "presens"]
   },
   {
     "id": "l10-s3",
     "lesson": 10,
     "sr": "Volim srpsku hranu.",
     "sv": "Jag älskar serbisk mat.",
-    "note": "*hrana* = mat → *hranu* (ackusativ)."
+    "note": "*hrana* = mat → *hranu* (ackusativ).",
+    "grammar": ["ackusativ", "presens", "adjektiv"]
   },
   {
     "id": "l10-s4",
     "lesson": 10,
     "sr": "Malo sam umorna.",
     "sv": "Jag är lite trött.",
-    "note": "*malo* = lite"
+    "note": "*malo* = lite",
+    "grammar": ["biti", "genitiv", "adjektiv"]
   },
   {
     "id": "l10-s5",
     "lesson": 10,
     "sr": "Sretna sam što sam ovdje.",
-    "sv": "Jag är glad att jag är här."
+    "sv": "Jag är glad att jag är här.",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l11-s1",
     "lesson": 11,
     "sr": "Ne znam šta je to.",
     "sv": "Jag vet inte vad det är.",
-    "source": "tatoeba:3253759"
+    "source": "tatoeba:3253759",
+    "grammar": ["biti", "negation", "presens"]
   },
   {
     "id": "l11-s2",
@@ -338,7 +384,8 @@
     "sr": "Mogu li dobiti čašu vina?",
     "sv": "Kan jag få ett glas vin?",
     "note": "*čaša* → *čašu* (ackusativ). *vino* → *vina*: 'ett glas av vin' (genitiv).",
-    "source": "tatoeba:4992851"
+    "source": "tatoeba:4992851",
+    "grammar": ["ackusativ", "genitiv", "fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l11-s3",
@@ -346,7 +393,8 @@
     "sr": "Imam pitanje.",
     "sv": "Jag har en fråga.",
     "note": "*pitanje* = fråga",
-    "source": "tatoeba:11183020"
+    "source": "tatoeba:11183020",
+    "grammar": ["presens"]
   },
   {
     "id": "l11-s4",
@@ -354,7 +402,8 @@
     "sr": "Moraš da mi vjeruješ.",
     "sv": "Du måste lita på mig.",
     "note": "*vjerovati* = lita på. Ekaviskt: *veruješ*.",
-    "source": "tatoeba:6963584"
+    "source": "tatoeba:6963584",
+    "grammar": ["korta-ord", "presens", "da-verb"]
   },
   {
     "id": "l11-s5",
@@ -362,7 +411,8 @@
     "sr": "Mogu li da idem?",
     "sv": "Kan jag gå?",
     "note": "*li* gör meningen till en fråga.",
-    "source": "tatoeba:4992862"
+    "source": "tatoeba:4992862",
+    "grammar": ["fragor", "presens", "oregelbundna", "da-verb"]
   },
   {
     "id": "l12-s1",
@@ -371,7 +421,8 @@
     "sv": "Det är kallt idag.",
     "note": "*hladno* = kallt",
     "alt": ["Hladno je danas."],
-    "source": "tatoeba:4726292"
+    "source": "tatoeba:4726292",
+    "grammar": ["biti"]
   },
   {
     "id": "l12-s2",
@@ -379,7 +430,8 @@
     "sr": "Dođi sutra.",
     "sv": "Kom imorgon.",
     "note": "*dođi* = kom! (från *doći*)",
-    "source": "tatoeba:4995968"
+    "source": "tatoeba:4995968",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l12-s3",
@@ -387,7 +439,8 @@
     "sr": "Gdje si sada?",
     "sv": "Var är du nu?",
     "note": "Ekaviskt: *Gde si sada?*",
-    "source": "tatoeba:5039825"
+    "source": "tatoeba:5039825",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l12-s4",
@@ -395,7 +448,8 @@
     "sr": "Moja majka je uvijek zauzeta.",
     "sv": "Min mamma är alltid upptagen.",
     "note": "*zauzeta* = upptagen (om en kvinna). Om en man: *zauzet*.",
-    "source": "tatoeba:3253705"
+    "source": "tatoeba:3253705",
+    "grammar": ["biti", "possessiv", "adjektiv"]
   },
   {
     "id": "l12-s5",
@@ -403,14 +457,16 @@
     "sr": "Sad ili nikad!",
     "sv": "Nu eller aldrig!",
     "note": "*ili* = eller",
-    "source": "tatoeba:6937649"
+    "source": "tatoeba:6937649",
+    "grammar": ["negation"]
   },
   {
     "id": "l13-s1",
     "lesson": 13,
     "sr": "Idem kući.",
     "sv": "Jag går hem.",
-    "source": "tatoeba:1478648"
+    "source": "tatoeba:1478648",
+    "grammar": ["kuci", "presens", "oregelbundna"]
   },
   {
     "id": "l13-s2",
@@ -418,14 +474,16 @@
     "sr": "Tražim posao.",
     "sv": "Jag söker jobb.",
     "note": "*tražim* = jag söker",
-    "source": "tatoeba:892219"
+    "source": "tatoeba:892219",
+    "grammar": ["presens"]
   },
   {
     "id": "l13-s3",
     "lesson": 13,
     "sr": "Gdje je žena?",
     "sv": "Var är kvinnan?",
-    "source": "tatoeba:2342031"
+    "source": "tatoeba:2342031",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l13-s4",
@@ -434,7 +492,8 @@
     "sv": "Det vet till och med ett barn.",
     "note": "*čak i* = till och med. Ekaviskt: *dete*.",
     "alt": ["Čak i dijete to zna."],
-    "source": "tatoeba:4992730"
+    "source": "tatoeba:4992730",
+    "grammar": ["presens"]
   },
   {
     "id": "l13-s5",
@@ -442,7 +501,8 @@
     "sr": "Ko su ovi ljudi?",
     "sv": "Vilka är de här människorna?",
     "note": "*ovi* = de här",
-    "source": "tatoeba:3429825"
+    "source": "tatoeba:3429825",
+    "grammar": ["biti", "fragor", "plural"]
   },
   {
     "id": "l14-s1",
@@ -450,13 +510,15 @@
     "sr": "Zašto si ljuta na mene?",
     "sv": "Varför är du arg på mig?",
     "note": "*ljuta* = arg (om en kvinna). Om en man: *ljut*.",
-    "source": "tatoeba:5034640"
+    "source": "tatoeba:5034640",
+    "grammar": ["biti", "fragor", "adjektiv"]
   },
   {
     "id": "l14-s2",
     "lesson": 14,
     "sr": "Ne mogu, jer idem kući.",
-    "sv": "Jag kan inte eftersom jag ska hem."
+    "sv": "Jag kan inte eftersom jag ska hem.",
+    "grammar": ["negation", "kuci", "presens", "oregelbundna"]
   },
   {
     "id": "l14-s3",
@@ -464,7 +526,8 @@
     "sr": "Bili smo siromašni, ali sretni.",
     "sv": "Vi var fattiga men glada.",
     "note": "*siromašni* = fattiga. I Serbien: *srećni*.",
-    "source": "tatoeba:3437802"
+    "source": "tatoeba:3437802",
+    "grammar": ["datid", "adjektiv"]
   },
   {
     "id": "l14-s4",
@@ -472,7 +535,8 @@
     "sr": "Možda si u pravu.",
     "sv": "Du kanske har rätt.",
     "note": "*biti u pravu* = ha rätt",
-    "source": "tatoeba:3426483"
+    "source": "tatoeba:3426483",
+    "grammar": ["biti", "lokativ", "vart-var"]
   },
   {
     "id": "l14-s5",
@@ -481,7 +545,8 @@
     "sv": "Jag gillar katter väldigt mycket.",
     "note": "*mačka* → *mačke* (ackusativ, flertal).",
     "alt": ["Volim mačke mnogo."],
-    "source": "tatoeba:9117164"
+    "source": "tatoeba:9117164",
+    "grammar": ["presens", "plural"]
   },
   {
     "id": "l15-s1",
@@ -489,14 +554,16 @@
     "sr": "Želim da budem sa tobom.",
     "sv": "Jag vill vara med dig.",
     "note": "*sa tobom* = med dig",
-    "source": "tatoeba:6920341"
+    "source": "tatoeba:6920341",
+    "grammar": ["instrumental", "presens", "da-verb"]
   },
   {
     "id": "l15-s2",
     "lesson": 15,
     "sr": "Mislim da si u pravu.",
     "sv": "Jag tror att du har rätt.",
-    "source": "tatoeba:3426484"
+    "source": "tatoeba:3426484",
+    "grammar": ["biti", "lokativ", "vart-var", "presens"]
   },
   {
     "id": "l15-s3",
@@ -504,20 +571,23 @@
     "sr": "Dođi da nas vidiš.",
     "sv": "Kom och hälsa på oss.",
     "note": "Ordagrant: kom så att du ser oss.",
-    "source": "tatoeba:4449669"
+    "source": "tatoeba:4449669",
+    "grammar": ["presens", "imperativ"]
   },
   {
     "id": "l15-s4",
     "lesson": 15,
     "sr": "Šta radiš?",
     "sv": "Vad gör du?",
-    "source": "tatoeba:11183534"
+    "source": "tatoeba:11183534",
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l15-s5",
     "lesson": 15,
     "sr": "Šta da kažem?",
-    "sv": "Vad ska jag säga?"
+    "sv": "Vad ska jag säga?",
+    "grammar": ["fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l16-s1",
@@ -525,7 +595,8 @@
     "sr": "Ti si jedan od nas.",
     "sv": "Du är en av oss.",
     "note": "*od* = av",
-    "source": "tatoeba:4324619"
+    "source": "tatoeba:4324619",
+    "grammar": ["biti", "genitiv", "siffror"]
   },
   {
     "id": "l16-s2",
@@ -533,7 +604,8 @@
     "sr": "Imam dvije mačke.",
     "sv": "Jag har två katter.",
     "note": "Ekaviskt: *dve*.",
-    "source": "tatoeba:3081389"
+    "source": "tatoeba:3081389",
+    "grammar": ["presens", "siffror", "plural"]
   },
   {
     "id": "l16-s3",
@@ -541,40 +613,46 @@
     "sr": "Tri sladoleda, molim.",
     "sv": "Tre glassar, tack.",
     "note": "*sladoled* = glass",
-    "source": "tatoeba:3251028"
+    "source": "tatoeba:3251028",
+    "grammar": ["siffror"]
   },
   {
     "id": "l16-s4",
     "lesson": 16,
     "sr": "Imam četiri brata.",
     "sv": "Jag har fyra bröder.",
-    "note": "Efter 2–4 får ordet genitiv singular: *brata*."
+    "note": "Efter 2–4 får ordet genitiv singular: *brata*.",
+    "grammar": ["genitiv", "presens", "siffror"]
   },
   {
     "id": "l16-s5",
     "lesson": 16,
     "sr": "Pet kafa, molim.",
     "sv": "Fem kaffe, tack.",
-    "note": "Efter 5 och uppåt får ordet genitiv plural."
+    "note": "Efter 5 och uppåt får ordet genitiv plural.",
+    "grammar": ["siffror"]
   },
   {
     "id": "l17-s1",
     "lesson": 17,
     "sr": "Imam šest godina.",
     "sv": "Jag är sex år.",
-    "note": "Ordagrant: jag har sex år."
+    "note": "Ordagrant: jag har sex år.",
+    "grammar": ["presens", "siffror"]
   },
   {
     "id": "l17-s2",
     "lesson": 17,
     "sr": "Imam sedam prijatelja.",
-    "sv": "Jag har sju vänner."
+    "sv": "Jag har sju vänner.",
+    "grammar": ["presens", "siffror"]
   },
   {
     "id": "l17-s3",
     "lesson": 17,
     "sr": "Osam kafa, molim.",
-    "sv": "Åtta kaffe, tack."
+    "sv": "Åtta kaffe, tack.",
+    "grammar": ["siffror"]
   },
   {
     "id": "l17-s4",
@@ -582,7 +660,8 @@
     "sr": "Srešćemo se na stanici u devet.",
     "sv": "Vi ses på stationen klockan nio.",
     "note": "*stanica* = station",
-    "source": "tatoeba:3248383"
+    "source": "tatoeba:3248383",
+    "grammar": ["korta-ord", "lokativ", "vart-var", "siffror", "framtid"]
   },
   {
     "id": "l17-s5",
@@ -590,35 +669,40 @@
     "sr": "Broj od jedan do deset.",
     "sv": "Räkna från ett till tio.",
     "note": "*broj* = räkna!",
-    "source": "tatoeba:3311722"
+    "source": "tatoeba:3311722",
+    "grammar": ["siffror"]
   },
   {
     "id": "l18-s1",
     "lesson": 18,
     "sr": "Danas je ponedjeljak.",
     "sv": "Idag är det måndag.",
-    "alt": ["Ponedjeljak je danas."]
+    "alt": ["Ponedjeljak je danas."],
+    "grammar": ["biti"]
   },
   {
     "id": "l18-s2",
     "lesson": 18,
     "sr": "Sutra je utorak.",
     "sv": "Imorgon är det tisdag.",
-    "alt": ["Utorak je sutra."]
+    "alt": ["Utorak je sutra."],
+    "grammar": ["biti"]
   },
   {
     "id": "l18-s3",
     "lesson": 18,
     "sr": "Dođi u srijedu.",
     "sv": "Kom på onsdag.",
-    "note": "*srijeda* → *u srijedu* (ackusativ)."
+    "note": "*srijeda* → *u srijedu* (ackusativ).",
+    "grammar": ["ackusativ", "imperativ"]
   },
   {
     "id": "l18-s4",
     "lesson": 18,
     "sr": "Juče je bio četvrtak.",
     "sv": "Igår var det torsdag.",
-    "source": "tatoeba:3248376"
+    "source": "tatoeba:3248376",
+    "grammar": ["datid"]
   },
   {
     "id": "l18-s5",
@@ -626,14 +710,16 @@
     "sr": "Konačno je petak.",
     "sv": "Äntligen är det fredag.",
     "note": "*konačno* = äntligen",
-    "source": "tatoeba:3651134"
+    "source": "tatoeba:3651134",
+    "grammar": ["biti"]
   },
   {
     "id": "l19-s1",
     "lesson": 19,
     "sr": "Subota je.",
     "sv": "Det är lördag.",
-    "source": "tatoeba:4993357"
+    "source": "tatoeba:4993357",
+    "grammar": ["biti"]
   },
   {
     "id": "l19-s2",
@@ -641,21 +727,24 @@
     "sr": "Juče je bila nedjelja, a ne subota.",
     "sv": "Igår var det söndag, inte lördag.",
     "note": "Ekaviskt: *nedelja*.",
-    "source": "tatoeba:3380035"
+    "source": "tatoeba:3380035",
+    "grammar": ["negation", "datid"]
   },
   {
     "id": "l19-s3",
     "lesson": 19,
     "sr": "Idem kući za sedmicu.",
     "sv": "Jag åker hem om en vecka.",
-    "note": "*za* = om (tid)"
+    "note": "*za* = om (tid)",
+    "grammar": ["ackusativ", "kuci", "presens", "oregelbundna"]
   },
   {
     "id": "l19-s4",
     "lesson": 19,
     "sr": "Idem u Švedsku za mjesec dana.",
     "sv": "Jag åker till Sverige om en månad.",
-    "note": "Ekaviskt: *mesec*."
+    "note": "Ekaviskt: *mesec*.",
+    "grammar": ["ackusativ", "vart-var", "presens", "oregelbundna"]
   },
   {
     "id": "l19-s5",
@@ -663,7 +752,8 @@
     "sr": "Imam trideset godina.",
     "sv": "Jag är trettio år.",
     "note": "*trideset* = trettio",
-    "source": "tatoeba:3388971"
+    "source": "tatoeba:3388971",
+    "grammar": ["presens", "siffror"]
   },
   {
     "id": "l20-s1",
@@ -671,34 +761,39 @@
     "sr": "Kada si ustao jutros?",
     "sv": "När gick du upp i morse?",
     "note": "Till en kvinna: *ustala*.",
-    "source": "tatoeba:898463"
+    "source": "tatoeba:898463",
+    "grammar": ["fragor", "datid"]
   },
   {
     "id": "l20-s2",
     "lesson": 20,
     "sr": "Kako ti je prošao dan?",
     "sv": "Hur var din dag?",
-    "source": "tatoeba:6447035"
+    "source": "tatoeba:6447035",
+    "grammar": ["fragor", "datid"]
   },
   {
     "id": "l20-s3",
     "lesson": 20,
     "sr": "Veče je lijepo.",
-    "sv": "Kvällen är fin."
+    "sv": "Kvällen är fin.",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l20-s4",
     "lesson": 20,
     "sr": "Noć je duga.",
     "sv": "Natten är lång.",
-    "note": "*duga* = lång (kvinnligt)"
+    "note": "*duga* = lång (kvinnligt)",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l20-s5",
     "lesson": 20,
     "sr": "Koliko je sati?",
     "sv": "Vad är klockan?",
-    "source": "tatoeba:3243720"
+    "source": "tatoeba:3243720",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l21-s1",
@@ -706,13 +801,15 @@
     "sr": "Juče je bilo vruće.",
     "sv": "Det var varmt igår.",
     "note": "*vruće* = varmt",
-    "source": "tatoeba:3414795"
+    "source": "tatoeba:3414795",
+    "grammar": ["datid"]
   },
   {
     "id": "l21-s2",
     "lesson": 21,
     "sr": "Šta radiš večeras?",
-    "sv": "Vad gör du ikväll?"
+    "sv": "Vad gör du ikväll?",
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l21-s3",
@@ -727,7 +824,8 @@
     "lesson": 21,
     "sr": "On ne ustaje rano.",
     "sv": "Han går inte upp tidigt.",
-    "source": "tatoeba:3347572"
+    "source": "tatoeba:3347572",
+    "grammar": ["negation"]
   },
   {
     "id": "l21-s5",
@@ -742,40 +840,46 @@
     "lesson": 22,
     "sr": "On je moj prijatelj.",
     "sv": "Han är min vän.",
-    "source": "tatoeba:490781"
+    "source": "tatoeba:490781",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l22-s2",
     "lesson": 22,
     "sr": "Ona čita.",
     "sv": "Hon läser.",
-    "source": "tatoeba:13420943"
+    "source": "tatoeba:13420943",
+    "grammar": ["presens"]
   },
   {
     "id": "l22-s3",
     "lesson": 22,
     "sr": "Mi smo ovdje.",
-    "sv": "Vi är här."
+    "sv": "Vi är här.",
+    "grammar": ["biti"]
   },
   {
     "id": "l22-s4",
     "lesson": 22,
     "sr": "Ko ste vi?",
-    "sv": "Vilka är ni?"
+    "sv": "Vilka är ni?",
+    "grammar": ["biti", "ti-vi", "fragor"]
   },
   {
     "id": "l22-s5",
     "lesson": 22,
     "sr": "Oni su učitelji.",
     "sv": "De är lärare.",
-    "source": "tatoeba:2342037"
+    "source": "tatoeba:2342037",
+    "grammar": ["biti", "plural"]
   },
   {
     "id": "l23-s1",
     "lesson": 23,
     "sr": "Ti si moj prijatelj.",
     "sv": "Du är min vän.",
-    "source": "tatoeba:3281270"
+    "source": "tatoeba:3281270",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l23-s2",
@@ -783,14 +887,16 @@
     "sr": "Znam tvoje ime.",
     "sv": "Jag vet vad du heter.",
     "note": "Ordagrant: jag vet ditt namn.",
-    "source": "tatoeba:3426493"
+    "source": "tatoeba:3426493",
+    "grammar": ["possessiv", "presens"]
   },
   {
     "id": "l23-s3",
     "lesson": 23,
     "sr": "Naše je.",
     "sv": "Det är vårt.",
-    "source": "tatoeba:4993378"
+    "source": "tatoeba:4993378",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l23-s4",
@@ -798,13 +904,15 @@
     "sr": "Da li su ovo vaše torbe?",
     "sv": "Är det här era väskor?",
     "note": "*torba* = väska",
-    "source": "tatoeba:4324651"
+    "source": "tatoeba:4324651",
+    "grammar": ["biti", "ti-vi", "possessiv", "fragor", "plural"]
   },
   {
     "id": "l23-s5",
     "lesson": 23,
     "sr": "To je njihova kuća.",
-    "sv": "Det är deras hus."
+    "sv": "Det är deras hus.",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l24-s1",
@@ -812,14 +920,16 @@
     "sr": "Gdje je tvoj otac?",
     "sv": "Var är din pappa?",
     "note": "Ekaviskt: *gde*.",
-    "source": "tatoeba:3384150"
+    "source": "tatoeba:3384150",
+    "grammar": ["biti", "possessiv", "fragor"]
   },
   {
     "id": "l24-s2",
     "lesson": 24,
     "sr": "Moja majka voli muziku.",
     "sv": "Min mamma älskar musik.",
-    "source": "tatoeba:2424525"
+    "source": "tatoeba:2424525",
+    "grammar": ["possessiv", "ackusativ", "presens"]
   },
   {
     "id": "l24-s3",
@@ -832,44 +942,51 @@
     "id": "l24-s4",
     "lesson": 24,
     "sr": "Ona je moja kćerka.",
-    "sv": "Hon är min dotter."
+    "sv": "Hon är min dotter.",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l24-s5",
     "lesson": 24,
     "sr": "Gdje je tvoj muž?",
-    "sv": "Var är din man?"
+    "sv": "Var är din man?",
+    "grammar": ["biti", "possessiv", "fragor"]
   },
   {
     "id": "l25-s1",
     "lesson": 25,
     "sr": "Ovo je moja tetka.",
-    "sv": "Det här är min faster."
+    "sv": "Det här är min faster.",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l25-s2",
     "lesson": 25,
     "sr": "Gdje živi tvoj ujak?",
     "sv": "Var bor din morbror?",
-    "source": "tatoeba:3425158"
+    "source": "tatoeba:3425158",
+    "grammar": ["possessiv", "fragor", "presens"]
   },
   {
     "id": "l25-s3",
     "lesson": 25,
     "sr": "Moj stric ima veliku kuću.",
-    "sv": "Min farbror har ett stort hus."
+    "sv": "Min farbror har ett stort hus.",
+    "grammar": ["possessiv", "ackusativ", "presens", "adjektiv"]
   },
   {
     "id": "l25-s4",
     "lesson": 25,
     "sr": "Baka ima pet unuka.",
-    "sv": "Farmor har fem barnbarn."
+    "sv": "Farmor har fem barnbarn.",
+    "grammar": ["presens", "siffror"]
   },
   {
     "id": "l25-s5",
     "lesson": 25,
     "sr": "On je moj rođak.",
-    "sv": "Han är min kusin."
+    "sv": "Han är min kusin.",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l26-s1",
@@ -877,20 +994,23 @@
     "sr": "Soba je bila mračna.",
     "sv": "Rummet var mörkt.",
     "note": "*mračna* = mörk",
-    "source": "tatoeba:4967481"
+    "source": "tatoeba:4967481",
+    "grammar": ["datid", "adjektiv"]
   },
   {
     "id": "l26-s2",
     "lesson": 26,
     "sr": "U kuhinji je mačka.",
     "sv": "Det är en katt i köket.",
-    "source": "tatoeba:2506859"
+    "source": "tatoeba:2506859",
+    "grammar": ["biti", "lokativ", "vart-var"]
   },
   {
     "id": "l26-s3",
     "lesson": 26,
     "sr": "Gdje je kupatilo?",
-    "sv": "Var är badrummet?"
+    "sv": "Var är badrummet?",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l26-s4",
@@ -898,7 +1018,8 @@
     "sr": "Zatvori vrata.",
     "sv": "Stäng dörren.",
     "note": "*zatvori* = stäng!",
-    "source": "tatoeba:3294874"
+    "source": "tatoeba:3294874",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l26-s5",
@@ -906,7 +1027,8 @@
     "sr": "Prozor je otvoren.",
     "sv": "Fönstret är öppet.",
     "note": "*otvoren* = öppen",
-    "source": "tatoeba:3438993"
+    "source": "tatoeba:3438993",
+    "grammar": ["biti"]
   },
   {
     "id": "l27-s1",
@@ -914,7 +1036,8 @@
     "sr": "Knjiga je na stolu.",
     "sv": "Boken är på bordet.",
     "note": "*sto* → *na stolu* (lokativ).",
-    "source": "tatoeba:2345997"
+    "source": "tatoeba:2345997",
+    "grammar": ["biti", "lokativ", "vart-var"]
   },
   {
     "id": "l27-s2",
@@ -922,26 +1045,30 @@
     "sr": "Ova stolica je ružna.",
     "sv": "Den här stolen är ful.",
     "note": "*ružna* = ful",
-    "source": "tatoeba:3425920"
+    "source": "tatoeba:3425920",
+    "grammar": ["biti"]
   },
   {
     "id": "l27-s3",
     "lesson": 27,
     "sr": "Idem u krevet.",
-    "sv": "Jag går och lägger mig."
+    "sv": "Jag går och lägger mig.",
+    "grammar": ["ackusativ", "vart-var", "presens", "oregelbundna"]
   },
   {
     "id": "l27-s4",
     "lesson": 27,
     "sr": "Gdje je ključ?",
-    "sv": "Var är nyckeln?"
+    "sv": "Var är nyckeln?",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l27-s5",
     "lesson": 27,
     "sr": "Ugasi svjetlo.",
     "sv": "Släck ljuset.",
-    "note": "*ugasi* = släck!"
+    "note": "*ugasi* = släck!",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l28-s1",
@@ -949,7 +1076,8 @@
     "sr": "Niko ovdje ne jede meso.",
     "sv": "Ingen här äter kött.",
     "note": "*niko* = ingen",
-    "source": "tatoeba:4250731"
+    "source": "tatoeba:4250731",
+    "grammar": ["negation", "presens", "oregelbundna"]
   },
   {
     "id": "l28-s2",
@@ -963,13 +1091,15 @@
     "id": "l28-s3",
     "lesson": 28,
     "sr": "Volim sir.",
-    "sv": "Jag tycker om ost."
+    "sv": "Jag tycker om ost.",
+    "grammar": ["presens"]
   },
   {
     "id": "l28-s4",
     "lesson": 28,
     "sr": "Hoćeš li jaje?",
-    "sv": "Vill du ha ett ägg?"
+    "sv": "Vill du ha ett ägg?",
+    "grammar": ["fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l28-s5",
@@ -977,66 +1107,76 @@
     "sr": "Jedi supu dok je vruća.",
     "sv": "Ät soppan medan den är varm.",
     "note": "*supa* → *supu* (ackusativ).",
-    "source": "tatoeba:5024378"
+    "source": "tatoeba:5024378",
+    "grammar": ["biti", "ackusativ", "imperativ", "adjektiv"]
   },
   {
     "id": "l29-s1",
     "lesson": 29,
     "sr": "Volim voće.",
-    "sv": "Jag tycker om frukt."
+    "sv": "Jag tycker om frukt.",
+    "grammar": ["presens"]
   },
   {
     "id": "l29-s2",
     "lesson": 29,
     "sr": "Oni kupuju povrće u supermarketu.",
     "sv": "De köper grönsaker på stormarknaden.",
-    "source": "tatoeba:892939"
+    "source": "tatoeba:892939",
+    "grammar": ["lokativ", "vart-var", "presens"]
   },
   {
     "id": "l29-s3",
     "lesson": 29,
     "sr": "Koliko jabuka?",
     "sv": "Hur många äpplen?",
-    "source": "tatoeba:664830"
+    "source": "tatoeba:664830",
+    "grammar": ["genitiv", "fragor"]
   },
   {
     "id": "l29-s4",
     "lesson": 29,
     "sr": "Hoćeš li krompir?",
-    "sv": "Vill du ha potatis?"
+    "sv": "Vill du ha potatis?",
+    "grammar": ["fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l29-s5",
     "lesson": 29,
     "sr": "Salata je ukusna.",
-    "sv": "Salladen är god."
+    "sv": "Salladen är god.",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l30-s1",
     "lesson": 30,
     "sr": "Dodaj mi so, molim te.",
     "sv": "Kan du skicka saltet, tack.",
-    "note": "*dodaj* = räck, skicka. *Molim te* är den informella formen av *molim*."
+    "note": "*dodaj* = räck, skicka. *Molim te* är den informella formen av *molim*.",
+    "grammar": ["korta-ord", "imperativ"]
   },
   {
     "id": "l30-s2",
     "lesson": 30,
     "sr": "Kafa bez šećera, molim te.",
     "sv": "Kaffe utan socker, tack.",
-    "note": "*šećer* → *bez šećera* (genitiv)."
+    "note": "*šećer* → *bez šećera* (genitiv).",
+    "grammar": ["korta-ord", "genitiv"]
   },
   {
     "id": "l30-s3",
     "lesson": 30,
     "sr": "Imaš li ulje?",
-    "sv": "Har du olja?"
+    "sv": "Har du olja?",
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l30-s4",
     "lesson": 30,
     "sr": "Pivo je dobro.",
     "sv": "Ölen är god.",
-    "source": "tatoeba:4996034"
+    "source": "tatoeba:4996034",
+    "grammar": ["biti"]
   },
   {
     "id": "l30-s5",
@@ -1044,13 +1184,15 @@
     "sr": "Donesi vino.",
     "sv": "Hämta vin.",
     "note": "*donesi* = hämta!",
-    "source": "tatoeba:4996021"
+    "source": "tatoeba:4996021",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l31-s1",
     "lesson": 31,
     "sr": "Šta ima za doručak?",
-    "sv": "Vad finns det till frukost?"
+    "sv": "Vad finns det till frukost?",
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l31-s2",
@@ -1058,20 +1200,23 @@
     "sr": "Pozvana sam na ručak.",
     "sv": "Jag är bjuden på lunch.",
     "note": "Kvinna: *pozvana*. Man: *pozvan*.",
-    "source": "tatoeba:3275989"
+    "source": "tatoeba:3275989",
+    "grammar": ["biti", "ackusativ", "vart-var"]
   },
   {
     "id": "l31-s3",
     "lesson": 31,
     "sr": "Večera je spremna!",
     "sv": "Middagen är klar!",
-    "source": "tatoeba:4995944"
+    "source": "tatoeba:4995944",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l31-s4",
     "lesson": 31,
     "sr": "Mama kuva ručak.",
-    "sv": "Mamma lagar lunch."
+    "sv": "Mamma lagar lunch.",
+    "grammar": ["presens"]
   },
   {
     "id": "l31-s5",
@@ -1079,28 +1224,32 @@
     "sr": "Jedem puno mesa.",
     "sv": "Jag äter mycket kött.",
     "note": "*puno* = mycket",
-    "source": "tatoeba:4324233"
+    "source": "tatoeba:4324233",
+    "grammar": ["genitiv", "presens", "oregelbundna"]
   },
   {
     "id": "l32-s1",
     "lesson": 32,
     "sr": "Pijem mlijeko.",
     "sv": "Jag dricker mjölk.",
-    "source": "tatoeba:3140518"
+    "source": "tatoeba:3140518",
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l32-s2",
     "lesson": 32,
     "sr": "Gladna sam.",
     "sv": "Jag är hungrig.",
-    "source": "tatoeba:13372489"
+    "source": "tatoeba:13372489",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l32-s3",
     "lesson": 32,
     "sr": "Žedna sam.",
     "sv": "Jag är törstig.",
-    "source": "tatoeba:3243475"
+    "source": "tatoeba:3243475",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l32-s4",
@@ -1113,14 +1262,16 @@
     "id": "l32-s5",
     "lesson": 32,
     "sr": "Supa je slana.",
-    "sv": "Soppan är salt."
+    "sv": "Soppan är salt.",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l33-s1",
     "lesson": 33,
     "sr": "Ona ima dobar ukus.",
     "sv": "Hon har bra smak.",
-    "source": "tatoeba:3429928"
+    "source": "tatoeba:3429928",
+    "grammar": ["presens", "adjektiv"]
   },
   {
     "id": "l33-s2",
@@ -1128,20 +1279,23 @@
     "sr": "To je loš znak.",
     "sv": "Det är ett dåligt tecken.",
     "note": "*znak* = tecken",
-    "source": "tatoeba:6147431"
+    "source": "tatoeba:6147431",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l33-s3",
     "lesson": 33,
     "sr": "Ova riba je velika.",
     "sv": "Den här fisken är stor.",
-    "source": "tatoeba:2507711"
+    "source": "tatoeba:2507711",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l33-s4",
     "lesson": 33,
     "sr": "Ova soba je mala.",
-    "sv": "Det här rummet är litet."
+    "sv": "Det här rummet är litet.",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l33-s5",
@@ -1149,20 +1303,23 @@
     "sr": "Sve to mi je novo.",
     "sv": "Allt det är nytt för mig.",
     "note": "*sve* = allt",
-    "source": "tatoeba:4324349"
+    "source": "tatoeba:4324349",
+    "grammar": ["biti", "korta-ord", "adjektiv"]
   },
   {
     "id": "l34-s1",
     "lesson": 34,
     "sr": "Moj djed je star.",
-    "sv": "Min farfar är gammal."
+    "sv": "Min farfar är gammal.",
+    "grammar": ["biti", "possessiv", "adjektiv"]
   },
   {
     "id": "l34-s2",
     "lesson": 34,
     "sr": "Mlada sam.",
     "sv": "Jag är ung.",
-    "source": "tatoeba:6905827"
+    "source": "tatoeba:6905827",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l34-s3",
@@ -1170,21 +1327,24 @@
     "sr": "Veoma si lijepa.",
     "sv": "Du är väldigt vacker.",
     "note": "*veoma* = väldigt",
-    "source": "tatoeba:4967423"
+    "source": "tatoeba:4967423",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l34-s4",
     "lesson": 34,
     "sr": "Ovo je lako.",
     "sv": "Det här är lätt.",
-    "source": "tatoeba:4238376"
+    "source": "tatoeba:4238376",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l34-s5",
     "lesson": 34,
     "sr": "Teško je.",
     "sv": "Det är svårt.",
-    "source": "tatoeba:4992592"
+    "source": "tatoeba:4992592",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l35-s1",
@@ -1192,7 +1352,8 @@
     "sr": "Imam bijelog konja.",
     "sv": "Jag har en vit häst.",
     "note": "*konj* = häst",
-    "source": "tatoeba:3317304"
+    "source": "tatoeba:3317304",
+    "grammar": ["ackusativ", "presens", "adjektiv"]
   },
   {
     "id": "l35-s2",
@@ -1200,27 +1361,31 @@
     "sr": "Imam crne oči.",
     "sv": "Jag har svarta ögon.",
     "note": "*oko* → *oči* (flertal).",
-    "source": "tatoeba:3314349"
+    "source": "tatoeba:3314349",
+    "grammar": ["presens", "adjektiv", "plural"]
   },
   {
     "id": "l35-s3",
     "lesson": 35,
     "sr": "Volim crveno vino.",
-    "sv": "Jag gillar rött vin."
+    "sv": "Jag gillar rött vin.",
+    "grammar": ["presens", "adjektiv"]
   },
   {
     "id": "l35-s4",
     "lesson": 35,
     "sr": "Auto je plav.",
     "sv": "Bilen är blå.",
-    "source": "tatoeba:3334496"
+    "source": "tatoeba:3334496",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l35-s5",
     "lesson": 35,
     "sr": "Trava je zelena.",
     "sv": "Gräset är grönt.",
-    "note": "*trava* = gräs"
+    "note": "*trava* = gräs",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l36-s1",
@@ -1249,54 +1414,62 @@
     "lesson": 36,
     "sr": "Danas je jak vjetar.",
     "sv": "Det blåser hårt idag.",
-    "note": "*jak* = stark"
+    "note": "*jak* = stark",
+    "grammar": ["biti"]
   },
   {
     "id": "l36-s5",
     "lesson": 36,
     "sr": "Juče je bilo toplo.",
     "sv": "Det var varmt igår.",
-    "source": "tatoeba:3414793"
+    "source": "tatoeba:3414793",
+    "grammar": ["datid"]
   },
   {
     "id": "l37-s1",
     "lesson": 37,
     "sr": "Živimo u lijepom gradu.",
     "sv": "Vi bor i en vacker stad.",
-    "source": "tatoeba:11185569"
+    "source": "tatoeba:11185569",
+    "grammar": ["lokativ", "vart-var", "presens", "adjektiv"]
   },
   {
     "id": "l37-s2",
     "lesson": 37,
     "sr": "Baka živi na selu.",
-    "sv": "Farmor bor på landet."
+    "sv": "Farmor bor på landet.",
+    "grammar": ["lokativ", "vart-var", "presens"]
   },
   {
     "id": "l37-s3",
     "lesson": 37,
     "sr": "Gdje je tvoja škola?",
     "sv": "Var ligger din skola?",
-    "source": "tatoeba:2342035"
+    "source": "tatoeba:2342035",
+    "grammar": ["biti", "possessiv", "fragor"]
   },
   {
     "id": "l37-s4",
     "lesson": 37,
     "sr": "Idem u prodavnicu.",
-    "sv": "Jag går till affären."
+    "sv": "Jag går till affären.",
+    "grammar": ["ackusativ", "vart-var", "presens", "oregelbundna"]
   },
   {
     "id": "l37-s5",
     "lesson": 37,
     "sr": "Kako se zove ova ulica?",
     "sv": "Vad heter den här gatan?",
-    "source": "tatoeba:3311752"
+    "source": "tatoeba:3311752",
+    "grammar": ["korta-ord", "fragor"]
   },
   {
     "id": "l38-s1",
     "lesson": 38,
     "sr": "To je njegov auto.",
     "sv": "Det där är hans bil.",
-    "source": "tatoeba:486979"
+    "source": "tatoeba:486979",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l38-s2",
@@ -1304,7 +1477,8 @@
     "sr": "Moraš da sačekaš sljedeći autobus.",
     "sv": "Du måste vänta på nästa buss.",
     "note": "*sljedeći* = nästa. Ekaviskt: *sledeći*.",
-    "source": "tatoeba:3478031"
+    "source": "tatoeba:3478031",
+    "grammar": ["presens", "da-verb"]
   },
   {
     "id": "l38-s3",
@@ -1312,67 +1486,77 @@
     "sr": "Voz nije još stigao.",
     "sv": "Tåget har inte kommit ännu.",
     "note": "*stigao* = kommit",
-    "source": "tatoeba:3311747"
+    "source": "tatoeba:3311747",
+    "grammar": ["biti", "negation", "genitiv"]
   },
   {
     "id": "l38-s4",
     "lesson": 38,
     "sr": "Idem avionom.",
     "sv": "Jag åker flyg.",
-    "note": "*avion* → *avionom* (med flyg)."
+    "note": "*avion* → *avionom* (med flyg).",
+    "grammar": ["instrumental", "presens", "oregelbundna"]
   },
   {
     "id": "l38-s5",
     "lesson": 38,
     "sr": "Sretan put!",
     "sv": "Trevlig resa!",
-    "note": "I Serbien: *srećan put*."
+    "note": "I Serbien: *srećan put*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l39-s1",
     "lesson": 39,
     "sr": "Idi lijevo.",
     "sv": "Gå åt vänster.",
-    "note": "*idi* = gå!"
+    "note": "*idi* = gå!",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l39-s2",
     "lesson": 39,
     "sr": "Skreni desno.",
     "sv": "Sväng höger.",
-    "note": "*skreni* = sväng!"
+    "note": "*skreni* = sväng!",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l39-s3",
     "lesson": 39,
     "sr": "Imaš pravo.",
     "sv": "Du har rätt.",
-    "source": "tatoeba:3243480"
+    "source": "tatoeba:3243480",
+    "grammar": ["presens"]
   },
   {
     "id": "l39-s4",
     "lesson": 39,
     "sr": "Kuća je blizu.",
-    "sv": "Huset ligger nära."
+    "sv": "Huset ligger nära.",
+    "grammar": ["biti", "ackusativ"]
   },
   {
     "id": "l39-s5",
     "lesson": 39,
     "sr": "Daleko je.",
-    "sv": "Det är långt bort."
+    "sv": "Det är långt bort.",
+    "grammar": ["biti"]
   },
   {
     "id": "l40-s1",
     "lesson": 40,
     "sr": "Ko je tamo?",
     "sv": "Vem är där?",
-    "source": "tatoeba:3243207"
+    "source": "tatoeba:3243207",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l40-s2",
     "lesson": 40,
     "sr": "Idem gore.",
-    "sv": "Jag går upp."
+    "sv": "Jag går upp.",
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l40-s3",
@@ -1380,14 +1564,16 @@
     "sr": "Dođi ovamo dolje.",
     "sv": "Kom ner hit.",
     "note": "*ovamo* = hit",
-    "source": "tatoeba:4449673"
+    "source": "tatoeba:4449673",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l40-s4",
     "lesson": 40,
     "sr": "Dođi unutra.",
     "sv": "Kom in.",
-    "source": "tatoeba:4995972"
+    "source": "tatoeba:4995972",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l40-s5",
@@ -1395,21 +1581,24 @@
     "sr": "Svi su napolju.",
     "sv": "Alla är ute.",
     "note": "*svi* = alla",
-    "source": "tatoeba:4997547"
+    "source": "tatoeba:4997547",
+    "grammar": ["biti", "ackusativ"]
   },
   {
     "id": "l41-s1",
     "lesson": 41,
     "sr": "Dolazim sutra.",
     "sv": "Jag kommer imorgon.",
-    "alt": ["Sutra dolazim."]
+    "alt": ["Sutra dolazim."],
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l41-s2",
     "lesson": 41,
     "sr": "Odlazim u ponedjeljak.",
     "sv": "Jag åker på måndag.",
-    "alt": ["U ponedjeljak odlazim."]
+    "alt": ["U ponedjeljak odlazim."],
+    "grammar": ["ackusativ", "presens"]
   },
   {
     "id": "l41-s3",
@@ -1417,14 +1606,16 @@
     "sr": "Ostani sa nama!",
     "sv": "Stanna hos oss!",
     "note": "*ostani* = stanna!",
-    "source": "tatoeba:7059278"
+    "source": "tatoeba:7059278",
+    "grammar": ["instrumental", "imperativ"]
   },
   {
     "id": "l41-s4",
     "lesson": 41,
     "sr": "Koga čekaš?",
     "sv": "Vem väntar du på?",
-    "source": "tatoeba:3371121"
+    "source": "tatoeba:3371121",
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l41-s5",
@@ -1432,41 +1623,47 @@
     "sr": "Vraćam se uskoro.",
     "sv": "Jag kommer tillbaka snart.",
     "note": "*uskoro* = snart",
-    "source": "tatoeba:3243809"
+    "source": "tatoeba:3243809",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l42-s1",
     "lesson": 42,
     "sr": "Govorim bosanski.",
     "sv": "Jag talar bosniska.",
-    "source": "tatoeba:2734100"
+    "source": "tatoeba:2734100",
+    "grammar": ["presens"]
   },
   {
     "id": "l42-s2",
     "lesson": 42,
     "sr": "Slušaj pažljivo.",
     "sv": "Lyssna noga!",
-    "source": "tatoeba:5003552"
+    "source": "tatoeba:5003552",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l42-s3",
     "lesson": 42,
     "sr": "Šta čitaš?",
     "sv": "Vad läser du?",
-    "source": "tatoeba:888815"
+    "source": "tatoeba:888815",
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l42-s4",
     "lesson": 42,
     "sr": "Da li voliš da pišeš?",
     "sv": "Tycker du om att skriva?",
-    "source": "tatoeba:4248696"
+    "source": "tatoeba:4248696",
+    "grammar": ["fragor", "presens", "da-verb"]
   },
   {
     "id": "l42-s5",
     "lesson": 42,
     "sr": "Učim srpski.",
-    "sv": "Jag lär mig serbiska."
+    "sv": "Jag lär mig serbiska.",
+    "grammar": ["presens"]
   },
   {
     "id": "l43-s1",
@@ -1474,14 +1671,16 @@
     "sr": "Daj mi kašiku.",
     "sv": "Ge mig en sked.",
     "note": "*kašika* = sked",
-    "source": "tatoeba:4790584"
+    "source": "tatoeba:4790584",
+    "grammar": ["korta-ord", "ackusativ", "imperativ"]
   },
   {
     "id": "l43-s2",
     "lesson": 43,
     "sr": "Uzmi malo.",
     "sv": "Ta lite.",
-    "source": "tatoeba:4997625"
+    "source": "tatoeba:4997625",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l43-s3",
@@ -1489,7 +1688,8 @@
     "sr": "Kupila sam knjigu.",
     "sv": "Jag köpte en bok.",
     "note": "Kvinna: *kupila*. Man: *kupio*.",
-    "source": "tatoeba:6938092"
+    "source": "tatoeba:6938092",
+    "grammar": ["ackusativ", "datid"]
   },
   {
     "id": "l43-s4",
@@ -1497,28 +1697,32 @@
     "sr": "Plaćam unaprijed.",
     "sv": "Jag betalar i förskott.",
     "note": "Ekaviskt: *unapred*.",
-    "source": "tatoeba:893558"
+    "source": "tatoeba:893558",
+    "grammar": ["presens"]
   },
   {
     "id": "l43-s5",
     "lesson": 43,
     "sr": "Šta tražiš?",
     "sv": "Vad letar du efter?",
-    "source": "tatoeba:3384098"
+    "source": "tatoeba:3384098",
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l44-s1",
     "lesson": 44,
     "sr": "On spava.",
     "sv": "Han sover.",
-    "source": "tatoeba:10822104"
+    "source": "tatoeba:10822104",
+    "grammar": ["presens"]
   },
   {
     "id": "l44-s2",
     "lesson": 44,
     "sr": "Da li živiš ovdje?",
     "sv": "Bor du här?",
-    "source": "tatoeba:3318107"
+    "source": "tatoeba:3318107",
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l44-s3",
@@ -1526,13 +1730,15 @@
     "sr": "Dođi i sjedi.",
     "sv": "Kom och sätt dig.",
     "note": "Ekaviskt: *sedi*.",
-    "source": "tatoeba:4449668"
+    "source": "tatoeba:4449668",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l44-s4",
     "lesson": 44,
     "sr": "Stojim ovdje.",
-    "sv": "Jag står här."
+    "sv": "Jag står här.",
+    "grammar": ["presens"]
   },
   {
     "id": "l44-s5",
@@ -1540,35 +1746,40 @@
     "sr": "Moja sestra se igra sa lutkama.",
     "sv": "Min syster leker med dockor.",
     "note": "*lutka* = docka",
-    "source": "tatoeba:800881"
+    "source": "tatoeba:800881",
+    "grammar": ["korta-ord", "possessiv", "instrumental"]
   },
   {
     "id": "l45-s1",
     "lesson": 45,
     "sr": "Pomozi mi!",
     "sv": "Hjälp mig!",
-    "source": "tatoeba:3478054"
+    "source": "tatoeba:3478054",
+    "grammar": ["korta-ord", "imperativ"]
   },
   {
     "id": "l45-s2",
     "lesson": 45,
     "sr": "Treba mi taksi.",
     "sv": "Jag behöver en taxi.",
-    "source": "tatoeba:3368553"
+    "source": "tatoeba:3368553",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l45-s3",
     "lesson": 45,
     "sr": "Stvarno mi se sviđa tvoja muzika.",
     "sv": "Jag gillar verkligen din musik.",
-    "source": "tatoeba:5034803"
+    "source": "tatoeba:5034803",
+    "grammar": ["korta-ord", "possessiv"]
   },
   {
     "id": "l45-s4",
     "lesson": 45,
     "sr": "Mogu li da pitam zašto?",
     "sv": "Får jag fråga varför?",
-    "source": "tatoeba:4449723"
+    "source": "tatoeba:4449723",
+    "grammar": ["fragor", "presens", "oregelbundna", "da-verb"]
   },
   {
     "id": "l45-s5",
@@ -1576,46 +1787,53 @@
     "sr": "Nadam se da nisi ljut na mene.",
     "sv": "Jag hoppas att du inte är arg på mig.",
     "note": "*nisi* = du är inte",
-    "source": "tatoeba:3531402"
+    "source": "tatoeba:3531402",
+    "grammar": ["biti", "negation", "korta-ord", "da-verb", "adjektiv"]
   },
   {
     "id": "l46-s1",
     "lesson": 46,
     "sr": "Tužna si.",
     "sv": "Du är ledsen.",
-    "source": "tatoeba:6924673"
+    "source": "tatoeba:6924673",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l46-s2",
     "lesson": 46,
     "sr": "Bolesna sam.",
-    "sv": "Jag är sjuk."
+    "sv": "Jag är sjuk.",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l46-s3",
     "lesson": 46,
     "sr": "Zdrava sam.",
-    "sv": "Jag är frisk."
+    "sv": "Jag är frisk.",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l46-s4",
     "lesson": 46,
     "sr": "Spremna sam!",
     "sv": "Jag är redo!",
-    "source": "tatoeba:4992615"
+    "source": "tatoeba:4992615",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l46-s5",
     "lesson": 46,
     "sr": "Danas sam zauzeta.",
-    "sv": "Jag är upptagen idag."
+    "sv": "Jag är upptagen idag.",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l47-s1",
     "lesson": 47,
     "sr": "Boli te glava?",
     "sv": "Har du ont i huvudet?",
-    "source": "tatoeba:7014784"
+    "source": "tatoeba:7014784",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l47-s2",
@@ -1623,63 +1841,72 @@
     "sr": "Ruke su mi pune.",
     "sv": "Jag har händerna fulla.",
     "note": "*pune* = fulla",
-    "source": "tatoeba:4784487"
+    "source": "tatoeba:4784487",
+    "grammar": ["biti", "korta-ord", "plural"]
   },
   {
     "id": "l47-s3",
     "lesson": 47,
     "sr": "Boli me noga.",
     "sv": "Det gör ont i foten.",
-    "alt": ["Noga me boli."]
+    "alt": ["Noga me boli."],
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l47-s4",
     "lesson": 47,
     "sr": "Imam plave oči.",
     "sv": "Jag har blå ögon.",
-    "source": "tatoeba:3435556"
+    "source": "tatoeba:3435556",
+    "grammar": ["presens", "adjektiv", "plural"]
   },
   {
     "id": "l47-s5",
     "lesson": 47,
     "sr": "Ona ima dobro srce.",
     "sv": "Hon har ett gott hjärta.",
-    "source": "tatoeba:6791476"
+    "source": "tatoeba:6791476",
+    "grammar": ["presens"]
   },
   {
     "id": "l48-s1",
     "lesson": 48,
     "sr": "Boli me glava.",
     "sv": "Jag har ont i huvudet.",
-    "source": "tatoeba:3243462"
+    "source": "tatoeba:3243462",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l48-s2",
     "lesson": 48,
     "sr": "On nije doktor.",
     "sv": "Han är inte läkare.",
-    "source": "tatoeba:665383"
+    "source": "tatoeba:665383",
+    "grammar": ["biti", "negation"]
   },
   {
     "id": "l48-s3",
     "lesson": 48,
     "sr": "Treba mi lijek.",
     "sv": "Jag behöver medicin.",
-    "note": "Ekaviskt: *lek*."
+    "note": "Ekaviskt: *lek*.",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l48-s4",
     "lesson": 48,
     "sr": "Ona želi raditi u bolnici.",
     "sv": "Hon vill arbeta på ett sjukhus.",
-    "source": "tatoeba:2332778"
+    "source": "tatoeba:2332778",
+    "grammar": ["lokativ", "vart-var", "presens"]
   },
   {
     "id": "l48-s5",
     "lesson": 48,
     "sr": "Treba nam tvoja pomoć.",
     "sv": "Vi behöver din hjälp.",
-    "source": "tatoeba:4261732"
+    "source": "tatoeba:4261732",
+    "grammar": ["korta-ord", "possessiv"]
   },
   {
     "id": "l49-s1",
@@ -1687,7 +1914,8 @@
     "sr": "Imam mačku i psa.",
     "sv": "Jag har en katt och en hund.",
     "note": "*pas* → *psa* (ackusativ).",
-    "source": "tatoeba:3307023"
+    "source": "tatoeba:3307023",
+    "grammar": ["ackusativ", "presens"]
   },
   {
     "id": "l49-s2",
@@ -1700,13 +1928,15 @@
     "id": "l49-s3",
     "lesson": 49,
     "sr": "Dođi, ako možeš.",
-    "sv": "Kom om du kan."
+    "sv": "Kom om du kan.",
+    "grammar": ["presens", "oregelbundna", "imperativ"]
   },
   {
     "id": "l49-s4",
     "lesson": 49,
     "sr": "Jedi dok je toplo.",
-    "sv": "Ät medan det är varmt."
+    "sv": "Ät medan det är varmt.",
+    "grammar": ["biti", "imperativ"]
   },
   {
     "id": "l49-s5",
@@ -1721,7 +1951,8 @@
     "sr": "Samo zatvori oči.",
     "sv": "Blunda bara.",
     "note": "Ordagrant: stäng bara ögonen.",
-    "source": "tatoeba:6955845"
+    "source": "tatoeba:6955845",
+    "grammar": ["imperativ", "plural"]
   },
   {
     "id": "l50-s2",
@@ -1729,14 +1960,16 @@
     "sr": "Pokušaj opet.",
     "sv": "Försök igen.",
     "note": "*pokušaj* = försök!",
-    "source": "tatoeba:3278264"
+    "source": "tatoeba:3278264",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l50-s3",
     "lesson": 50,
     "sr": "Da li ste već doručkovali?",
     "sv": "Har ni redan ätit frukost?",
-    "source": "tatoeba:11183918"
+    "source": "tatoeba:11183918",
+    "grammar": ["ti-vi", "fragor", "datid"]
   },
   {
     "id": "l50-s4",
@@ -1744,56 +1977,64 @@
     "sr": "To je bilo vrlo jeftino.",
     "sv": "Det var väldigt billigt.",
     "note": "*jeftino* = billigt",
-    "source": "tatoeba:3425925"
+    "source": "tatoeba:3425925",
+    "grammar": ["datid"]
   },
   {
     "id": "l50-s5",
     "lesson": 50,
     "sr": "Zašto baš ja?",
     "sv": "Varför just jag?",
-    "source": "tatoeba:6314414"
+    "source": "tatoeba:6314414",
+    "grammar": ["fragor"]
   },
   {
     "id": "l51-s1",
     "lesson": 51,
     "sr": "Kako to?",
     "sv": "Hur så?",
-    "source": "tatoeba:6880656"
+    "source": "tatoeba:6880656",
+    "grammar": ["fragor"]
   },
   {
     "id": "l51-s2",
     "lesson": 51,
     "sr": "Kakav ti je bio dan?",
     "sv": "Hur var din dag?",
-    "source": "tatoeba:6447029"
+    "source": "tatoeba:6447029",
+    "grammar": ["korta-ord", "fragor", "datid"]
   },
   {
     "id": "l51-s3",
     "lesson": 51,
     "sr": "Koji je tvoj problem?",
     "sv": "Vad är ditt problem?",
-    "source": "tatoeba:4504897"
+    "source": "tatoeba:4504897",
+    "grammar": ["biti", "possessiv", "fragor"]
   },
   {
     "id": "l51-s4",
     "lesson": 51,
     "sr": "Čije je ovo?",
     "sv": "Vems är det här?",
-    "source": "tatoeba:3281750"
+    "source": "tatoeba:3281750",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l51-s5",
     "lesson": 51,
     "sr": "Odakle si?",
     "sv": "Var kommer du ifrån?",
-    "source": "tatoeba:3334516"
+    "source": "tatoeba:3334516",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l52-s1",
     "lesson": 52,
     "sr": "Idem sa tobom.",
     "sv": "Jag följer med dig.",
-    "note": "Man kan också säga: *Idem s tobom*."
+    "note": "Man kan också säga: *Idem s tobom*.",
+    "grammar": ["instrumental", "presens", "oregelbundna"]
   },
   {
     "id": "l52-s2",
@@ -1801,26 +2042,30 @@
     "sr": "Mogu da živim bez vode.",
     "sv": "Jag kan leva utan vatten.",
     "note": "*voda* → *bez vode* (genitiv).",
-    "source": "tatoeba:2655864"
+    "source": "tatoeba:2655864",
+    "grammar": ["genitiv", "presens", "oregelbundna", "da-verb"]
   },
   {
     "id": "l52-s3",
     "lesson": 52,
     "sr": "Ovo je za tebe.",
-    "sv": "Det här är till dig."
+    "sv": "Det här är till dig.",
+    "grammar": ["biti"]
   },
   {
     "id": "l52-s4",
     "lesson": 52,
     "sr": "Ovo je od mame.",
     "sv": "Det här är från mamma.",
-    "note": "*mama* → *od mame* (genitiv)."
+    "note": "*mama* → *od mame* (genitiv).",
+    "grammar": ["biti", "genitiv"]
   },
   {
     "id": "l52-s5",
     "lesson": 52,
     "sr": "Vidimo se sutra!",
-    "sv": "Vi ses imorgon!"
+    "sv": "Vi ses imorgon!",
+    "grammar": ["korta-ord", "presens"]
   },
   {
     "id": "l53-s1",
@@ -1828,21 +2073,24 @@
     "sr": "Idem na plažu.",
     "sv": "Jag går till stranden.",
     "note": "*plaža* → *na plažu* (ackusativ).",
-    "source": "tatoeba:4250142"
+    "source": "tatoeba:4250142",
+    "grammar": ["ackusativ", "vart-var", "presens", "oregelbundna"]
   },
   {
     "id": "l53-s2",
     "lesson": 53,
     "sr": "Ja sam iz Švedske.",
     "sv": "Jag är från Sverige.",
-    "note": "*Švedska* → *iz Švedske* (genitiv)."
+    "note": "*Švedska* → *iz Švedske* (genitiv).",
+    "grammar": ["biti", "genitiv"]
   },
   {
     "id": "l53-s3",
     "lesson": 53,
     "sr": "Hoćeš li da ostaneš kod kuće?",
     "sv": "Vill du stanna hemma?",
-    "source": "tatoeba:3425566"
+    "source": "tatoeba:3425566",
+    "grammar": ["kuci", "fragor", "presens", "oregelbundna", "da-verb"]
   },
   {
     "id": "l53-s4",
@@ -1850,7 +2098,8 @@
     "sr": "Maj dolazi poslije aprila.",
     "sv": "Maj kommer efter april.",
     "note": "Ekaviskt: *posle*.",
-    "source": "tatoeba:901909"
+    "source": "tatoeba:901909",
+    "grammar": ["genitiv", "presens", "oregelbundna"]
   },
   {
     "id": "l53-s5",
@@ -1858,41 +2107,47 @@
     "sr": "Vidjela sam ga prije tri godine.",
     "sv": "Jag såg honom för tre år sedan.",
     "note": "Kvinna: *vidjela*. Man: *vidio*.",
-    "source": "tatoeba:3334430"
+    "source": "tatoeba:3334430",
+    "grammar": ["korta-ord", "genitiv", "siffror", "datid"]
   },
   {
     "id": "l54-s1",
     "lesson": 54,
     "sr": "Izvinite, gdje je toalet?",
-    "sv": "Ursäkta, var är toaletten?"
+    "sv": "Ursäkta, var är toaletten?",
+    "grammar": ["biti", "ti-vi", "fragor"]
   },
   {
     "id": "l54-s2",
     "lesson": 54,
     "sr": "Naravno da ću ti pomoći.",
     "sv": "Självklart hjälper jag dig.",
-    "source": "tatoeba:3340832"
+    "source": "tatoeba:3340832",
+    "grammar": ["korta-ord", "framtid"]
   },
   {
     "id": "l54-s3",
     "lesson": 54,
     "sr": "To je stvarno iznenađujuće.",
     "sv": "Det är verkligen överraskande.",
-    "source": "tatoeba:4992728"
+    "source": "tatoeba:4992728",
+    "grammar": ["biti"]
   },
   {
     "id": "l54-s4",
     "lesson": 54,
     "sr": "Nema problema!",
     "sv": "Inga problem!",
-    "source": "tatoeba:11183485"
+    "source": "tatoeba:11183485",
+    "grammar": ["negation", "genitiv"]
   },
   {
     "id": "l54-s5",
     "lesson": 54,
     "sr": "Sve je u redu.",
     "sv": "Allt är bra.",
-    "source": "tatoeba:3644357"
+    "source": "tatoeba:3644357",
+    "grammar": ["biti", "lokativ", "vart-var"]
   },
   {
     "id": "l55-s1",
@@ -1900,33 +2155,38 @@
     "sr": "Hajde da probamo nešto.",
     "sv": "Kom, så provar vi något.",
     "note": "*nešto* = något",
-    "source": "tatoeba:3292799"
+    "source": "tatoeba:3292799",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l55-s2",
     "lesson": 55,
     "sr": "Hodaj polako.",
     "sv": "Gå långsamt.",
-    "source": "tatoeba:5003555"
+    "source": "tatoeba:5003555",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l55-s3",
     "lesson": 55,
     "sr": "Meni je svejedno.",
-    "sv": "Det spelar ingen roll för mig."
+    "sv": "Det spelar ingen roll för mig.",
+    "grammar": ["biti"]
   },
   {
     "id": "l55-s4",
     "lesson": 55,
     "sr": "Dobrodošli u našu kuću!",
-    "sv": "Välkomna till vårt hus!"
+    "sv": "Välkomna till vårt hus!",
+    "grammar": ["possessiv", "ackusativ", "vart-var"]
   },
   {
     "id": "l55-s5",
     "lesson": 55,
     "sr": "Vidimo se!",
     "sv": "Vi ses!",
-    "source": "tatoeba:3265451"
+    "source": "tatoeba:3265451",
+    "grammar": ["korta-ord", "presens"]
   },
   {
     "id": "l56-s1",
@@ -1934,33 +2194,38 @@
     "sr": "Moje ime je Ana.",
     "sv": "Jag heter Ana.",
     "note": "Byt Ana mot ditt eget namn när du övar högt.",
-    "source": "tatoeba:7531110"
+    "source": "tatoeba:7531110",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l56-s2",
     "lesson": 56,
     "sr": "Koliko jezika govoriš?",
     "sv": "Hur många språk talar du?",
-    "source": "tatoeba:3419230"
+    "source": "tatoeba:3419230",
+    "grammar": ["genitiv", "fragor", "presens"]
   },
   {
     "id": "l56-s3",
     "lesson": 56,
     "sr": "Ovo je lijepa zemlja.",
-    "sv": "Det här är ett vackert land."
+    "sv": "Det här är ett vackert land.",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l56-s4",
     "lesson": 56,
     "sr": "Novac je na stolu.",
     "sv": "Pengarna ligger på bordet.",
-    "source": "tatoeba:3246440"
+    "source": "tatoeba:3246440",
+    "grammar": ["biti", "lokativ", "vart-var"]
   },
   {
     "id": "l56-s5",
     "lesson": 56,
     "sr": "Gdje je moj telefon?",
-    "sv": "Var är min telefon?"
+    "sv": "Var är min telefon?",
+    "grammar": ["biti", "possessiv", "fragor"]
   },
   {
     "id": "l57-s1",
@@ -1968,32 +2233,37 @@
     "sr": "Pjevao je pjesmu.",
     "sv": "Han sjöng en sång.",
     "note": "Ekaviskt: *pevao, pesmu*.",
-    "source": "tatoeba:2507715"
+    "source": "tatoeba:2507715",
+    "grammar": ["ackusativ", "datid"]
   },
   {
     "id": "l57-s2",
     "lesson": 57,
     "sr": "On mnogo voli muziku.",
     "sv": "Han älskar musik.",
-    "source": "tatoeba:3245270"
+    "source": "tatoeba:3245270",
+    "grammar": ["ackusativ", "presens"]
   },
   {
     "id": "l57-s3",
     "lesson": 57,
     "sr": "Ovo je poklon za tebe.",
-    "sv": "Det här är en present till dig."
+    "sv": "Det här är en present till dig.",
+    "grammar": ["biti"]
   },
   {
     "id": "l57-s4",
     "lesson": 57,
     "sr": "Gosti dolaze večeras.",
-    "sv": "Gästerna kommer ikväll."
+    "sv": "Gästerna kommer ikväll.",
+    "grammar": ["presens", "oregelbundna", "plural"]
   },
   {
     "id": "l57-s5",
     "lesson": 57,
     "sr": "Svadba je u subotu.",
-    "sv": "Bröllopet är på lördag."
+    "sv": "Bröllopet är på lördag.",
+    "grammar": ["biti", "ackusativ"]
   },
   {
     "id": "l58-s1",
@@ -2001,7 +2271,8 @@
     "sr": "Sretan Božić!",
     "sv": "God jul!",
     "note": "I Serbien: *srećan*.",
-    "source": "tatoeba:10198913"
+    "source": "tatoeba:10198913",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l58-s2",
@@ -2009,60 +2280,69 @@
     "sr": "Sretan Vaskrs!",
     "sv": "Glad påsk!",
     "note": "Även *Uskrs*.",
-    "source": "tatoeba:3188083"
+    "source": "tatoeba:3188083",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l58-s3",
     "lesson": 58,
     "sr": "Crkva je blizu.",
-    "sv": "Kyrkan ligger nära."
+    "sv": "Kyrkan ligger nära.",
+    "grammar": ["biti", "ackusativ"]
   },
   {
     "id": "l58-s4",
     "lesson": 58,
     "sr": "Upali svijeću.",
     "sv": "Tänd ett ljus.",
-    "note": "*upali* = tänd!"
+    "note": "*upali* = tänd!",
+    "grammar": ["ackusativ", "imperativ"]
   },
   {
     "id": "l58-s5",
     "lesson": 58,
     "sr": "To je naš običaj.",
-    "sv": "Det är vår sed."
+    "sv": "Det är vår sed.",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l59-s1",
     "lesson": 59,
     "sr": "Voda je život.",
     "sv": "Vatten är liv.",
-    "source": "tatoeba:5978196"
+    "source": "tatoeba:5978196",
+    "grammar": ["biti"]
   },
   {
     "id": "l59-s2",
     "lesson": 59,
     "sr": "Da li je to ljubav?",
     "sv": "Är det kärlek?",
-    "source": "tatoeba:665384"
+    "source": "tatoeba:665384",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l59-s3",
     "lesson": 59,
     "sr": "Ona je prijateljica moje sestre.",
     "sv": "Hon är min systers väninna.",
-    "source": "tatoeba:6197183"
+    "source": "tatoeba:6197183",
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l59-s4",
     "lesson": 59,
     "sr": "Ko je tvoj komšija?",
-    "sv": "Vem är din granne?"
+    "sv": "Vem är din granne?",
+    "grammar": ["biti", "possessiv", "fragor"]
   },
   {
     "id": "l59-s5",
     "lesson": 59,
     "sr": "To je duga priča.",
     "sv": "Det är en lång historia.",
-    "source": "tatoeba:3357029"
+    "source": "tatoeba:3357029",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l60-s1",
@@ -2089,48 +2369,55 @@
     "id": "l60-s4",
     "lesson": 60,
     "sr": "Doviđenja, vidimo se sutra!",
-    "sv": "Hej då, vi ses imorgon!"
+    "sv": "Hej då, vi ses imorgon!",
+    "grammar": ["korta-ord", "presens"]
   },
   {
     "id": "l60-s5",
     "lesson": 60,
     "sr": "Čujemo se sutra!",
-    "sv": "Vi hörs imorgon!"
+    "sv": "Vi hörs imorgon!",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l61-s1",
     "lesson": 61,
     "sr": "Ja sam umorna.",
     "sv": "Jag är trött.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l61-s2",
     "lesson": 61,
     "sr": "Gdje si?",
     "sv": "Var är du?",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l61-s3",
     "lesson": 61,
     "sr": "Kuća je velika.",
     "sv": "Huset är stort.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l61-s4",
     "lesson": 61,
     "sr": "Nisam gladna.",
     "sv": "Jag är inte hungrig.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "negation", "adjektiv"]
   },
   {
     "id": "l61-s5",
     "lesson": 61,
     "sr": "Mama nije ovdje.",
     "sv": "Mamma är inte här.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "negation"]
   },
   {
     "id": "l62-s1",
@@ -2138,14 +2425,16 @@
     "sr": "Bila sam kod kuće.",
     "sv": "Jag var hemma.",
     "note": "*kuća → kod kuće*",
-    "check": true
+    "check": true,
+    "grammar": ["kuci", "datid"]
   },
   {
     "id": "l62-s2",
     "lesson": 62,
     "sr": "Imala sam dobar dan.",
     "sv": "Jag hade en bra dag.",
-    "check": true
+    "check": true,
+    "grammar": ["datid", "adjektiv"]
   },
   {
     "id": "l62-s3",
@@ -2153,7 +2442,8 @@
     "sr": "Išla sam kod bake.",
     "sv": "Jag åkte till mormor.",
     "note": "*baka → kod bake*",
-    "check": true
+    "check": true,
+    "grammar": ["genitiv", "datid"]
   },
   {
     "id": "l62-s4",
@@ -2161,21 +2451,24 @@
     "sr": "Vidjela sam tvog brata.",
     "sv": "Jag såg din bror.",
     "note": "*brat → brata*, *tvoj → tvog*",
-    "check": true
+    "check": true,
+    "grammar": ["possessiv", "ackusativ", "datid"]
   },
   {
     "id": "l62-s5",
     "lesson": 62,
     "sr": "Rekla sam da ne mogu.",
     "sv": "Jag sa att jag inte kan.",
-    "check": true
+    "check": true,
+    "grammar": ["negation", "presens", "oregelbundna", "datid"]
   },
   {
     "id": "l63-s1",
     "lesson": 63,
     "sr": "Juče sam radila.",
     "sv": "Jag jobbade igår.",
-    "check": true
+    "check": true,
+    "grammar": ["datid"]
   },
   {
     "id": "l63-s2",
@@ -2183,35 +2476,40 @@
     "sr": "Jela sam ribu.",
     "sv": "Jag åt fisk.",
     "note": "*riba → ribu*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "datid"]
   },
   {
     "id": "l63-s3",
     "lesson": 63,
     "sr": "Došla sam kasno.",
     "sv": "Jag kom sent.",
-    "check": true
+    "check": true,
+    "grammar": ["datid"]
   },
   {
     "id": "l63-s4",
     "lesson": 63,
     "sr": "Kupila sam poklon.",
     "sv": "Jag köpte en present.",
-    "check": true
+    "check": true,
+    "grammar": ["datid"]
   },
   {
     "id": "l63-s5",
     "lesson": 63,
     "sr": "Zaboravila sam ključ.",
     "sv": "Jag glömde nyckeln.",
-    "check": true
+    "check": true,
+    "grammar": ["datid"]
   },
   {
     "id": "l64-s1",
     "lesson": 64,
     "sr": "Hoću, hvala.",
     "sv": "Ja tack.",
-    "check": true
+    "check": true,
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l64-s2",
@@ -2219,21 +2517,24 @@
     "sr": "Neću, hvala.",
     "sv": "Nej tack.",
     "note": "Med *hvala* låter det vänligt.",
-    "check": true
+    "check": true,
+    "grammar": ["negation", "presens"]
   },
   {
     "id": "l64-s3",
     "lesson": 64,
     "sr": "Biće lijepo.",
     "sv": "Det blir fint.",
-    "check": true
+    "check": true,
+    "grammar": ["framtid", "adjektiv"]
   },
   {
     "id": "l64-s4",
     "lesson": 64,
     "sr": "Vidjećemo sutra.",
     "sv": "Vi får se i morgon.",
-    "check": true
+    "check": true,
+    "grammar": ["framtid"]
   },
   {
     "id": "l64-s5",
@@ -2241,42 +2542,48 @@
     "sr": "Doći ću sutra.",
     "sv": "Jag kommer i morgon.",
     "alt": ["Sutra ću doći."],
-    "check": true
+    "check": true,
+    "grammar": ["framtid"]
   },
   {
     "id": "l65-s1",
     "lesson": 65,
     "sr": "Zdravo, šta ima?",
     "sv": "Hej, läget?",
-    "check": true
+    "check": true,
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l65-s2",
     "lesson": 65,
     "sr": "Kako ide posao?",
     "sv": "Hur går jobbet?",
-    "check": true
+    "check": true,
+    "grammar": ["fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l65-s3",
     "lesson": 65,
     "sr": "Nije loše, hvala.",
     "sv": "Inte illa, tack.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "negation", "adjektiv"]
   },
   {
     "id": "l65-s4",
     "lesson": 65,
     "sr": "Da, tako je.",
     "sv": "Ja, så är det.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l65-s5",
     "lesson": 65,
     "sr": "Ne znam gdje je.",
     "sv": "Jag vet inte var det är.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "negation", "presens"]
   },
   {
     "id": "l66-s1",
@@ -2284,42 +2591,48 @@
     "sr": "Izvoli kafu.",
     "sv": "Varsågod, här är kaffet.",
     "note": "*kafa → kafu*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "imperativ"]
   },
   {
     "id": "l66-s2",
     "lesson": 66,
     "sr": "Uđi, molim te.",
     "sv": "Kom in, är du snäll.",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "imperativ"]
   },
   {
     "id": "l66-s3",
     "lesson": 66,
     "sr": "Sjedi ovdje!",
     "sv": "Sätt dig här!",
-    "check": true
+    "check": true,
+    "grammar": ["imperativ"]
   },
   {
     "id": "l66-s4",
     "lesson": 66,
     "sr": "Samo malo, dolazim!",
     "sv": "Vänta lite, jag kommer!",
-    "check": true
+    "check": true,
+    "grammar": ["genitiv", "presens", "oregelbundna"]
   },
   {
     "id": "l66-s5",
     "lesson": 66,
     "sr": "Hvala na pozivu!",
     "sv": "Tack för inbjudan!",
-    "check": true
+    "check": true,
+    "grammar": ["lokativ", "vart-var"]
   },
   {
     "id": "l67-s1",
     "lesson": 67,
     "sr": "Posluži se, ima još.",
     "sv": "Ta för dig, det finns mer.",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "presens", "imperativ"]
   },
   {
     "id": "l67-s2",
@@ -2327,28 +2640,32 @@
     "sr": "Uzmi još supe.",
     "sv": "Ta mer soppa.",
     "note": "*supa → supe*: en del av något står i genitiv.",
-    "check": true
+    "check": true,
+    "grammar": ["genitiv", "imperativ"]
   },
   {
     "id": "l67-s3",
     "lesson": 67,
     "sr": "Dosta je, hvala.",
     "sv": "Det räcker, tack.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l67-s4",
     "lesson": 67,
     "sr": "Ne mogu više, sita sam.",
     "sv": "Jag orkar inte mer, jag är mätt.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "negation", "presens", "oregelbundna", "adjektiv"]
   },
   {
     "id": "l67-s5",
     "lesson": 67,
     "sr": "Bilo je odlično, hvala!",
     "sv": "Det var jättegott, tack!",
-    "check": true
+    "check": true,
+    "grammar": ["datid"]
   },
   {
     "id": "l68-s1",
@@ -2356,7 +2673,8 @@
     "sr": "Volim sarmu.",
     "sv": "Jag tycker om *sarma*.",
     "note": "*sarma → sarmu*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "presens"]
   },
   {
     "id": "l68-s2",
@@ -2364,7 +2682,8 @@
     "sr": "Ćevapi su odlični.",
     "sv": "*Ćevapi* är jättegoda.",
     "note": "Ordet står i plural.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv", "plural"]
   },
   {
     "id": "l68-s3",
@@ -2372,14 +2691,16 @@
     "sr": "Hoćeš li pitu?",
     "sv": "Vill du ha paj?",
     "note": "*pita → pitu*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l68-s4",
     "lesson": 68,
     "sr": "Ajvar je ukusan.",
     "sv": "*Ajvar* är gott.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l68-s5",
@@ -2387,14 +2708,16 @@
     "sr": "Sir i kajmak su na stolu.",
     "sv": "Osten och *kajmak* står på bordet.",
     "note": "*sto → na stolu*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "lokativ", "vart-var"]
   },
   {
     "id": "l69-s1",
     "lesson": 69,
     "sr": "Gdje je moj tanjir?",
     "sv": "Var är min tallrik?",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv", "fragor"]
   },
   {
     "id": "l69-s2",
@@ -2402,14 +2725,16 @@
     "sr": "Molim te, čašu vode.",
     "sv": "Ett glas vatten, snälla.",
     "note": "*čaša → čašu*, *voda → vode*",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "ackusativ"]
   },
   {
     "id": "l69-s3",
     "lesson": 69,
     "sr": "Treba mi viljuška.",
     "sv": "Jag behöver en gaffel.",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l69-s4",
@@ -2417,7 +2742,8 @@
     "sr": "Nož je na stolu.",
     "sv": "Kniven ligger på bordet.",
     "note": "*sto → na stolu*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "lokativ", "vart-var"]
   },
   {
     "id": "l69-s5",
@@ -2425,7 +2751,8 @@
     "sr": "Supa se jede kašikom.",
     "sv": "Soppa äter man med sked.",
     "note": "*kašika → kašikom*",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "instrumental", "presens", "oregelbundna"]
   },
   {
     "id": "l70-s1",
@@ -2433,7 +2760,8 @@
     "sr": "Hoćeš li šolju kafe?",
     "sv": "Vill du ha en kopp kaffe?",
     "note": "*šolja → šolju*, *kafa → kafe*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l70-s2",
@@ -2441,21 +2769,24 @@
     "sr": "Pijem sok od jabuke.",
     "sv": "Jag dricker äppeljuice.",
     "note": "*jabuka → od jabuke*",
-    "check": true
+    "check": true,
+    "grammar": ["genitiv", "presens", "oregelbundna"]
   },
   {
     "id": "l70-s3",
     "lesson": 70,
     "sr": "Kolač je sladak.",
     "sv": "Kakan är söt.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l70-s4",
     "lesson": 70,
     "sr": "Torta je za tebe.",
     "sv": "Tårtan är till dig.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l70-s5",
@@ -2463,7 +2794,8 @@
     "sr": "Izvoli slatko i vodu.",
     "sv": "Varsågod, här är *slatko* och vatten.",
     "note": "*voda → vodu*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "imperativ"]
   },
   {
     "id": "l71-s1",
@@ -2485,42 +2817,48 @@
     "sr": "Govoriš odlično.",
     "sv": "Du pratar utmärkt.",
     "alt": ["Odlično govoriš."],
-    "check": true
+    "check": true,
+    "grammar": ["presens"]
   },
   {
     "id": "l71-s4",
     "lesson": 71,
     "sr": "Ovdje je predivno.",
     "sv": "Det är underbart här.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l71-s5",
     "lesson": 71,
     "sr": "To je zanimljivo.",
     "sv": "Det är intressant.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l72-s1",
     "lesson": 72,
     "sr": "Da, slažem se.",
     "sv": "Ja, jag håller med.",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l72-s2",
     "lesson": 72,
     "sr": "Nisam sigurna, možda sutra.",
     "sv": "Jag är inte säker, kanske i morgon.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "negation", "adjektiv"]
   },
   {
     "id": "l72-s3",
     "lesson": 72,
     "sr": "Tačno, tako je.",
     "sv": "Exakt, så är det.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l72-s4",
@@ -2528,7 +2866,8 @@
     "sr": "Ne vjerujem da dolazi.",
     "sv": "Jag tror inte att han kommer.",
     "note": "Ekaviskt: *ne verujem*.",
-    "check": true
+    "check": true,
+    "grammar": ["negation", "presens", "oregelbundna"]
   },
   {
     "id": "l72-s5",
@@ -2536,14 +2875,16 @@
     "sr": "Zavisi od vremena.",
     "sv": "Det beror på vädret.",
     "note": "*vrijeme → od vremena*",
-    "check": true
+    "check": true,
+    "grammar": ["genitiv"]
   },
   {
     "id": "l73-s1",
     "lesson": 73,
     "sr": "Mama je ljuta.",
     "sv": "Mamma är arg.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l73-s2",
@@ -2551,21 +2892,24 @@
     "sr": "Zabrinuta sam za brata.",
     "sv": "Jag är orolig för min bror.",
     "note": "*brat → za brata*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "ackusativ", "adjektiv"]
   },
   {
     "id": "l73-s3",
     "lesson": 73,
     "sr": "Sada sam mirna.",
     "sv": "Nu är jag lugn.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l73-s4",
     "lesson": 73,
     "sr": "Ja sam zaljubljena.",
     "sv": "Jag är förälskad.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l73-s5",
@@ -2573,35 +2917,40 @@
     "sr": "Mnogo mi nedostaješ.",
     "sv": "Jag saknar dig mycket.",
     "alt": ["Nedostaješ mi mnogo."],
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l74-s1",
     "lesson": 74,
     "sr": "Moja svekrva lijepo kuva.",
     "sv": "Min svärmor lagar god mat.",
-    "check": true
+    "check": true,
+    "grammar": ["possessiv", "presens", "adjektiv"]
   },
   {
     "id": "l74-s2",
     "lesson": 74,
     "sr": "Svekar sjedi napolju.",
     "sv": "Svärfar sitter ute.",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "presens"]
   },
   {
     "id": "l74-s3",
     "lesson": 74,
     "sr": "Ona je naša snaja.",
     "sv": "Hon är vår svärdotter.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l74-s4",
     "lesson": 74,
     "sr": "Moj zet je doktor.",
     "sv": "Min svåger är läkare.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l74-s5",
@@ -2609,7 +2958,8 @@
     "sr": "Kum dolazi na slavu.",
     "sv": "*Kum* kommer till *slava*.",
     "note": "*slava → na slavu*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "vart-var", "presens", "oregelbundna"]
   },
   {
     "id": "l75-s1",
@@ -2617,14 +2967,16 @@
     "sr": "Moja mama je iz Švedske.",
     "sv": "Min mamma är från Sverige.",
     "note": "*Švedska → iz Švedske*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv", "genitiv"]
   },
   {
     "id": "l75-s2",
     "lesson": 75,
     "sr": "Ja sam Šveđanka.",
     "sv": "Jag är svensk.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l75-s3",
@@ -2632,7 +2984,8 @@
     "sr": "Govorim švedski.",
     "sv": "Jag pratar svenska.",
     "alt": ["Švedski govorim."],
-    "check": true
+    "check": true,
+    "grammar": ["presens"]
   },
   {
     "id": "l75-s4",
@@ -2640,7 +2993,8 @@
     "sr": "Idem u Srbiju.",
     "sv": "Jag åker till Serbien.",
     "note": "*Srbija → u Srbiju*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "vart-var", "presens", "oregelbundna"]
   },
   {
     "id": "l75-s5",
@@ -2648,7 +3002,8 @@
     "sr": "U Bosni je lijepo.",
     "sv": "Det är fint i Bosnien.",
     "note": "*Bosna → u Bosni*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "lokativ", "vart-var", "adjektiv"]
   },
   {
     "id": "l76-s1",
@@ -2656,28 +3011,32 @@
     "sr": "Sada sam u kancelariji.",
     "sv": "Jag är på kontoret nu.",
     "note": "*kancelarija → u kancelariji*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "lokativ", "vart-var"]
   },
   {
     "id": "l76-s2",
     "lesson": 76,
     "sr": "Moj šef je dobar.",
     "sv": "Min chef är bra.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv", "adjektiv"]
   },
   {
     "id": "l76-s3",
     "lesson": 76,
     "sr": "On je moj kolega.",
     "sv": "Han är min kollega.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l76-s4",
     "lesson": 76,
     "sr": "Plata je mala.",
     "sv": "Lönen är liten.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l76-s5",
@@ -2685,7 +3044,8 @@
     "sr": "Radim u maloj firmi.",
     "sv": "Jag jobbar på ett litet företag.",
     "note": "*mala firma → u maloj firmi*",
-    "check": true
+    "check": true,
+    "grammar": ["lokativ", "vart-var", "presens", "adjektiv"]
   },
   {
     "id": "l77-s1",
@@ -2693,14 +3053,16 @@
     "sr": "Moja sestra je na fakultetu.",
     "sv": "Min syster går på universitetet.",
     "note": "*fakultet → na fakultetu*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv", "lokativ", "vart-var"]
   },
   {
     "id": "l77-s2",
     "lesson": 77,
     "sr": "Ja sam studentkinja.",
     "sv": "Jag är student.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l77-s3",
@@ -2708,14 +3070,16 @@
     "sr": "Sutra imam ispit.",
     "sv": "Jag har prov i morgon.",
     "alt": ["Imam ispit sutra."],
-    "check": true
+    "check": true,
+    "grammar": ["presens"]
   },
   {
     "id": "l77-s4",
     "lesson": 77,
     "sr": "Ona je učiteljica.",
     "sv": "Hon är lärare.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l77-s5",
@@ -2723,28 +3087,32 @@
     "sr": "Čitam knjigu.",
     "sv": "Jag läser en bok.",
     "note": "*knjiga → knjigu*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "presens"]
   },
   {
     "id": "l78-s1",
     "lesson": 78,
     "sr": "Koje je tvoje zanimanje?",
     "sv": "Vad är ditt yrke?",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv", "fragor"]
   },
   {
     "id": "l78-s2",
     "lesson": 78,
     "sr": "Moja tetka je medicinska sestra.",
     "sv": "Min faster är sjuksköterska.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv", "adjektiv"]
   },
   {
     "id": "l78-s3",
     "lesson": 78,
     "sr": "Moj brat je konobar.",
     "sv": "Min bror är servitör.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l78-s4",
@@ -2752,14 +3120,16 @@
     "sr": "Tata je vozač autobusa.",
     "sv": "Pappa är busschaufför.",
     "note": "*autobus → vozač autobusa*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "genitiv"]
   },
   {
     "id": "l78-s5",
     "lesson": 78,
     "sr": "Moj rođak je programer.",
     "sv": "Min kusin är programmerare.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l79-s1",
@@ -2767,7 +3137,8 @@
     "sr": "Nemam slobodnog vremena.",
     "sv": "Jag har ingen fritid.",
     "note": "Efter *nemam* står genitiv: *slobodno vrijeme → slobodnog vremena*.",
-    "check": true
+    "check": true,
+    "grammar": ["negation", "genitiv"]
   },
   {
     "id": "l79-s2",
@@ -2775,14 +3146,16 @@
     "sr": "Večeras gledamo film.",
     "sv": "I kväll tittar vi på film.",
     "alt": ["Gledamo film večeras."],
-    "check": true
+    "check": true,
+    "grammar": ["presens"]
   },
   {
     "id": "l79-s3",
     "lesson": 79,
     "sr": "Tata voli fudbal.",
     "sv": "Pappa tycker om fotboll.",
-    "check": true
+    "check": true,
+    "grammar": ["presens"]
   },
   {
     "id": "l79-s4",
@@ -2790,7 +3163,8 @@
     "sr": "Idemo u šetnju.",
     "sv": "Vi går på promenad.",
     "note": "*šetnja → u šetnju*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "vart-var", "presens", "oregelbundna"]
   },
   {
     "id": "l79-s5",
@@ -2798,21 +3172,24 @@
     "sr": "Na odmoru sam.",
     "sv": "Jag är på semester.",
     "note": "*odmor → na odmoru*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "lokativ", "vart-var"]
   },
   {
     "id": "l80-s1",
     "lesson": 80,
     "sr": "Lijepa haljina!",
     "sv": "Vilken fin klänning!",
-    "check": true
+    "check": true,
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l80-s2",
     "lesson": 80,
     "sr": "Treba mi nova košulja.",
     "sv": "Jag behöver en ny skjorta.",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "adjektiv"]
   },
   {
     "id": "l80-s3",
@@ -2820,7 +3197,8 @@
     "sr": "Gdje su moje cipele?",
     "sv": "Var är mina skor?",
     "note": "*cipele* står i plural.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv", "fragor", "plural"]
   },
   {
     "id": "l80-s4",
@@ -2828,14 +3206,16 @@
     "sr": "Uzmi jaknu, hladno je.",
     "sv": "Ta jackan, det är kallt.",
     "note": "*jakna → jaknu*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "ackusativ", "imperativ"]
   },
   {
     "id": "l80-s5",
     "lesson": 80,
     "sr": "Moj kaput je crn.",
     "sv": "Min kappa är svart.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv", "adjektiv"]
   },
   {
     "id": "l81-s1",
@@ -2843,28 +3223,32 @@
     "sr": "Idem na pijacu.",
     "sv": "Jag går till torget.",
     "note": "*pijaca → na pijacu*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "vart-var", "presens", "oregelbundna"]
   },
   {
     "id": "l81-s2",
     "lesson": 81,
     "sr": "Koja je cijena?",
     "sv": "Vad är priset?",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l81-s3",
     "lesson": 81,
     "sr": "Ovdje je jeftino.",
     "sv": "Det är billigt här.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l81-s4",
     "lesson": 81,
     "sr": "To je skupo.",
     "sv": "Det är dyrt.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l81-s5",
@@ -2872,7 +3256,8 @@
     "sr": "Ima li popusta?",
     "sv": "Finns det rabatt?",
     "note": "*popust → popusta*",
-    "check": true
+    "check": true,
+    "grammar": ["genitiv", "fragor", "presens"]
   },
   {
     "id": "l82-s1",
@@ -2880,7 +3265,8 @@
     "sr": "Imamo psa.",
     "sv": "Vi har en hund.",
     "note": "*pas → psa*",
-    "check": true
+    "check": true,
+    "grammar": ["presens"]
   },
   {
     "id": "l82-s2",
@@ -2888,7 +3274,8 @@
     "sr": "Mačka spava na krevetu.",
     "sv": "Katten sover på sängen.",
     "note": "*krevet → na krevetu*",
-    "check": true
+    "check": true,
+    "grammar": ["lokativ", "vart-var", "presens"]
   },
   {
     "id": "l82-s3",
@@ -2896,7 +3283,8 @@
     "sr": "Vidjela sam ježa.",
     "sv": "Jag såg en igelkott.",
     "note": "*jež → ježa*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "datid"]
   },
   {
     "id": "l82-s4",
@@ -2904,7 +3292,8 @@
     "sr": "Baka ima kravu.",
     "sv": "Mormor har en ko.",
     "note": "*krava → kravu*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "presens"]
   },
   {
     "id": "l82-s5",
@@ -2912,7 +3301,8 @@
     "sr": "Djed ima kokoške.",
     "sv": "Morfar har höns.",
     "note": "*kokoška → kokoške* i plural",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "presens", "plural"]
   },
   {
     "id": "l83-s1",
@@ -2920,35 +3310,40 @@
     "sr": "Sjedimo u bašti.",
     "sv": "Vi sitter i trädgården.",
     "note": "*bašta → u bašti*",
-    "check": true
+    "check": true,
+    "grammar": ["lokativ", "vart-var", "presens"]
   },
   {
     "id": "l83-s2",
     "lesson": 83,
     "sr": "Rijeka je blizu.",
     "sv": "Floden är nära.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "ackusativ"]
   },
   {
     "id": "l83-s3",
     "lesson": 83,
     "sr": "Planina je visoka.",
     "sv": "Berget är högt.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l83-s4",
     "lesson": 83,
     "sr": "Idemo na more.",
     "sv": "Vi åker till havet.",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "vart-var", "presens", "oregelbundna"]
   },
   {
     "id": "l83-s5",
     "lesson": 83,
     "sr": "Jezero je lijepo.",
     "sv": "Sjön är fin.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l84-s1",
@@ -2956,14 +3351,16 @@
     "sr": "Pozovi me sutra.",
     "sv": "Ring mig i morgon.",
     "alt": ["Sutra me pozovi."],
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "imperativ"]
   },
   {
     "id": "l84-s2",
     "lesson": 84,
     "sr": "Javi se večeras.",
     "sv": "Hör av dig i kväll.",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "imperativ"]
   },
   {
     "id": "l84-s3",
@@ -2971,42 +3368,48 @@
     "sr": "Pišem poruku.",
     "sv": "Jag skriver ett meddelande.",
     "note": "*poruka → poruku*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "presens"]
   },
   {
     "id": "l84-s4",
     "lesson": 84,
     "sr": "Lijepa slika!",
     "sv": "Vilken fin bild!",
-    "check": true
+    "check": true,
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l84-s5",
     "lesson": 84,
     "sr": "Koji je tvoj broj?",
     "sv": "Vad är ditt nummer?",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv", "fragor"]
   },
   {
     "id": "l85-s1",
     "lesson": 85,
     "sr": "Izvini, ne razumijem.",
     "sv": "Förlåt, jag förstår inte.",
-    "check": true
+    "check": true,
+    "grammar": ["ti-vi", "negation", "presens"]
   },
   {
     "id": "l85-s2",
     "lesson": 85,
     "sr": "Izvini, ponovi, molim te.",
     "sv": "Förlåt, säg det igen, snälla.",
-    "check": true
+    "check": true,
+    "grammar": ["ti-vi", "korta-ord", "imperativ"]
   },
   {
     "id": "l85-s3",
     "lesson": 85,
     "sr": "Izvini, šta to znači?",
     "sv": "Förlåt, vad betyder det?",
-    "check": true
+    "check": true,
+    "grammar": ["ti-vi", "fragor", "presens"]
   },
   {
     "id": "l85-s4",
@@ -3014,49 +3417,56 @@
     "sr": "Kako se kaže na srpskom?",
     "sv": "Hur säger man på serbiska?",
     "note": "*srpski → na srpskom*",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "lokativ", "fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l85-s5",
     "lesson": 85,
     "sr": "Govori polako, molim te.",
     "sv": "Prata långsamt, snälla.",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "imperativ"]
   },
   {
     "id": "l86-s1",
     "lesson": 86,
     "sr": "Kako si ti?",
     "sv": "Hur mår du?",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l86-s2",
     "lesson": 86,
     "sr": "Ovo je moja kuća.",
     "sv": "Det här är mitt hus.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l86-s3",
     "lesson": 86,
     "sr": "To je moj brat.",
     "sv": "Det är min bror.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv"]
   },
   {
     "id": "l86-s4",
     "lesson": 86,
     "sr": "Sve je dobro.",
     "sv": "Allt är bra.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l86-s5",
     "lesson": 86,
     "sr": "Hoćeš li nešto?",
     "sv": "Vill du ha något?",
-    "check": true
+    "check": true,
+    "grammar": ["fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l87-s1",
@@ -3064,7 +3474,8 @@
     "sr": "Ne znam ništa.",
     "sv": "Jag vet ingenting.",
     "note": "Serbiskan nekar två gånger.",
-    "check": true
+    "check": true,
+    "grammar": ["negation", "presens"]
   },
   {
     "id": "l87-s2",
@@ -3072,7 +3483,8 @@
     "sr": "Niko nije ovdje.",
     "sv": "Ingen är här.",
     "note": "Serbiskan nekar två gånger.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "negation"]
   },
   {
     "id": "l87-s3",
@@ -3080,21 +3492,24 @@
     "sr": "Neko je na vratima.",
     "sv": "Det är någon vid dörren.",
     "note": "*vrata → na vratima*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "lokativ", "vart-var"]
   },
   {
     "id": "l87-s4",
     "lesson": 87,
     "sr": "Svi su ovdje.",
     "sv": "Alla är här.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l87-s5",
     "lesson": 87,
     "sr": "Idemo zajedno.",
     "sv": "Vi går tillsammans.",
-    "check": true
+    "check": true,
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l88-s1",
@@ -3102,7 +3517,8 @@
     "sr": "Jesi li gladna?",
     "sv": "Är du hungrig?",
     "note": "Till en kvinna. Till en man: *gladan*.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "fragor", "adjektiv"]
   },
   {
     "id": "l88-s2",
@@ -3110,7 +3526,8 @@
     "sr": "Imaš li sestru?",
     "sv": "Har du en syster?",
     "note": "*sestra → sestru*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "fragor", "presens"]
   },
   {
     "id": "l88-s3",
@@ -3118,14 +3535,16 @@
     "sr": "Hoćeš li vode?",
     "sv": "Vill du ha vatten?",
     "note": "*voda → vode*: en del av något står i genitiv.",
-    "check": true
+    "check": true,
+    "grammar": ["genitiv", "fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l88-s4",
     "lesson": 88,
     "sr": "Možeš li mi pomoći?",
     "sv": "Kan du hjälpa mig?",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l88-s5",
@@ -3133,14 +3552,16 @@
     "sr": "Da li si umorna?",
     "sv": "Är du trött?",
     "note": "Till en kvinna. Till en man: *umoran*.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "fragor", "adjektiv"]
   },
   {
     "id": "l89-s1",
     "lesson": 89,
     "sr": "Čekaj me ovdje!",
     "sv": "Vänta på mig här!",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "imperativ"]
   },
   {
     "id": "l89-s2",
@@ -3148,7 +3569,8 @@
     "sr": "Gledaj, pada snijeg!",
     "sv": "Titta, det snöar!",
     "note": "Ekaviskt: *sneg*.",
-    "check": true
+    "check": true,
+    "grammar": ["imperativ"]
   },
   {
     "id": "l89-s3",
@@ -3156,21 +3578,24 @@
     "sr": "Slušaj mamu!",
     "sv": "Lyssna på mamma!",
     "note": "*mama → mamu*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "imperativ"]
   },
   {
     "id": "l89-s4",
     "lesson": 89,
     "sr": "Dođi kod nas!",
     "sv": "Kom till oss!",
-    "check": true
+    "check": true,
+    "grammar": ["genitiv", "imperativ"]
   },
   {
     "id": "l89-s5",
     "lesson": 89,
     "sr": "Idemo kući!",
     "sv": "Nu går vi hem!",
-    "check": true
+    "check": true,
+    "grammar": ["kuci", "presens", "oregelbundna"]
   },
   {
     "id": "l90-s1",
@@ -3178,21 +3603,24 @@
     "sr": "Malo vode, molim te.",
     "sv": "Lite vatten, snälla.",
     "note": "*voda → vode*",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "genitiv"]
   },
   {
     "id": "l90-s2",
     "lesson": 90,
     "sr": "Puno hvala!",
     "sv": "Tack så mycket!",
-    "check": true
+    "check": true,
+    "grammar": ["genitiv"]
   },
   {
     "id": "l90-s3",
     "lesson": 90,
     "sr": "Često pijem kafu.",
     "sv": "Jag dricker ofta kaffe.",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "presens", "oregelbundna"]
   },
   {
     "id": "l90-s4",
@@ -3200,28 +3628,32 @@
     "sr": "Ponekad idem autobusom.",
     "sv": "Ibland åker jag buss.",
     "note": "*autobus → autobusom*",
-    "check": true
+    "check": true,
+    "grammar": ["instrumental", "presens", "oregelbundna"]
   },
   {
     "id": "l90-s5",
     "lesson": 90,
     "sr": "Obično jedem kod kuće.",
     "sv": "Jag äter vanligtvis hemma.",
-    "check": true
+    "check": true,
+    "grammar": ["kuci", "presens", "oregelbundna"]
   },
   {
     "id": "l91-s1",
     "lesson": 91,
     "sr": "Dolazim u jedanaest.",
     "sv": "Jag kommer klockan elva.",
-    "check": true
+    "check": true,
+    "grammar": ["presens", "oregelbundna", "siffror"]
   },
   {
     "id": "l91-s2",
     "lesson": 91,
     "sr": "Ručak je u dvanaest.",
     "sv": "Lunchen är klockan tolv.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "siffror"]
   },
   {
     "id": "l91-s3",
@@ -3229,7 +3661,8 @@
     "sr": "Čekam petnaest minuta.",
     "sv": "Jag väntar i femton minuter.",
     "note": "Efter 5 och uppåt står genitiv plural: *minuta*.",
-    "check": true
+    "check": true,
+    "grammar": ["presens", "siffror"]
   },
   {
     "id": "l91-s4",
@@ -3237,7 +3670,8 @@
     "sr": "Imamo dvadeset gostiju.",
     "sv": "Vi har tjugo gäster.",
     "note": "*gost → gostiju*",
-    "check": true
+    "check": true,
+    "grammar": ["presens", "siffror"]
   },
   {
     "id": "l91-s5",
@@ -3245,14 +3679,16 @@
     "sr": "Ona ima trideset godina.",
     "sv": "Hon är trettio år.",
     "note": "*godina* står i genitiv plural.",
-    "check": true
+    "check": true,
+    "grammar": ["presens", "siffror"]
   },
   {
     "id": "l92-s1",
     "lesson": 92,
     "sr": "Tata ima pedeset godina.",
     "sv": "Pappa är femtio år.",
-    "check": true
+    "check": true,
+    "grammar": ["presens", "siffror"]
   },
   {
     "id": "l92-s2",
@@ -3260,7 +3696,8 @@
     "sr": "To je sto maraka.",
     "sv": "Det är hundra mark.",
     "note": "*marka → maraka* efter 5 och uppåt.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "siffror"]
   },
   {
     "id": "l92-s3",
@@ -3268,7 +3705,8 @@
     "sr": "To košta hiljadu maraka.",
     "sv": "Det kostar tusen mark.",
     "note": "*hiljada → hiljadu*",
-    "check": true
+    "check": true,
+    "grammar": ["genitiv", "siffror"]
   },
   {
     "id": "l92-s4",
@@ -3276,21 +3714,24 @@
     "sr": "To košta jednu marku.",
     "sv": "Det kostar en mark.",
     "note": "*marka → marku*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "siffror"]
   },
   {
     "id": "l92-s5",
     "lesson": 92,
     "sr": "Koliko košta kafa?",
     "sv": "Vad kostar kaffet?",
-    "check": true
+    "check": true,
+    "grammar": ["genitiv", "fragor"]
   },
   {
     "id": "l93-s1",
     "lesson": 93,
     "sr": "Januar je hladan.",
     "sv": "Januari är kall.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l93-s2",
@@ -3298,7 +3739,8 @@
     "sr": "U februaru pada snijeg.",
     "sv": "I februari snöar det.",
     "note": "*februar → u februaru*. Ekaviskt: *sneg*.",
-    "check": true
+    "check": true,
+    "grammar": ["lokativ"]
   },
   {
     "id": "l93-s3",
@@ -3306,7 +3748,8 @@
     "sr": "Dolazimo u martu.",
     "sv": "Vi kommer i mars.",
     "note": "*mart → u martu*",
-    "check": true
+    "check": true,
+    "grammar": ["lokativ", "presens", "oregelbundna"]
   },
   {
     "id": "l93-s4",
@@ -3314,14 +3757,16 @@
     "sr": "U aprilu je obično Vaskrs.",
     "sv": "Påsken är vanligtvis i april.",
     "note": "*april → u aprilu*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "lokativ"]
   },
   {
     "id": "l93-s5",
     "lesson": 93,
     "sr": "Maj je lijep mjesec.",
     "sv": "Maj är en fin månad.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l94-s1",
@@ -3329,14 +3774,16 @@
     "sr": "U junu idemo na more.",
     "sv": "I juni åker vi till havet.",
     "note": "*jun → u junu*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "lokativ", "vart-var", "presens", "oregelbundna"]
   },
   {
     "id": "l94-s2",
     "lesson": 94,
     "sr": "Jul je vruć.",
     "sv": "Juli är varm.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l94-s3",
@@ -3344,7 +3791,8 @@
     "sr": "U avgustu je svadba.",
     "sv": "Bröllopet är i augusti.",
     "note": "*avgust → u avgustu*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "lokativ"]
   },
   {
     "id": "l94-s4",
@@ -3352,7 +3800,8 @@
     "sr": "U septembru počinje škola.",
     "sv": "Skolan börjar i september.",
     "note": "*septembar → u septembru*",
-    "check": true
+    "check": true,
+    "grammar": ["lokativ"]
   },
   {
     "id": "l94-s5",
@@ -3360,7 +3809,8 @@
     "sr": "Njihova slava je u oktobru.",
     "sv": "Deras *slava* är i oktober.",
     "note": "*oktobar → u oktobru*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv", "lokativ"]
   },
   {
     "id": "l95-s1",
@@ -3368,7 +3818,8 @@
     "sr": "U novembru je hladno.",
     "sv": "Det är kallt i november.",
     "note": "*novembar → u novembru*",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "lokativ"]
   },
   {
     "id": "l95-s2",
@@ -3376,14 +3827,16 @@
     "sr": "U decembru dolazimo kući.",
     "sv": "I december kommer vi hem.",
     "note": "*decembar → u decembru*",
-    "check": true
+    "check": true,
+    "grammar": ["lokativ", "kuci", "presens", "oregelbundna"]
   },
   {
     "id": "l95-s3",
     "lesson": 95,
     "sr": "Kada je tvoj rođendan?",
     "sv": "När fyller du år?",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv", "fragor"]
   },
   {
     "id": "l95-s4",
@@ -3391,70 +3844,80 @@
     "sr": "Rođena sam u Švedskoj.",
     "sv": "Jag är född i Sverige.",
     "note": "*Švedska → u Švedskoj*",
-    "check": true
+    "check": true,
+    "grammar": ["lokativ", "vart-var", "datid"]
   },
   {
     "id": "l95-s5",
     "lesson": 95,
     "sr": "Izvini, koliko imaš godina?",
     "sv": "Förlåt, hur gammal är du?",
-    "check": true
+    "check": true,
+    "grammar": ["ti-vi", "genitiv", "fragor", "presens"]
   },
   {
     "id": "l96-s1",
     "lesson": 96,
     "sr": "Proljeće je lijepo.",
     "sv": "Våren är fin.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l96-s2",
     "lesson": 96,
     "sr": "Ovo ljeto idemo na more.",
     "sv": "I sommar åker vi till havet.",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "vart-var", "presens", "oregelbundna"]
   },
   {
     "id": "l96-s3",
     "lesson": 96,
     "sr": "Volim jesen.",
     "sv": "Jag tycker om hösten.",
-    "check": true
+    "check": true,
+    "grammar": ["presens"]
   },
   {
     "id": "l96-s4",
     "lesson": 96,
     "sr": "Zima je hladna.",
     "sv": "Vintern är kall.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l96-s5",
     "lesson": 96,
     "sr": "Sutra je praznik.",
     "sv": "I morgon är det helgdag.",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   },
   {
     "id": "l97-s1",
     "lesson": 97,
     "sr": "Sretan rođendan, mama!",
     "sv": "Grattis på födelsedagen, mamma!",
-    "check": true
+    "check": true,
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l97-s2",
     "lesson": 97,
     "sr": "Sretna Nova godina svima!",
     "sv": "Gott nytt år allihopa!",
-    "check": true
+    "check": true,
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l97-s3",
     "lesson": 97,
     "sr": "Sretna slava, hvala na pozivu!",
     "sv": "Glad *slava*, tack för inbjudan!",
-    "check": true
+    "check": true,
+    "grammar": ["lokativ", "vart-var", "adjektiv"]
   },
   {
     "id": "l97-s4",
@@ -3475,7 +3938,8 @@
     "lesson": 98,
     "sr": "Na Božić kažemo: Hristos se rodi!",
     "sv": "Vid jul säger vi: Kristus är född!",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord", "presens", "oregelbundna"]
   },
   {
     "id": "l98-s2",
@@ -3483,14 +3947,16 @@
     "sr": "Vaistinu se rodi!",
     "sv": "Han är sannerligen född!",
     "note": "Svaret på hälsningen vid *Božić*.",
-    "check": true
+    "check": true,
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l98-s3",
     "lesson": 98,
     "sr": "Na Vaskrs kažemo: Hristos vaskrse!",
     "sv": "Vid påsk säger vi: Kristus är uppstånden!",
-    "check": true
+    "check": true,
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l98-s4",
@@ -3505,14 +3971,16 @@
     "lesson": 98,
     "sr": "Moje saučešće, žao mi je.",
     "sv": "Jag beklagar sorgen, det gör mig ledsen.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "korta-ord", "possessiv"]
   },
   {
     "id": "l99-s1",
     "lesson": 99,
     "sr": "Imaju dvoje djece.",
     "sv": "De har två barn.",
-    "check": true
+    "check": true,
+    "grammar": ["presens", "siffror"]
   },
   {
     "id": "l99-s2",
@@ -3520,42 +3988,48 @@
     "sr": "Moji roditelji žive u Švedskoj.",
     "sv": "Mina föräldrar bor i Sverige.",
     "note": "*Švedska → u Švedskoj*",
-    "check": true
+    "check": true,
+    "grammar": ["possessiv", "lokativ", "vart-var", "plural"]
   },
   {
     "id": "l99-s3",
     "lesson": 99,
     "sr": "Beba spava.",
     "sv": "Bebisen sover.",
-    "check": true
+    "check": true,
+    "grammar": ["presens"]
   },
   {
     "id": "l99-s4",
     "lesson": 99,
     "sr": "Moja sestra je trudna.",
     "sv": "Min syster är gravid.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "possessiv", "adjektiv"]
   },
   {
     "id": "l99-s5",
     "lesson": 99,
     "sr": "Ona je udata.",
     "sv": "Hon är gift.",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l100-s1",
     "lesson": 100,
     "sr": "Mama, mogu li pomoći?",
     "sv": "Mamma, kan jag hjälpa till?",
-    "check": true
+    "check": true,
+    "grammar": ["fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l100-s2",
     "lesson": 100,
     "sr": "Gdje je suđe?",
     "sv": "Var är porslinet?",
-    "check": true
+    "check": true,
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l100-s3",
@@ -3563,7 +4037,8 @@
     "sr": "Perem suđe poslije ručka.",
     "sv": "Jag diskar efter lunchen.",
     "note": "*ručak → poslije ručka*",
-    "check": true
+    "check": true,
+    "grammar": ["genitiv", "presens"]
   },
   {
     "id": "l100-s4",
@@ -3571,13 +4046,15 @@
     "sr": "Čistim kuću subotom.",
     "sv": "Jag städar huset på lördagar.",
     "note": "*kuća → kuću*",
-    "check": true
+    "check": true,
+    "grammar": ["ackusativ", "instrumental", "presens"]
   },
   {
     "id": "l100-s5",
     "lesson": 100,
     "sr": "Gotovo je!",
     "sv": "Det är klart!",
-    "check": true
+    "check": true,
+    "grammar": ["biti"]
   }
 ]

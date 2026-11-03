@@ -21,7 +21,8 @@
     "theme": "Hälsningar",
     "sr": "kako si?",
     "sv": "hur mår du?",
-    "note": "Till en person du säger du till. Artigt/flera: *kako ste?*"
+    "note": "Till en person du säger du till. Artigt/flera: *kako ste?*",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l1-dobro",
@@ -51,7 +52,8 @@
     "theme": "Artighet",
     "sr": "izvini",
     "sv": "förlåt",
-    "note": "Till en person du säger du till. Artigt: *izvinite*."
+    "note": "Till en person du säger du till. Artigt: *izvinite*.",
+    "grammar": ["ti-vi"]
   },
   {
     "id": "l2-da",
@@ -66,7 +68,8 @@
     "theme": "Artighet",
     "sr": "ne",
     "sv": "nej / inte",
-    "note": "Före ett verb betyder *ne* 'inte': *ne razumijem*."
+    "note": "Före ett verb betyder *ne* 'inte': *ne razumijem*.",
+    "grammar": ["negation"]
   },
   {
     "id": "l2-moze",
@@ -74,7 +77,8 @@
     "theme": "Artighet",
     "sr": "može",
     "sv": "gärna / det går bra",
-    "note": "Används hela tiden: *Može kafa? – Može!*"
+    "note": "Används hela tiden: *Može kafa? – Može!*",
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l3-ja",
@@ -89,14 +93,16 @@
     "lesson": 3,
     "theme": "Presentera dig",
     "sr": "zovem se",
-    "sv": "jag heter"
+    "sv": "jag heter",
+    "grammar": ["korta-ord", "presens"]
   },
   {
     "id": "l3-drago-mi-je",
     "lesson": 3,
     "theme": "Presentera dig",
     "sr": "drago mi je",
-    "sv": "trevligt att träffas"
+    "sv": "trevligt att träffas",
+    "grammar": ["biti", "korta-ord"]
   },
   {
     "id": "l3-razumijem",
@@ -104,7 +110,8 @@
     "theme": "Presentera dig",
     "sr": "razumijem",
     "sv": "jag förstår",
-    "note": "Ekaviskt: *razumem*."
+    "note": "Ekaviskt: *razumem*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l3-srpski",
@@ -118,28 +125,32 @@
     "lesson": 4,
     "theme": "Familjen",
     "sr": "mama",
-    "sv": "mamma"
+    "sv": "mamma",
+    "grammar": ["genus"]
   },
   {
     "id": "l4-tata",
     "lesson": 4,
     "theme": "Familjen",
     "sr": "tata",
-    "sv": "pappa"
+    "sv": "pappa",
+    "grammar": ["genus"]
   },
   {
     "id": "l4-brat",
     "lesson": 4,
     "theme": "Familjen",
     "sr": "brat",
-    "sv": "bror"
+    "sv": "bror",
+    "grammar": ["genus"]
   },
   {
     "id": "l4-sestra",
     "lesson": 4,
     "theme": "Familjen",
     "sr": "sestra",
-    "sv": "syster"
+    "sv": "syster",
+    "grammar": ["genus"]
   },
   {
     "id": "l4-porodica",
@@ -147,7 +158,8 @@
     "theme": "Familjen",
     "sr": "porodica",
     "sv": "familj",
-    "note": "I Bosnien hörs även *familija*."
+    "note": "I Bosnien hörs även *familija*.",
+    "grammar": ["genus"]
   },
   {
     "id": "l5-baka",
@@ -239,7 +251,8 @@
     "lesson": 7,
     "theme": "Vid bordet",
     "sr": "ukusno",
-    "sv": "gott"
+    "sv": "gott",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l7-jedi",
@@ -247,7 +260,8 @@
     "theme": "Vid bordet",
     "sr": "jedi!",
     "sv": "ät!",
-    "note": "Uppmaning, från verbet *jesti* (att äta)."
+    "note": "Uppmaning, från verbet *jesti* (att äta).",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l7-jos",
@@ -262,7 +276,8 @@
     "theme": "Vid bordet",
     "sr": "sita sam",
     "sv": "jag är mätt",
-    "note": "Kvinna: *sita sam*. Man: *sit sam*."
+    "note": "Kvinna: *sita sam*. Man: *sit sam*.",
+    "grammar": ["biti", "adjektiv"]
   },
   {
     "id": "l8-zivjeli",
@@ -345,14 +360,16 @@
     "theme": "Känslor",
     "sr": "lijepo",
     "sv": "fint / vackert",
-    "note": "Ekaviskt: *lepo*."
+    "note": "Ekaviskt: *lepo*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l10-volim",
     "lesson": 10,
     "theme": "Känslor",
     "sr": "volim",
-    "sv": "jag älskar / jag tycker om"
+    "sv": "jag älskar / jag tycker om",
+    "grammar": ["presens"]
   },
   {
     "id": "l10-umorna",
@@ -360,7 +377,8 @@
     "theme": "Känslor",
     "sr": "umorna",
     "sv": "trött",
-    "note": "Kvinna: *umorna*. Man: *umoran*."
+    "note": "Kvinna: *umorna*. Man: *umoran*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l10-sretna",
@@ -368,7 +386,8 @@
     "theme": "Känslor",
     "sr": "sretna",
     "sv": "glad",
-    "note": "Kvinna: *sretna*. Man: *sretan*. Ekaviskt: *srećna*."
+    "note": "Kvinna: *sretna*. Man: *sretan*. Ekaviskt: *srećna*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l10-ovdje",
@@ -384,7 +403,8 @@
     "theme": "Vanliga verb",
     "sr": "znam",
     "sv": "jag vet / jag kan",
-    "note": "Från *znati*. Du: *znaš*."
+    "note": "Från *znati*. Du: *znaš*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l11-mogu",
@@ -392,7 +412,8 @@
     "theme": "Vanliga verb",
     "sr": "mogu",
     "sv": "jag kan / jag får",
-    "note": "Från *moći*. Du: *možeš*."
+    "note": "Från *moći*. Du: *možeš*.",
+    "grammar": ["presens", "oregelbundna", "da-verb"]
   },
   {
     "id": "l11-imam",
@@ -400,7 +421,8 @@
     "theme": "Vanliga verb",
     "sr": "imam",
     "sv": "jag har",
-    "note": "Från *imati*. Du: *imaš*. Jag har inte: *nemam*."
+    "note": "Från *imati*. Du: *imaš*. Jag har inte: *nemam*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l11-moram",
@@ -408,7 +430,8 @@
     "theme": "Vanliga verb",
     "sr": "moram",
     "sv": "jag måste",
-    "note": "Från *morati*. Du: *moraš*."
+    "note": "Från *morati*. Du: *moraš*.",
+    "grammar": ["presens", "da-verb"]
   },
   {
     "id": "l11-idem",
@@ -416,7 +439,8 @@
     "theme": "Vanliga verb",
     "sr": "idem",
     "sv": "jag går / jag åker",
-    "note": "Från *ići*. Du: *ideš*."
+    "note": "Från *ići*. Du: *ideš*.",
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l12-danas",
@@ -454,7 +478,8 @@
     "theme": "Tid",
     "sr": "nikad",
     "sv": "aldrig",
-    "note": "Med verb behövs också *ne*: *nikad ne pijem kafu*."
+    "note": "Med verb behövs också *ne*: *nikad ne pijem kafu*.",
+    "grammar": ["negation"]
   },
   {
     "id": "l13-kuca",
@@ -462,7 +487,8 @@
     "theme": "Människor och vardag",
     "sr": "kuća",
     "sv": "hus / hem",
-    "note": "*Kući* = hem, hemåt. *Kod kuće* = hemma."
+    "note": "*Kući* = hem, hemåt. *Kod kuće* = hemma.",
+    "grammar": ["kuci"]
   },
   {
     "id": "l13-posao",
@@ -484,7 +510,8 @@
     "theme": "Människor och vardag",
     "sr": "dijete",
     "sv": "barn",
-    "note": "Ekaviskt: *dete*. Flera barn: *djeca*."
+    "note": "Ekaviskt: *dete*. Flera barn: *djeca*.",
+    "grammar": ["plural"]
   },
   {
     "id": "l13-ljudi",
@@ -492,7 +519,8 @@
     "theme": "Människor och vardag",
     "sr": "ljudi",
     "sv": "människor / folk",
-    "note": "Flertal av *čovjek* (ekaviskt: *čovek*)."
+    "note": "Flertal av *čovjek* (ekaviskt: *čovek*).",
+    "grammar": ["plural"]
   },
   {
     "id": "l14-zasto",
@@ -528,7 +556,8 @@
     "theme": "Binda ihop",
     "sr": "mnogo",
     "sv": "mycket / många",
-    "note": "Efter *mnogo* står genitiv: *mnogo ljudi*."
+    "note": "Efter *mnogo* står genitiv: *mnogo ljudi*.",
+    "grammar": ["genitiv"]
   },
   {
     "id": "l15-zelim",
@@ -536,7 +565,8 @@
     "theme": "Tänka och säga",
     "sr": "želim",
     "sv": "jag vill / jag önskar",
-    "note": "Från *željeti*. Ekaviskt: *želeti*."
+    "note": "Från *željeti*. Ekaviskt: *želeti*.",
+    "grammar": ["presens", "da-verb"]
   },
   {
     "id": "l15-mislim",
@@ -544,7 +574,8 @@
     "theme": "Tänka och säga",
     "sr": "mislim",
     "sv": "jag tänker / jag tror",
-    "note": "Från *misliti*."
+    "note": "Från *misliti*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l15-vidim",
@@ -552,7 +583,8 @@
     "theme": "Tänka och säga",
     "sr": "vidim",
     "sv": "jag ser",
-    "note": "Från *vidjeti*. Ekaviskt: *videti*."
+    "note": "Från *vidjeti*. Ekaviskt: *videti*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l15-radim",
@@ -560,7 +592,8 @@
     "theme": "Tänka och säga",
     "sr": "radim",
     "sv": "jag jobbar / jag gör",
-    "note": "Från *raditi*. Du: *radiš*."
+    "note": "Från *raditi*. Du: *radiš*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l15-kazem",
@@ -568,7 +601,8 @@
     "theme": "Tänka och säga",
     "sr": "kažem",
     "sv": "jag säger",
-    "note": "Från *kazati*. Du: *kažeš*."
+    "note": "Från *kazati*. Du: *kažeš*.",
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l16-jedan",
@@ -576,7 +610,8 @@
     "theme": "Siffror 1–5",
     "sr": "jedan",
     "sv": "en / ett",
-    "note": "Kvinnligt: *jedna*. Neutrum: *jedno*."
+    "note": "Kvinnligt: *jedna*. Neutrum: *jedno*.",
+    "grammar": ["siffror"]
   },
   {
     "id": "l16-dva",
@@ -584,63 +619,72 @@
     "theme": "Siffror 1–5",
     "sr": "dva",
     "sv": "två",
-    "note": "Med kvinnliga ord: *dvije* (ekaviskt: *dve*)."
+    "note": "Med kvinnliga ord: *dvije* (ekaviskt: *dve*).",
+    "grammar": ["siffror"]
   },
   {
     "id": "l16-tri",
     "lesson": 16,
     "theme": "Siffror 1–5",
     "sr": "tri",
-    "sv": "tre"
+    "sv": "tre",
+    "grammar": ["siffror"]
   },
   {
     "id": "l16-cetiri",
     "lesson": 16,
     "theme": "Siffror 1–5",
     "sr": "četiri",
-    "sv": "fyra"
+    "sv": "fyra",
+    "grammar": ["siffror"]
   },
   {
     "id": "l16-pet",
     "lesson": 16,
     "theme": "Siffror 1–5",
     "sr": "pet",
-    "sv": "fem"
+    "sv": "fem",
+    "grammar": ["siffror"]
   },
   {
     "id": "l17-sest",
     "lesson": 17,
     "theme": "Siffror 6–10",
     "sr": "šest",
-    "sv": "sex"
+    "sv": "sex",
+    "grammar": ["siffror"]
   },
   {
     "id": "l17-sedam",
     "lesson": 17,
     "theme": "Siffror 6–10",
     "sr": "sedam",
-    "sv": "sju"
+    "sv": "sju",
+    "grammar": ["siffror"]
   },
   {
     "id": "l17-osam",
     "lesson": 17,
     "theme": "Siffror 6–10",
     "sr": "osam",
-    "sv": "åtta"
+    "sv": "åtta",
+    "grammar": ["siffror"]
   },
   {
     "id": "l17-devet",
     "lesson": 17,
     "theme": "Siffror 6–10",
     "sr": "devet",
-    "sv": "nio"
+    "sv": "nio",
+    "grammar": ["siffror"]
   },
   {
     "id": "l17-deset",
     "lesson": 17,
     "theme": "Siffror 6–10",
     "sr": "deset",
-    "sv": "tio"
+    "sv": "tio",
+    "grammar": ["siffror"]
   },
   {
     "id": "l18-ponedjeljak",
@@ -821,7 +865,8 @@
     "theme": "Personer",
     "sr": "vi",
     "sv": "ni",
-    "note": "Artigt till en person också: *vi*."
+    "note": "Artigt till en person också: *vi*.",
+    "grammar": ["ti-vi"]
   },
   {
     "id": "l22-oni",
@@ -836,7 +881,8 @@
     "theme": "Mitt och ditt",
     "sr": "moj",
     "sv": "min",
-    "note": "Kvinnligt: *moja*. Neutrum: *moje*."
+    "note": "Kvinnligt: *moja*. Neutrum: *moje*.",
+    "grammar": ["possessiv"]
   },
   {
     "id": "l23-tvoj",
@@ -844,7 +890,8 @@
     "theme": "Mitt och ditt",
     "sr": "tvoj",
     "sv": "din",
-    "note": "Kvinnligt: *tvoja*. Neutrum: *tvoje*."
+    "note": "Kvinnligt: *tvoja*. Neutrum: *tvoje*.",
+    "grammar": ["possessiv"]
   },
   {
     "id": "l23-nas",
@@ -852,7 +899,8 @@
     "theme": "Mitt och ditt",
     "sr": "naš",
     "sv": "vår",
-    "note": "Kvinnligt: *naša*. Neutrum: *naše*."
+    "note": "Kvinnligt: *naša*. Neutrum: *naše*.",
+    "grammar": ["possessiv"]
   },
   {
     "id": "l23-vas",
@@ -860,7 +908,8 @@
     "theme": "Mitt och ditt",
     "sr": "vaš",
     "sv": "er",
-    "note": "Kvinnligt: *vaša*. Neutrum: *vaše*."
+    "note": "Kvinnligt: *vaša*. Neutrum: *vaše*.",
+    "grammar": ["ti-vi", "possessiv"]
   },
   {
     "id": "l23-njihov",
@@ -868,7 +917,8 @@
     "theme": "Mitt och ditt",
     "sr": "njihov",
     "sv": "deras",
-    "note": "Kvinnligt: *njihova*."
+    "note": "Kvinnligt: *njihova*.",
+    "grammar": ["possessiv"]
   },
   {
     "id": "l24-otac",
@@ -1161,7 +1211,8 @@
     "theme": "Måltider",
     "sr": "kuvam",
     "sv": "jag lagar mat",
-    "note": "Från *kuvati*. Du: *kuvaš*."
+    "note": "Från *kuvati*. Du: *kuvaš*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l31-jedem",
@@ -1169,7 +1220,8 @@
     "theme": "Måltider",
     "sr": "jedem",
     "sv": "jag äter",
-    "note": "Från *jesti*. Du: *jedeš*."
+    "note": "Från *jesti*. Du: *jedeš*.",
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l32-pijem",
@@ -1177,7 +1229,8 @@
     "theme": "Hunger och smak",
     "sr": "pijem",
     "sv": "jag dricker",
-    "note": "Från *piti*. Du: *piješ*."
+    "note": "Från *piti*. Du: *piješ*.",
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l32-gladna",
@@ -1185,7 +1238,8 @@
     "theme": "Hunger och smak",
     "sr": "gladna",
     "sv": "hungrig",
-    "note": "Kvinna: *gladna*. Man: *gladan*."
+    "note": "Kvinna: *gladna*. Man: *gladan*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l32-zedna",
@@ -1193,7 +1247,8 @@
     "theme": "Hunger och smak",
     "sr": "žedna",
     "sv": "törstig",
-    "note": "Kvinna: *žedna*. Man: *žedan*."
+    "note": "Kvinna: *žedna*. Man: *žedan*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l32-sladak",
@@ -1201,7 +1256,8 @@
     "theme": "Hunger och smak",
     "sr": "sladak",
     "sv": "söt",
-    "note": "Kvinnligt: *slatka*. Neutrum: *slatko*."
+    "note": "Kvinnligt: *slatka*. Neutrum: *slatko*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l32-slan",
@@ -1209,7 +1265,8 @@
     "theme": "Hunger och smak",
     "sr": "slan",
     "sv": "salt (om smak)",
-    "note": "Neutrum: *slano*."
+    "note": "Neutrum: *slano*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l33-dobar",
@@ -1217,7 +1274,8 @@
     "theme": "Beskriva 1",
     "sr": "dobar",
     "sv": "bra / god",
-    "note": "Kvinnligt: *dobra*. Neutrum: *dobro*."
+    "note": "Kvinnligt: *dobra*. Neutrum: *dobro*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l33-los",
@@ -1225,7 +1283,8 @@
     "theme": "Beskriva 1",
     "sr": "loš",
     "sv": "dålig",
-    "note": "Kvinnligt: *loša*. Neutrum: *loše*."
+    "note": "Kvinnligt: *loša*. Neutrum: *loše*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l33-veliki",
@@ -1233,7 +1292,8 @@
     "theme": "Beskriva 1",
     "sr": "veliki",
     "sv": "stor",
-    "note": "Kvinnligt: *velika*. Neutrum: *veliko*."
+    "note": "Kvinnligt: *velika*. Neutrum: *veliko*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l33-mali",
@@ -1241,7 +1301,8 @@
     "theme": "Beskriva 1",
     "sr": "mali",
     "sv": "liten",
-    "note": "Kvinnligt: *mala*. Neutrum: *malo*."
+    "note": "Kvinnligt: *mala*. Neutrum: *malo*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l33-nov",
@@ -1249,7 +1310,8 @@
     "theme": "Beskriva 1",
     "sr": "nov",
     "sv": "ny",
-    "note": "Kvinnligt: *nova*. Neutrum: *novo*."
+    "note": "Kvinnligt: *nova*. Neutrum: *novo*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l34-star",
@@ -1257,7 +1319,8 @@
     "theme": "Beskriva 2",
     "sr": "star",
     "sv": "gammal",
-    "note": "Kvinnligt: *stara*. Neutrum: *staro*."
+    "note": "Kvinnligt: *stara*. Neutrum: *staro*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l34-mlad",
@@ -1265,7 +1328,8 @@
     "theme": "Beskriva 2",
     "sr": "mlad",
     "sv": "ung",
-    "note": "Kvinnligt: *mlada*."
+    "note": "Kvinnligt: *mlada*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l34-lijep",
@@ -1273,7 +1337,8 @@
     "theme": "Beskriva 2",
     "sr": "lijep",
     "sv": "vacker",
-    "note": "Ekaviskt: *lep*. Kvinnligt: *lijepa*."
+    "note": "Ekaviskt: *lep*. Kvinnligt: *lijepa*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l34-lak",
@@ -1281,7 +1346,8 @@
     "theme": "Beskriva 2",
     "sr": "lak",
     "sv": "lätt",
-    "note": "Neutrum: *lako*."
+    "note": "Neutrum: *lako*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l34-tezak",
@@ -1289,7 +1355,8 @@
     "theme": "Beskriva 2",
     "sr": "težak",
     "sv": "svår / tung",
-    "note": "Neutrum: *teško*."
+    "note": "Neutrum: *teško*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l35-bijel",
@@ -1297,7 +1364,8 @@
     "theme": "Färger",
     "sr": "bijel",
     "sv": "vit",
-    "note": "Ekaviskt: *beo*. Kvinnligt: *bijela*."
+    "note": "Ekaviskt: *beo*. Kvinnligt: *bijela*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l35-crn",
@@ -1305,7 +1373,8 @@
     "theme": "Färger",
     "sr": "crn",
     "sv": "svart",
-    "note": "Kvinnligt: *crna*."
+    "note": "Kvinnligt: *crna*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l35-crven",
@@ -1313,7 +1382,8 @@
     "theme": "Färger",
     "sr": "crven",
     "sv": "röd",
-    "note": "Kvinnligt: *crvena*."
+    "note": "Kvinnligt: *crvena*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l35-plav",
@@ -1321,7 +1391,8 @@
     "theme": "Färger",
     "sr": "plav",
     "sv": "blå",
-    "note": "Kvinnligt: *plava*."
+    "note": "Kvinnligt: *plava*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l35-zelen",
@@ -1329,7 +1400,8 @@
     "theme": "Färger",
     "sr": "zelen",
     "sv": "grön",
-    "note": "Kvinnligt: *zelena*."
+    "note": "Kvinnligt: *zelena*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l36-sunce",
@@ -1474,7 +1546,8 @@
     "lesson": 39,
     "theme": "Vägen",
     "sr": "blizu",
-    "sv": "nära"
+    "sv": "nära",
+    "grammar": ["genitiv"]
   },
   {
     "id": "l39-daleko",
@@ -1525,7 +1598,8 @@
     "theme": "Komma och gå",
     "sr": "dolazim",
     "sv": "jag kommer",
-    "note": "Från *dolaziti*. Du: *dolaziš*."
+    "note": "Från *dolaziti*. Du: *dolaziš*.",
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l41-odlazim",
@@ -1533,7 +1607,8 @@
     "theme": "Komma och gå",
     "sr": "odlazim",
     "sv": "jag går iväg",
-    "note": "Från *odlaziti*."
+    "note": "Från *odlaziti*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l41-ostajem",
@@ -1541,7 +1616,8 @@
     "theme": "Komma och gå",
     "sr": "ostajem",
     "sv": "jag stannar",
-    "note": "Från *ostajati*."
+    "note": "Från *ostajati*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l41-cekam",
@@ -1549,7 +1625,8 @@
     "theme": "Komma och gå",
     "sr": "čekam",
     "sv": "jag väntar",
-    "note": "Från *čekati*. Vänta! = *čekaj!*"
+    "note": "Från *čekati*. Vänta! = *čekaj!*",
+    "grammar": ["presens"]
   },
   {
     "id": "l41-vracam-se",
@@ -1557,7 +1634,8 @@
     "theme": "Komma och gå",
     "sr": "vraćam se",
     "sv": "jag kommer tillbaka",
-    "note": "Från *vraćati se*."
+    "note": "Från *vraćati se*.",
+    "grammar": ["korta-ord", "presens"]
   },
   {
     "id": "l42-govorim",
@@ -1565,7 +1643,8 @@
     "theme": "Prata och lära",
     "sr": "govorim",
     "sv": "jag talar",
-    "note": "Från *govoriti*. Du: *govoriš*."
+    "note": "Från *govoriti*. Du: *govoriš*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l42-slusam",
@@ -1573,7 +1652,8 @@
     "theme": "Prata och lära",
     "sr": "slušam",
     "sv": "jag lyssnar",
-    "note": "Från *slušati*."
+    "note": "Från *slušati*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l42-citam",
@@ -1581,7 +1661,8 @@
     "theme": "Prata och lära",
     "sr": "čitam",
     "sv": "jag läser",
-    "note": "Från *čitati*."
+    "note": "Från *čitati*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l42-pisem",
@@ -1589,7 +1670,8 @@
     "theme": "Prata och lära",
     "sr": "pišem",
     "sv": "jag skriver",
-    "note": "Från *pisati*. Du: *pišeš*."
+    "note": "Från *pisati*. Du: *pišeš*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l42-ucim",
@@ -1597,7 +1679,8 @@
     "theme": "Prata och lära",
     "sr": "učim",
     "sv": "jag lär mig / pluggar",
-    "note": "Från *učiti*."
+    "note": "Från *učiti*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l43-dajem",
@@ -1605,7 +1688,8 @@
     "theme": "Ge och ta",
     "sr": "dajem",
     "sv": "jag ger",
-    "note": "Från *davati*. Ge mig: *daj mi*."
+    "note": "Från *davati*. Ge mig: *daj mi*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l43-uzimam",
@@ -1613,7 +1697,8 @@
     "theme": "Ge och ta",
     "sr": "uzimam",
     "sv": "jag tar",
-    "note": "Från *uzimati*. Ta! = *uzmi!*"
+    "note": "Från *uzimati*. Ta! = *uzmi!*",
+    "grammar": ["presens"]
   },
   {
     "id": "l43-kupujem",
@@ -1621,7 +1706,8 @@
     "theme": "Ge och ta",
     "sr": "kupujem",
     "sv": "jag köper",
-    "note": "Från *kupovati*."
+    "note": "Från *kupovati*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l43-placam",
@@ -1629,7 +1715,8 @@
     "theme": "Ge och ta",
     "sr": "plaćam",
     "sv": "jag betalar",
-    "note": "Från *plaćati*."
+    "note": "Från *plaćati*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l43-trazim",
@@ -1637,7 +1724,8 @@
     "theme": "Ge och ta",
     "sr": "tražim",
     "sv": "jag letar efter / söker",
-    "note": "Från *tražiti*."
+    "note": "Från *tražiti*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l44-spavam",
@@ -1645,7 +1733,8 @@
     "theme": "Vardag",
     "sr": "spavam",
     "sv": "jag sover",
-    "note": "Från *spavati*."
+    "note": "Från *spavati*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l44-zivim",
@@ -1653,7 +1742,8 @@
     "theme": "Vardag",
     "sr": "živim",
     "sv": "jag bor / lever",
-    "note": "Från *živjeti*. Ekaviskt: *živeti*."
+    "note": "Från *živjeti*. Ekaviskt: *živeti*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l44-sjedim",
@@ -1661,7 +1751,8 @@
     "theme": "Vardag",
     "sr": "sjedim",
     "sv": "jag sitter",
-    "note": "Från *sjediti*. Ekaviskt: *sedim*."
+    "note": "Från *sjediti*. Ekaviskt: *sedim*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l44-stojim",
@@ -1669,7 +1760,8 @@
     "theme": "Vardag",
     "sr": "stojim",
     "sv": "jag står",
-    "note": "Från *stajati*."
+    "note": "Från *stajati*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l44-igram-se",
@@ -1677,7 +1769,8 @@
     "theme": "Vardag",
     "sr": "igram se",
     "sv": "jag leker",
-    "note": "Från *igrati se*."
+    "note": "Från *igrati se*.",
+    "grammar": ["korta-ord", "presens"]
   },
   {
     "id": "l45-pomazem",
@@ -1685,7 +1778,8 @@
     "theme": "Hjälp och önskningar",
     "sr": "pomažem",
     "sv": "jag hjälper",
-    "note": "Från *pomagati*. Hjälp! = *pomozi!*"
+    "note": "Från *pomagati*. Hjälp! = *pomozi!*",
+    "grammar": ["presens"]
   },
   {
     "id": "l45-treba-mi",
@@ -1693,7 +1787,8 @@
     "theme": "Hjälp och önskningar",
     "sr": "treba mi",
     "sv": "jag behöver",
-    "note": "Ordagrant: det behövs för mig."
+    "note": "Ordagrant: det behövs för mig.",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l45-svidja-mi-se",
@@ -1701,7 +1796,8 @@
     "theme": "Hjälp och önskningar",
     "sr": "sviđa mi se",
     "sv": "jag gillar det",
-    "note": "Ordagrant: det behagar mig."
+    "note": "Ordagrant: det behagar mig.",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l45-pitam",
@@ -1709,7 +1805,8 @@
     "theme": "Hjälp och önskningar",
     "sr": "pitam",
     "sv": "jag frågar",
-    "note": "Från *pitati*."
+    "note": "Från *pitati*.",
+    "grammar": ["presens"]
   },
   {
     "id": "l45-nadam-se",
@@ -1717,7 +1814,8 @@
     "theme": "Hjälp och önskningar",
     "sr": "nadam se",
     "sv": "jag hoppas",
-    "note": "Från *nadati se*."
+    "note": "Från *nadati se*.",
+    "grammar": ["korta-ord", "presens"]
   },
   {
     "id": "l46-tuzna",
@@ -1725,7 +1823,8 @@
     "theme": "Hur jag mår",
     "sr": "tužna",
     "sv": "ledsen",
-    "note": "Kvinna: *tužna*. Man: *tužan*."
+    "note": "Kvinna: *tužna*. Man: *tužan*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l46-bolesna",
@@ -1733,7 +1832,8 @@
     "theme": "Hur jag mår",
     "sr": "bolesna",
     "sv": "sjuk",
-    "note": "Kvinna: *bolesna*. Man: *bolestan*."
+    "note": "Kvinna: *bolesna*. Man: *bolestan*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l46-zdrava",
@@ -1741,7 +1841,8 @@
     "theme": "Hur jag mår",
     "sr": "zdrava",
     "sv": "frisk",
-    "note": "Kvinna: *zdrava*. Man: *zdrav*."
+    "note": "Kvinna: *zdrava*. Man: *zdrav*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l46-spremna",
@@ -1749,7 +1850,8 @@
     "theme": "Hur jag mår",
     "sr": "spremna",
     "sv": "redo",
-    "note": "Kvinna: *spremna*. Man: *spreman*."
+    "note": "Kvinna: *spremna*. Man: *spreman*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l46-zauzeta",
@@ -1757,7 +1859,8 @@
     "theme": "Hur jag mår",
     "sr": "zauzeta",
     "sv": "upptagen",
-    "note": "Kvinna: *zauzeta*. Man: *zauzet*."
+    "note": "Kvinna: *zauzeta*. Man: *zauzet*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l47-glava",
@@ -1803,7 +1906,8 @@
     "theme": "Hos läkaren",
     "sr": "boli me",
     "sv": "det gör ont",
-    "note": "*Boli me glava* = jag har ont i huvudet."
+    "note": "*Boli me glava* = jag har ont i huvudet.",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l48-doktor",
@@ -1951,7 +2055,8 @@
     "theme": "Små ord före ord 1",
     "sr": "sa",
     "sv": "med",
-    "note": "Även *s*. Följs av instrumental: *sa mlijekom*."
+    "note": "Även *s*. Följs av instrumental: *sa mlijekom*.",
+    "grammar": ["instrumental"]
   },
   {
     "id": "l52-bez",
@@ -1959,14 +2064,16 @@
     "theme": "Små ord före ord 1",
     "sr": "bez",
     "sv": "utan",
-    "note": "Följs av genitiv: *bez šećera*."
+    "note": "Följs av genitiv: *bez šećera*.",
+    "grammar": ["genitiv"]
   },
   {
     "id": "l52-za",
     "lesson": 52,
     "theme": "Små ord före ord 1",
     "sr": "za",
-    "sv": "för / till"
+    "sv": "för / till",
+    "grammar": ["ackusativ"]
   },
   {
     "id": "l52-od",
@@ -1974,7 +2081,8 @@
     "theme": "Små ord före ord 1",
     "sr": "od",
     "sv": "från / av",
-    "note": "Följs av genitiv."
+    "note": "Följs av genitiv.",
+    "grammar": ["genitiv"]
   },
   {
     "id": "l52-do",
@@ -1982,14 +2090,16 @@
     "theme": "Små ord före ord 1",
     "sr": "do",
     "sv": "till / fram till",
-    "note": "Följs av genitiv."
+    "note": "Följs av genitiv.",
+    "grammar": ["genitiv"]
   },
   {
     "id": "l53-na",
     "lesson": 53,
     "theme": "Små ord före ord 2",
     "sr": "na",
-    "sv": "på"
+    "sv": "på",
+    "grammar": ["lokativ", "vart-var"]
   },
   {
     "id": "l53-iz",
@@ -1997,7 +2107,8 @@
     "theme": "Små ord före ord 2",
     "sr": "iz",
     "sv": "från / ur",
-    "note": "*Iz Švedske* = från Sverige."
+    "note": "*Iz Švedske* = från Sverige.",
+    "grammar": ["genitiv"]
   },
   {
     "id": "l53-kod",
@@ -2005,7 +2116,8 @@
     "theme": "Små ord före ord 2",
     "sr": "kod",
     "sv": "hos",
-    "note": "*Kod kuće* = hemma."
+    "note": "*Kod kuće* = hemma.",
+    "grammar": ["genitiv"]
   },
   {
     "id": "l53-poslije",
@@ -2013,7 +2125,8 @@
     "theme": "Små ord före ord 2",
     "sr": "poslije",
     "sv": "efter",
-    "note": "Ekaviskt: *posle*."
+    "note": "Ekaviskt: *posle*.",
+    "grammar": ["genitiv"]
   },
   {
     "id": "l53-prije",
@@ -2021,7 +2134,8 @@
     "theme": "Små ord före ord 2",
     "sr": "prije",
     "sv": "före",
-    "note": "Ekaviskt: *pre*."
+    "note": "Ekaviskt: *pre*.",
+    "grammar": ["genitiv"]
   },
   {
     "id": "l54-izvinite",
@@ -2029,7 +2143,8 @@
     "theme": "Bra fraser 1",
     "sr": "izvinite",
     "sv": "ursäkta / förlåt",
-    "note": "Artig form av *izvini*."
+    "note": "Artig form av *izvini*.",
+    "grammar": ["ti-vi"]
   },
   {
     "id": "l54-naravno",
@@ -2051,7 +2166,8 @@
     "lesson": 54,
     "theme": "Bra fraser 1",
     "sr": "nema problema",
-    "sv": "inga problem"
+    "sv": "inga problem",
+    "grammar": ["negation", "genitiv"]
   },
   {
     "id": "l54-u-redu",
@@ -2066,7 +2182,8 @@
     "lesson": 55,
     "theme": "Bra fraser 2",
     "sr": "hajde",
-    "sv": "kom igen / nu går vi"
+    "sv": "kom igen / nu går vi",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l55-polako",
@@ -2096,7 +2213,8 @@
     "lesson": 55,
     "theme": "Bra fraser 2",
     "sr": "vidimo se",
-    "sv": "vi ses"
+    "sv": "vi ses",
+    "grammar": ["korta-ord", "presens"]
   },
   {
     "id": "l56-ime",
@@ -2282,7 +2400,8 @@
     "lesson": 60,
     "theme": "Hälsa och säga hej då",
     "sr": "čujemo se",
-    "sv": "vi hörs"
+    "sv": "vi hörs",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l61-sam",
@@ -2290,7 +2409,8 @@
     "theme": "Att vara",
     "sr": "sam",
     "sv": "jag är",
-    "note": "Står inte först i meningen: *Umorna sam*."
+    "note": "Står inte först i meningen: *Umorna sam*.",
+    "grammar": ["biti"]
   },
   {
     "id": "l61-si",
@@ -2298,7 +2418,8 @@
     "theme": "Att vara",
     "sr": "si",
     "sv": "du är",
-    "note": "Står inte först i meningen: *Gdje si?*"
+    "note": "Står inte först i meningen: *Gdje si?*",
+    "grammar": ["biti"]
   },
   {
     "id": "l61-je",
@@ -2306,21 +2427,24 @@
     "theme": "Att vara",
     "sr": "je",
     "sv": "han, hon, det är",
-    "note": "Står inte först i meningen: *Lijepo je*."
+    "note": "Står inte först i meningen: *Lijepo je*.",
+    "grammar": ["biti"]
   },
   {
     "id": "l61-nisam",
     "lesson": 61,
     "theme": "Att vara",
     "sr": "nisam",
-    "sv": "jag är inte"
+    "sv": "jag är inte",
+    "grammar": ["biti", "negation"]
   },
   {
     "id": "l61-nije",
     "lesson": 61,
     "theme": "Att vara",
     "sr": "nije",
-    "sv": "han, hon, det är inte"
+    "sv": "han, hon, det är inte",
+    "grammar": ["biti", "negation"]
   },
   {
     "id": "l62-bila-sam",
@@ -2328,7 +2452,8 @@
     "theme": "I går 1",
     "sr": "bila sam",
     "sv": "jag var",
-    "note": "Man: *bio sam*."
+    "note": "Man: *bio sam*.",
+    "grammar": ["datid"]
   },
   {
     "id": "l62-imala-sam",
@@ -2336,7 +2461,8 @@
     "theme": "I går 1",
     "sr": "imala sam",
     "sv": "jag hade",
-    "note": "Man: *imao sam*."
+    "note": "Man: *imao sam*.",
+    "grammar": ["datid"]
   },
   {
     "id": "l62-isla-sam",
@@ -2344,7 +2470,8 @@
     "theme": "I går 1",
     "sr": "išla sam",
     "sv": "jag gick, åkte",
-    "note": "Man: *išao sam*."
+    "note": "Man: *išao sam*.",
+    "grammar": ["datid"]
   },
   {
     "id": "l62-vidjela-sam",
@@ -2352,7 +2479,8 @@
     "theme": "I går 1",
     "sr": "vidjela sam",
     "sv": "jag såg",
-    "note": "Ekaviskt: *videla sam*. Man: *vidio sam*."
+    "note": "Ekaviskt: *videla sam*. Man: *vidio sam*.",
+    "grammar": ["datid"]
   },
   {
     "id": "l62-rekla-sam",
@@ -2360,7 +2488,8 @@
     "theme": "I går 1",
     "sr": "rekla sam",
     "sv": "jag sa",
-    "note": "Man: *rekao sam*."
+    "note": "Man: *rekao sam*.",
+    "grammar": ["datid"]
   },
   {
     "id": "l63-radila-sam",
@@ -2368,7 +2497,8 @@
     "theme": "I går 2",
     "sr": "radila sam",
     "sv": "jag gjorde, jobbade",
-    "note": "Man: *radio sam*."
+    "note": "Man: *radio sam*.",
+    "grammar": ["datid"]
   },
   {
     "id": "l63-jela-sam",
@@ -2376,7 +2506,8 @@
     "theme": "I går 2",
     "sr": "jela sam",
     "sv": "jag åt",
-    "note": "Man: *jeo sam*."
+    "note": "Man: *jeo sam*.",
+    "grammar": ["datid"]
   },
   {
     "id": "l63-dosla-sam",
@@ -2384,7 +2515,8 @@
     "theme": "I går 2",
     "sr": "došla sam",
     "sv": "jag kom",
-    "note": "Man: *došao sam*."
+    "note": "Man: *došao sam*.",
+    "grammar": ["datid"]
   },
   {
     "id": "l63-kupila-sam",
@@ -2392,7 +2524,8 @@
     "theme": "I går 2",
     "sr": "kupila sam",
     "sv": "jag köpte",
-    "note": "Man: *kupio sam*."
+    "note": "Man: *kupio sam*.",
+    "grammar": ["datid"]
   },
   {
     "id": "l63-zaboravila-sam",
@@ -2400,14 +2533,16 @@
     "theme": "I går 2",
     "sr": "zaboravila sam",
     "sv": "jag glömde",
-    "note": "Man: *zaboravio sam*."
+    "note": "Man: *zaboravio sam*.",
+    "grammar": ["datid"]
   },
   {
     "id": "l64-hocu",
     "lesson": 64,
     "theme": "Det som kommer",
     "sr": "hoću",
-    "sv": "jag vill, ja gärna"
+    "sv": "jag vill, ja gärna",
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l64-necu",
@@ -2415,7 +2550,8 @@
     "theme": "Det som kommer",
     "sr": "neću",
     "sv": "jag vill inte",
-    "note": "Kan låta bestämt."
+    "note": "Kan låta bestämt.",
+    "grammar": ["negation", "presens"]
   },
   {
     "id": "l64-bice",
@@ -2423,7 +2559,8 @@
     "theme": "Det som kommer",
     "sr": "biće",
     "sv": "det blir",
-    "note": "*Biće lijepo.*"
+    "note": "*Biće lijepo.*",
+    "grammar": ["framtid"]
   },
   {
     "id": "l64-vidjecemo",
@@ -2431,14 +2568,16 @@
     "theme": "Det som kommer",
     "sr": "vidjećemo",
     "sv": "vi får se",
-    "note": "Ekaviskt: *videćemo*."
+    "note": "Ekaviskt: *videćemo*.",
+    "grammar": ["framtid"]
   },
   {
     "id": "l64-doci-cu",
     "lesson": 64,
     "theme": "Det som kommer",
     "sr": "doći ću",
-    "sv": "jag kommer"
+    "sv": "jag kommer",
+    "grammar": ["framtid"]
   },
   {
     "id": "l65-sta-ima",
@@ -2446,35 +2585,40 @@
     "theme": "Småprat",
     "sr": "šta ima?",
     "sv": "läget?",
-    "note": "Vardagligt."
+    "note": "Vardagligt.",
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l65-kako-ide",
     "lesson": 65,
     "theme": "Småprat",
     "sr": "kako ide?",
-    "sv": "hur går det?"
+    "sv": "hur går det?",
+    "grammar": ["fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l65-nije-lose",
     "lesson": 65,
     "theme": "Småprat",
     "sr": "nije loše",
-    "sv": "inte illa"
+    "sv": "inte illa",
+    "grammar": ["biti", "negation", "adjektiv"]
   },
   {
     "id": "l65-tako-je",
     "lesson": 65,
     "theme": "Småprat",
     "sr": "tako je",
-    "sv": "så är det"
+    "sv": "så är det",
+    "grammar": ["biti"]
   },
   {
     "id": "l65-ne-znam",
     "lesson": 65,
     "theme": "Småprat",
     "sr": "ne znam",
-    "sv": "jag vet inte"
+    "sv": "jag vet inte",
+    "grammar": ["negation", "presens"]
   },
   {
     "id": "l66-izvoli",
@@ -2482,7 +2626,8 @@
     "theme": "På besök",
     "sr": "izvoli",
     "sv": "varsågod",
-    "note": "Artigt eller till flera: *izvolite*."
+    "note": "Artigt eller till flera: *izvolite*.",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l66-udji",
@@ -2490,7 +2635,8 @@
     "theme": "På besök",
     "sr": "uđi!",
     "sv": "kom in!",
-    "note": "Artigt eller till flera: *uđite!*"
+    "note": "Artigt eller till flera: *uđite!*",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l66-sjedi",
@@ -2498,7 +2644,8 @@
     "theme": "På besök",
     "sr": "sjedi!",
     "sv": "sätt dig!",
-    "note": "Ekaviskt: *sedi!* Artigt eller till flera: *sjedite!*"
+    "note": "Ekaviskt: *sedi!* Artigt eller till flera: *sjedite!*",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l66-samo-malo",
@@ -2512,42 +2659,48 @@
     "lesson": 66,
     "theme": "På besök",
     "sr": "hvala na pozivu",
-    "sv": "tack för inbjudan"
+    "sv": "tack för inbjudan",
+    "grammar": ["lokativ"]
   },
   {
     "id": "l67-posluzi-se",
     "lesson": 67,
     "theme": "Vid bordet 2",
     "sr": "posluži se",
-    "sv": "ta för dig"
+    "sv": "ta för dig",
+    "grammar": ["korta-ord", "imperativ"]
   },
   {
     "id": "l67-uzmi-jos",
     "lesson": 67,
     "theme": "Vid bordet 2",
     "sr": "uzmi još",
-    "sv": "ta mer"
+    "sv": "ta mer",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l67-dosta-je",
     "lesson": 67,
     "theme": "Vid bordet 2",
     "sr": "dosta je",
-    "sv": "det räcker"
+    "sv": "det räcker",
+    "grammar": ["biti"]
   },
   {
     "id": "l67-ne-mogu-vise",
     "lesson": 67,
     "theme": "Vid bordet 2",
     "sr": "ne mogu više",
-    "sv": "jag orkar inte mer"
+    "sv": "jag orkar inte mer",
+    "grammar": ["negation", "presens", "oregelbundna"]
   },
   {
     "id": "l67-bilo-je-odlicno",
     "lesson": 67,
     "theme": "Vid bordet 2",
     "sr": "bilo je odlično",
-    "sv": "det var jättegott"
+    "sv": "det var jättegott",
+    "grammar": ["datid"]
   },
   {
     "id": "l68-sarma",
@@ -2561,7 +2714,8 @@
     "lesson": 68,
     "theme": "Maten på bordet",
     "sr": "ćevapi",
-    "sv": "grillade köttrullar"
+    "sv": "grillade köttrullar",
+    "grammar": ["plural"]
   },
   {
     "id": "l68-pita",
@@ -2697,7 +2851,8 @@
     "lesson": 72,
     "theme": "Tycka till",
     "sr": "slažem se",
-    "sv": "jag håller med"
+    "sv": "jag håller med",
+    "grammar": ["korta-ord", "presens"]
   },
   {
     "id": "l72-nisam-sigurna",
@@ -2705,7 +2860,8 @@
     "theme": "Tycka till",
     "sr": "nisam sigurna",
     "sv": "jag är inte säker",
-    "note": "Man: *nisam siguran*."
+    "note": "Man: *nisam siguran*.",
+    "grammar": ["biti", "negation", "adjektiv"]
   },
   {
     "id": "l72-tacno",
@@ -2720,14 +2876,16 @@
     "theme": "Tycka till",
     "sr": "ne vjerujem",
     "sv": "jag tror inte det",
-    "note": "Ekaviskt: *ne verujem*."
+    "note": "Ekaviskt: *ne verujem*.",
+    "grammar": ["negation", "presens"]
   },
   {
     "id": "l72-zavisi",
     "lesson": 72,
     "theme": "Tycka till",
     "sr": "zavisi",
-    "sv": "det beror på"
+    "sv": "det beror på",
+    "grammar": ["presens"]
   },
   {
     "id": "l73-ljuta",
@@ -2735,7 +2893,8 @@
     "theme": "Känslor 2",
     "sr": "ljuta",
     "sv": "arg",
-    "note": "Man: *ljut*."
+    "note": "Man: *ljut*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l73-zabrinuta",
@@ -2743,7 +2902,8 @@
     "theme": "Känslor 2",
     "sr": "zabrinuta",
     "sv": "orolig",
-    "note": "Man: *zabrinut*."
+    "note": "Man: *zabrinut*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l73-mirna",
@@ -2751,7 +2911,8 @@
     "theme": "Känslor 2",
     "sr": "mirna",
     "sv": "lugn",
-    "note": "Man: *miran*."
+    "note": "Man: *miran*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l73-zaljubljena",
@@ -2759,14 +2920,16 @@
     "theme": "Känslor 2",
     "sr": "zaljubljena",
     "sv": "förälskad",
-    "note": "Man: *zaljubljen*."
+    "note": "Man: *zaljubljen*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l73-nedostajes-mi",
     "lesson": 73,
     "theme": "Känslor 2",
     "sr": "nedostaješ mi",
-    "sv": "jag saknar dig"
+    "sv": "jag saknar dig",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l74-svekrva",
@@ -2812,7 +2975,8 @@
     "lesson": 75,
     "theme": "Länder",
     "sr": "Švedska",
-    "sv": "Sverige"
+    "sv": "Sverige",
+    "grammar": ["lokativ"]
   },
   {
     "id": "l75-svedjanka",
@@ -2929,7 +3093,8 @@
     "lesson": 78,
     "theme": "Yrken",
     "sr": "medicinska sestra",
-    "sv": "sjuksköterska"
+    "sv": "sjuksköterska",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l78-konobar",
@@ -3007,7 +3172,8 @@
     "lesson": 80,
     "theme": "Kläder",
     "sr": "cipele",
-    "sv": "skor"
+    "sv": "skor",
+    "grammar": ["plural"]
   },
   {
     "id": "l80-jakna",
@@ -3136,14 +3302,16 @@
     "lesson": 84,
     "theme": "Hålla kontakten",
     "sr": "pozovi me",
-    "sv": "ring mig"
+    "sv": "ring mig",
+    "grammar": ["korta-ord", "imperativ"]
   },
   {
     "id": "l84-javi-se",
     "lesson": 84,
     "theme": "Hålla kontakten",
     "sr": "javi se",
-    "sv": "hör av dig"
+    "sv": "hör av dig",
+    "grammar": ["korta-ord", "imperativ"]
   },
   {
     "id": "l84-poruka",
@@ -3172,7 +3340,8 @@
     "theme": "När du inte förstår",
     "sr": "ne razumijem",
     "sv": "jag förstår inte",
-    "note": "Ekaviskt: *ne razumem*."
+    "note": "Ekaviskt: *ne razumem*.",
+    "grammar": ["negation", "presens"]
   },
   {
     "id": "l85-ponovi-molim-te",
@@ -3180,21 +3349,24 @@
     "theme": "När du inte förstår",
     "sr": "ponovi, molim te",
     "sv": "säg det igen, snälla",
-    "note": "Artigt eller till flera: *ponovite, molim vas*. Mer formellt: *Izvinite, možete li ponoviti?*"
+    "note": "Artigt eller till flera: *ponovite, molim vas*. Mer formellt: *Izvinite, možete li ponoviti?*",
+    "grammar": ["korta-ord", "imperativ"]
   },
   {
     "id": "l85-sta-to-znaci",
     "lesson": 85,
     "theme": "När du inte förstår",
     "sr": "šta to znači?",
-    "sv": "vad betyder det?"
+    "sv": "vad betyder det?",
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l85-kako-se-kaze",
     "lesson": 85,
     "theme": "När du inte förstår",
     "sr": "kako se kaže?",
-    "sv": "hur säger man?"
+    "sv": "hur säger man?",
+    "grammar": ["korta-ord", "fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l85-govori-polako",
@@ -3202,14 +3374,16 @@
     "theme": "När du inte förstår",
     "sr": "govori polako",
     "sv": "prata långsamt",
-    "note": "Artigt eller till flera: *govorite polako*."
+    "note": "Artigt eller till flera: *govorite polako*.",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l86-ti",
     "lesson": 86,
     "theme": "Det här och allt",
     "sr": "ti",
-    "sv": "du"
+    "sv": "du",
+    "grammar": ["ti-vi"]
   },
   {
     "id": "l86-ovo",
@@ -3245,7 +3419,8 @@
     "theme": "Ingen och alla",
     "sr": "ništa",
     "sv": "ingenting",
-    "note": "Serbiskan nekar två gånger: *Ne znam ništa*."
+    "note": "Serbiskan nekar två gånger: *Ne znam ništa*.",
+    "grammar": ["negation"]
   },
   {
     "id": "l87-niko",
@@ -3253,7 +3428,8 @@
     "theme": "Ingen och alla",
     "sr": "niko",
     "sv": "ingen",
-    "note": "Serbiskan nekar två gånger: *Niko ne zna*."
+    "note": "Serbiskan nekar två gånger: *Niko ne zna*.",
+    "grammar": ["negation"]
   },
   {
     "id": "l87-neko",
@@ -3282,14 +3458,16 @@
     "theme": "Ställa frågor",
     "sr": "jesi li?",
     "sv": "är du?",
-    "note": "*Jesi li gladna?*"
+    "note": "*Jesi li gladna?*",
+    "grammar": ["biti", "fragor"]
   },
   {
     "id": "l88-imas-li",
     "lesson": 88,
     "theme": "Ställa frågor",
     "sr": "imaš li?",
-    "sv": "har du?"
+    "sv": "har du?",
+    "grammar": ["fragor", "presens"]
   },
   {
     "id": "l88-hoces-li",
@@ -3297,14 +3475,16 @@
     "theme": "Ställa frågor",
     "sr": "hoćeš li?",
     "sv": "vill du?",
-    "note": "*Hoćeš li kafu?*"
+    "note": "*Hoćeš li kafu?*",
+    "grammar": ["fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l88-mozes-li",
     "lesson": 88,
     "theme": "Ställa frågor",
     "sr": "možeš li?",
-    "sv": "kan du?"
+    "sv": "kan du?",
+    "grammar": ["fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l88-da-li",
@@ -3312,7 +3492,8 @@
     "theme": "Ställa frågor",
     "sr": "da li",
     "sv": "frågeord som inleder ja/nej-frågor",
-    "note": "*Da li si gladna?* betyder samma sak som *Jesi li gladna?*"
+    "note": "*Da li si gladna?* betyder samma sak som *Jesi li gladna?*",
+    "grammar": ["fragor"]
   },
   {
     "id": "l89-cekaj",
@@ -3320,7 +3501,8 @@
     "theme": "Uppmaningar",
     "sr": "čekaj!",
     "sv": "vänta!",
-    "note": "Artigt eller till flera: *čekajte!*"
+    "note": "Artigt eller till flera: *čekajte!*",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l89-gledaj",
@@ -3328,7 +3510,8 @@
     "theme": "Uppmaningar",
     "sr": "gledaj!",
     "sv": "titta!",
-    "note": "Artigt eller till flera: *gledajte!*"
+    "note": "Artigt eller till flera: *gledajte!*",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l89-slusaj",
@@ -3336,7 +3519,8 @@
     "theme": "Uppmaningar",
     "sr": "slušaj!",
     "sv": "lyssna!",
-    "note": "Artigt eller till flera: *slušajte!*"
+    "note": "Artigt eller till flera: *slušajte!*",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l89-dodji",
@@ -3344,7 +3528,8 @@
     "theme": "Uppmaningar",
     "sr": "dođi!",
     "sv": "kom!",
-    "note": "Artigt eller till flera: *dođite!*"
+    "note": "Artigt eller till flera: *dođite!*",
+    "grammar": ["imperativ"]
   },
   {
     "id": "l89-idemo",
@@ -3352,14 +3537,16 @@
     "theme": "Uppmaningar",
     "sr": "idemo!",
     "sv": "nu går vi!",
-    "note": "Samma form som vi går: *idemo*."
+    "note": "Samma form som vi går: *idemo*.",
+    "grammar": ["presens", "oregelbundna"]
   },
   {
     "id": "l90-malo",
     "lesson": 90,
     "theme": "Hur mycket och hur ofta",
     "sr": "malo",
-    "sv": "lite"
+    "sv": "lite",
+    "grammar": ["genitiv"]
   },
   {
     "id": "l90-puno",
@@ -3367,7 +3554,8 @@
     "theme": "Hur mycket och hur ofta",
     "sr": "puno",
     "sv": "mycket",
-    "note": "Vardagligare än *mnogo*."
+    "note": "Vardagligare än *mnogo*.",
+    "grammar": ["genitiv"]
   },
   {
     "id": "l90-cesto",
@@ -3395,42 +3583,48 @@
     "lesson": 91,
     "theme": "Tal 11-30",
     "sr": "jedanaest",
-    "sv": "elva"
+    "sv": "elva",
+    "grammar": ["siffror"]
   },
   {
     "id": "l91-dvanaest",
     "lesson": 91,
     "theme": "Tal 11-30",
     "sr": "dvanaest",
-    "sv": "tolv"
+    "sv": "tolv",
+    "grammar": ["siffror"]
   },
   {
     "id": "l91-petnaest",
     "lesson": 91,
     "theme": "Tal 11-30",
     "sr": "petnaest",
-    "sv": "femton"
+    "sv": "femton",
+    "grammar": ["siffror"]
   },
   {
     "id": "l91-dvadeset",
     "lesson": 91,
     "theme": "Tal 11-30",
     "sr": "dvadeset",
-    "sv": "tjugo"
+    "sv": "tjugo",
+    "grammar": ["siffror"]
   },
   {
     "id": "l91-trideset",
     "lesson": 91,
     "theme": "Tal 11-30",
     "sr": "trideset",
-    "sv": "trettio"
+    "sv": "trettio",
+    "grammar": ["siffror"]
   },
   {
     "id": "l92-pedeset",
     "lesson": 92,
     "theme": "Stora tal",
     "sr": "pedeset",
-    "sv": "femtio"
+    "sv": "femtio",
+    "grammar": ["siffror"]
   },
   {
     "id": "l92-sto",
@@ -3438,14 +3632,16 @@
     "theme": "Stora tal",
     "sr": "sto",
     "sv": "hundra",
-    "note": "Samma form som *sto* (bord)."
+    "note": "Samma form som *sto* (bord).",
+    "grammar": ["siffror"]
   },
   {
     "id": "l92-hiljada",
     "lesson": 92,
     "theme": "Stora tal",
     "sr": "hiljada",
-    "sv": "tusen"
+    "sv": "tusen",
+    "grammar": ["siffror"]
   },
   {
     "id": "l92-marka",
@@ -3460,7 +3656,8 @@
     "lesson": 92,
     "theme": "Stora tal",
     "sr": "koliko košta?",
-    "sv": "vad kostar det?"
+    "sv": "vad kostar det?",
+    "grammar": ["genitiv", "fragor"]
   },
   {
     "id": "l93-januar",
@@ -3561,7 +3758,8 @@
     "theme": "Födelsedag",
     "sr": "rođena sam",
     "sv": "jag är född",
-    "note": "Man: *rođen sam*."
+    "note": "Man: *rođen sam*.",
+    "grammar": ["datid"]
   },
   {
     "id": "l95-koliko-imas-godina",
@@ -3569,7 +3767,8 @@
     "theme": "Födelsedag",
     "sr": "koliko imaš godina?",
     "sv": "hur gammal är du?",
-    "note": "Svaret: *Imam ... godina*."
+    "note": "Svaret: *Imam ... godina*.",
+    "grammar": ["genitiv", "fragor", "presens"]
   },
   {
     "id": "l96-proljece",
@@ -3614,7 +3813,8 @@
     "theme": "Lyckönskningar",
     "sr": "sretan rođendan",
     "sv": "grattis på födelsedagen",
-    "note": "Även *srećan rođendan*."
+    "note": "Även *srećan rođendan*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l97-sretna-nova-godina",
@@ -3622,7 +3822,8 @@
     "theme": "Lyckönskningar",
     "sr": "sretna Nova godina",
     "sv": "gott nytt år",
-    "note": "Även *srećna Nova godina*."
+    "note": "Även *srećna Nova godina*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l97-sretna-slava",
@@ -3630,7 +3831,8 @@
     "theme": "Lyckönskningar",
     "sr": "sretna slava",
     "sv": "glad *slava*",
-    "note": "Även *srećna slava*."
+    "note": "Även *srećna slava*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l97-sve-najbolje",
@@ -3652,7 +3854,8 @@
     "theme": "Högtidsfraser",
     "sr": "Hristos se rodi",
     "sv": "Kristus är född",
-    "note": "Hälsning vid *Božić*."
+    "note": "Hälsning vid *Božić*.",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l98-vaistinu-se-rodi",
@@ -3660,7 +3863,8 @@
     "theme": "Högtidsfraser",
     "sr": "vaistinu se rodi",
     "sv": "han är sannerligen född",
-    "note": "Svaret på hälsningen vid *Božić*."
+    "note": "Svaret på hälsningen vid *Božić*.",
+    "grammar": ["korta-ord"]
   },
   {
     "id": "l98-hristos-vaskrse",
@@ -3683,7 +3887,8 @@
     "lesson": 98,
     "theme": "Högtidsfraser",
     "sr": "moje saučešće",
-    "sv": "jag beklagar sorgen"
+    "sv": "jag beklagar sorgen",
+    "grammar": ["possessiv"]
   },
   {
     "id": "l99-djeca",
@@ -3691,14 +3896,16 @@
     "theme": "Stora händelser",
     "sr": "djeca",
     "sv": "barn (flera)",
-    "note": "Ekaviskt: *deca*. Ett barn: *dijete*."
+    "note": "Ekaviskt: *deca*. Ett barn: *dijete*.",
+    "grammar": ["plural"]
   },
   {
     "id": "l99-roditelji",
     "lesson": 99,
     "theme": "Stora händelser",
     "sr": "roditelji",
-    "sv": "föräldrar"
+    "sv": "föräldrar",
+    "grammar": ["plural"]
   },
   {
     "id": "l99-beba",
@@ -3712,7 +3919,8 @@
     "lesson": 99,
     "theme": "Stora händelser",
     "sr": "trudna",
-    "sv": "gravid"
+    "sv": "gravid",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l99-udata",
@@ -3720,14 +3928,16 @@
     "theme": "Stora händelser",
     "sr": "udata",
     "sv": "gift (kvinna)",
-    "note": "Man: *oženjen*."
+    "note": "Man: *oženjen*.",
+    "grammar": ["adjektiv"]
   },
   {
     "id": "l100-mogu-li-pomoci",
     "lesson": 100,
     "theme": "Hjälpa till hemma",
     "sr": "mogu li pomoći?",
-    "sv": "kan jag hjälpa till?"
+    "sv": "kan jag hjälpa till?",
+    "grammar": ["fragor", "presens", "oregelbundna"]
   },
   {
     "id": "l100-sudje",
@@ -3742,14 +3952,16 @@
     "lesson": 100,
     "theme": "Hjälpa till hemma",
     "sr": "perem",
-    "sv": "jag diskar, tvättar"
+    "sv": "jag diskar, tvättar",
+    "grammar": ["presens"]
   },
   {
     "id": "l100-cistim",
     "lesson": 100,
     "theme": "Hjälpa till hemma",
     "sr": "čistim",
-    "sv": "jag städar"
+    "sv": "jag städar",
+    "grammar": ["presens"]
   },
   {
     "id": "l100-gotovo",
