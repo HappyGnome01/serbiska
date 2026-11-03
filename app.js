@@ -149,12 +149,36 @@ function speak(id, text) {
   // En tom lista betyder oftast att telefonen inte visar sina röster, inte att de saknas.
   // Då väljer telefonen själv en röst utifrån språket.
   if (!voice && voices.length) return showNoVoice(voices);
-  speechSynthesis.cancel();
+  // På iPhone kan ett avbrott precis före en ny uppläsning göra att den nya aldrig hörs
+  if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
+  currentUtterance = utterance;  // Sparas, annars kan webbläsaren slänga den innan den hörs
   if (voice) utterance.voice = voice;
   utterance.lang = voice ? voice.lang : "hr-HR";
   utterance.rate = 0.85;  // Lite långsammare än vanligt tal
+  let started = false;
+  utterance.onstart = () => { started = true; };
+  utterance.onerror = e => { started = true; showSpeechProblem(voices, voice, e.error); };
   speechSynthesis.speak(utterance);
+  // Hörs inget efter två sekunder visas vad telefonen gjorde, så att det går att felsöka
+  setTimeout(() => { if (!started && !speechSynthesis.speaking) showSpeechProblem(voices, voice, "startade inte"); }, 2000);
+}
+
+let currentUtterance = null;
+
+function showSpeechProblem(voices, voice, reason) {
+  if (document.querySelector("dialog.modal")) return;
+  const langs = [...new Set(voices.map(v => v.lang))].sort();
+  const standalone = window.navigator.standalone || window.matchMedia("(display-mode: standalone)").matches;
+  showModal("Inget ljud", [h("h2", {}, "Telefonen spelade inget ljud"),
+    h("p", {}, "Kontrollera att ljudet inte är avstängt med knappen på sidan av telefonen och att volymen är uppe." +
+      (standalone ? " Prova också att öppna appen i Safari i stället för från hemskärmen." : "")),
+    h("div", { class: "modal-list" },
+      [["Röst", voice ? `${voice.name} (${voice.lang})` : "ingen vald, telefonen fick välja för hr-HR"],
+       ["Röster appen ser", voices.length ? `${voices.length}: ${langs.join(", ")}` : "inga"],
+       ["Öppnad från", standalone ? "hemskärmen" : "webbläsaren"],
+       ["Orsak", reason]].map(([label, value]) =>
+        h("div", { class: "word-row" }, h("span", {}, label), h("span", { class: "muted" }, value))))]);
 }
 
 // Visar vilka språk telefonen har röster för, så att det går att se varför ingen passar

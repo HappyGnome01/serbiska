@@ -260,3 +260,14 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 
 ## [2026-11-03] publish | Grammatik per ord, röst och startknapp
 - Grammatik per ord och mening, grammatik via tipset, rättad röstsökning och startknappen på motsatt sida pushade till GitHub Pages.
+
+## [2026-11-03] fix | Tyst uppläsning på telefonen
+- Varken ljud eller fönster hördes på telefonen. Uppläsningen avbryts inte längre i onödan precis innan den startar, och den sparas så att webbläsaren inte slänger den.
+- Hörs inget efter två sekunder, eller rapporterar telefonen ett fel, visas ett fönster med vald röst, röster appen ser, om appen öppnats från hemskärmen och orsaken.
+
+## [2026-11-03] feature | Igelkott som appikon
+- Ny ikon `apple-touch-icon.png` (180 pixlar): ett igelkottansikte med taggar, öron, glans i ögonen och rosa kinder. Ritas av `tools/make-icon.ps1` med Windows inbyggda ritfunktioner.
+- Kopplad i `index.html` för hemskärmen och webbläsarens flik.
+
+## [2026-11-03] publish | Rättad tyst uppläsning
+- Bara rättningen av uppläsningen pushad. Igelkott-ikonen är inte pushad än.
