@@ -2176,7 +2176,7 @@
   {
     "id": "l55-s4",
     "lesson": 55,
-    "sr": "Dobrodošli u našu kuću!",
+    "sr": "Dobro došli u našu kuću!",
     "sv": "Välkomna till vårt hus!",
     "grammar": ["possessiv", "ackusativ", "vart-var"]
   },
@@ -2239,7 +2239,7 @@
   {
     "id": "l57-s2",
     "lesson": 57,
-    "sr": "On mnogo voli muziku.",
+    "sr": "On voli muziku.",
     "sv": "Han älskar musik.",
     "source": "tatoeba:3245270",
     "grammar": ["ackusativ", "presens"]
@@ -3929,7 +3929,7 @@
   {
     "id": "l97-s5",
     "lesson": 97,
-    "sr": "Na zdravlje!",
+    "sr": "Nazdravlje!",
     "sv": "Skål!",
     "check": true
   },

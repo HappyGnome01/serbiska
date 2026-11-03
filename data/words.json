@@ -2204,9 +2204,9 @@
     "id": "l55-dobrodosli",
     "lesson": 55,
     "theme": "Bra fraser 2",
-    "sr": "dobrodošli",
+    "sr": "dobro došli",
     "sv": "välkomna",
-    "note": "Till en kvinna: *dobrodošla*."
+    "note": "Till en kvinna: *dobro došla*."
   },
   {
     "id": "l55-vidimo-se",
@@ -3845,8 +3845,10 @@
     "id": "l97-na-zdravlje",
     "lesson": 97,
     "theme": "Lyckönskningar",
-    "sr": "na zdravlje",
-    "sv": "skål, prosit"
+    "sr": "nazdravlje",
+    "sv": "skål, prosit",
+    "note": "Skrivs ofta *na zdravlje* i ordböcker.",
+    "check": true
   },
   {
     "id": "l98-hristos-se-rodi",

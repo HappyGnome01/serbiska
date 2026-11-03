@@ -30,6 +30,7 @@ Flikarna ligger alltid längst ner på skärmen, på alla sidor, och visas som i
 - **Krona:** Framsteg.
 
 Raden överst ligger kvar när du scrollar. Bredvid rubriken Serbiska står 🦔 med din lektion, 🔥 med antal dagar i rad och 🍃 med antal ord du kan: ord vars senaste betyg är Lätt eller Bra. Ett tryck öppnar ett fönster med mer information:
+- Fönstren har två lika stora knappar längst ner: 🦔 Visa på stigen, 🔥 Se framsteg och 🍃 Träna, var och en bredvid Stäng.
 - **🦔:** lektionen du är på, dess tema, var på nivån du är, hur många som är kvar på nivån, avklarade och överhoppade lektioner, och en knapp till stigen.
 - **🔥:** om du gjort ett pass idag, de senaste sju dagarna, längsta sviten och antal dagar du pluggat.
 - **🍃:** antal ord i Lätt, Bra och Svårt, hur många ord som ska repeteras nu och listan med orden du kan.
@@ -66,7 +67,7 @@ När sista lektionen på en nivå blir gjord visas ett fönster där igelkotten 
    - Bygg meningen: svensk översättning visas, tryck på serbiska ordbrickor i rätt ordning (meningar med minst 2 ord). Varje ord har en tom rad och skiljetecknen står redan på plats. Brickorna saknar skiljetecken och första ordet har liten bokstav, så att de inte avslöjar ordningen. En mening kan ha flera rätta ordföljder (fältet `alt`).
 4. **Klart:** sammanfattning och svit.
 
-**Tillbaka** (←) står först bland knapparna från andra steget. Den visar förra övningen igen och ångrar svaren sedan dess, så att du kan svara om.
+**Tillbaka** (←) står först bland knapparna. Har du svarat på steget visar den samma kort utan svar och ångrar svaret. Annars visar den förra övningen och ångrar svaren sedan dess. Svaret och översättningen tar plats redan innan de visas, och meningskortet har en fast minsta höjd, så att knapparna står still.
 
 Ord som får "Kunde inte" visas igen senare i samma pass (en gång) och först i kön nästa pass.
 När alla lektioner är klara visas bara repetition och slumpade meningar, tills nya lektioner läggs till.
@@ -127,5 +128,6 @@ GitHub Pages från ett publikt repo. `raw/` publiceras aldrig (`.gitignore`). Se
 - [ ] Ljud via webbläsarens talsyntes (kolla om serbisk röst finns på telefonen) eller inspelningar från pojkvännen
 - [ ] Skrivövning: svenska → skriv på serbiska
 - [ ] Lyssningsövning
-- [ ] Ikon och offline-läge (PWA)
+- [x] Ikon: igelkottansikte på hemskärmen (`apple-touch-icon.png`, ritas av `tools/make-icon.ps1`)
+- [ ] Offline-läge (PWA)
 - [ ] Ta bort ord som strukits ur data från sparade framsteg

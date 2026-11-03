@@ -271,3 +271,14 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 
 ## [2026-11-03] publish | Rättad tyst uppläsning
 - Bara rättningen av uppläsningen pushad. Igelkott-ikonen är inte pushad än.
+
+## [2026-11-03] content | Ordrättelser från pojkvännen
+- *dobrodošli* blir *dobro došli* (ord och mening), *na zdravlje* blir *nazdravlje* (ord och mening, med `check: true` eftersom ordböcker ofta skriver två ord), *On mnogo voli muziku* blir *On voli muziku*. Ord-id:n är oförändrade så att framsteg finns kvar.
+
+## [2026-11-03] feature | Tillbaka till kortet och stillastående knappar
+- Tillbaka efter ett svar visar samma kort utan svar, även på första steget. Pilen är en bild och står mitt i knappen.
+- Svar och översättning tar plats innan de visas, och meningskortet har en minsta höjd på 300 pixlar. Knapparna står på samma höjd för alla 500 meningar i telefonbredd.
+- Fönstren för 🦔, 🔥 och 🍃 har två lika stora knappar nära varandra, med mer luft över och under.
+
+## [2026-11-03] publish | Ikon, ordrättelser och stillastående knappar
+- Igelkott-ikonen, ordrättelserna, Tillbaka till kortet, stillastående knappar och fönstrens knappar pushade till GitHub Pages.

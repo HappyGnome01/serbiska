@@ -35,6 +35,8 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 | `data/grammar.json` | Grammatikförklaringar kopplade till lektioner |
 | `data/audio.json` | Lista över ord och meningar som har en ljudfil |
 | `audio/` | AI-ljudfiler, en per ord och mening (`<id>.mp3`) |
+| `apple-touch-icon.png` | Appens ikon på hemskärmen, ett igelkottansikte |
+| `tools/make-icon.ps1` | Ritar ikonen. Kör igen om den ska ändras. |
 | `tools/make-audio.ps1` | Skapar ljudfilerna med Azure Speech. Nyckeln läggs i miljövariabler, aldrig i en fil. |
 | `data/categories.json` | Kategorierna under Träna. Nya lektioner och meningar i dåtid eller framtid läggs till här. |
 | `specs.md` | Vad appen ska göra |
@@ -57,7 +59,7 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 - **Nybörjarnivå:** korta meningar, vanliga ord, fraser som helheter ("chunks", t.ex. *drago mi je*) snarare än grammatikregler.
 - Teman utgår från verkliga situationer med familj och vänner.
 - **Ijekaviska former.** Skriv ekavisk form i `note` när den skiljer sig.
-- **Ordval som granskats:** *kuvam* (inte kuham), *juče* (inte jučer), *sto* (inte stol), *Vaskrs* före Uskrs, *prodavnica* före trgovina, *marka* (inte dinar), *avgust* (inte august), *vidjećemo* (inte vidjet ćemo), *snaja* före snajka och snaha, *Izvini?* eller *Molim?* (inte Izvini, molim?).
+- **Ordval som granskats:** *kuvam* (inte kuham), *juče* (inte jučer), *sto* (inte stol), *Vaskrs* före Uskrs, *prodavnica* före trgovina, *marka* (inte dinar), *avgust* (inte august), *vidjećemo* (inte vidjet ćemo), *snaja* före snajka och snaha, *Izvini?* eller *Molim?* (inte Izvini, molim?), *dobro došli* (inte dobrodošli), *nazdravlje* (inte na zdravlje).
 - **Informellt:** *molim te*, inte bara *molim*, när man ber någon man säger du till om något.
 - **Feminina former** när användaren pratar om sig själv (*sita sam, umorna, sretna*).
 - Skriv grammatiktips i `note` när ett ord böjs (t.ex. *kafa → kafu*).

@@ -365,8 +365,13 @@ function takeSnapshot() {
   };
 }
 
+// Har du svarat på steget du står på visar Tillbaka samma steg utan svar. Annars förra steget.
+let stepAnswered = false;
+
+function answered() { stepAnswered = true; }
+
 function back() {
-  pos--;
+  if (!stepAnswered) pos--;
   const s = snapshots[pos];
   const today = dateStr(new Date());
   progress.words = JSON.parse(s.words);
@@ -377,9 +382,16 @@ function back() {
   showTask();
 }
 
-// Tillbaka står först bland stegets knappar, från andra steget
-function backButton() {
-  return pos > 0 ? h("button", { class: "back-btn", "aria-label": "Tillbaka till förra övningen", title: "Tillbaka", onclick: back }, "←") : null;
+// Pilen ritas som bild, så att den står mitt i knappen oavsett typsnitt
+const BACK_ARROW = `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>`;
+
+// Tillbaka står först bland stegets knappar. afterAnswer = knappen visas efter ett svar, även på första steget.
+function backButton(afterAnswer = false) {
+  if (pos === 0 && !afterAnswer) return null;
+  const button = h("button", { class: "back-btn", "aria-label": afterAnswer ? "Tillbaka till frågan" : "Tillbaka till förra övningen",
+    title: "Tillbaka", onclick: back });
+  button.innerHTML = BACK_ARROW;
+  return button;
 }
 
 // Lägger tillbaka ett steg sist i kön (en gång) om du inte kunde det
@@ -391,6 +403,7 @@ function showTask() {
   if (pos >= queue.length) return showDone();
   const task = queue[pos];
   takeSnapshot();
+  stepAnswered = false;
   if (task.type === "review") showReview(task);
   if (task.type === "intro") showIntro(task);
   if (task.type === "quiz") showQuiz(task);
@@ -412,14 +425,18 @@ function screen(label, ...content) {
 // Du betygsätter direkt hur väl du kan ordet. Sedan visas svaret så att du kan kontrollera.
 function showReview(task) {
   const w = task.word;
-  const answer = h("div", { class: "hidden" }, h("div", { class: "sv" }, w.sv), noteLine(w));
+  // Svaret tar plats redan innan det visas, så att knapparna står still
+  const answer = h("div", { class: "invisible" }, h("div", { class: "sv" }, w.sv), noteLine(w));
   const hint = h("p", { class: "muted center" }, "Hur väl kan du ordet?");
-  const nextRow = h("div", { class: "buttons hidden" }, backButton(), h("button", { class: "primary", onclick: next }, "Nästa"));
+  const nextRow = h("div", { class: "buttons hidden" }, backButton(true), h("button", { class: "primary", onclick: next }, "Nästa"));
   const grades = gradeButtons(q => {
     gradeWord(w.id, q);
     if (q === 1) retryLater(task);
-    [answer, nextRow].forEach(el => el.classList.remove("hidden"));
-    [grades, hint].forEach(el => el.classList.add("hidden"));
+    answered();
+    answer.classList.remove("invisible");
+    nextRow.classList.remove("hidden");
+    grades.classList.add("hidden");
+    hint.classList.add("invisible");
   }, true, backButton());
   screen("Repetition", h("div", { class: "card" }, srBlock(w.sr, "", w.id), answer), hint, grades, nextRow);
 }
@@ -481,17 +498,18 @@ function showQuiz(task) {
   const buttons = options.map(o => h("button", { class: "option", onclick: () => choose(o) }, o.sv));
 
   function choose(o) {
+    answered();
     buttons.forEach(b => b.disabled = true);
     buttons[options.indexOf(w)].classList.add("correct");
     if (o.id === w.id) {
       after.replaceChildren(h("p", { class: "feedback ok" }, "Rätt! Hur lätt var det?"),
-        gradeButtons(q => { gradeWord(w.id, q); next(); }, false, backButton()));
+        gradeButtons(q => { gradeWord(w.id, q); next(); }, false, backButton(true)));
     } else {
       buttons[options.indexOf(o)].classList.add("wrong");
       gradeWord(w.id, 1);
       retryLater(task);
       after.replaceChildren(h("p", { class: "feedback bad" }, "Inte riktigt – ordet kommer tillbaka strax."),
-        h("div", { class: "buttons" }, backButton(), h("button", { class: "primary", onclick: next }, "Fortsätt")));
+        h("div", { class: "buttons" }, backButton(true), h("button", { class: "primary", onclick: next }, "Fortsätt")));
     }
   }
   screen("Vad betyder ordet?", h("div", { class: "card" }, srBlock(w.sr, "", w.id)), h("div", { class: "options" }, buttons), after);
@@ -499,15 +517,21 @@ function showQuiz(task) {
 
 function showRead(task) {
   const s = task.sentence;
-  const answer = h("div", { class: "hidden" }, h("div", { class: "sv" }, s.sv), noteLine(s));
+  // Översättningen tar plats redan innan den visas och kortet har en fast minsta höjd,
+  // så att Visa översättning och Nästa står på samma ställe
+  const answer = h("div", { class: "invisible" }, h("div", { class: "sv" }, s.sv), noteLine(s));
   const nextBtn = h("button", { class: "primary hidden", onclick: next }, "Nästa");
+  const backBtn = backButton(true);
+  if (pos === 0) backBtn.classList.add("invisible");
   const showBtn = h("button", { class: "primary", onclick: () => {
-    answer.classList.remove("hidden");
+    answered();
+    answer.classList.remove("invisible");
+    backBtn.classList.remove("invisible");
     nextBtn.classList.remove("hidden");
     showBtn.classList.add("hidden");
   } }, "Visa översättning");
-  screen("Läs och förstå", h("div", { class: "card" }, srBlock(s.sr, "sentence", s.id), answer),
-    h("div", { class: "buttons" }, backButton(), showBtn, nextBtn));
+  screen("Läs och förstå", h("div", { class: "card sentence-card" }, srBlock(s.sr, "sentence", s.id), answer),
+    h("div", { class: "buttons" }, backBtn, showBtn, nextBtn));
 }
 
 function showBuild(task) {
@@ -540,18 +564,20 @@ function showBuild(task) {
       progress.builtSentences = { ...progress.builtSentences, [s.id]: true };
       saveProgress();
     }
+    answered();
     answerRow.querySelectorAll("button").forEach(b => b.disabled = true);
-    checkBtn.classList.add("hidden");
+    checkRow.classList.add("hidden");
     // h() hoppar över null, därför packas allt i en div
     result.replaceChildren(h("div", {},
       h("p", { class: ok ? "feedback ok" : "feedback bad" }, ok ? "Rätt! 🎉" : "Nästan! Rätt ordning:"),
       ok ? null : h("div", { class: "card" }, srBlock(s.sr, "sentence", s.id)),
-      h("div", { class: "buttons" }, h("button", { class: "primary", onclick: next }, "Nästa"))));
+      h("div", { class: "buttons" }, backButton(true), h("button", { class: "primary", onclick: next }, "Nästa"))));
   }
 
+  const checkRow = h("div", { class: "buttons" }, backButton(), checkBtn);
   draw();
   screen("Bygg meningen", h("div", { class: "card" }, h("div", { class: "sv" }, s.sv)),
-    answerRow, poolRow, h("div", { class: "buttons" }, backButton(), checkBtn), result);
+    answerRow, poolRow, checkRow, result);
 }
 
 // Sparar att en lektion gjorts. Svarar med nivån om lektionen var den sista som saknades där.
@@ -998,7 +1024,6 @@ function showLessonInfo() {
   const lesson = currentLesson();
   const done = doneLessons();
   const total = allLessons().length;
-  const goToRoad = () => { document.querySelector("dialog.modal").close(); showHome(); };
   if (!lesson) {
     showModal("Din lektion", [h("h2", {}, "🦔 Alla lektioner klara"),
       h("p", {}, "Du har kommit igenom alla lektioner. Passen repeterar nu ord och meningar.")]);
@@ -1016,7 +1041,7 @@ function showLessonInfo() {
        ["Avklarade lektioner", `${done.length} av ${total}`],
        ["Överhoppade lektioner", String(skipped)]].map(([label, value]) =>
         h("div", { class: "word-row" }, h("span", {}, label), h("span", { class: "muted" }, value)))),
-    h("div", { class: "buttons" }, h("button", { class: "good", onclick: goToRoad }, "Visa på stigen"))]);
+  ], [["Visa på stigen", "good", () => showHome()]]);
 }
 
 function showStreakInfo() {
@@ -1032,7 +1057,8 @@ function showStreakInfo() {
     h("div", { class: "modal-list" },
       h("div", { class: "word-row" }, h("span", {}, "Längsta sviten"), h("span", { class: "muted" }, `${longestStreak()} ${longestStreak() === 1 ? "dag" : "dagar"}`)),
       h("div", { class: "word-row" }, h("span", {}, "Dagar du pluggat"), h("span", { class: "muted" }, String(days.size)))),
-    h("p", { class: "muted" }, "Varje dag med ett pass eller en repetition räknas. Sviten bryts om en hel dag går utan.")]);
+    h("p", { class: "muted" }, "Varje dag med ett pass eller en repetition räknas. Sviten bryts om en hel dag går utan.")],
+    [["Se framsteg", "good", showDashboard]]);
 }
 
 function showKnownInfo() {
@@ -1047,7 +1073,8 @@ function showKnownInfo() {
         h("div", { class: "word-row" }, h("span", {}, label), h("span", { class: "muted" }, String(count))))),
     known.length ? h("h2", {}, "Orden") : null,
     known.length ? h("div", { class: "modal-list" }, known.map(w =>
-      h("div", { class: "word-row" }, h("span", {}, h("em", {}, w.sr)), h("span", { class: "muted" }, w.sv)))) : null]);
+      h("div", { class: "word-row" }, h("span", {}, h("em", {}, w.sr)), h("span", { class: "muted" }, w.sv)))) : null],
+    [["Träna", "good", showTraining]]);
 }
 
 // ---------- Grammatikfönster ----------
@@ -1075,11 +1102,14 @@ function noteLine(item, extraClass = "") {
 }
 
 // Modulfönster som stängs med knappen, Esc eller ett tryck utanför
-function showModal(label, content) {
+// actions = knappar som står bredvid Stäng, lika stora: [[text, klass, funktion]]. De stänger fönstret först.
+function showModal(label, content, actions = []) {
   const closeDialog = () => { dialog.close(); dialog.remove(); };
   const dialog = h("dialog", { class: "modal", "aria-label": label },
     h("div", { class: "modal-body" }, content,
-      h("div", { class: "buttons modal-close" }, h("button", { class: "primary", onclick: closeDialog }, "Stäng"))));
+      h("div", { class: "buttons modal-close" + (actions.length ? " modal-actions" : "") },
+        actions.map(([text, cls, action]) => h("button", { class: cls, onclick: () => { closeDialog(); action(); } }, text)),
+        h("button", { class: "primary", onclick: closeDialog }, "Stäng"))));
   dialog.addEventListener("close", () => dialog.remove());  // Esc-tangenten
   dialog.addEventListener("click", e => { if (e.target === dialog) closeDialog(); });  // Tryck utanför stänger
   document.body.append(dialog);
