@@ -8,6 +8,8 @@ const MIN_REVIEWS = 3;            // Minsta antal repetitioner per pass
 const MAX_REVIEWS = 15;           // Högsta antal repetitioner per pass
 const WORDS_PER_REVIEW = 4;       // En extra repetition per så här många ord att befästa
 const NEW_PER_SESSION = 5;        // Nya ord per pass
+const NEW_WRITE_PER_SESSION = 3;  // Ord som går in i skrivövningen för första gången, per pass
+const MAX_WRITE_PER_SESSION = 6;  // Högst så många skrivuppgifter per pass, räknas in i MAX_REVIEWS
 const SENTENCES_PER_SESSION = 5;  // Meningar per pass
 const TRAIN_WORDS = 8;            // Ord per träningspass
 const TRAIN_SENTENCES = 3;        // Meningar per träningspass, utöver orden
@@ -33,6 +35,7 @@ const main = document.getElementById("main");
 // progress.currentLesson = nästa lektion (saknas tills du gjort ett pass eller bytt nivå)
 // progress.gradeDays = { "ÅÅÅÅ-MM-DD": { easy, good, hard } }, antal ord per betyg när dagen slutade
 // progress.builtSentences = { id: true }, meningar du byggt rätt (saknas i äldre framsteg)
+// progress.writing[id] = { reps, interval, ease, due, lastGrade }, skrivövningens eget schema (saknas i äldre framsteg)
 function loadProgress() {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
@@ -202,6 +205,24 @@ function newProgress() {
 
 function gradeWord(id, quality) {
   const p = progress.words[id] || newProgress();
+  applyGrade(p, quality);
+  delete p.placed;                    // Ordet är nu övat, inte bara överhoppat
+  progress.words[id] = p;
+  progress.gradeDays[dateStr(new Date())] = countGrades();
+  saveProgress();
+}
+
+// Skrivövningen har ett eget schema per ord, skilt från att känna igen ordet
+function gradeWriting(id, quality) {
+  progress.writing = progress.writing || {};
+  const p = progress.writing[id] || newProgress();
+  applyGrade(p, quality);
+  progress.writing[id] = p;
+  saveProgress();
+}
+
+// Räknar ut nästa repetition: kortare intervall vid svårt, längre vid lätt
+function applyGrade(p, quality) {
   if (quality < 3) {
     p.reps = 0;
     p.interval = 0;
@@ -215,10 +236,6 @@ function gradeWord(id, quality) {
   }
   p.ease = Math.max(1.3, p.ease + 0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
   p.lastGrade = quality;
-  delete p.placed;                    // Ordet är nu övat, inte bara överhoppat
-  progress.words[id] = p;
-  progress.gradeDays[dateStr(new Date())] = countGrades();
-  saveProgress();
 }
 
 const GRADE_KEYS = { 5: "easy", 4: "good", 3: "hard" };
@@ -294,22 +311,35 @@ function currentLesson() {
   return unseen.length ? Math.min(...unseen.map(w => w.lesson)) : null;
 }
 
+// Skrivuppgifter: först ord vars skrivschema säger att det är dags, sedan högst 3 ord som går in
+// i skrivövningen för första gången. De ord du kan (Bra eller Lätt) tas i den ordning de står i lektionerna.
+function writingWords(newWords) {
+  const writing = progress.writing || {};
+  const due = WORDS.filter(w => writing[w.id] && writing[w.id].due <= Date.now())
+    .sort((a, b) => writing[a.id].due - writing[b.id].due);
+  const starting = WORDS.filter(w => !writing[w.id] && !newWords.includes(w) &&
+    progress.words[w.id] && progress.words[w.id].lastGrade >= 4).slice(0, NEW_WRITE_PER_SESSION);
+  return [...due, ...starting].slice(0, MAX_WRITE_PER_SESSION);
+}
+
 function buildSession() {
   const lesson = currentLesson();
   const newWords = WORDS.filter(w => w.lesson === lesson).slice(0, NEW_PER_SESSION);
+  const write = writingWords(newWords);
 
-  const review = WORDS.filter(w => progress.words[w.id] && !newWords.includes(w))
+  // Ett ord som ska skrivas visas inte också från serbiska till svenska, då skulle svaret avslöjas
+  const review = WORDS.filter(w => progress.words[w.id] && !newWords.includes(w) && !write.includes(w))
     .sort((a, b) => {
       const [p, q] = [progress.words[a.id], progress.words[b.id]];
       return reviewRank(p) - reviewRank(q) || p.due - q.due;
     })
-    .slice(0, reviewCount());
+    .slice(0, Math.min(reviewCount(), MAX_REVIEWS - write.length));
 
   if (!lesson) {
-    return { review, newWords: [], sentences: shuffle(SENTENCES).slice(0, SENTENCES_PER_SESSION), lesson: null };
+    return { review, write, newWords: [], sentences: shuffle(SENTENCES).slice(0, SENTENCES_PER_SESSION), lesson: null };
   }
   const sentences = SENTENCES.filter(s => s.lesson === lesson).slice(0, SENTENCES_PER_SESSION);
-  return { review, newWords, sentences, lesson, theme: newWords[0].theme };
+  return { review, write, newWords, sentences, lesson, theme: newWords[0].theme };
 }
 
 // Delar en mening i ord och fasta skiljetecken:
@@ -328,6 +358,7 @@ function startSession() {
   session = buildSession();
   queue = [];
   session.review.forEach(w => queue.push({ type: "review", word: w }));          // Steg 1: repetera
+  shuffle(session.write).forEach(w => queue.push({ type: "write", word: w }));   //         ...och skriv ord du kan
   session.newWords.forEach(w => queue.push({ type: "intro", word: w }));         // Steg 2: nya ord
   shuffle(session.newWords).forEach(w => queue.push({ type: "quiz", word: w }));  //         ...och testa dem
   session.sentences.forEach(s => queue.push({ type: "read", sentence: s }));     // Steg 3: läs meningar
@@ -359,6 +390,7 @@ function takeSnapshot() {
   const today = dateStr(new Date());
   snapshots[pos] = {
     words: JSON.stringify(progress.words),
+    writing: JSON.stringify(progress.writing || {}),
     gradeDay: progress.gradeDays[today] ? { ...progress.gradeDays[today] } : null,
     built: { ...progress.builtSentences },
     queueLength: queue.length
@@ -377,6 +409,7 @@ function back() {
   progress.words = JSON.parse(s.words);
   if (s.gradeDay) progress.gradeDays[today] = s.gradeDay; else delete progress.gradeDays[today];
   progress.builtSentences = s.built;
+  progress.writing = JSON.parse(s.writing);
   queue.length = s.queueLength;  // Tar bort omtaget som ett fel svar lade till
   saveProgress();
   showTask();
@@ -409,6 +442,7 @@ function showTask() {
   if (task.type === "quiz") showQuiz(task);
   if (task.type === "read") showRead(task);
   if (task.type === "build") showBuild(task);
+  if (task.type === "write") showWrite(task);
 }
 
 // Ram för varje steg: förloppsindikator + rubrik + innehåll
@@ -447,6 +481,95 @@ function showIntro(task) {
   screen("Nytt ord",
     h("div", { class: "card" }, srBlock(w.sr, "", w.id), h("div", { class: "sv" }, w.sv), noteLine(w)),
     h("div", { class: "buttons" }, backButton(), h("button", { class: "primary", onclick: next }, "Nästa")));
+}
+
+// ---------- Skrivövningen: svenska till serbiska ----------
+const SERBIAN_LETTERS = ["č", "ć", "š", "ž", "đ"];
+
+// Jämförbar form: små bokstäver, utan skiljetecken och dubbla mellanslag
+function normalizeAnswer(text) {
+  return text.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, " ").replace(/\s+/g, " ").trim();
+}
+
+// Utan serbiska specialtecken, för den som skriver på ett svenskt tangentbord
+function withoutDiacritics(text) {
+  return text.replace(/đ/g, "dj").replace(/[čć]/g, "c").replace(/š/g, "s").replace(/ž/g, "z");
+}
+
+// Rätta svar: ordet, ord med samma svenska betydelse och former i noten som "Man: *umoran*"
+function acceptedAnswers(w) {
+  const sameMeaning = WORDS.filter(x => x.sv === w.sv).map(x => x.sr);
+  const variants = [...(w.note || "").matchAll(/(?:Man|Kvinna|Till en kvinna|Även|Artigt(?: eller till flera)?):\s*\*([^*]+)\*/g)].map(m => m[1]);
+  const ekavian = [...(w.note || "").matchAll(/Ekaviskt: \*([^*]+)\*/g)].map(m => m[1]);
+  return { exact: [...sameMeaning, ...variants].map(normalizeAnswer), ekavian: ekavian.map(normalizeAnswer) };
+}
+
+// correct, diacritics (rätt men utan č ć š ž đ), ekavian, almost (en bokstav fel) eller wrong
+function judgeWriting(input, w) {
+  const answer = normalizeAnswer(input);
+  const { exact, ekavian } = acceptedAnswers(w);
+  if (exact.includes(answer)) return "correct";
+  if (exact.map(withoutDiacritics).includes(withoutDiacritics(answer))) return "diacritics";
+  if (ekavian.includes(answer) || ekavian.map(withoutDiacritics).includes(withoutDiacritics(answer))) return "ekavian";
+  const plain = withoutDiacritics(answer);
+  const close = exact.some(a => {
+    const target = withoutDiacritics(a);
+    return target.length >= 5 && Math.round((1 - spellingLikeness(plain, target)) * Math.max(plain.length, target.length)) === 1;
+  });
+  return close ? "almost" : "wrong";
+}
+
+function showWrite(task) {
+  const w = task.word;
+  const input = h("input", { type: "text", class: "write-input", autocomplete: "off", autocapitalize: "none", autocorrect: "off",
+    spellcheck: "false", lang: "sr-Latn", enterkeyhint: "done", "aria-label": "Skriv ordet på serbiska" });
+  const checkBtn = h("button", { class: "primary", disabled: "disabled", onclick: check }, "Kontrollera");
+  const letters = h("div", { class: "letter-row" }, SERBIAN_LETTERS.map(letter =>
+    h("button", { class: "letter-btn", "aria-label": `Skriv ${letter}`, onclick: () => insertLetter(letter) }, letter)));
+  const checkRow = h("div", { class: "buttons" }, backButton(), checkBtn);
+  const result = h("div");
+
+  input.addEventListener("input", () => { checkBtn.disabled = !input.value.trim(); });
+  input.addEventListener("keydown", e => { if (e.key === "Enter" && input.value.trim()) check(); });
+
+  // Bokstaven hamnar där markören står, och fältet behåller fokus så att tangentbordet ligger kvar
+  function insertLetter(letter) {
+    const start = input.selectionStart ?? input.value.length, end = input.selectionEnd ?? input.value.length;
+    input.value = input.value.slice(0, start) + letter + input.value.slice(end);
+    input.setSelectionRange(start + 1, start + 1);
+    input.focus();
+    checkBtn.disabled = false;
+  }
+
+  function check() {
+    if (stepAnswered) return;
+    answered();
+    const verdict = judgeWriting(input.value, w);
+    input.disabled = true;
+    letters.classList.add("hidden");
+    checkRow.classList.add("hidden");
+    const messages = {
+      correct: ["ok", "Rätt! Hur lätt var det?"],
+      diacritics: ["ok", "Rätt! Det stavas med serbiska bokstäver. Hur lätt var det?"],
+      ekavian: ["ok", "Rätt, men det är den ekaviska formen. I appen används den ijekaviska. Hur lätt var det?"],
+      almost: ["bad", "Nästan! En bokstav blev fel. Det räknas som Svår."],
+      wrong: ["bad", "Inte riktigt – ordet kommer tillbaka strax."]
+    };
+    const [tone, text] = messages[verdict];
+    const answerCard = h("div", { class: "card" }, srBlock(w.sr, "", w.id));
+    if (verdict === "almost") gradeWriting(w.id, 3);
+    if (verdict === "wrong") { gradeWriting(w.id, 1); retryLater(task); }
+    const ok = verdict === "correct" || verdict === "diacritics" || verdict === "ekavian";
+    result.replaceChildren(h("div", {},
+      h("p", { class: `feedback ${tone}` }, text),
+      answerCard,
+      ok ? gradeButtons(q => { gradeWriting(w.id, q); next(); }, false, backButton(true))
+         : h("div", { class: "buttons" }, backButton(true), h("button", { class: "primary", onclick: next }, "Fortsätt"))));
+  }
+
+  screen("Skriv på serbiska", h("div", { class: "card" }, h("div", { class: "sv write-prompt" }, w.sv)),
+    input, letters, checkRow, result);
+  input.focus();
 }
 
 // Hur lika två texter stavas, från 0 till 1 (räknar hur många bokstäver som måste ändras)
@@ -596,15 +719,17 @@ function lessonAfter(lesson) {
 }
 
 function showDone() {
+  const written = (session.write || []).length;
   const finishedLevel = addSession({ date: dateStr(new Date()), lesson: session.lesson,
-    reviewed: session.review.length, newWords: session.newWords.length });
+    reviewed: session.review.length, newWords: session.newWords.length, written });
   if (session.lesson && !session.practice) progress.currentLesson = lessonAfter(session.lesson);
   saveProgress();
   updateHeader();
   main.replaceChildren(
     h("div", { class: "card" },
       h("div", { class: "big" }, "Bra jobbat! 🎉"),
-      h("p", {}, `Du repeterade ${session.review.length} ord, lärde dig ${session.newWords.length} nya och övade på ${session.sentences.length} meningar.`),
+      h("p", {}, `Du repeterade ${session.review.length} ord, ` + (written ? `skrev ${written} på serbiska, ` : "") +
+        `lärde dig ${session.newWords.length} nya och övade på ${session.sentences.length} meningar.`),
       h("p", { class: "muted" }, streakText())),
     h("div", { class: "buttons" },
       session.trained

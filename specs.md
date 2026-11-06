@@ -59,6 +59,8 @@ När sista lektionen på en nivå blir gjord visas ett fönster där igelkotten 
 
 ## Dagens pass (~5–10 min)
 1. **Repetition – 3 till 15 ord** från tidigare pass. Antalet växer med hur många ord som behöver befästas: överhoppade ord du inte övat på, och ord du senast gav "Kan inte" eller "Svår" (ett extra ord per 4 sådana, högst 15). Försenade ord kommer först, sedan ord att befästa, sist övriga. Visa ordet → betygsätt direkt med Kan inte, Svår, Bra eller Lätt → svaret visas → Nästa.
+   - **Skriv på serbiska:** ord du kan (senaste betyg Bra eller Lätt när du översätter till svenska) får ett eget skrivschema, skilt från att känna igen ordet. Du ser svenskan och skriver serbiskan, med knappar för *č ć š ž đ*. Skrivuppgifter som det är dags för kommer först, sedan högst 3 ord per pass som skrivs för första gången, i lektionernas ordning. Högst 6 skrivuppgifter per pass, och de räknas in i gränsen på 15 repetitioner. Ett ord som ska skrivas visas inte samma pass från serbiska till svenska.
+   - **Rättning:** stor bokstav och skiljetecken räknas inte. Saknade *č ć š ž đ* godkänns men stavningen visas. Former i noten (*Man:*, *Artigt:*, *Även:*) och ord med samma svenska betydelse godkänns. Ekavisk form godkänns med en kommentar. En bokstav fel i ett ord på minst 5 bokstäver räknas som Svår. Annars räknas det som Kan inte och ordet kommer tillbaka senare i passet.
 2. **Nya ord – 5 ord** från lektionen du är på. Efter passet går appen till nästa lektion.
    - Presentation: ordet, kyrilliska, översättning, tips.
    - Flervalsfråga: "Vad betyder ordet?" (4 alternativ). De fel svaren väljs bland ord som liknar rätt svar i stavning, tema, kategori eller ordtyp, med lite slump. Rätt → betygsätt Svårt/Bra/Lätt. Fel → räknas som "Kunde inte" och frågan kommer tillbaka sist.
@@ -126,7 +128,8 @@ GitHub Pages från ett publikt repo. `raw/` publiceras aldrig (`.gitignore`). Se
 ## Backlog (idéer framåt)
 - [ ] Fler lektioner: siffror, tid och datum, hemmet, väder, vanliga verb, presens
 - [ ] Ljud via webbläsarens talsyntes (kolla om serbisk röst finns på telefonen) eller inspelningar från pojkvännen
-- [ ] Skrivövning: svenska → skriv på serbiska
+- [x] Skrivövning: svenska → skriv på serbiska (steg 1, i dagens pass)
+- [ ] Skrivövningen under Träna, och antal ord du kan skriva under Framsteg (steg 2)
 - [ ] Lyssningsövning
 - [x] Ikon: igelkottansikte på hemskärmen (`apple-touch-icon.png`, ritas av `tools/make-icon.ps1`)
 - [ ] Offline-läge (PWA)

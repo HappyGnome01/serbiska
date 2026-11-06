@@ -282,3 +282,12 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 
 ## [2026-11-03] publish | Ikon, ordrättelser och stillastående knappar
 - Igelkott-ikonen, ordrättelserna, Tillbaka till kortet, stillastående knappar och fönstrens knappar pushade till GitHub Pages.
+
+## [2026-11-06] feature | Skrivövning, steg 1
+- Ny övning i repetitionen: du ser svenskan och skriver serbiskan, med knappar för *č ć š ž đ*. Byggd för att träna att få fram ord ur minnet, inte bara känna igen dem.
+- Eget skrivschema per ord i nytt valfritt fält `progress.writing`. Befintliga framsteg påverkas inte. Ord med Bra eller Lätt kommer in med högst 3 nya per pass.
+- Tolerant rättning: stor bokstav, skiljetecken och saknade specialtecken godkänns, en bokstav fel räknas som Svår.
+- Passen sparar antal skrivna ord i fältet `written`. Träna och Framsteg kommer i steg 2.
+
+## [2026-11-06] publish | Skrivövning, steg 1
+- Skrivövningen med eget skrivschema pushad till GitHub Pages.
