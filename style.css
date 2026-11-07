@@ -122,6 +122,13 @@ main { max-width: 520px; margin: 0 auto; padding: 0 16px calc(96px + env(safe-ar
 input.write-input { display: block; width: 100%; font: inherit; font-size: 1.3rem; padding: 14px 16px; border-radius: 18px; border: 2px solid var(--border); background: var(--card); color: var(--text); text-align: center; box-shadow: inset 0 2px 4px var(--shadow); }
 input.write-input:focus { outline: none; border-color: var(--primary); }
 input.write-input:disabled { opacity: 0.7; }
+/* Efter svaret: samma färger som svaren i flervalsfrågan */
+input.write-input.correct, .answer-row.correct { border-color: var(--good-line); background: var(--good); color: var(--on-good); opacity: 1; }
+input.write-input.wrong, .answer-row.wrong { border-color: var(--again-edge); background: var(--again); color: var(--on-again); opacity: 1; }
+.mark-box { position: relative; }
+.answer-row { position: relative; border: 2px solid transparent; border-radius: 18px; }
+.answer-row.correct, .answer-row.wrong { padding-right: 44px; padding-left: 8px; }
+.answer-row.correct .tile:disabled, .answer-row.wrong .tile:disabled { opacity: 1; color: var(--text); }
 .letter-row { display: flex; justify-content: center; gap: 8px; margin: 12px 0 4px; }
 button.letter-btn { width: 48px; padding: 10px 0; font-size: 1.15rem; }
 
@@ -179,6 +186,11 @@ button.note-link.lesson-note { font-size: 0.85rem; }
 .option:disabled { color: var(--text); }
 button.option.correct { border-color: var(--good-line); background: var(--good); color: var(--on-good); opacity: 1; --edge: var(--good-edge); }
 button.option.wrong { border-color: var(--again-edge); background: var(--again); color: var(--on-again); opacity: 1; --edge: var(--again-edge); }
+/* Bock eller kryss längst till höger på svaret du valde, och sticker upp lite ovanför fältet */
+.option { position: relative; padding-right: 44px; }
+.option-mark { position: absolute; right: 8px; top: -16px; width: 38px; height: 38px; pointer-events: none; }
+.option-mark svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.quiz-feedback { margin-top: 4px; }
 .level-title { font-weight: 600; }
 .level-themes { font-size: 0.85rem; margin-top: 2px; }
 .level-option .progress { margin-top: 10px; }
@@ -304,6 +316,16 @@ button.road-start-btn { position: absolute; z-index: 3; min-width: 0; padding: 1
 .lesson-list { display: grid; gap: 8px; margin-bottom: 16px; }
 .lesson-item { background: var(--card); border-radius: 16px; padding: 10px 14px; box-shadow: inset 0 2px 3px -1px var(--shine), 0 2px 4px var(--shadow), 0 6px 14px var(--shadow); }
 .lesson-sr { font-weight: 700; }
+/* Ord i meningar som går att trycka på för en förklaring: prickad understrykning */
+button.word-link { all: unset; cursor: pointer; text-decoration: underline dotted; text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em; text-decoration-color: var(--muted); border-radius: 6px; }
+button.word-link:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+button.word-link:active { background: var(--shine, rgba(255,255,255,0.15)); }
+/* Innan översättningen visas ser orden ut som vanlig text och går inte att trycka på */
+.sentence-card:not(.revealed) button.word-link { pointer-events: none; text-decoration: none; }
+.part-head { text-align: center; margin-bottom: 8px; }
+.part-sr { font-size: 1.8rem; font-weight: 700; }
+.part-sv { font-size: 1.15rem; text-align: center; font-weight: 600; }
 .lesson-cyr { font-weight: 400; font-size: 0.85rem; }
 /* Markera som gjord: betygen som inte valts tonas ner */
 .mark-grades { display: flex; gap: 8px; margin-top: 8px; }

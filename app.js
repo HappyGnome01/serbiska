@@ -432,8 +432,13 @@ function retryLater(task) {
   if (!task.retry) queue.push({ ...task, retry: true });
 }
 
+// Ett pass pågår tills det är klart eller avbrutet, även om du byter flik under tiden
+let sessionActive = false;
+let onExercise = false;  // Visas ett steg i passet just nu?
+
 function showTask() {
-  if (pos >= queue.length) return showDone();
+  if (pos >= queue.length) { sessionActive = false; return showDone(); }
+  sessionActive = true;
   const task = queue[pos];
   takeSnapshot();
   stepAnswered = false;
@@ -447,7 +452,8 @@ function showTask() {
 
 // Ram för varje steg: förloppsindikator + rubrik + innehåll
 function screen(label, ...content) {
-  setNav(null);
+  setNav(session.trained ? "train" : "home");
+  onExercise = true;
   fillMain(
     h("div", { class: "progress" }, h("div", { class: "bar", style: `width:${(pos / queue.length) * 100}%` })),
     h("p", { class: "step-label center" }, label),
@@ -549,26 +555,29 @@ function showWrite(task) {
     letters.classList.add("hidden");
     checkRow.classList.add("hidden");
     const messages = {
-      correct: ["ok", "Rätt! Hur lätt var det?"],
-      diacritics: ["ok", "Rätt! Det stavas med serbiska bokstäver. Hur lätt var det?"],
-      ekavian: ["ok", "Rätt, men det är den ekaviska formen. I appen används den ijekaviska. Hur lätt var det?"],
-      almost: ["bad", "Nästan! En bokstav blev fel. Det räknas som Svår."],
-      wrong: ["bad", "Inte riktigt – ordet kommer tillbaka strax."]
+      correct: "Hur lätt var det?",
+      diacritics: "Rätt, men det stavas med serbiska bokstäver. Hur lätt var det?",
+      ekavian: "Rätt, men det är den ekaviska formen. I appen används den ijekaviska. Hur lätt var det?",
+      almost: "Nästan! En bokstav blev fel. Det räknas som Svår.",
+      wrong: "Inte riktigt – ordet kommer tillbaka strax."
     };
-    const [tone, text] = messages[verdict];
     const answerCard = h("div", { class: "card" }, srBlock(w.sr, "", w.id));
     if (verdict === "almost") gradeWriting(w.id, 3);
     if (verdict === "wrong") { gradeWriting(w.id, 1); retryLater(task); }
     const ok = verdict === "correct" || verdict === "diacritics" || verdict === "ekavian";
+    // Fältet färgas som svaren i flervalsfrågan och får bock eller kryss
+    input.classList.add(ok ? "correct" : "wrong");
+    inputBox.append(optionMark(ok));
     result.replaceChildren(h("div", {},
-      h("p", { class: `feedback ${tone}` }, text),
+      h("p", { class: "step-label center quiz-feedback" }, messages[verdict]),
       answerCard,
       ok ? gradeButtons(q => { gradeWriting(w.id, q); next(); }, false, backButton(true))
          : h("div", { class: "buttons" }, backButton(true), h("button", { class: "primary", onclick: next }, "Fortsätt"))));
   }
 
+  const inputBox = h("div", { class: "mark-box" }, input);
   screen("Skriv på serbiska", h("div", { class: "card" }, h("div", { class: "sv write-prompt" }, w.sv)),
-    input, letters, checkRow, result);
+    inputBox, letters, checkRow, result);
   input.focus();
 }
 
@@ -614,6 +623,21 @@ function wrongOptionsFor(w) {
   return shuffle(unique.slice(0, 8)).slice(0, 3).map(({ word }) => word);
 }
 
+// Grön bock eller rött kryss på svaret du valde, i blank 3D-stil:
+// skugga under, mörk kant, färgen med ljus ovanifrån och en vit glans upptill
+function optionMark(ok) {
+  const mark = h("span", { class: `option-mark ${ok ? "ok" : "bad"}`, role: "img", "aria-label": ok ? "Rätt" : "Fel" });
+  const d = ok ? "M4.6 12.6l4.6 4.6L19.6 5.4" : "M6 6l12 12M18 6L6 18";
+  const edge = ok ? "#257a20" : "#9c1e1d";
+  mark.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="${d}" stroke="rgba(0,0,0,0.28)" stroke-width="5.6" transform="translate(0.4 1.6)"/>
+    <path d="${d}" stroke="${edge}" stroke-width="5.6" transform="translate(0 0.8)"/>
+    <path d="${d}" stroke="url(#${ok ? "markOk" : "markBad"})" stroke-width="5"/>
+    <path d="${d}" stroke="#fff" stroke-opacity="0.45" stroke-width="1.4" transform="translate(-0.3 -1.2)"/>
+  </svg>`;
+  return mark;
+}
+
 function showQuiz(task) {
   const w = task.word;
   const options = shuffle([w, ...wrongOptionsFor(w)]);
@@ -624,14 +648,17 @@ function showQuiz(task) {
     answered();
     buttons.forEach(b => b.disabled = true);
     buttons[options.indexOf(w)].classList.add("correct");
-    if (o.id === w.id) {
-      after.replaceChildren(h("p", { class: "feedback ok" }, "Rätt! Hur lätt var det?"),
+    const chosen = buttons[options.indexOf(o)];
+    const ok = o.id === w.id;
+    chosen.append(optionMark(ok));
+    if (ok) {
+      after.replaceChildren(h("p", { class: "step-label center quiz-feedback" }, "Hur lätt var det?"),
         gradeButtons(q => { gradeWord(w.id, q); next(); }, false, backButton(true)));
     } else {
-      buttons[options.indexOf(o)].classList.add("wrong");
+      chosen.classList.add("wrong");
       gradeWord(w.id, 1);
       retryLater(task);
-      after.replaceChildren(h("p", { class: "feedback bad" }, "Inte riktigt – ordet kommer tillbaka strax."),
+      after.replaceChildren(h("p", { class: "step-label center quiz-feedback" }, "Inte riktigt – ordet kommer tillbaka strax."),
         h("div", { class: "buttons" }, backButton(true), h("button", { class: "primary", onclick: next }, "Fortsätt")));
     }
   }
@@ -646,14 +673,19 @@ function showRead(task) {
   const nextBtn = h("button", { class: "primary hidden", onclick: next }, "Nästa");
   const backBtn = backButton(true);
   if (pos === 0) backBtn.classList.add("invisible");
+  // Orden i meningen går att trycka på först när översättningen visas, annars avslöjar de svaret
+  const card = h("div", { class: "card sentence-card" },
+    h("div", { class: "sr sentence" }, wordLinks(s, "")), h("div", { class: "cyr" }, toCyrillic(s.sr)),
+    h("div", { class: "speak-row" }, speakButton(s.id, s.sr)), answer);
   const showBtn = h("button", { class: "primary", onclick: () => {
     answered();
+    card.classList.add("revealed");
     answer.classList.remove("invisible");
     backBtn.classList.remove("invisible");
     nextBtn.classList.remove("hidden");
     showBtn.classList.add("hidden");
   } }, "Visa översättning");
-  screen("Läs och förstå", h("div", { class: "card sentence-card" }, srBlock(s.sr, "sentence", s.id), answer),
+  screen("Läs och förstå", card,
     h("div", { class: "buttons" }, backBtn, showBtn, nextBtn));
 }
 
@@ -690,9 +722,12 @@ function showBuild(task) {
     answered();
     answerRow.querySelectorAll("button").forEach(b => b.disabled = true);
     checkRow.classList.add("hidden");
+    // Raden med din mening färgas som svaren i flervalsfrågan och får bock eller kryss
+    answerRow.classList.add(ok ? "correct" : "wrong");
+    answerRow.append(optionMark(ok));
     // h() hoppar över null, därför packas allt i en div
     result.replaceChildren(h("div", {},
-      h("p", { class: ok ? "feedback ok" : "feedback bad" }, ok ? "Rätt! 🎉" : "Nästan! Rätt ordning:"),
+      ok ? null : h("p", { class: "step-label center quiz-feedback" }, "Nästan! Rätt ordning:"),
       ok ? null : h("div", { class: "card" }, srBlock(s.sr, "sentence", s.id)),
       h("div", { class: "buttons" }, backButton(true), h("button", { class: "primary", onclick: next }, "Nästa"))));
   }
@@ -973,21 +1008,22 @@ function roadmap(startLabel) {
   return road;
 }
 
-// Startknappen står på motsatt sida av stigen mot igelkotten. Höjden väljs efter var det finns plats:
-// först i samma höjd som din lektion, sedan allt längre upp eller ner tills knappen ryms
-// utan att täcka stigen, lektionerna, igelkotten eller nivårubriken.
+// Startknappen står snett under din lektion och igelkotten, utan att täcka stigen,
+// lektionerna, igelkotten eller nivårubriken.
 const START_ROAD_MARGIN = 16;  // Fritt avstånd mellan knappen och stigens mitt, så att tassarna syns
+const START_GAP = 16;         // Önskat avstånd till lektionen och igelkotten, ungefär som till närmaste tass
 const START_MAX_SHIFT = 160;   // Längst upp eller ner från din lektion som knappen får flyttas
 
 function placeStartButton(road, { x, center, hedgehog, button, neighbours }) {
   const width = road.clientWidth;
   const w = button.offsetWidth, hgt = button.offsetHeight;
   const nodeX = x / 100 * width;
-  // Knappen vill ha den breda sidan av din lektion. Igelkotten tar då den trånga sidan om den ryms där,
-  // annars får den också stå på den breda sidan.
-  const wideRight = nodeX < width / 2;
-  const hogFitsNarrow = wideRight ? nodeX - HOG_OFFSET - HOG_WIDTH >= 0 : nodeX + HOG_OFFSET + HOG_WIDTH <= width;
-  const hogRight = hogFitsNarrow ? !wideRight : wideRight;
+  // Igelkotten står på den sida där stigen inte fortsätter neråt, så att stigen inte går mellan
+  // igelkotten och knappen under. Ryms den inte där får den stå på andra sidan.
+  const nextPoint = neighbours.filter(p => p.y > center).sort((a, b) => a.y - b.y)[0];
+  const preferRight = nextPoint ? nextPoint.x / 100 * width < nodeX : nodeX < width / 2;
+  const fitsRight = nodeX + HOG_OFFSET + HOG_WIDTH <= width, fitsLeft = nodeX - HOG_OFFSET - HOG_WIDTH >= 0;
+  const hogRight = preferRight ? fitsRight || !fitsLeft : !fitsLeft && fitsRight;
   hedgehog.style.left = `${hogRight ? nodeX + HOG_OFFSET : nodeX - HOG_OFFSET - HOG_WIDTH}px`;
   hedgehog.classList.toggle("flip", hogRight);  // Igelkotten tittar mot din lektion
   const onRight = hogRight;
@@ -1017,20 +1053,44 @@ function placeStartButton(road, { x, center, hedgehog, button, neighbours }) {
     !blocked.some(b => left < b.right + ROAD_GAP && left + w > b.left - ROAD_GAP && top < b.bottom + ROAD_GAP && top + hgt > b.top - ROAD_GAP) &&
     !crossesRoad(left, top);
 
-  // Höjder att prova, närmast din lektion först
-  const offsets = [0];
-  for (let d = 8; d <= START_MAX_SHIFT; d += 8) offsets.push(d, -d);
-  for (const dy of offsets) {
-    const top = center + dy - hgt / 2;
-    const px = pathX(center + dy);
-    // Nära stigen först, sedan längre ut åt samma håll
-    for (let gap = START_ROAD_MARGIN; gap <= width; gap += 8) {
-      const left = side < 0 ? px - gap - w : px + gap;
-      if (left < 0 || left + w > width) break;
-      if (free(left, top)) {
-        button.style.left = `${left}px`;
-        button.style.top = `${top}px`;
-        return;
+  // Knappen står snett under din lektion och igelkotten, med ungefär samma avstånd till båda
+  // som mellan en lektion och närmaste tassavtryck. Alla lediga platser provas och den
+  // vars avstånd ligger närmast det väljs.
+  const hogBox = local(hedgehog);
+  const nodeBox = local(road.querySelector(".node.current"));
+  const nodeR = (nodeBox.right - nodeBox.left) / 2;
+  const cx = nodeBox.left + nodeR, cy = nodeBox.top + nodeR;
+  const gapTo = (left, top, b) => Math.hypot(Math.max(b.left - left - w, 0, left - b.right), Math.max(b.top - top - hgt, 0, top - b.bottom));
+  let best = null;
+  for (let top = Math.round(cy); top <= cy + START_MAX_SHIFT; top += 2) {
+    for (let left = 0; left + w <= width; left += 2) {
+      const toNode = Math.hypot(Math.max(left - cx, 0, cx - left - w), Math.max(top - cy, 0, cy - top - hgt)) - nodeR;
+      const toHog = gapTo(left, top, hogBox);
+      const score = Math.abs(toNode - START_GAP) + Math.abs(toHog - START_GAP);
+      if ((!best || score < best.score) && free(left, top)) best = { left, top, score };
+    }
+  }
+  if (best && best.score <= START_GAP * 3) {
+    button.style.left = `${best.left}px`;
+    button.style.top = `${best.top}px`;
+    return;
+  }
+
+  // Annars: överkanten under igelkotten och neråt tills knappen ryms. Igelkottens sida först, sedan den andra.
+  const below = hogBox.bottom + ROAD_GAP;
+  for (let dy = 0; dy <= START_MAX_SHIFT; dy += 8) {
+    const top = below + dy;
+    const px = pathX(top + hgt / 2);
+    for (const s of [-side, side]) {
+      // Nära stigen först, sedan längre ut åt samma håll
+      for (let gap = START_ROAD_MARGIN; gap <= width; gap += 8) {
+        const left = s < 0 ? px - gap - w : px + gap;
+        if (left < 0 || left + w > width) break;
+        if (free(left, top)) {
+          button.style.left = `${left}px`;
+          button.style.top = `${top}px`;
+          return;
+        }
       }
     }
   }
@@ -1087,7 +1147,7 @@ function showLesson(lesson) {
       noteLine(w, "lesson-note")))),
     h("p", { class: "step-label" }, "Meningar"),
     h("div", { class: "lesson-list" }, sentences.map(s => h("div", { class: "lesson-item" },
-      h("div", { class: "lesson-sr" }, s.sr, speakButton(s.id, s.sr)),
+      h("div", { class: "lesson-sr" }, wordLinks(s, "lesson-sentence"), speakButton(s.id, s.sr)),
       h("div", {}, s.sv),
       noteLine(s, "lesson-note")))));
 }
@@ -1228,26 +1288,139 @@ function noteLine(item, extraClass = "") {
 
 // Modulfönster som stängs med knappen, Esc eller ett tryck utanför
 // actions = knappar som står bredvid Stäng, lika stora: [[text, klass, funktion]]. De stänger fönstret först.
-function showModal(label, content, actions = []) {
+function showModal(label, content, actions = [], closeLabel = "Stäng") {
   const closeDialog = () => { dialog.close(); dialog.remove(); };
   const dialog = h("dialog", { class: "modal", "aria-label": label },
     h("div", { class: "modal-body" }, content,
       h("div", { class: "buttons modal-close" + (actions.length ? " modal-actions" : "") },
         actions.map(([text, cls, action]) => h("button", { class: cls, onclick: () => { closeDialog(); action(); } }, text)),
-        h("button", { class: "primary", onclick: closeDialog }, "Stäng"))));
+        h("button", { class: "primary", onclick: closeDialog }, closeLabel))));
   dialog.addEventListener("close", () => dialog.remove());  // Esc-tangenten
   dialog.addEventListener("click", e => { if (e.target === dialog) closeDialog(); });  // Tryck utanför stänger
   document.body.append(dialog);
   dialog.showModal();
 }
 
-function showGrammar(items) {
-  showModal("Grammatik", grammarFor(items).map(g => h("section", {},
+// ---------- Grammatik per ord ----------
+// Meningar kan ha fältet parts: delar av meningen med betydelse, grundform, tips och grammatik.
+// Ord som inte finns i parts slås upp i ordlistan. Ord som saknas båda ställena går inte att trycka på.
+const bareWord = text => text.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
+
+// Meningen som ord och skiljetecken, där varje ord har sin del (eller null)
+function sentenceTokens(s) {
+  const tokens = s.sr.split(" ").map(token => {
+    const [, before, word, after] = token.match(/^([^\p{L}\p{N}]*)(.*?)([^\p{L}\p{N}]*)$/u);
+    return { before, word, after, part: null };
+  });
+  let from = 0;
+  for (const part of s.parts || []) {
+    const words = part.sr.split(" ").map(bareWord);
+    for (let i = from; i + words.length <= tokens.length; i++) {
+      if (words.every((w, k) => bareWord(tokens[i + k].word) === w && !tokens[i + k].part)) {
+        words.forEach((_, k) => { tokens[i + k].part = part; tokens[i + k].first = k === 0; tokens[i + k].size = words.length; });
+        from = i + words.length;
+        break;
+      }
+    }
+  }
+  tokens.forEach(t => {
+    if (t.part) return;
+    const w = WORDS.find(x => bareWord(x.sr) === bareWord(t.word));
+    if (w) { t.part = { sr: w.sr, sv: w.sv, note: w.note, grammar: w.grammar }; t.first = true; t.size = 1; }
+  });
+  return tokens;
+}
+
+// Meningen med ord att trycka på. Ord som hör ihop (som "je prošao") blir en knapp.
+function wordLinks(s, className) {
+  const tokens = sentenceTokens(s);
+  const out = [];
+  for (let i = 0; i < tokens.length; i++) {
+    const t = tokens[i];
+    if (i > 0) out.push(" ");
+    out.push(t.before);
+    if (!t.part) { out.push(t.word, t.after); continue; }
+    // En del som består av flera ord: orden emellan hör till samma knapp
+    const group = tokens.slice(i, i + t.size);
+    const label = group.map((g, k) => (k ? g.before : "") + g.word + (k < group.length - 1 ? g.after + " " : "")).join("");
+    const part = t.part;
+    out.push(h("button", { class: "word-link", "aria-label": `${label}: förklara`,
+      onclick: e => { e.stopPropagation(); showPart(label, part); } }, label));
+    out.push(group[group.length - 1].after);
+    i += t.size - 1;
+  }
+  return h("span", { class: className }, out);
+}
+
+// Fönstret för en del av meningen: betydelse, grundform, tips och de grammatikregler som gäller
+function showPart(label, part) {
+  showModal(`Förklaring: ${label}`, [
+    h("div", { class: "part-head" },
+      h("div", { class: "part-sr" }, label),
+      h("div", { class: "muted" }, toCyrillic(label))),
+    part.sv ? h("p", { class: "part-sv" }, part.sv) : null,
+    ...(partFacts(label, part) || []),
+    part.note ? h("p", { class: "note" }, mixed("💡 " + part.note)) : null,
+    part.check ? h("p", { class: "muted" }, "Ej granskad av en som har serbiska som modersmål.") : null,
+    ...grammarFor([part]).map(grammarSection)]);
+}
+
+// Form, grundform och genus som en liten tabell. Oböjliga ord har ingen grundform att visa.
+const GENDER_TEXT = { m: "maskulinum (manligt)", f: "femininum (kvinnligt)", n: "neutrum" };
+
+// Kasus med vardagliga namn och när de används. Fackordet visas inom parentes för den som vill veta.
+const CASE_TEXT = {
+  nominativ: ["grundform", "för den som gör något, eller det man pratar om"],
+  ackusativ: ["objektform", "för det man har, vill ha, ser eller gör något med, och efter *u* och *na* när det gäller vart"],
+  genitiv: ["av-form", "efter *od*, *iz*, *bez*, siffror och *koliko*, och när något är en del av något (ett glas vatten)"],
+  dativ: ["till-form", "för den man ger, säger eller gör något till eller för"],
+  lokativ: ["plats-form", "efter *u*, *na* och *o* när det gäller var något är eller vad man pratar om"],
+  instrumental: ["med-form", "efter *sa* (med) och för det man gör något med"],
+  vokativ: ["tilltalsform", "när man ropar på eller tilltalar någon"]
+};
+const VERB_TEXT = [["presens", "nutid"], ["imperativ", "uppmaning"], ["infinitiv", "att-form, verbets grundform"], ["oböjligt", "ändras aldrig"]];
+
+// "nominativ singular" → ["grundform, en", "Används för den som gör något … (nominativ singular)"]
+function plainForm(form) {
+  const kasus = Object.keys(CASE_TEXT).find(c => form.startsWith(c));
+  if (kasus) {
+    const [name, use] = CASE_TEXT[kasus];
+    const rest = form.slice(kasus.length).replace(" singular", ", en").replace(" plural", ", flera").replace(/^,\s*/, ", ");
+    return [name + rest, `Används ${use}. Fackord: ${form}.`];
+  }
+  let text = form;
+  VERB_TEXT.forEach(([word, plain]) => { text = text.replace(word, plain); });
+  return [text, null];
+}
+
+function partFacts(label, part) {
+  const rows = [];
+  let use = null;
+  if (part.form) {
+    const [text, explanation] = plainForm(part.form);
+    rows.push(["Form", text]);
+    use = explanation;
+  }
+  if (part.form !== "oböjligt" && (part.base || part.form)) rows.push(["Ordboksform", h("em", {}, part.base || label.toLowerCase())]);
+  if (part.gender) rows.push(["Genus", GENDER_TEXT[part.gender]]);
+  if (!rows.length) return null;
+  return [h("div", { class: "modal-list part-facts" }, rows.map(([key, value]) =>
+      h("div", { class: "word-row" }, h("span", { class: "muted" }, key), h("span", {}, value)))),
+    use ? h("p", { class: "muted part-use" }, mixed(use)) : null];
+}
+
+function grammarSection(g) {
+  return h("section", {},
     h("h2", {}, mixed(g.title)),
     g.text.map(t => h("p", {}, mixed(t))),
     h("div", { class: "modal-list" }, g.examples.map(([sr, sv]) =>
-      h("div", { class: "word-row" }, h("span", {}, h("em", {}, sr)), h("span", { class: "muted" }, mixed(sv))))))));
+      h("div", { class: "word-row" }, h("span", {}, h("em", {}, sr)), h("span", { class: "muted" }, mixed(sv))))));
 }
+
+function showGrammar(items) {
+  showModal("Grammatik", grammarFor(items).map(grammarSection));
+}
+
 
 // Orden med ett visst senaste betyg
 function showWords(label, list) {
@@ -1542,6 +1715,7 @@ function importProgress(file) {
 // ---------- 11. Navigering och start ----------
 function setNav(active) {
   window.scrollTo(0, 0);  // Stigen är lång, så varje ny vy börjar överst
+  onExercise = false;
   document.getElementById("navHome").classList.toggle("active", active === "home");
   document.getElementById("navTrain").classList.toggle("active", active === "train");
   document.getElementById("navDash").classList.toggle("active", active === "dash");
@@ -1559,7 +1733,22 @@ function updateHeader() {
   document.getElementById("knownCount").textContent = `🍃 ${knownWords().length}`;
 }
 
-document.getElementById("navHome").addEventListener("click", () => showHome());
+// Idag: tillbaka till passet om ett pågår. Står du redan i passet frågar appen om du vill avbryta.
+function goHome() {
+  if (!sessionActive) return showHome();
+  if (onExercise) {
+    return showModal("Avbryta övningen?", h("p", { class: "big center" }, "Vill du avbryta övningen?"),
+      [["Ja, avbryt", "", () => { sessionActive = false; showHome(); }]], "Nej");
+  }
+  resumeSession();
+}
+
+// Visar steget du lämnade. Hade du svarat ångras svaret, så att steget visas som nytt.
+function resumeSession() {
+  if (stepAnswered) back(); else showTask();
+}
+
+document.getElementById("navHome").addEventListener("click", goHome);
 document.getElementById("navTrain").addEventListener("click", showTraining);
 document.getElementById("navDash").addEventListener("click", showDashboard);
 document.getElementById("navLevels").addEventListener("click", showLevelPicker);

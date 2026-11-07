@@ -291,3 +291,28 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 
 ## [2026-11-06] publish | Skrivövning, steg 1
 - Skrivövningen med eget skrivschema pushad till GitHub Pages.
+
+## [2026-11-07] feature | Startknappen, bock och kryss, flikbyte under pass
+- Starta pass står nu snett under din lektion och igelkotten, aldrig ovanför. Kontrollerat för alla 100 lektioner i mobilbredd.
+- Flervalsfrågor: grön bock eller rött kryss på svaret du valde. Texten under står i samma stil som "Vad betyder ordet?": "Hur lätt var det?" eller "Inte riktigt – ordet kommer tillbaka strax."
+- Byter du flik under ett pass tar Idag dig tillbaka till steget. Trycker du på Idag under passet frågar appen om du vill avbryta.
+## [2026-11-07] feature | 3D-bock och kryss, startknappens avstånd, grammatik per ord
+- Bock och kryss ritas i blank 3D-stil. Skrivövningen och Bygg meningen har nu också bock eller kryss, färgat fält och text i rubrikstil.
+- Starta pass står med ungefär samma avstånd (16 pixlar) till din lektion och igelkotten. Igelkotten står på den sida där stigen inte fortsätter neråt.
+- Grammatik per ord: nytt valfritt fält `parts` i `sentences.json`. När översättningen visas kan du trycka på ord i meningen och se betydelse, grundform, tips och grammatikregeln för just den delen. Fungerar också i lektionsfönstret. Ord utan del slås upp i ordlistan.
+
+## [2026-11-07] content | Ord för ord i lektion 1–20
+- Alla 100 meningar i lektion 1–20 har fått `parts` som täcker alla ord, med grundformer för verb och böjda ord. Ej granskat av en som har serbiska som modersmål. *Veče je lijepo* är märkt `check` (ordets genus).
+## [2026-11-07] feature | Form, grundform och genus per ord
+- Ordfönstret i meningar visar nu en tabell: form (t.ex. *kafa*: nominativ singular), grundform och genus (femininum). Oböjliga ord visar bara "oböjligt".
+- Nya fält `form` och `gender` i `parts`. Alla 306 delar i lektion 1–20 har fått dem, och grundform finns för alla böjbara ord. Ej granskat av en som har serbiska som modersmål.
+## [2026-11-07] feature | Vardagliga namn på formerna
+- Ordfönstret visar kasus med vardagliga namn och när de används: grundform, objektform, av-form, till-form, plats-form, med-form, tilltalsform. Fackordet står sist. Verb: nutid, uppmaning, att-form. Oböjliga ord: "ändras aldrig".
+- Datan har kvar fackorden; appen översätter dem.
+
+## [2026-11-07] content | Ord för ord i lektion 21–100
+- Alla 400 meningar i lektion 21–100 har fått `parts` med betydelse, form, ordboksform och genus. Nu har alla 500 meningar det (1 496 delar). Kontrollerat att varje ord i varje mening är täckt.
+- De gamla dåtidsformerna i påsk- och julhälsningarna (*se rodi*, *vaskrse*) är märkta `check`. Inget är granskat av en som har serbiska som modersmål.
+
+## [2026-11-07] publish | Bock och kryss, flikbyte, grammatik per ord
+- Allt från dagens arbetspass pushat till GitHub Pages.
