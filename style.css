@@ -129,6 +129,11 @@ input.write-input.wrong, .answer-row.wrong { border-color: var(--again-edge); ba
 .answer-row { position: relative; border: 2px solid transparent; border-radius: 18px; }
 .answer-row.correct, .answer-row.wrong { padding-right: 44px; padding-left: 8px; }
 .answer-row.correct .tile:disabled, .answer-row.wrong .tile:disabled { opacity: 1; color: var(--text); }
+/* Efter Kontrollera: meningen du byggde som vanlig text i en färgad ruta */
+.answer-row.built { align-items: center; justify-content: center; padding: 16px 48px 16px 16px; min-height: 0; }
+.built-text { font-size: 1.3rem; font-weight: 600; text-align: center; }
+/* Ordet du repeterar i en mening */
+.target-word, button.word-link.target-word { background: var(--lav); color: var(--on-lav); border-radius: 6px; padding: 0 4px; }
 .letter-row { display: flex; justify-content: center; gap: 8px; margin: 12px 0 4px; }
 button.letter-btn { width: 48px; padding: 10px 0; font-size: 1.15rem; }
 

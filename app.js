@@ -327,8 +327,9 @@ function buildSession() {
   const newWords = WORDS.filter(w => w.lesson === lesson).slice(0, NEW_PER_SESSION);
   const write = writingWords(newWords);
 
-  // Ett ord som ska skrivas visas inte också från serbiska till svenska, då skulle svaret avslöjas
-  const review = WORDS.filter(w => progress.words[w.id] && !newWords.includes(w) && !write.includes(w))
+  // Ett ord som ska skrivas visas inte också från serbiska till svenska, då skulle svaret avslöjas.
+  // Ord du senast gav Lätt repeteras inte här, bara i skrivövningen.
+  const review = WORDS.filter(w => progress.words[w.id] && progress.words[w.id].lastGrade !== 5 && !newWords.includes(w) && !write.includes(w))
     .sort((a, b) => {
       const [p, q] = [progress.words[a.id], progress.words[b.id]];
       return reviewRank(p) - reviewRank(q) || p.due - q.due;
@@ -357,7 +358,14 @@ function sentenceParts(sentence) {
 function startSession() {
   session = buildSession();
   queue = [];
-  session.review.forEach(w => queue.push({ type: "review", word: w }));          // Steg 1: repetera
+  // Steg 1: repetera. Ord du gett Kan inte, Svår eller Bra repeteras i en mening där de finns med.
+  const used = new Set(session.sentences.map(s => s.id));
+  session.review.forEach(w => {
+    const p = progress.words[w.id];
+    const sentence = p && [1, 3, 4].includes(p.lastGrade) ? sentenceForWord(w, used) : null;
+    if (sentence) { used.add(sentence.id); queue.push({ type: "inSentence", word: w, sentence }); }
+    else queue.push({ type: "review", word: w });
+  });
   shuffle(session.write).forEach(w => queue.push({ type: "write", word: w }));   //         ...och skriv ord du kan
   session.newWords.forEach(w => queue.push({ type: "intro", word: w }));         // Steg 2: nya ord
   shuffle(session.newWords).forEach(w => queue.push({ type: "quiz", word: w }));  //         ...och testa dem
@@ -443,6 +451,7 @@ function showTask() {
   takeSnapshot();
   stepAnswered = false;
   if (task.type === "review") showReview(task);
+  if (task.type === "inSentence") showInSentence(task);
   if (task.type === "intro") showIntro(task);
   if (task.type === "quiz") showQuiz(task);
   if (task.type === "read") showRead(task);
@@ -479,6 +488,34 @@ function showReview(task) {
     hint.classList.add("invisible");
   }, true, backButton());
   screen("Repetition", h("div", { class: "card" }, srBlock(w.sr, "", w.id), answer), hint, grades, nextRow);
+}
+
+// Ett ord du inte kunde eller tyckte var svårt, i en mening. Ordet är markerat.
+// Du läser, visar översättningen och betygsätter sedan hur väl du kan ordet.
+function showInSentence(task) {
+  const { word: w, sentence: s } = task;
+  const answer = h("div", { class: "invisible" }, h("div", { class: "sv" }, s.sv),
+    h("p", { class: "note center" }, mixed(`Ordet: *${w.sr}* = ${w.sv}`)));
+  const card = h("div", { class: "card sentence-card" },
+    h("div", { class: "sr sentence" }, wordLinks(s, "", wordPositions(s, w))), h("div", { class: "cyr" }, toCyrillic(s.sr)),
+    h("div", { class: "speak-row" }, speakButton(s.id, s.sr)), answer);
+  const hint = h("p", { class: "muted center" }, "Förstår du meningen och det markerade ordet?");
+  const grades = gradeButtons(q => {
+    gradeWord(w.id, q);
+    if (q === 1) retryLater(task);
+    next();
+  }, true, backButton(true));
+  grades.classList.add("hidden");
+  const showBtn = h("button", { class: "primary", onclick: () => {
+    answered();
+    card.classList.add("revealed");
+    answer.classList.remove("invisible");
+    hint.textContent = "Hur väl kan du ordet?";
+    showRow.classList.add("hidden");
+    grades.classList.remove("hidden");
+  } }, "Visa översättning");
+  const showRow = h("div", { class: "buttons" }, backButton(), showBtn);
+  screen("Repetition i mening", card, hint, showRow, grades);
 }
 
 function showIntro(task) {
@@ -722,9 +759,11 @@ function showBuild(task) {
     answered();
     answerRow.querySelectorAll("button").forEach(b => b.disabled = true);
     checkRow.classList.add("hidden");
-    // Raden med din mening färgas som svaren i flervalsfrågan och får bock eller kryss
-    answerRow.classList.add(ok ? "correct" : "wrong");
-    answerRow.append(optionMark(ok));
+    // Brickorna blir vanlig text, och hela rutan blir grön eller röd med bock eller kryss
+    const written = parts.map((part, i) => part.before + slots[i].word + part.after).join(" ");
+    answerRow.replaceChildren(h("span", { class: "built-text" }, written[0].toUpperCase() + written.slice(1)), optionMark(ok));
+    answerRow.classList.add("built", ok ? "correct" : "wrong");
+    poolRow.classList.add("hidden");  // Den tomma raden med brickor behövs inte längre
     // h() hoppar över null, därför packas allt i en div
     result.replaceChildren(h("div", {},
       ok ? null : h("p", { class: "step-label center quiz-feedback" }, "Nästan! Rätt ordning:"),
@@ -1332,19 +1371,44 @@ function sentenceTokens(s) {
 }
 
 // Meningen med ord att trycka på. Ord som hör ihop (som "je prošao") blir en knapp.
-function wordLinks(s, className) {
+// Var ordet står i meningen: samma stavning, eller en böjd form vars grundform är ordet (kafu → kafa)
+function wordPositions(s, w) {
+  const target = w.sr.split(" ").map(bareWord).filter(Boolean);
+  const joined = target.join(" ");
+  const tokens = sentenceTokens(s);
+  const hits = new Set();
+  tokens.forEach((t, i) => {
+    const base = t.part && t.part.base ? t.part.base.split(" ").map(bareWord).join(" ") : null;
+    if (base === joined) hits.add(i);
+    if (target.every((x, k) => tokens[i + k] && bareWord(tokens[i + k].word) === x)) target.forEach((_, k) => hits.add(i + k));
+  });
+  return hits;
+}
+
+// En mening att repetera ordet i, bland lektioner du kommit till. Meningar som redan används i passet undviks.
+function sentenceForWord(w, used) {
+  const reached = Math.max(currentLesson() || Infinity, w.lesson);
+  const candidates = SENTENCES.filter(s => s.lesson <= reached && wordPositions(s, w).size > 0);
+  const fresh = candidates.filter(s => !used.has(s.id));
+  const pool = fresh.length ? fresh : candidates;
+  return pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
+}
+
+// targets = ordens platser i meningen som ska markeras (ordet du repeterar)
+function wordLinks(s, className, targets = new Set()) {
   const tokens = sentenceTokens(s);
   const out = [];
   for (let i = 0; i < tokens.length; i++) {
     const t = tokens[i];
     if (i > 0) out.push(" ");
     out.push(t.before);
-    if (!t.part) { out.push(t.word, t.after); continue; }
+    if (!t.part) { out.push(targets.has(i) ? h("span", { class: "target-word" }, t.word) : t.word, t.after); continue; }
     // En del som består av flera ord: orden emellan hör till samma knapp
     const group = tokens.slice(i, i + t.size);
     const label = group.map((g, k) => (k ? g.before : "") + g.word + (k < group.length - 1 ? g.after + " " : "")).join("");
     const part = t.part;
-    out.push(h("button", { class: "word-link", "aria-label": `${label}: förklara`,
+    const isTarget = group.some((_, k) => targets.has(i + k));
+    out.push(h("button", { class: "word-link" + (isTarget ? " target-word" : ""), "aria-label": `${label}: förklara`,
       onclick: e => { e.stopPropagation(); showPart(label, part); } }, label));
     out.push(group[group.length - 1].after);
     i += t.size - 1;

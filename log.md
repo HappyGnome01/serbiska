@@ -316,3 +316,11 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 
 ## [2026-11-07] publish | Bock och kryss, flikbyte, grammatik per ord
 - Allt från dagens arbetspass pushat till GitHub Pages.
+## [2026-11-08] feature | Repetition i mening, Bygg meningen som text
+- Ord du senast gav Kan inte eller Svår repeteras nu i en mening där ordet finns med, med ordet markerat. Du betygsätter ordet efter att ha sett översättningen. 483 av 500 ord hittar en mening, övriga får ett vanligt ordkort.
+- Bygg meningen: efter Kontrollera visas meningen du byggde som vanlig text i en grön eller röd ruta, och den tomma brickraden döljs.
+## [2026-11-08] feature | Lätt-ord bara i skrivövningen, Bra-ord i meningar
+- Ord du senast gav Lätt tas inte med i repetitionen, bara i skrivövningen.
+- Ord du gav Bra repeteras nu också i en mening, som ord du gett Kan inte eller Svår.
+## [2026-11-08] publish | Repetition i mening
+- Repetition i mening, Lätt-ord bara i skrivövningen och Bygg meningen som text pushat till GitHub Pages.
