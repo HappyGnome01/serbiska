@@ -30,11 +30,12 @@ Flikarna ligger alltid längst ner på skärmen, på alla sidor, och visas som i
 - **Förstoringsglas:** Navigering.
 - **Krona:** Framsteg.
 
-Raden överst ligger kvar när du scrollar. Bredvid rubriken Serbiska står 🦔 med din lektion, 🔥 med antal dagar i rad och 🍃 med antal ord du kan: ord vars senaste betyg är Lätt eller Bra. Ett tryck öppnar ett fönster med mer information:
-- Fönstren har två lika stora knappar längst ner: 🦔 Visa på stigen, 🔥 Se framsteg och 🍃 Träna, var och en bredvid Stäng.
+Raden överst ligger kvar när du scrollar. Bredvid rubriken Serbiska står 🦔 med din lektion, 🔥 med antal dagar i rad och 🍃 med antal ord du kan: ord vars senaste betyg är Lätt eller Bra, och ❤️ med antal ord du kan stava: ord vars senaste betyg i skrivövningen är Lätt eller Bra. Ett tryck öppnar ett fönster med mer information:
+- Fönstren har två lika stora knappar längst ner: 🦔 Visa på stigen, 🔥 Se framsteg, 🍃 och ❤️ Träna, var och en bredvid Stäng.
 - **🦔:** lektionen du är på, dess tema, var på nivån du är, hur många som är kvar på nivån, avklarade och överhoppade lektioner, och en knapp till stigen.
 - **🔥:** om du gjort ett pass idag, de senaste sju dagarna, längsta sviten och antal dagar du pluggat.
 - **🍃:** antal ord i Lätt, Bra och Svårt, hur många ord som ska repeteras nu och listan med orden du kan.
+- **❤️:** antal ord i skrivövningen med senaste betyg Lätt, Bra, Svårt och fel, och listan med orden du kan stava.
 
 ## Lektionssidor
 - Tryck på en lektion för att se orden och meningarna.
@@ -64,7 +65,7 @@ När sista lektionen på en nivå blir gjord visas ett fönster där igelkotten 
    - **Repetition i mening:** ord du senast gav Kan inte, Svår eller Bra repeteras i en mening där ordet finns med (samma stavning, eller en böjd form med ordet som grundform, som *kafu* för *kafa*). Meningen väljs slumpvis bland lektioner du kommit till, och ordet är markerat. Visa översättning → översättningen och "Ordet: *kafa* = kaffe" visas → betygsätt ordet. Hittas ingen mening (17 av 500 ord, mest verb i jag-form som *moram*) blir det ett vanligt ordkort.
    - **Skriv på serbiska:** ord du kan (senaste betyg Bra eller Lätt när du översätter till svenska) får ett eget skrivschema, skilt från att känna igen ordet. Du ser svenskan och skriver serbiskan, med knappar för *č ć š ž đ*. Skrivuppgifter som det är dags för kommer först, sedan högst 3 ord per pass som skrivs för första gången, i lektionernas ordning. Högst 6 skrivuppgifter per pass, och de räknas in i gränsen på 15 repetitioner. Ett ord som ska skrivas visas inte samma pass från serbiska till svenska.
    - **Rättning:** stor bokstav och skiljetecken räknas inte. Saknade *č ć š ž đ* godkänns men stavningen visas. Former i noten (*Man:*, *Artigt:*, *Även:*) och ord med samma svenska betydelse godkänns. Ekavisk form godkänns med en kommentar. En bokstav fel i ett ord på minst 5 bokstäver räknas som Svår. Annars räknas det som Kan inte och ordet kommer tillbaka senare i passet.
-2. **Nya ord – 5 ord** från lektionen du är på. Efter passet går appen till nästa lektion.
+2. **Nya ord – 5 ord** från lektionen du är på. Efter passet går appen till nästa lektion. Orden testas i blandad ordning, men det ord som visades sist testas aldrig först.
    - Presentation: ordet, kyrilliska, översättning, tips.
    - Flervalsfråga: "Vad betyder ordet?" (4 alternativ). De fel svaren väljs bland ord som liknar rätt svar i stavning, tema, kategori eller ordtyp, med lite slump. Rätt → grön bock i blank 3D-stil på svaret (längst till höger, sticker upp lite ovanför fältet) och "Hur lätt var det?" i samma stil som rubriken, sedan Svår/Bra/Lätt. Fel → rött kryss på det valda svaret, rätt svar blir grönt, texten "Inte riktigt – ordet kommer tillbaka strax." i rubrikstil. Räknas som "Kan inte" och frågan kommer tillbaka sist.
 3. **Meningar – 5 meningar** med lektionens ord.
@@ -101,9 +102,9 @@ När alla lektioner är klara visas bara repetition och slumpade meningar, tills
 Intervall: 1 dag → 6 dagar → föregående × "lätthet" (startar på 2,5, minst 1,3).
 
 ## Dashboard ("Framsteg")
-- **Din utveckling:** välj 7 dagar, 30 dagar eller 3 månader.
+- **Din utveckling:** välj 7 dagar, 30 dagar eller 3 månader. Staplar och datum hålls en bit från grafens kanter, och varje datum står centrerat under sin stapel, så att första och sista datumet får plats.
 - **Grafen:** staplade staplar per dag (per vecka vid 3 månader) med alla ord i Lätt, Bra och Svårt som de såg ut när dagen slutade, i samma färger som de runda knapparna. Svårt är rosa där, men knappen Svårt i passet är kvar i gult eftersom Kunde inte är rosa. Har en tabellvy. Från och med nu sparas läget varje dag. Dagar innan dess är en uppskattning utifrån senaste betyget på varje ord.
-- **Cirklarna** står överst, ovanför Din utveckling: **Avklarade lektioner** av alla lektioner, och **Ord du lärt dig** (Lätt eller Bra) av alla ord i appen.
+- **Cirklarna** står överst, ovanför Din utveckling: **Aktivt ordförråd**, ord du kan stava (Lätt eller Bra i skrivövningen), och **Passivt ordförråd**, ord du förstår (Lätt eller Bra), båda av alla ord i appen.
 - Samma stil som Idag: kort överst med svit, lila rubrikband och runda knappar.
 - **Ditt ordförråd:** antal ord per **senaste betyg** i runda knappar: Lätt, Bra, Svårt. "Kunde inte" visas inte. Ett tryck öppnar ett fönster med orden i gruppen.
 - **Exportera/importera** framsteg som JSON-fil (backup och flytt mellan enheter).

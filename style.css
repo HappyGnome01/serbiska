@@ -251,7 +251,8 @@ button.range-btn.active { background: var(--lav); color: var(--on-lav); --edge: 
 .chart-card { text-align: left; padding: 20px 16px; }
 .chart-area { display: flex; gap: 8px; height: 170px; }
 .chart-axis { display: flex; flex-direction: column; justify-content: space-between; color: var(--muted); font-size: 0.75rem; text-align: right; min-width: 20px; margin: -7px 0; }
-.chart-plot { position: relative; flex: 1; display: flex; align-items: flex-end; gap: 3px; min-width: 0; }
+/* Staplar och datum hålls en bit från kanterna, så att första och sista datumet får plats */
+.chart-plot { position: relative; flex: 1; display: flex; align-items: flex-end; gap: 3px; min-width: 0; padding: 0 16px; }
 .chart-line { position: absolute; left: 0; right: 0; border-top: 1px solid var(--border); }
 .chart-slot { position: relative; flex: 1; height: 100%; display: flex; align-items: flex-end; justify-content: center; min-width: 0; }
 .chart-bar { width: 100%; max-width: 36px; }
@@ -265,8 +266,9 @@ button.range-btn.active { background: var(--lav); color: var(--on-lav); --edge: 
 .chart-seg.hard, .swatch.hard { background-color: var(--again); }
 .chart-seg:nth-last-child(2) { border-radius: 4px 4px 0 0; }
 .chart-tip { position: absolute; top: -8px; transform: translate(-50%, -100%); z-index: 2; background: var(--text); color: var(--bg); font-size: 0.8rem; padding: 5px 9px; border-radius: 6px; white-space: nowrap; pointer-events: none; }
-.chart-labels { display: flex; gap: 3px; margin: 6px 0 0 28px; color: var(--muted); font-size: 0.75rem; }
-.chart-labels span { flex: 1; min-width: 0; text-align: center; white-space: nowrap; }
+.chart-labels { display: flex; gap: 3px; margin: 6px 0 0 28px; padding: 0 16px; color: var(--muted); font-size: 0.75rem; }
+/* Flex centrerar datumet under stapeln även när det är bredare än stapeln */
+.chart-labels span { flex: 1; min-width: 0; display: flex; justify-content: center; white-space: nowrap; }
 .chart-legend { display: flex; gap: 16px; justify-content: center; margin-top: 12px; color: var(--muted); font-size: 0.85rem; }
 .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
 

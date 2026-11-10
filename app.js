@@ -355,6 +355,15 @@ function sentenceParts(sentence) {
   return parts;
 }
 
+// Nya ord testas i blandad ordning, men det ord du såg sist kommer inte först,
+// annars testas bara korttidsminnet
+function quizOrder(newWords) {
+  const order = shuffle(newWords);
+  const last = newWords[newWords.length - 1];
+  if (order.length > 1 && order[0] === last) [order[0], order[1]] = [order[1], order[0]];
+  return order;
+}
+
 function startSession() {
   session = buildSession();
   queue = [];
@@ -368,7 +377,7 @@ function startSession() {
   });
   shuffle(session.write).forEach(w => queue.push({ type: "write", word: w }));   //         ...och skriv ord du kan
   session.newWords.forEach(w => queue.push({ type: "intro", word: w }));         // Steg 2: nya ord
-  shuffle(session.newWords).forEach(w => queue.push({ type: "quiz", word: w }));  //         ...och testa dem
+  quizOrder(session.newWords).forEach(w => queue.push({ type: "quiz", word: w })); //         ...och testa dem
   session.sentences.forEach(s => queue.push({ type: "read", sentence: s }));     // Steg 3: läs meningar
   session.sentences.filter(s => sentenceParts(s).length >= 2)
     .forEach(s => queue.push({ type: "build", sentence: s }));                   //         ...och bygg dem
@@ -876,6 +885,12 @@ function knownWords(list = WORDS) {
   return list.filter(w => progress.words[w.id] && progress.words[w.id].lastGrade >= 4);
 }
 
+// Ord du kan stava: senaste betyget i skrivövningen var Lätt eller Bra
+function spelledWords(list = WORDS) {
+  const writing = progress.writing || {};
+  return list.filter(w => writing[w.id] && writing[w.id].lastGrade >= 4);
+}
+
 // Stigens mått: höjd i pixlar per rad, sidled i procent av bredden
 const ROAD_ROW = 98;
 const ROAD_CURRENT = 130;  // Din lektion får plats för startknappen om den hamnar under lektionen
@@ -1283,6 +1298,23 @@ function showStreakInfo() {
       h("div", { class: "word-row" }, h("span", {}, "Dagar du pluggat"), h("span", { class: "muted" }, String(days.size)))),
     h("p", { class: "muted" }, "Varje dag med ett pass eller en repetition räknas. Sviten bryts om en hel dag går utan.")],
     [["Se framsteg", "good", showDashboard]]);
+}
+
+function showSpelledInfo() {
+  const spelled = spelledWords();
+  const writing = progress.writing || {};
+  const practiced = WORDS.filter(w => writing[w.id]);
+  const byGrade = g => practiced.filter(w => writing[w.id].lastGrade === g).length;
+  showModal("Ord du kan stava", [
+    h("h2", {}, `❤️ ${spelled.length} av ${WORDS.length} ord`),
+    h("p", {}, "Du kan stava ett ord när du senast skrev det rätt och gav det Lätt eller Bra i skrivövningen."),
+    h("div", { class: "modal-list" },
+      [["Lätt", byGrade(5)], ["Bra", byGrade(4)], ["Svårt", byGrade(3)], ["Fel senast", byGrade(1)]].map(([label, count]) =>
+        h("div", { class: "word-row" }, h("span", {}, label), h("span", { class: "muted" }, String(count))))),
+    spelled.length ? h("h2", {}, "Orden") : null,
+    spelled.length ? h("div", { class: "modal-list" }, spelled.map(w =>
+      h("div", { class: "word-row" }, h("span", {}, h("em", {}, w.sr)), h("span", { class: "muted" }, w.sv)))) : null],
+    [["Träna", "good", showTraining]]);
 }
 
 function showKnownInfo() {
@@ -1721,11 +1753,9 @@ function showDashboard() {
   const seen = WORDS.filter(w => progress.words[w.id]);
   const byGrade = g => seen.filter(w => progress.words[w.id].lastGrade === g);
   const groups = [["Lätt", "easy", byGrade(5)], ["Bra", "good", byGrade(4)], ["Svårt", "hard", byGrade(3)]];
-  const lessons = allLessons();
-  const done = doneLessons();
   const rings = h("div", { class: "rings" },
-    progressRing(done.length, lessons.length, "Avklarade lektioner"),
-    progressRing(knownWords().length, WORDS.length, "Ord du lärt dig"));
+    progressRing(spelledWords().length, WORDS.length, "Aktivt ordförråd"),
+    progressRing(knownWords().length, WORDS.length, "Passivt ordförråd"));
 
   const fileInput = h("input", { type: "file", accept: ".json", class: "hidden",
     onchange: e => { if (e.target.files[0]) importProgress(e.target.files[0]); } });
@@ -1795,6 +1825,7 @@ function updateHeader() {
   lessonBtn.setAttribute("aria-label", lesson ? `Din lektion: ${lesson}. Visa mer.` : "Alla lektioner klara. Visa mer.");
   document.getElementById("streakCount").textContent = `🔥 ${streak()}`;
   document.getElementById("knownCount").textContent = `🍃 ${knownWords().length}`;
+  document.getElementById("spelledCount").textContent = `❤️ ${spelledWords().length}`;
 }
 
 // Idag: tillbaka till passet om ett pågår. Står du redan i passet frågar appen om du vill avbryta.
@@ -1819,6 +1850,7 @@ document.getElementById("navLevels").addEventListener("click", showLevelPicker);
 document.getElementById("lessonCount").addEventListener("click", showLessonInfo);
 document.getElementById("streakCount").addEventListener("click", showStreakInfo);
 document.getElementById("knownCount").addEventListener("click", showKnownInfo);
+document.getElementById("spelledCount").addEventListener("click", showSpelledInfo);
 
 // Läs in ord och meningar, visa sedan startsidan
 Promise.all([

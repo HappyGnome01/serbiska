@@ -324,3 +324,22 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 - Ord du gav Bra repeteras nu också i en mening, som ord du gett Kan inte eller Svår.
 ## [2026-11-08] publish | Repetition i mening
 - Repetition i mening, Lätt-ord bara i skrivövningen och Bygg meningen som text pushat till GitHub Pages.
+## [2026-11-08] content | baka och baba
+- *baka* fick en note: man säger också *baba*, och *baka* är en smeknamnsform (hypokorism) av *baba*.
+
+
+## [2026-11-10] feature | Stavade ord och ordningen på nya ord
+- Ny räknare ✏️ i toppraden: ord du kan stava (senaste betyg Lätt eller Bra i skrivövningen), med eget fönster och ordlista.
+- Framsteg: cirkeln Avklarade lektioner ersatt av Aktivt ordförråd (stavade ord). Ord du lärt dig heter nu Passivt ordförråd.
+- Nya ord: det ord som visades sist kommer aldrig först i testet efteråt.
+
+
+## [2026-11-10] fix | Hjärta och marginal i grafen
+- Räknaren för stavade ord har ❤️ i stället för ✏️.
+- Din utveckling: staplar och datum har marginal mot kanterna, och datumen centreras under stapeln. Sista datumet hamnade utanför vid 30 dagar.
+- Pushnotiser skippas helt.
+
+
+## [2026-11-10] publish | Stavade ord, hjärta och grafmarginal
+- Pushat till GitHub Pages: räknaren ❤️ för stavade ord, Aktivt och Passivt ordförråd, ordningen på nya ord, marginal i grafen och *baka*-noten.
+
