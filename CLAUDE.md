@@ -38,6 +38,7 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 | `apple-touch-icon.png` | Appens ikon på hemskärmen, ett igelkottansikte |
 | `tools/make-icon.ps1` | Ritar ikonen. Kör igen om den ska ändras. |
 | `tools/make-audio.ps1` | Skapar ljudfilerna med Azure Speech. Nyckeln läggs i miljövariabler, aldrig i en fil. |
+| `data/tutor.json` | Ord och meningar från onsdagslektionerna: `{ refs: [...], words: [...], sentences: [...] }`. Övas under Träna → Lektioner, ligger utanför stigen. |
 | `data/categories.json` | Kategorierna under Träna. Nya lektioner och meningar i dåtid eller framtid läggs till här. |
 | `specs.md` | Vad appen ska göra |
 | `process.md` | Hur vi arbetar, steg för steg |
@@ -55,6 +56,7 @@ En webbapp för att lära sig **serbiska** på 5–10 minuter per dag.
 **grammar.json**: `{ id, title, lessons, text, examples, check? }`, där `lessons` är lektionerna där regeln tas upp, `text` en lista med stycken och `examples` par av serbiska och svenska.
 - `grammar` i ord och meningar listar id från `grammar.json` som gäller just det ordet eller den meningen. Det är det appen visar. Koppla bara det som syns i ordet eller meningen: *danas* får ingen, *Idem kući* får `presens`, `oregelbundna` och `kuci`. Nya ord och meningar ska få fältet när de läggs till.
 - id-format: `l<lektion>-<ord-utan-diakritiska-tecken>` och `l<lektion>-s<nummer>`.
+- **tutor.json** (onsdagslektionerna): samma fält som words och sentences men utan `lesson`, och med `date` (lektionens datum, `ÅÅÅÅ-MM-DD`). id-format: `t-<ord-utan-diakritiska-tecken>` och `t-s<nummer>`. Meningar får `parts` och `"source": "lektion"`. Ord som redan finns i `words.json` läggs i `refs` (deras id) i stället för att dupliceras, så att de delar betyg och inte dyker upp två gånger i flervalsfrågor. Ge inte ett nytt ord samma svenska översättning som ett befintligt. Läraren skriver ekaviskt: gör om till ijekaviska och skriv den ekaviska formen i `note`. Översätt till svenska. Inga namn eller privata detaljer.
 - Skriv **bara latin** i `sr`. Appen gör kyrilliska.
 - En lektion = **5 ord + 5 meningar**. Meningarna använder lektionens ord och i övrigt helst bara tidigare ord.
 - **Nybörjarnivå:** korta meningar, vanliga ord, fraser som helheter ("chunks", t.ex. *drago mi je*) snarare än grammatikregler.

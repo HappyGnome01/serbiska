@@ -20,6 +20,11 @@ let WORDS = [];       // Fylls från data/words.json
 let SENTENCES = [];   // Fylls från data/sentences.json
 let GRAMMAR = [];     // Fylls från data/grammar.json
 let CATEGORIES = [];  // Fylls från data/categories.json
+// Ord och meningar från onsdagslektionerna (data/tutor.json). De ligger utanför stigen och övas under Träna.
+let TUTOR_WORDS = [];
+let TUTOR_SENTENCES = [];
+// Alla ord du kan lära dig: stigens ord plus de nya orden från onsdagslektionerna. Används i statistiken.
+let ALL_WORDS = [];
 let progress = loadProgress();
 
 let session = null;   // Dagens pass
@@ -243,7 +248,7 @@ const GRADE_KEYS = { 5: "easy", 4: "good", 3: "hard" };
 // Ord per senaste betyg just nu
 function countGrades() {
   const counts = { easy: 0, good: 0, hard: 0 };
-  WORDS.forEach(w => {
+  ALL_WORDS.forEach(w => {
     const key = progress.words[w.id] && GRADE_KEYS[progress.words[w.id].lastGrade];
     if (key) counts[key]++;
   });
@@ -255,7 +260,7 @@ function countGrades() {
 function seedGradeDays() {
   if (progress.gradeDays) return;
   const perDay = {};
-  WORDS.forEach(w => {
+  ALL_WORDS.forEach(w => {
     const p = progress.words[w.id];
     const key = p && GRADE_KEYS[p.lastGrade];
     if (!key) return;
@@ -315,9 +320,9 @@ function currentLesson() {
 // i skrivövningen för första gången. De ord du kan (Bra eller Lätt) tas i den ordning de står i lektionerna.
 function writingWords(newWords) {
   const writing = progress.writing || {};
-  const due = WORDS.filter(w => writing[w.id] && writing[w.id].due <= Date.now())
+  const due = ALL_WORDS.filter(w => writing[w.id] && writing[w.id].due <= Date.now())
     .sort((a, b) => writing[a.id].due - writing[b.id].due);
-  const starting = WORDS.filter(w => !writing[w.id] && !newWords.includes(w) &&
+  const starting = ALL_WORDS.filter(w => !writing[w.id] && !newWords.includes(w) &&
     progress.words[w.id] && progress.words[w.id].lastGrade >= 4).slice(0, NEW_WRITE_PER_SESSION);
   return [...due, ...starting].slice(0, MAX_WRITE_PER_SESSION);
 }
@@ -550,7 +555,7 @@ function withoutDiacritics(text) {
 
 // Rätta svar: ordet, ord med samma svenska betydelse och former i noten som "Man: *umoran*"
 function acceptedAnswers(w) {
-  const sameMeaning = WORDS.filter(x => x.sv === w.sv).map(x => x.sr);
+  const sameMeaning = ALL_WORDS.filter(x => x.sv === w.sv).map(x => x.sr);
   const variants = [...(w.note || "").matchAll(/(?:Man|Kvinna|Till en kvinna|Även|Artigt(?: eller till flera)?):\s*\*([^*]+)\*/g)].map(m => m[1]);
   const ekavian = [...(w.note || "").matchAll(/Ekaviskt: \*([^*]+)\*/g)].map(m => m[1]);
   return { exact: [...sameMeaning, ...variants].map(normalizeAnswer), ekavian: ekavian.map(normalizeAnswer) };
@@ -881,12 +886,12 @@ function doneLessons() {
 }
 
 // Ord du kan: senaste betyg är Lätt eller Bra
-function knownWords(list = WORDS) {
+function knownWords(list = ALL_WORDS) {
   return list.filter(w => progress.words[w.id] && progress.words[w.id].lastGrade >= 4);
 }
 
 // Ord du kan stava: senaste betyget i skrivövningen var Lätt eller Bra
-function spelledWords(list = WORDS) {
+function spelledWords(list = ALL_WORDS) {
   const writing = progress.writing || {};
   return list.filter(w => writing[w.id] && writing[w.id].lastGrade >= 4);
 }
@@ -1303,10 +1308,10 @@ function showStreakInfo() {
 function showSpelledInfo() {
   const spelled = spelledWords();
   const writing = progress.writing || {};
-  const practiced = WORDS.filter(w => writing[w.id]);
+  const practiced = ALL_WORDS.filter(w => writing[w.id]);
   const byGrade = g => practiced.filter(w => writing[w.id].lastGrade === g).length;
   showModal("Ord du kan stava", [
-    h("h2", {}, `❤️ ${spelled.length} av ${WORDS.length} ord`),
+    h("h2", {}, `❤️ ${spelled.length} av ${ALL_WORDS.length} ord`),
     h("p", {}, "Du kan stava ett ord när du senast skrev det rätt och gav det Lätt eller Bra i skrivövningen."),
     h("div", { class: "modal-list" },
       [["Lätt", byGrade(5)], ["Bra", byGrade(4)], ["Svårt", byGrade(3)], ["Fel senast", byGrade(1)]].map(([label, count]) =>
@@ -1319,10 +1324,10 @@ function showSpelledInfo() {
 
 function showKnownInfo() {
   const known = knownWords();
-  const byGrade = g => WORDS.filter(w => progress.words[w.id] && progress.words[w.id].lastGrade === g);
-  const due = WORDS.filter(w => progress.words[w.id] && progress.words[w.id].due <= Date.now()).length;
+  const byGrade = g => ALL_WORDS.filter(w => progress.words[w.id] && progress.words[w.id].lastGrade === g);
+  const due = ALL_WORDS.filter(w => progress.words[w.id] && progress.words[w.id].due <= Date.now()).length;
   showModal("Ord du kan", [
-    h("h2", {}, `🍃 ${known.length} av ${WORDS.length} ord`),
+    h("h2", {}, `🍃 ${known.length} av ${ALL_WORDS.length} ord`),
     h("p", {}, "Du kan ett ord när du senast gav det Lätt eller Bra."),
     h("div", { class: "modal-list" },
       [["Lätt", byGrade(5).length], ["Bra", byGrade(4).length], ["Svårt", byGrade(3).length], ["Att repetera nu", due]].map(([label, count]) =>
@@ -1586,7 +1591,7 @@ function categorySentences(category) {
 
 // Ord du senast tyckte var svåra eller inte kunde. Bara ord du betygsatt räknas.
 function hardWords() {
-  return WORDS.filter(w => progress.words[w.id] && [1, 3].includes(progress.words[w.id].lastGrade));
+  return ALL_WORDS.filter(w => progress.words[w.id] && [1, 3].includes(progress.words[w.id].lastGrade));
 }
 
 // Hur mycket du gjort: ord du kan, eller meningar du byggt rätt när kategorin bara har meningar
@@ -1621,12 +1626,19 @@ function trainButton(title, icon, share, detail, start) {
 function showTraining() {
   setNav("train");
   const hard = hardWords();
-  const graded = WORDS.filter(w => progress.words[w.id] && progress.words[w.id].lastGrade).length;
+  const graded = ALL_WORDS.filter(w => progress.words[w.id] && progress.words[w.id].lastGrade).length;
   const groups = [...new Set(CATEGORIES.map(c => c.group))];
+  const tutorKnown = knownWords(TUTOR_WORDS).length;
+  const tutorTotal = TUTOR_WORDS.length || TUTOR_SENTENCES.length;
   fillMain(
-    h("div", { class: "section-title" }, "Svåra ord"),
-    h("div", { class: "train-grid" }, trainButton("Svåra ord", "🌵", graded ? 1 - hard.length / graded : 0,
-      `${hard.length} ord`, hard.length ? () => startTraining(hard, []) : null)),
+    h("div", { class: "section-title" }, "Extralektioner"),
+    h("div", { class: "train-grid" },
+      trainButton("Svåra ord", "🌵", graded ? 1 - hard.length / graded : 0,
+        `${hard.length} ord`, hard.length ? () => startTraining(hard, []) : null),
+      trainButton("Lektioner", "🎓", TUTOR_WORDS.length ? tutorKnown / TUTOR_WORDS.length : 0,
+        TUTOR_WORDS.length ? `${tutorKnown} av ${TUTOR_WORDS.length} ord`
+          : TUTOR_SENTENCES.length ? `${TUTOR_SENTENCES.length} meningar` : "Inga ord än",
+        tutorTotal ? () => startTraining(TUTOR_WORDS, TUTOR_SENTENCES) : null)),
     ...groups.map(group => [
       h("div", { class: "section-title" }, group),
       h("div", { class: "train-grid" }, CATEGORIES.filter(c => c.group === group).map(c => {
@@ -1750,12 +1762,12 @@ function progressSection() {
 
 function showDashboard() {
   setNav("dash");
-  const seen = WORDS.filter(w => progress.words[w.id]);
+  const seen = ALL_WORDS.filter(w => progress.words[w.id]);
   const byGrade = g => seen.filter(w => progress.words[w.id].lastGrade === g);
   const groups = [["Lätt", "easy", byGrade(5)], ["Bra", "good", byGrade(4)], ["Svårt", "hard", byGrade(3)]];
   const rings = h("div", { class: "rings" },
-    progressRing(spelledWords().length, WORDS.length, "Aktivt ordförråd"),
-    progressRing(knownWords().length, WORDS.length, "Passivt ordförråd"));
+    progressRing(spelledWords().length, ALL_WORDS.length, "Aktivt ordförråd"),
+    progressRing(knownWords().length, ALL_WORDS.length, "Passivt ordförråd"));
 
   const fileInput = h("input", { type: "file", accept: ".json", class: "hidden",
     onchange: e => { if (e.target.files[0]) importProgress(e.target.files[0]); } });
@@ -1858,10 +1870,15 @@ Promise.all([
   fetch("data/sentences.json", { cache: "no-cache" }).then(r => r.json()),
   fetch("data/grammar.json", { cache: "no-cache" }).then(r => r.json()).catch(() => []),  // Appen fungerar utan
   fetch("data/categories.json", { cache: "no-cache" }).then(r => r.json()).catch(() => []),
-  fetch("data/audio.json", { cache: "no-cache" }).then(r => r.json()).catch(() => [])
-]).then(([words, sentences, grammar, categories, audio]) => {
+  fetch("data/audio.json", { cache: "no-cache" }).then(r => r.json()).catch(() => []),
+  fetch("data/tutor.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({}))
+]).then(([words, sentences, grammar, categories, audio, tutor]) => {
   AUDIO = new Set(audio);
   WORDS = words;
+  // refs pekar på ord som redan finns i appen, så att de delar betyg och inte blir dubbletter
+  TUTOR_WORDS = [...(tutor.refs || []).map(id => words.find(w => w.id === id)).filter(Boolean), ...(tutor.words || [])];
+  TUTOR_SENTENCES = tutor.sentences || [];
+  ALL_WORDS = [...words, ...(tutor.words || [])];
   SENTENCES = sentences;
   GRAMMAR = grammar;
   CATEGORIES = categories;

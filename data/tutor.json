@@ -1,0 +1,481 @@
+{
+  "refs": [
+    "l51-kakav", "l20-dan", "l10-lijepo", "l45-svidja-mi-se", "l10-volim", "l31-jedem",
+    "l28-jaje", "l6-mlijeko", "l28-meso", "l29-voce", "l29-povrce",
+    "l26-soba", "l26-kuhinja", "l26-kupatilo", "l26-vrata", "l26-prozor",
+    "l27-sto", "l27-stolica", "l27-krevet",
+    "l69-tanjir", "l69-kasika", "l69-noz", "l69-viljuska",
+    "l31-kuvam", "l28-supa", "l31-rucak", "l13-kuca", "l40-napolju", "l11-imam", "l38-auto", "l42-pisem",
+    "l64-necu", "l2-izvini", "l54-izvinite", "l3-razumijem", "l85-ne-razumijem", "l71-odlicno", "l1-dobro",
+    "l1-kako-si", "l69-casa", "l70-solja", "l6-kafa", "l6-caj", "l80-cipele", "l30-secer", "l30-so",
+    "l9-gdje", "l10-ovdje", "l50-bas", "l71-zanimljivo", "l33-dobar"
+  ],
+  "words": [
+    { "id": "t-spavati", "date": "2026-11-11", "sr": "spavati", "sv": "sova", "note": "*spavam* = jag sover, *spavala sam* = jag sov.", "grammar": ["presens"] },
+    { "id": "t-jesti", "date": "2026-11-11", "sr": "jesti", "sv": "äta", "note": "*jedem* = jag äter. Oregelbundet verb.", "grammar": ["oregelbundna"] },
+    { "id": "t-stresan", "date": "2026-11-11", "sr": "stresan", "sv": "stressig", "note": "*stresan dan* (m), *stresna sedmica* (f), *bilo je stresno* (n).", "grammar": ["adjektiv"] },
+    { "id": "t-opusteno", "date": "2026-11-11", "sr": "opušteno", "sv": "avslappnat, lugnt", "note": "*Bilo je opušteno* = det var avslappnat.", "grammar": ["adjektiv"] },
+    { "id": "t-zabavno", "date": "2026-11-11", "sr": "zabavno", "sv": "roligt", "note": "*Bilo je zabavno* = det var roligt.", "grammar": ["adjektiv"] },
+    { "id": "t-sprat", "date": "2026-11-11", "sr": "sprat", "sv": "våning", "note": "*na spratu* = på våningen." },
+    { "id": "t-nizi-sprat", "date": "2026-11-11", "sr": "niži sprat", "sv": "nedre våningen", "grammar": ["adjektiv"] },
+    { "id": "t-visi-sprat", "date": "2026-11-11", "sr": "viši sprat", "sv": "övre våningen", "grammar": ["adjektiv"] },
+    { "id": "t-srednji-sprat", "date": "2026-11-11", "sr": "srednji sprat", "sv": "mellanvåningen", "grammar": ["adjektiv"] },
+    { "id": "t-prvi", "date": "2026-11-11", "sr": "prvi", "sv": "första", "note": "*prvi sprat* = första våningen. Kvinnligt: *prva*.", "grammar": ["adjektiv"] },
+    { "id": "t-drugi", "date": "2026-11-11", "sr": "drugi", "sv": "andra", "note": "*drugi sprat* = andra våningen. Betyder också 'en annan'.", "grammar": ["adjektiv"] },
+    { "id": "t-treci", "date": "2026-11-11", "sr": "treći", "sv": "tredje", "grammar": ["adjektiv"] },
+    { "id": "t-cetvrti", "date": "2026-11-11", "sr": "četvrti", "sv": "fjärde", "grammar": ["adjektiv"] },
+    { "id": "t-peti", "date": "2026-11-11", "sr": "peti", "sv": "femte", "grammar": ["adjektiv"] },
+    { "id": "t-stepenice", "date": "2026-11-11", "sr": "stepenice", "sv": "trappa", "note": "Finns bara i plural, som *vrata*.", "grammar": ["plural"] },
+    { "id": "t-dnevna-soba", "date": "2026-11-11", "sr": "dnevna soba", "sv": "vardagsrum", "note": "Ordagrant: dagrum. *u dnevnoj sobi* = i vardagsrummet.", "grammar": ["lokativ"] },
+    { "id": "t-spavaca-soba", "date": "2026-11-11", "sr": "spavaća soba", "sv": "sovrum", "note": "*u spavaćoj sobi* = i sovrummet.", "grammar": ["lokativ"] },
+    { "id": "t-trpezarija", "date": "2026-11-11", "sr": "trpezarija", "sv": "matsal", "note": "*u trpezariji* = i matsalen.", "grammar": ["lokativ"] },
+    { "id": "t-hodnik", "date": "2026-11-11", "sr": "hodnik", "sv": "hall, korridor", "note": "*u hodniku* = i hallen.", "grammar": ["lokativ"] },
+    { "id": "t-fotelja", "date": "2026-11-11", "sr": "fotelja", "sv": "fåtölj" },
+    { "id": "t-sofa", "date": "2026-11-11", "sr": "sofa", "sv": "soffa", "note": "*Kauč* betyder nästan samma sak." },
+    { "id": "t-kauc", "date": "2026-11-11", "sr": "kauč", "sv": "soffa (kauč)", "note": "Nästan samma som *sofa*. Fråga gärna vad skillnaden är.", "check": true },
+    { "id": "t-frizider", "date": "2026-11-11", "sr": "frižider", "sv": "kylskåp" },
+    { "id": "t-sporet", "date": "2026-11-11", "sr": "šporet", "sv": "spis" },
+    { "id": "t-masina-za-sudove", "date": "2026-11-11", "sr": "mašina za sudove", "sv": "diskmaskin", "note": "Ordagrant: maskin för disk." },
+    { "id": "t-sudopera", "date": "2026-11-11", "sr": "sudopera", "sv": "diskho" },
+    { "id": "t-sudovi", "date": "2026-11-11", "sr": "sudovi", "sv": "kärl (flera)", "note": "Plural av *sud* (kärl). *prati sudove* = diska. *Suđe* betyder disk, porslin.", "grammar": ["plural"] },
+    { "id": "t-escajg", "date": "2026-11-11", "sr": "escajg", "sv": "bestick", "note": "*kašike, noževi i viljuške* = skedar, knivar och gafflar." },
+    { "id": "t-otvoriti", "date": "2026-11-11", "sr": "otvoriti", "sv": "öppna", "note": "*Otvori!* = öppna! *otvorim* = jag öppnar.", "grammar": ["imperativ"] },
+    { "id": "t-zatvoriti", "date": "2026-11-11", "sr": "zatvoriti", "sv": "stänga", "note": "*Zatvori!* = stäng! *zatvorim* = jag stänger.", "grammar": ["imperativ"] },
+    { "id": "t-zakljucan", "date": "2026-11-11", "sr": "zaključan", "sv": "låst", "note": "*Vrata su zaključana* (plural, eftersom *vrata* är plural).", "grammar": ["adjektiv"] },
+    { "id": "t-voljela-bih", "date": "2026-11-11", "sr": "voljela bih", "sv": "jag skulle vilja", "note": "Kvinnlig form. En man säger *volio bih*. Ekaviskt: *volela bih*." },
+    { "id": "t-zeljela-bih", "date": "2026-11-11", "sr": "željela bih", "sv": "jag skulle önska", "note": "Kvinnlig form. En man säger *želio bih*. Ekaviskt: *želela bih*." },
+    { "id": "t-bilo-bi-lijepo", "date": "2026-11-11", "sr": "bilo bi lijepo", "sv": "det vore fint", "note": "Ekaviskt: *bilo bi lepo*." },
+    { "id": "t-putovati", "date": "2026-11-11", "sr": "putovati", "sv": "resa", "note": "*putujem* = jag reser.", "grammar": ["presens"] },
+    { "id": "t-negdje", "date": "2026-11-11", "sr": "negdje", "sv": "någonstans", "note": "Ekaviskt: *negde*." },
+    { "id": "t-praviti", "date": "2026-11-11", "sr": "praviti", "sv": "göra, laga", "note": "*pravim ručak* = jag lagar lunch." },
+    { "id": "t-spremati", "date": "2026-11-11", "sr": "spremati", "sv": "laga till, förbereda", "note": "*spremam hranu* = jag lagar mat." },
+    { "id": "t-hrana", "date": "2026-11-11", "sr": "hrana", "sv": "mat, föda", "note": "*hrana → hranu* som objekt.", "grammar": ["ackusativ"] },
+    { "id": "t-kupiti", "date": "2026-11-11", "sr": "kupiti", "sv": "köpa", "note": "*da kupim* = att (jag) köper." },
+    { "id": "t-plac", "date": "2026-11-11", "sr": "plac", "sv": "tomt (mark)" },
+    { "id": "t-stan", "date": "2026-11-11", "sr": "stan", "sv": "lägenhet" },
+    { "id": "t-setati", "date": "2026-11-11", "sr": "šetati", "sv": "promenera", "note": "*šetam* = jag promenerar." },
+    { "id": "t-kabriolet", "date": "2026-11-11", "sr": "kabriolet", "sv": "cabriolet", "note": "Också *auto kabriolet*." },
+    { "id": "t-olovka", "date": "2026-11-11", "sr": "olovka", "sv": "penna", "note": "*olovkom* = med penna.", "grammar": ["instrumental"] },
+    { "id": "t-crtati", "date": "2026-11-11", "sr": "crtati", "sv": "rita", "note": "*crtam* = jag ritar." },
+    { "id": "t-govoriti", "date": "2026-11-11", "sr": "govoriti", "sv": "prata, tala", "note": "*govoriš* = du pratar, *govorite* = ni pratar." },
+    { "id": "t-sporije", "date": "2026-11-11", "sr": "sporije", "sv": "långsammare", "note": "Av *sporo* (långsamt)." },
+    { "id": "t-koliko-je-sati", "date": "2026-11-11", "sr": "koliko je sati?", "sv": "vad är klockan?", "note": "Ordagrant: hur många timmar är det?", "grammar": ["fragor"] },
+    { "id": "t-onako", "date": "2026-11-11", "sr": "onako", "sv": "sådär", "note": "Svar på *Kako si?* när det varken är bra eller dåligt." },
+    { "id": "t-lose", "date": "2026-11-11", "sr": "loše", "sv": "dåligt" },
+    { "id": "t-kako-ste", "date": "2026-11-11", "sr": "kako ste?", "sv": "hur mår ni?", "note": "Till flera, eller artigt till en person.", "grammar": ["ti-vi"] },
+    { "id": "t-dodati", "date": "2026-11-11", "sr": "dodati", "sv": "räcka, skicka (vid bordet)", "note": "*Možeš li da mi dodaš …?* = kan du räcka mig …?" },
+    { "id": "t-bluza", "date": "2026-11-11", "sr": "bluza", "sv": "blus, tröja" },
+    { "id": "t-pantalone", "date": "2026-11-11", "sr": "pantalone", "sv": "byxor", "note": "Plural, som på svenska.", "grammar": ["plural"] },
+    { "id": "t-papuce", "date": "2026-11-11", "sr": "papuče", "sv": "tofflor", "grammar": ["plural"] },
+    { "id": "t-sandale", "date": "2026-11-11", "sr": "sandale", "sv": "sandaler", "grammar": ["plural"] },
+    { "id": "t-med", "date": "2026-11-11", "sr": "med", "sv": "honung" },
+    { "id": "t-dzem", "date": "2026-11-11", "sr": "džem", "sv": "sylt", "note": "*džem, pekmez* och *marmelada* används alla om marmelad och sylt." },
+    { "id": "t-pekmez", "date": "2026-11-11", "sr": "pekmez", "sv": "fruktmos, marmelad", "note": "Tjock kokt frukt, ofta plommon.", "check": true },
+    { "id": "t-marmelada", "date": "2026-11-11", "sr": "marmelada", "sv": "marmelad" },
+    { "id": "t-imas-li", "date": "2026-11-11", "sr": "imaš li", "sv": "har du (i en fråga)", "note": "*Imaš li šećer?* = har du socker?", "grammar": ["fragor"] },
+    { "id": "t-fin", "date": "2026-11-11", "sr": "fin", "sv": "fin, trevlig", "note": "*Baš ste fini!* = ni är så fina!", "grammar": ["adjektiv"] },
+    { "id": "t-ljubazan", "date": "2026-11-11", "sr": "ljubazan", "sv": "vänlig, snäll", "note": "*Baš ste ljubazni!* = ni är så snälla!", "grammar": ["adjektiv"] },
+    { "id": "t-covjek", "date": "2026-11-11", "sr": "čovjek", "sv": "människa, man", "note": "Ekaviskt: *čovek*. *dobar čovjek* = en god människa, om både män och kvinnor." }
+  ],
+  "sentences": [
+    { "id": "t-s1", "date": "2026-11-11", "sr": "Kakav ti je bio dan?", "sv": "Hur var din dag?", "source": "lektion", "grammar": ["fragor", "korta-ord", "datid"],
+      "parts": [
+        { "sr": "Kakav", "sv": "hurdan, vilken sorts", "form": "nominativ singular", "base": "kakav", "gender": "m", "note": "Manlig form eftersom *dan* är maskulinum.", "grammar": ["fragor"] },
+        { "sr": "ti", "sv": "för dig", "form": "dativ, kort form", "base": "ti", "note": "Kort form av *tebi*.", "grammar": ["korta-ord"] },
+        { "sr": "je bio", "sv": "var", "form": "dåtid, han/den-form (manlig)", "base": "biti", "gender": "m", "grammar": ["datid"] },
+        { "sr": "dan", "sv": "dag", "form": "nominativ singular", "base": "dan", "gender": "m" }
+      ] },
+    { "id": "t-s2", "date": "2026-11-11", "sr": "Kakav vam je bio dan?", "sv": "Hur var er dag?", "note": "*vam* till flera, eller artigt till en person.", "source": "lektion", "grammar": ["fragor", "korta-ord", "ti-vi", "datid"],
+      "parts": [
+        { "sr": "Kakav", "sv": "hurdan, vilken sorts", "form": "nominativ singular", "base": "kakav", "gender": "m", "grammar": ["fragor"] },
+        { "sr": "vam", "sv": "för er", "form": "dativ, kort form", "base": "vi", "note": "Kort form av *vama*.", "grammar": ["korta-ord", "ti-vi"] },
+        { "sr": "je bio", "sv": "var", "form": "dåtid, han/den-form (manlig)", "base": "biti", "gender": "m", "grammar": ["datid"] },
+        { "sr": "dan", "sv": "dag", "form": "nominativ singular", "base": "dan", "gender": "m" }
+      ] },
+    { "id": "t-s3", "date": "2026-11-11", "sr": "Kako ste spavali?", "sv": "Hur sov ni?", "note": "Till en kvinna: *Kako si spavala?* Till en man: *Kako si spavao?*", "source": "lektion", "grammar": ["fragor", "datid", "ti-vi"],
+      "parts": [
+        { "sr": "Kako", "sv": "hur", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "ste spavali", "sv": "sov ni", "form": "dåtid, ni-form (män eller blandad grupp)", "base": "spavati", "gender": "m", "grammar": ["datid", "ti-vi"] }
+      ] },
+    { "id": "t-s4", "date": "2026-11-11", "sr": "Bilo je stresno.", "sv": "Det var stressigt.", "source": "lektion", "grammar": ["datid", "adjektiv"],
+      "parts": [
+        { "sr": "Bilo je", "sv": "det var", "form": "dåtid, det-form (neutral)", "base": "biti", "gender": "n", "grammar": ["datid"] },
+        { "sr": "stresno", "sv": "stressigt", "form": "nominativ singular", "base": "stresan", "gender": "n", "grammar": ["adjektiv"] }
+      ] },
+    { "id": "t-s5", "date": "2026-11-11", "sr": "Bio je stresan dan.", "sv": "Det var en stressig dag.", "source": "lektion", "grammar": ["datid", "adjektiv"],
+      "parts": [
+        { "sr": "Bio je", "sv": "det var", "form": "dåtid, han/den-form (manlig)", "base": "biti", "gender": "m", "note": "Manlig form eftersom *dan* är maskulinum.", "grammar": ["datid"] },
+        { "sr": "stresan", "sv": "stressig", "form": "nominativ singular", "base": "stresan", "gender": "m", "grammar": ["adjektiv"] },
+        { "sr": "dan", "sv": "dag", "form": "nominativ singular", "base": "dan", "gender": "m" }
+      ] },
+    { "id": "t-s6", "date": "2026-11-11", "sr": "Bilo je lijepo.", "sv": "Det var fint.", "note": "Ekaviskt: *Bilo je lepo.*", "source": "lektion", "grammar": ["datid", "adjektiv"],
+      "parts": [
+        { "sr": "Bilo je", "sv": "det var", "form": "dåtid, det-form (neutral)", "base": "biti", "gender": "n", "grammar": ["datid"] },
+        { "sr": "lijepo", "sv": "fint", "form": "nominativ singular", "base": "lijep", "gender": "n", "note": "Ekaviskt: *lepo*.", "grammar": ["adjektiv"] }
+      ] },
+    { "id": "t-s7", "date": "2026-11-11", "sr": "Bilo je opušteno.", "sv": "Det var avslappnat.", "source": "lektion", "grammar": ["datid", "adjektiv"],
+      "parts": [
+        { "sr": "Bilo je", "sv": "det var", "form": "dåtid, det-form (neutral)", "base": "biti", "gender": "n", "grammar": ["datid"] },
+        { "sr": "opušteno", "sv": "avslappnat", "form": "nominativ singular", "base": "opušten", "gender": "n", "grammar": ["adjektiv"] }
+      ] },
+    { "id": "t-s8", "date": "2026-11-11", "sr": "Bilo je zabavno.", "sv": "Det var roligt.", "source": "lektion", "grammar": ["datid", "adjektiv"],
+      "parts": [
+        { "sr": "Bilo je", "sv": "det var", "form": "dåtid, det-form (neutral)", "base": "biti", "gender": "n", "grammar": ["datid"] },
+        { "sr": "zabavno", "sv": "roligt", "form": "nominativ singular", "base": "zabavan", "gender": "n", "grammar": ["adjektiv"] }
+      ] },
+    { "id": "t-s9", "date": "2026-11-11", "sr": "Lijepo sam spavala.", "sv": "Jag sov gott.", "note": "Kvinnlig form. En man säger *Lijepo sam spavao*. Ekaviskt: *Lepo sam spavala.*", "alt": ["Spavala sam lijepo."], "source": "lektion", "grammar": ["datid"],
+      "parts": [
+        { "sr": "Lijepo", "sv": "gott, bra", "form": "oböjligt", "note": "Ekaviskt: *lepo*." },
+        { "sr": "sam spavala", "sv": "jag sov", "form": "dåtid, jag-form (kvinnlig)", "base": "spavati", "gender": "f", "grammar": ["datid"] }
+      ] },
+    { "id": "t-s10", "date": "2026-11-11", "sr": "Sviđa mi se.", "sv": "Jag gillar det.", "note": "Ordagrant: det behagar mig. Med *to*: *To mi se sviđa.*", "source": "lektion", "grammar": ["korta-ord"],
+      "parts": [
+        { "sr": "Sviđa", "sv": "behagar", "form": "presens, han/hon/det-form", "base": "sviđati se", "grammar": ["presens"] },
+        { "sr": "mi", "sv": "för mig", "form": "dativ, kort form", "base": "ja", "note": "Kort form av *meni*.", "grammar": ["korta-ord"] },
+        { "sr": "se", "sv": "(hör till verbet)", "form": "oböjligt", "note": "Verbet heter *sviđati se*.", "grammar": ["korta-ord"] }
+      ] },
+    { "id": "t-s11", "date": "2026-11-11", "sr": "Volim da jedem jaja.", "sv": "Jag tycker om att äta ägg.", "note": "*jaje → jaja* (plural). I Bosnien hörs också *volim jesti*.", "source": "lektion", "grammar": ["da-verb", "presens", "plural"],
+      "parts": [
+        { "sr": "Volim", "sv": "jag tycker om", "form": "presens, jag-form", "base": "voljeti", "note": "Ekaviskt: *voleti*.", "grammar": ["presens"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "jedem", "sv": "äta (jag äter)", "form": "presens, jag-form", "base": "jesti", "grammar": ["presens", "oregelbundna"] },
+        { "sr": "jaja", "sv": "ägg", "form": "ackusativ plural", "base": "jaje", "gender": "n", "grammar": ["ackusativ", "plural"] }
+      ] },
+    { "id": "t-s12", "date": "2026-11-11", "sr": "Volim da jedem voće i povrće.", "sv": "Jag tycker om att äta frukt och grönsaker.", "source": "lektion", "check": true, "grammar": ["da-verb", "presens"],
+      "parts": [
+        { "sr": "Volim", "sv": "jag tycker om", "form": "presens, jag-form", "base": "voljeti", "grammar": ["presens"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "jedem", "sv": "äta (jag äter)", "form": "presens, jag-form", "base": "jesti", "grammar": ["presens", "oregelbundna"] },
+        { "sr": "voće", "sv": "frukt", "form": "ackusativ singular", "base": "voće", "gender": "n", "note": "Samma som grundformen." },
+        { "sr": "i", "sv": "och", "form": "oböjligt" },
+        { "sr": "povrće", "sv": "grönsaker", "form": "ackusativ singular", "base": "povrće", "gender": "n", "note": "Ett ord i singular på serbiska, som *frukt*." }
+      ] },
+    { "id": "t-s13", "date": "2026-11-11", "sr": "Ne jedem meso.", "sv": "Jag äter inte kött.", "source": "lektion", "check": true, "grammar": ["negation", "presens"],
+      "parts": [
+        { "sr": "Ne", "sv": "inte", "form": "oböjligt", "grammar": ["negation"] },
+        { "sr": "jedem", "sv": "jag äter", "form": "presens, jag-form", "base": "jesti", "grammar": ["presens", "oregelbundna"] },
+        { "sr": "meso", "sv": "kött", "form": "ackusativ singular", "base": "meso", "gender": "n", "note": "Samma som grundformen." }
+      ] },
+    { "id": "t-s14", "date": "2026-11-11", "sr": "U kuhinji su frižider, šporet, mašina za sudove i sudopera.", "sv": "I köket finns kylskåp, spis, diskmaskin och diskho.", "source": "lektion", "grammar": ["lokativ", "biti"],
+      "parts": [
+        { "sr": "U kuhinji", "sv": "i köket", "form": "lokativ singular", "base": "kuhinja", "gender": "f", "grammar": ["lokativ", "vart-var"] },
+        { "sr": "su", "sv": "finns, är (de)", "form": "presens, de-form", "base": "biti", "grammar": ["biti"] },
+        { "sr": "frižider", "sv": "kylskåp", "form": "nominativ singular", "base": "frižider", "gender": "m" },
+        { "sr": "šporet", "sv": "spis", "form": "nominativ singular", "base": "šporet", "gender": "m" },
+        { "sr": "mašina za sudove", "sv": "diskmaskin", "form": "nominativ singular", "base": "mašina za sudove", "gender": "f", "note": "*sudove* är ackusativ plural av *sud* (kärl), efter *za*." },
+        { "sr": "i", "sv": "och", "form": "oböjligt" },
+        { "sr": "sudopera", "sv": "diskho", "form": "nominativ singular", "base": "sudopera", "gender": "f" }
+      ] },
+    { "id": "t-s15", "date": "2026-11-11", "sr": "Ja sam u sobi.", "sv": "Jag är i rummet.", "source": "lektion", "grammar": ["biti", "lokativ"],
+      "parts": [
+        { "sr": "Ja", "sv": "jag", "form": "nominativ", "base": "ja" },
+        { "sr": "sam", "sv": "är", "form": "presens, jag-form", "base": "biti", "grammar": ["biti"] },
+        { "sr": "u sobi", "sv": "i rummet", "form": "lokativ singular", "base": "soba", "gender": "f", "grammar": ["lokativ", "vart-var"] }
+      ] },
+    { "id": "t-s16", "date": "2026-11-11", "sr": "Ja sam u kuhinji.", "sv": "Jag är i köket.", "source": "lektion", "grammar": ["biti", "lokativ"],
+      "parts": [
+        { "sr": "Ja", "sv": "jag", "form": "nominativ", "base": "ja" },
+        { "sr": "sam", "sv": "är", "form": "presens, jag-form", "base": "biti", "grammar": ["biti"] },
+        { "sr": "u kuhinji", "sv": "i köket", "form": "lokativ singular", "base": "kuhinja", "gender": "f", "grammar": ["lokativ", "vart-var"] }
+      ] },
+    { "id": "t-s17", "date": "2026-11-11", "sr": "Ja sam u kupatilu.", "sv": "Jag är i badrummet.", "source": "lektion", "grammar": ["biti", "lokativ"],
+      "parts": [
+        { "sr": "Ja", "sv": "jag", "form": "nominativ", "base": "ja" },
+        { "sr": "sam", "sv": "är", "form": "presens, jag-form", "base": "biti", "grammar": ["biti"] },
+        { "sr": "u kupatilu", "sv": "i badrummet", "form": "lokativ singular", "base": "kupatilo", "gender": "n", "grammar": ["lokativ", "vart-var"] }
+      ] },
+    { "id": "t-s18", "date": "2026-11-11", "sr": "Ja sam u hodniku.", "sv": "Jag är i hallen.", "source": "lektion", "grammar": ["biti", "lokativ"],
+      "parts": [
+        { "sr": "Ja", "sv": "jag", "form": "nominativ", "base": "ja" },
+        { "sr": "sam", "sv": "är", "form": "presens, jag-form", "base": "biti", "grammar": ["biti"] },
+        { "sr": "u hodniku", "sv": "i hallen", "form": "lokativ singular", "base": "hodnik", "gender": "m", "grammar": ["lokativ", "vart-var"] }
+      ] },
+    { "id": "t-s19", "date": "2026-11-11", "sr": "Ovo je drugi sprat.", "sv": "Det här är andra våningen.", "check": true, "grammar": ["biti", "adjektiv"],
+      "parts": [
+        { "sr": "Ovo", "sv": "det här", "form": "nominativ singular", "base": "ovaj", "gender": "n" },
+        { "sr": "je", "sv": "är", "form": "presens, han/hon/det-form", "base": "biti", "grammar": ["biti"] },
+        { "sr": "drugi", "sv": "andra", "form": "nominativ singular", "base": "drugi", "gender": "m", "grammar": ["adjektiv"] },
+        { "sr": "sprat", "sv": "våning", "form": "nominativ singular", "base": "sprat", "gender": "m" }
+      ] },
+    { "id": "t-s20", "date": "2026-11-11", "sr": "Otvori prozor, molim te.", "sv": "Öppna fönstret, snälla.", "source": "lektion", "grammar": ["imperativ", "korta-ord"],
+      "parts": [
+        { "sr": "Otvori", "sv": "öppna", "form": "imperativ, du-form", "base": "otvoriti", "grammar": ["imperativ"] },
+        { "sr": "prozor", "sv": "fönstret", "form": "ackusativ singular", "base": "prozor", "gender": "m", "note": "Samma som grundformen, eftersom *prozor* är en sak.", "grammar": ["ackusativ"] },
+        { "sr": "molim te", "sv": "snälla (till en du säger du till)", "form": "presens, jag-form", "base": "moliti", "note": "Ordagrant: jag ber dig.", "grammar": ["korta-ord"] }
+      ] },
+    { "id": "t-s21", "date": "2026-11-11", "sr": "Zatvori vrata, molim te.", "sv": "Stäng dörren, snälla.", "source": "lektion", "grammar": ["imperativ", "korta-ord"],
+      "parts": [
+        { "sr": "Zatvori", "sv": "stäng", "form": "imperativ, du-form", "base": "zatvoriti", "grammar": ["imperativ"] },
+        { "sr": "vrata", "sv": "dörren", "form": "ackusativ plural", "base": "vrata", "gender": "n", "note": "*Vrata* finns bara i plural.", "grammar": ["ackusativ", "plural"] },
+        { "sr": "molim te", "sv": "snälla (till en du säger du till)", "form": "presens, jag-form", "base": "moliti", "note": "Ordagrant: jag ber dig.", "grammar": ["korta-ord"] }
+      ] },
+    { "id": "t-s22", "date": "2026-11-11", "sr": "Da li da otvorim prozor?", "sv": "Ska jag öppna fönstret?", "source": "lektion", "grammar": ["fragor", "da-verb", "presens"],
+      "parts": [
+        { "sr": "Da li", "sv": "(gör meningen till en fråga)", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "note": "*Da li da …?* = ska jag …?", "grammar": ["da-verb"] },
+        { "sr": "otvorim", "sv": "öppna (jag öppnar)", "form": "presens, jag-form", "base": "otvoriti", "grammar": ["presens"] },
+        { "sr": "prozor", "sv": "fönstret", "form": "ackusativ singular", "base": "prozor", "gender": "m", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s23", "date": "2026-11-11", "sr": "Da li da zatvorim vrata?", "sv": "Ska jag stänga dörren?", "source": "lektion", "grammar": ["fragor", "da-verb", "presens"],
+      "parts": [
+        { "sr": "Da li", "sv": "(gör meningen till en fråga)", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "note": "*Da li da …?* = ska jag …?", "grammar": ["da-verb"] },
+        { "sr": "zatvorim", "sv": "stänga (jag stänger)", "form": "presens, jag-form", "base": "zatvoriti", "grammar": ["presens"] },
+        { "sr": "vrata", "sv": "dörren", "form": "ackusativ plural", "base": "vrata", "gender": "n", "grammar": ["ackusativ", "plural"] }
+      ] },
+    { "id": "t-s24", "date": "2026-11-11", "sr": "Možeš li da otvoriš prozor?", "sv": "Kan du öppna fönstret?", "source": "lektion", "grammar": ["fragor", "da-verb", "oregelbundna"],
+      "parts": [
+        { "sr": "Možeš", "sv": "du kan", "form": "presens, du-form", "base": "moći", "grammar": ["presens", "oregelbundna"] },
+        { "sr": "li", "sv": "gör meningen till en fråga", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "otvoriš", "sv": "öppna (du öppnar)", "form": "presens, du-form", "base": "otvoriti", "grammar": ["presens"] },
+        { "sr": "prozor", "sv": "fönstret", "form": "ackusativ singular", "base": "prozor", "gender": "m", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s25", "date": "2026-11-11", "sr": "Možeš li da zatvoriš vrata?", "sv": "Kan du stänga dörren?", "source": "lektion", "grammar": ["fragor", "da-verb", "oregelbundna"],
+      "parts": [
+        { "sr": "Možeš", "sv": "du kan", "form": "presens, du-form", "base": "moći", "grammar": ["presens", "oregelbundna"] },
+        { "sr": "li", "sv": "gör meningen till en fråga", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "zatvoriš", "sv": "stänga (du stänger)", "form": "presens, du-form", "base": "zatvoriti", "grammar": ["presens"] },
+        { "sr": "vrata", "sv": "dörren", "form": "ackusativ plural", "base": "vrata", "gender": "n", "grammar": ["ackusativ", "plural"] }
+      ] },
+    { "id": "t-s26", "date": "2026-11-11", "sr": "Da li su vrata zaključana?", "sv": "Är dörren låst?", "source": "lektion", "grammar": ["fragor", "biti", "plural"],
+      "parts": [
+        { "sr": "Da li", "sv": "(gör meningen till en fråga)", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "su", "sv": "är", "form": "presens, de-form", "base": "biti", "note": "Plural, eftersom *vrata* är plural.", "grammar": ["biti"] },
+        { "sr": "vrata", "sv": "dörren", "form": "nominativ plural", "base": "vrata", "gender": "n", "grammar": ["plural"] },
+        { "sr": "zaključana", "sv": "låst", "form": "nominativ plural", "base": "zaključan", "gender": "n", "grammar": ["adjektiv"] }
+      ] },
+    { "id": "t-s27", "date": "2026-11-11", "sr": "Bilo bi lijepo.", "sv": "Det vore fint.", "note": "Ekaviskt: *Bilo bi lepo.*", "source": "lektion", "grammar": ["adjektiv"],
+      "parts": [
+        { "sr": "Bilo bi", "sv": "det vore", "form": "villkorsform, det-form (neutral)", "base": "biti", "gender": "n", "note": "*bi* gör verbet till 'skulle'." },
+        { "sr": "lijepo", "sv": "fint", "form": "nominativ singular", "base": "lijep", "gender": "n", "note": "Ekaviskt: *lepo*.", "grammar": ["adjektiv"] }
+      ] },
+    { "id": "t-s28", "date": "2026-11-11", "sr": "Voljela bih da putujem negdje.", "sv": "Jag skulle vilja resa någonstans.", "note": "En man säger *Volio bih*. Ekaviskt: *Volela bih da putujem negde.*", "source": "lektion", "grammar": ["da-verb", "presens"],
+      "parts": [
+        { "sr": "Voljela bih", "sv": "jag skulle vilja", "form": "villkorsform, jag-form (kvinnlig)", "base": "voljeti", "gender": "f" },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "putujem", "sv": "resa (jag reser)", "form": "presens, jag-form", "base": "putovati", "grammar": ["presens"] },
+        { "sr": "negdje", "sv": "någonstans", "form": "oböjligt", "note": "Ekaviskt: *negde*." }
+      ] },
+    { "id": "t-s29", "date": "2026-11-11", "sr": "Voljela bih da kuvam supu.", "sv": "Jag skulle vilja koka soppa.", "note": "*supa → supu*", "source": "lektion", "grammar": ["da-verb", "presens", "ackusativ"],
+      "parts": [
+        { "sr": "Voljela bih", "sv": "jag skulle vilja", "form": "villkorsform, jag-form (kvinnlig)", "base": "voljeti", "gender": "f" },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "kuvam", "sv": "koka (jag kokar)", "form": "presens, jag-form", "base": "kuvati", "grammar": ["presens"] },
+        { "sr": "supu", "sv": "soppa", "form": "ackusativ singular", "base": "supa", "gender": "f", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s30", "date": "2026-11-11", "sr": "Voljela bih da pravimo ručak.", "sv": "Jag skulle vilja att vi lagar lunch.", "source": "lektion", "grammar": ["da-verb", "presens"],
+      "parts": [
+        { "sr": "Voljela bih", "sv": "jag skulle vilja", "form": "villkorsform, jag-form (kvinnlig)", "base": "voljeti", "gender": "f" },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "pravimo", "sv": "vi lagar", "form": "presens, vi-form", "base": "praviti", "grammar": ["presens"] },
+        { "sr": "ručak", "sv": "lunch", "form": "ackusativ singular", "base": "ručak", "gender": "m", "note": "Samma som grundformen.", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s31", "date": "2026-11-11", "sr": "Voljela bih da spremam hranu.", "sv": "Jag skulle vilja laga mat.", "note": "*hrana → hranu*", "source": "lektion", "grammar": ["da-verb", "presens", "ackusativ"],
+      "parts": [
+        { "sr": "Voljela bih", "sv": "jag skulle vilja", "form": "villkorsform, jag-form (kvinnlig)", "base": "voljeti", "gender": "f" },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "spremam", "sv": "laga (jag lagar)", "form": "presens, jag-form", "base": "spremati", "grammar": ["presens"] },
+        { "sr": "hranu", "sv": "mat", "form": "ackusativ singular", "base": "hrana", "gender": "f", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s32", "date": "2026-11-11", "sr": "Voljela bih da kupimo plac.", "sv": "Jag skulle vilja att vi köper en tomt.", "source": "lektion", "grammar": ["da-verb", "presens"],
+      "parts": [
+        { "sr": "Voljela bih", "sv": "jag skulle vilja", "form": "villkorsform, jag-form (kvinnlig)", "base": "voljeti", "gender": "f" },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "kupimo", "sv": "vi köper", "form": "presens, vi-form", "base": "kupiti", "grammar": ["presens"] },
+        { "sr": "plac", "sv": "tomt", "form": "ackusativ singular", "base": "plac", "gender": "m", "note": "Samma som grundformen.", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s33", "date": "2026-11-11", "sr": "Željela bih da kupim stan.", "sv": "Jag skulle vilja köpa en lägenhet.", "note": "En man säger *Želio bih*. Ekaviskt: *Želela bih*.", "source": "lektion", "grammar": ["da-verb", "presens"],
+      "parts": [
+        { "sr": "Željela bih", "sv": "jag skulle önska", "form": "villkorsform, jag-form (kvinnlig)", "base": "željeti", "gender": "f" },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "kupim", "sv": "köpa (jag köper)", "form": "presens, jag-form", "base": "kupiti", "grammar": ["presens"] },
+        { "sr": "stan", "sv": "lägenhet", "form": "ackusativ singular", "base": "stan", "gender": "m", "note": "Samma som grundformen.", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s34", "date": "2026-11-11", "sr": "Voljela bih da kupimo kuću.", "sv": "Jag skulle vilja att vi köper ett hus.", "note": "*kuća → kuću*", "source": "lektion", "grammar": ["da-verb", "presens", "ackusativ"],
+      "parts": [
+        { "sr": "Voljela bih", "sv": "jag skulle vilja", "form": "villkorsform, jag-form (kvinnlig)", "base": "voljeti", "gender": "f" },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "kupimo", "sv": "vi köper", "form": "presens, vi-form", "base": "kupiti", "grammar": ["presens"] },
+        { "sr": "kuću", "sv": "hus", "form": "ackusativ singular", "base": "kuća", "gender": "f", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s35", "date": "2026-11-11", "sr": "Bilo bi lijepo da šetamo napolju.", "sv": "Det vore fint att promenera ute.", "note": "Ordagrant: det vore fint att vi promenerar ute.", "source": "lektion", "grammar": ["da-verb", "presens"],
+      "parts": [
+        { "sr": "Bilo bi", "sv": "det vore", "form": "villkorsform, det-form (neutral)", "base": "biti", "gender": "n" },
+        { "sr": "lijepo", "sv": "fint", "form": "nominativ singular", "base": "lijep", "gender": "n", "note": "Ekaviskt: *lepo*.", "grammar": ["adjektiv"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "šetamo", "sv": "vi promenerar", "form": "presens, vi-form", "base": "šetati", "grammar": ["presens"] },
+        { "sr": "napolju", "sv": "ute", "form": "oböjligt" }
+      ] },
+    { "id": "t-s36", "date": "2026-11-11", "sr": "Voljela bih da imam kabriolet.", "sv": "Jag skulle vilja ha en cabriolet.", "source": "lektion", "grammar": ["da-verb", "presens"],
+      "parts": [
+        { "sr": "Voljela bih", "sv": "jag skulle vilja", "form": "villkorsform, jag-form (kvinnlig)", "base": "voljeti", "gender": "f" },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "imam", "sv": "ha (jag har)", "form": "presens, jag-form", "base": "imati", "grammar": ["presens"] },
+        { "sr": "kabriolet", "sv": "cabriolet", "form": "ackusativ singular", "base": "kabriolet", "gender": "m", "note": "Samma som grundformen.", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s37", "date": "2026-11-11", "sr": "Voljela bih da pišem olovkom.", "sv": "Jag skulle vilja skriva med penna.", "note": "*olovka → olovkom* (med penna).", "source": "lektion", "grammar": ["da-verb", "presens", "instrumental"],
+      "parts": [
+        { "sr": "Voljela bih", "sv": "jag skulle vilja", "form": "villkorsform, jag-form (kvinnlig)", "base": "voljeti", "gender": "f" },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "pišem", "sv": "skriva (jag skriver)", "form": "presens, jag-form", "base": "pisati", "grammar": ["presens"] },
+        { "sr": "olovkom", "sv": "med penna", "form": "instrumental singular", "base": "olovka", "gender": "f", "grammar": ["instrumental"] }
+      ] },
+    { "id": "t-s38", "date": "2026-11-11", "sr": "Voljela bih da crtam lijepo.", "sv": "Jag skulle vilja rita vackert.", "note": "Ekaviskt: *lepo*.", "source": "lektion", "grammar": ["da-verb", "presens"],
+      "parts": [
+        { "sr": "Voljela bih", "sv": "jag skulle vilja", "form": "villkorsform, jag-form (kvinnlig)", "base": "voljeti", "gender": "f" },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "crtam", "sv": "rita (jag ritar)", "form": "presens, jag-form", "base": "crtati", "grammar": ["presens"] },
+        { "sr": "lijepo", "sv": "vackert", "form": "oböjligt", "note": "Ekaviskt: *lepo*." }
+      ] },
+    { "id": "t-s39", "date": "2026-11-11", "sr": "Ja neću.", "sv": "Jag ska inte. / Jag vill inte.", "note": "*ja ću, ti ćeš, on/ona će, mi ćemo, vi ćete, oni će* = ska. Med *ne* framför: *neću, nećeš, neće, nećemo, nećete, neće*.", "source": "lektion", "grammar": ["framtid", "negation"],
+      "parts": [
+        { "sr": "Ja", "sv": "jag", "form": "nominativ", "base": "ja" },
+        { "sr": "neću", "sv": "ska inte, vill inte", "form": "presens, jag-form", "base": "htjeti", "note": "*ne* + *ću* skrivs ihop.", "grammar": ["framtid", "negation"] }
+      ] },
+    { "id": "t-s40", "date": "2026-11-11", "sr": "Mi ćemo kuvati supu.", "sv": "Vi ska koka soppa.", "check": true, "grammar": ["framtid", "ackusativ"],
+      "parts": [
+        { "sr": "Mi", "sv": "vi", "form": "nominativ", "base": "mi" },
+        { "sr": "ćemo", "sv": "ska", "form": "presens, vi-form", "base": "htjeti", "grammar": ["framtid"] },
+        { "sr": "kuvati", "sv": "koka", "form": "infinitiv", "base": "kuvati" },
+        { "sr": "supu", "sv": "soppa", "form": "ackusativ singular", "base": "supa", "gender": "f", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s41", "date": "2026-11-11", "sr": "Izvinite, možete li da govorite sporije?", "sv": "Ursäkta, kan ni prata långsammare?", "note": "Till flera, eller artigt till en person.", "source": "lektion", "grammar": ["fragor", "da-verb", "ti-vi"],
+      "parts": [
+        { "sr": "Izvinite", "sv": "ursäkta", "form": "imperativ, ni-form", "base": "izviniti", "grammar": ["imperativ", "ti-vi"] },
+        { "sr": "možete", "sv": "ni kan", "form": "presens, ni-form", "base": "moći", "grammar": ["presens", "oregelbundna"] },
+        { "sr": "li", "sv": "gör meningen till en fråga", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "govorite", "sv": "prata (ni pratar)", "form": "presens, ni-form", "base": "govoriti", "grammar": ["presens"] },
+        { "sr": "sporije", "sv": "långsammare", "form": "oböjligt" }
+      ] },
+    { "id": "t-s42", "date": "2026-11-11", "sr": "Izvini, možeš li da govoriš sporije?", "sv": "Ursäkta, kan du prata långsammare?", "source": "lektion", "grammar": ["fragor", "da-verb"],
+      "parts": [
+        { "sr": "Izvini", "sv": "ursäkta", "form": "imperativ, du-form", "base": "izviniti", "grammar": ["imperativ"] },
+        { "sr": "možeš", "sv": "du kan", "form": "presens, du-form", "base": "moći", "grammar": ["presens", "oregelbundna"] },
+        { "sr": "li", "sv": "gör meningen till en fråga", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "govoriš", "sv": "prata (du pratar)", "form": "presens, du-form", "base": "govoriti", "grammar": ["presens"] },
+        { "sr": "sporije", "sv": "långsammare", "form": "oböjligt" }
+      ] },
+    { "id": "t-s43", "date": "2026-11-11", "sr": "Ne razumijem te.", "sv": "Jag förstår dig inte.", "note": "Ekaviskt: *Ne razumem te.* Till flera eller artigt: *Ne razumijem vas.*", "source": "lektion", "grammar": ["negation", "korta-ord"],
+      "parts": [
+        { "sr": "Ne", "sv": "inte", "form": "oböjligt", "grammar": ["negation"] },
+        { "sr": "razumijem", "sv": "jag förstår", "form": "presens, jag-form", "base": "razumjeti", "note": "Ekaviskt: *razumem*.", "grammar": ["presens"] },
+        { "sr": "te", "sv": "dig", "form": "ackusativ, kort form", "base": "ti", "note": "Kort form av *tebe*.", "grammar": ["korta-ord"] }
+      ] },
+    { "id": "t-s44", "date": "2026-11-11", "sr": "Izvini, koliko je sati?", "sv": "Ursäkta, vad är klockan?", "source": "lektion", "grammar": ["fragor", "genitiv"],
+      "parts": [
+        { "sr": "Izvini", "sv": "ursäkta", "form": "imperativ, du-form", "base": "izviniti", "grammar": ["imperativ"] },
+        { "sr": "koliko", "sv": "hur mycket, hur många", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "je", "sv": "är", "form": "presens, han/hon/det-form", "base": "biti", "grammar": ["biti"] },
+        { "sr": "sati", "sv": "timmar", "form": "genitiv plural", "base": "sat", "gender": "m", "note": "Ordagrant: hur många timmar är det?", "grammar": ["genitiv"] }
+      ] },
+    { "id": "t-s45", "date": "2026-11-11", "sr": "Ja sam dobro, hvala.", "sv": "Jag mår bra, tack.", "source": "lektion", "grammar": ["biti"],
+      "parts": [
+        { "sr": "Ja", "sv": "jag", "form": "nominativ", "base": "ja" },
+        { "sr": "sam", "sv": "är", "form": "presens, jag-form", "base": "biti", "grammar": ["biti"] },
+        { "sr": "dobro", "sv": "bra", "form": "oböjligt" },
+        { "sr": "hvala", "sv": "tack", "form": "oböjligt" }
+      ] },
+    { "id": "t-s46", "date": "2026-11-11", "sr": "Kako ste?", "sv": "Hur mår ni?", "note": "Till flera, eller artigt till en person. Till en vän: *Kako si?*", "source": "lektion", "grammar": ["fragor", "biti", "ti-vi"],
+      "parts": [
+        { "sr": "Kako", "sv": "hur", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "ste", "sv": "ni är", "form": "presens, ni-form", "base": "biti", "grammar": ["biti", "ti-vi"] }
+      ] },
+    { "id": "t-s47", "date": "2026-11-11", "sr": "Možeš li da mi dodaš čašu?", "sv": "Kan du räcka mig glaset?", "note": "*čaša → čašu*", "source": "lektion", "grammar": ["fragor", "da-verb", "korta-ord", "ackusativ"],
+      "parts": [
+        { "sr": "Možeš", "sv": "du kan", "form": "presens, du-form", "base": "moći", "grammar": ["presens", "oregelbundna"] },
+        { "sr": "li", "sv": "gör meningen till en fråga", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "mi", "sv": "mig", "form": "dativ, kort form", "base": "ja", "note": "Kort form av *meni*.", "grammar": ["korta-ord"] },
+        { "sr": "dodaš", "sv": "räcka (du räcker)", "form": "presens, du-form", "base": "dodati", "grammar": ["presens"] },
+        { "sr": "čašu", "sv": "glaset", "form": "ackusativ singular", "base": "čaša", "gender": "f", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s48", "date": "2026-11-11", "sr": "Možeš li da mi dodaš šolju?", "sv": "Kan du räcka mig koppen?", "note": "*šolja → šolju*", "source": "lektion", "grammar": ["fragor", "da-verb", "korta-ord", "ackusativ"],
+      "parts": [
+        { "sr": "Možeš", "sv": "du kan", "form": "presens, du-form", "base": "moći", "grammar": ["presens", "oregelbundna"] },
+        { "sr": "li", "sv": "gör meningen till en fråga", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "mi", "sv": "mig", "form": "dativ, kort form", "base": "ja", "grammar": ["korta-ord"] },
+        { "sr": "dodaš", "sv": "räcka (du räcker)", "form": "presens, du-form", "base": "dodati", "grammar": ["presens"] },
+        { "sr": "šolju", "sv": "koppen", "form": "ackusativ singular", "base": "šolja", "gender": "f", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s49", "date": "2026-11-11", "sr": "Možeš li da mi dodaš kašiku?", "sv": "Kan du räcka mig skeden?", "note": "*kašika → kašiku*", "source": "lektion", "grammar": ["fragor", "da-verb", "korta-ord", "ackusativ"],
+      "parts": [
+        { "sr": "Možeš", "sv": "du kan", "form": "presens, du-form", "base": "moći", "grammar": ["presens", "oregelbundna"] },
+        { "sr": "li", "sv": "gör meningen till en fråga", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "mi", "sv": "mig", "form": "dativ, kort form", "base": "ja", "grammar": ["korta-ord"] },
+        { "sr": "dodaš", "sv": "räcka (du räcker)", "form": "presens, du-form", "base": "dodati", "grammar": ["presens"] },
+        { "sr": "kašiku", "sv": "skeden", "form": "ackusativ singular", "base": "kašika", "gender": "f", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s50", "date": "2026-11-11", "sr": "Možeš li da mi dodaš nož?", "sv": "Kan du räcka mig kniven?", "source": "lektion", "grammar": ["fragor", "da-verb", "korta-ord"],
+      "parts": [
+        { "sr": "Možeš", "sv": "du kan", "form": "presens, du-form", "base": "moći", "grammar": ["presens", "oregelbundna"] },
+        { "sr": "li", "sv": "gör meningen till en fråga", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "da", "sv": "att", "form": "oböjligt", "grammar": ["da-verb"] },
+        { "sr": "mi", "sv": "mig", "form": "dativ, kort form", "base": "ja", "grammar": ["korta-ord"] },
+        { "sr": "dodaš", "sv": "räcka (du räcker)", "form": "presens, du-form", "base": "dodati", "grammar": ["presens"] },
+        { "sr": "nož", "sv": "kniven", "form": "ackusativ singular", "base": "nož", "gender": "m", "note": "Samma som grundformen.", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s51", "date": "2026-11-11", "sr": "Imaš li šećer?", "sv": "Har du socker?", "check": true, "grammar": ["fragor", "presens"],
+      "parts": [
+        { "sr": "Imaš", "sv": "du har", "form": "presens, du-form", "base": "imati", "grammar": ["presens"] },
+        { "sr": "li", "sv": "gör meningen till en fråga", "form": "oböjligt", "grammar": ["fragor"] },
+        { "sr": "šećer", "sv": "socker", "form": "ackusativ singular", "base": "šećer", "gender": "m", "note": "Samma som grundformen.", "grammar": ["ackusativ"] }
+      ] },
+    { "id": "t-s52", "date": "2026-11-11", "sr": "Gdje si?", "sv": "Var är du?", "note": "Ekaviskt: *Gde si?*", "source": "lektion", "grammar": ["fragor", "biti"],
+      "parts": [
+        { "sr": "Gdje", "sv": "var", "form": "oböjligt", "note": "Ekaviskt: *gde*.", "grammar": ["fragor"] },
+        { "sr": "si", "sv": "är du", "form": "presens, du-form", "base": "biti", "grammar": ["biti"] }
+      ] },
+    { "id": "t-s53", "date": "2026-11-11", "sr": "Gdje ste?", "sv": "Var är ni?", "note": "Ekaviskt: *Gde ste?*", "source": "lektion", "grammar": ["fragor", "biti", "ti-vi"],
+      "parts": [
+        { "sr": "Gdje", "sv": "var", "form": "oböjligt", "note": "Ekaviskt: *gde*.", "grammar": ["fragor"] },
+        { "sr": "ste", "sv": "är ni", "form": "presens, ni-form", "base": "biti", "grammar": ["biti", "ti-vi"] }
+      ] },
+    { "id": "t-s54", "date": "2026-11-11", "sr": "Ovdje sam.", "sv": "Jag är här.", "note": "Ekaviskt: *Ovde sam.*", "source": "lektion", "grammar": ["biti"],
+      "parts": [
+        { "sr": "Ovdje", "sv": "här", "form": "oböjligt", "note": "Ekaviskt: *ovde*." },
+        { "sr": "sam", "sv": "jag är", "form": "presens, jag-form", "base": "biti", "grammar": ["biti"] }
+      ] },
+    { "id": "t-s55", "date": "2026-11-11", "sr": "Ovdje smo.", "sv": "Vi är här.", "note": "Ekaviskt: *Ovde smo.*", "source": "lektion", "grammar": ["biti"],
+      "parts": [
+        { "sr": "Ovdje", "sv": "här", "form": "oböjligt", "note": "Ekaviskt: *ovde*." },
+        { "sr": "smo", "sv": "vi är", "form": "presens, vi-form", "base": "biti", "grammar": ["biti"] }
+      ] },
+    { "id": "t-s56", "date": "2026-11-11", "sr": "Baš ste fini!", "sv": "Ni är så fina!", "source": "lektion", "grammar": ["biti", "adjektiv", "ti-vi"],
+      "parts": [
+        { "sr": "Baš", "sv": "verkligen, så", "form": "oböjligt" },
+        { "sr": "ste", "sv": "ni är", "form": "presens, ni-form", "base": "biti", "grammar": ["biti", "ti-vi"] },
+        { "sr": "fini", "sv": "fina", "form": "nominativ plural", "base": "fin", "gender": "m", "note": "Plural, eftersom det gäller flera.", "grammar": ["adjektiv"] }
+      ] },
+    { "id": "t-s57", "date": "2026-11-11", "sr": "Baš ste ljubazni!", "sv": "Ni är så snälla!", "source": "lektion", "grammar": ["biti", "adjektiv", "ti-vi"],
+      "parts": [
+        { "sr": "Baš", "sv": "verkligen, så", "form": "oböjligt" },
+        { "sr": "ste", "sv": "ni är", "form": "presens, ni-form", "base": "biti", "grammar": ["biti", "ti-vi"] },
+        { "sr": "ljubazni", "sv": "snälla, vänliga", "form": "nominativ plural", "base": "ljubazan", "gender": "m", "grammar": ["adjektiv"] }
+      ] },
+    { "id": "t-s58", "date": "2026-11-11", "sr": "To je zabavno!", "sv": "Det är roligt!", "source": "lektion", "grammar": ["biti", "adjektiv"],
+      "parts": [
+        { "sr": "To", "sv": "det", "form": "nominativ singular", "base": "to", "gender": "n" },
+        { "sr": "je", "sv": "är", "form": "presens, han/hon/det-form", "base": "biti", "grammar": ["biti"] },
+        { "sr": "zabavno", "sv": "roligt", "form": "nominativ singular", "base": "zabavan", "gender": "n", "grammar": ["adjektiv"] }
+      ] },
+    { "id": "t-s59", "date": "2026-11-11", "sr": "To je zanimljivo!", "sv": "Det är intressant!", "source": "lektion", "grammar": ["biti", "adjektiv"],
+      "parts": [
+        { "sr": "To", "sv": "det", "form": "nominativ singular", "base": "to", "gender": "n" },
+        { "sr": "je", "sv": "är", "form": "presens, han/hon/det-form", "base": "biti", "grammar": ["biti"] },
+        { "sr": "zanimljivo", "sv": "intressant", "form": "nominativ singular", "base": "zanimljiv", "gender": "n", "grammar": ["adjektiv"] }
+      ] },
+    { "id": "t-s60", "date": "2026-11-11", "sr": "On je dobar čovjek.", "sv": "Han är en god människa.", "note": "Om en kvinna går det också: *Ona je dobar čovjek.* Ekaviskt: *čovek*.", "source": "lektion", "grammar": ["biti", "adjektiv"],
+      "parts": [
+        { "sr": "On", "sv": "han", "form": "nominativ", "base": "on" },
+        { "sr": "je", "sv": "är", "form": "presens, han/hon/det-form", "base": "biti", "grammar": ["biti"] },
+        { "sr": "dobar", "sv": "god, bra", "form": "nominativ singular", "base": "dobar", "gender": "m", "grammar": ["adjektiv"] },
+        { "sr": "čovjek", "sv": "människa", "form": "nominativ singular", "base": "čovjek", "gender": "m", "note": "Ekaviskt: *čovek*." }
+      ] }
+  ]
+}

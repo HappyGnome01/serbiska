@@ -44,9 +44,10 @@ Raden överst ligger kvar när du scrollar. Bredvid rubriken Serbiska står 🦔
 - **Markera som gjord** finns på alla lektioner som inte är gjorda. Du anger Svårt, Bra eller Lätt för varje ord, och orden kommer sedan med i repetitionerna. Lektionen blir gjord utan att du gör passet. Det ger ingen svit och räknas inte som pass. Är det din lektion går du vidare, annars ändras inte din plats. Efter ett pass hoppar appen över lektioner som redan är gjorda.
 
 ## Träna
-- Fliken **Träna** har runda knappar i fyra grupper: Svåra ord, Ämnen, Grammatik och Småord. Kategorierna finns i `data/categories.json` och pekar på lektioner eller på enskilda meningar.
+- Fliken **Träna** har runda knappar i fyra grupper: Extralektioner, Ämnen, Grammatik och Småord. Extralektioner har två knappar: Svåra ord och Lektioner. Kategorierna finns i `data/categories.json` och pekar på lektioner eller på enskilda meningar.
 - Ringarna har samma ljusa bakgrund inuti som korten. **Ringen** visar hur stor andel av kategorins ord du kan (Lätt eller Bra). Vid en kategori som bara har meningar visar ringen meningar du byggt rätt. Vid Svåra ord visar ringen andelen betygsatta ord som inte är svåra.
 - **Alla ord** i en kategori kan övas, även från lektioner du inte nått. Ord du aldrig sett presenteras innan frågan. Undantag: **Svåra ord** består bara av ord du senast gav Kunde inte eller Svårt.
+- **Lektioner** (🎓) övar ord och meningar från onsdagslektionerna med en serbisktalande lärare. De ligger i `data/tutor.json`, utanför stigen, och fylls på allt eftersom. Ord som redan finns i appen pekas ut med `refs` och delar betyg med samma ord på stigen. Ringen visar andelen av orden du kan. Utan ord står det "Inga ord än" och knappen går inte att trycka på. Orden får betyg som andra ord och räknas i 🍃, ❤️, cirklarna, Ditt ordförråd, Din utveckling och Svåra ord. Ord du kan (Lätt eller Bra) kommer med i skrivövningen i dagens pass, men nya ord från lektionerna läggs inte in i passet och flyttar dig inte på stigen.
 - Ett pass är upp till 8 flervalsfrågor och 3 Bygg meningen, ord du inte kan först. Kategorier med bara meningar ger upp till 8 Bygg meningen.
 - Betygen sparas som vanligt och passet räknas i sviten. Din plats på stigen ändras inte, och lektioner längre fram förblir kommande även om du tränat på deras ord.
 

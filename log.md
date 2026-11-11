@@ -343,3 +343,33 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 ## [2026-11-10] publish | Stavade ord, hjärta och grafmarginal
 - Pushat till GitHub Pages: räknaren ❤️ för stavade ord, Aktivt och Passivt ordförråd, ordningen på nya ord, marginal i grafen och *baka*-noten.
 
+
+## [2026-11-11] feature | Extralektioner och Lektioner
+- Träna: rubriken Svåra ord heter nu Extralektioner. Ny knapp 🎓 Lektioner bredvid Svåra ord, för ord och meningar från onsdagslektionerna.
+- Ny fil `data/tutor.json` (tom än så länge). Orden ligger utanför stigen och dagens pass.
+
+
+## [2026-11-11] content | Första onsdagslektionen
+- `data/tutor.json`: 31 nya ord (våningar, rum, möbler, kök, *otvoriti/zatvoriti*, *stresan, opušteno, zabavno*), 23 befintliga ord via `refs` och 26 meningar med `parts`.
+- Gjort om från ekaviska till ijekaviska (*lepo → lijepo*, *mleko → mlijeko*, *sviđa*), engelska översättningar till svenska, *sudorera* rättat till *sudopera*.
+- `check: true` på *kauč*, *Volim da jedem voće i povrće*, *Ne jedem meso* och *Ovo je drugi sprat* (kompletterade eller egna).
+- Appen läser `refs` så att befintliga ord delar betyg och inte blir dubbletter i flervalsfrågor.
+
+
+## [2026-11-11] feature | Lektioner-orden i statistiken
+- De nya orden från onsdagslektionerna räknas nu i 🍃, ❤️, cirklarna (av 531), Ditt ordförråd, grafen och Svåra ord.
+- Lektioner-ord du kan kommer med i skrivövningen, så att de kan bli aktivt ordförråd.
+- Kontrollerat att övningar under Träna redan uppdaterar statistiken. Det som saknades var Lektioner-orden.
+
+
+## [2026-11-11] content | Fler onsdagslektioner
+- `data/tutor.json`: 36 nya ord (*voljela bih, željela bih, bilo bi lijepo*, verb som *putovati, šetati, dodati, govoriti*, kläder, *med, džem, pekmez, marmelada*, *čovjek* m.fl.), 28 befintliga ord till via `refs` och 34 nya meningar (t-s27–t-s60). Totalt 118 ord och 60 meningar.
+- Ekaviska gjorda ijekaviska: *volela → voljela, želela → željela, negde → negdje, lepo → lijepo, razumem → razumijem, gde → gdje, ovde → ovdje, čovek → čovjek*.
+- Listor som *Možeš li da mi dodaš čašu/šolju/kašiku/nož* och *Voljela bih da …* delade upp i en mening per variant.
+- `check: true` på *trenerka, duks, pekmez*, *Mi ćemo kuvati supu* och *Imaš li šećer?* (egna eller utan översättning i anteckningarna).
+
+
+## [2026-11-11] publish | Onsdagslektioner och statistik
+- *trenerka* och *duks* borttagna tills översättningen är säker.
+- Pushat: Extralektioner med 🎓 Lektioner (116 ord, 60 meningar) och Lektioner-orden i statistiken.
+
