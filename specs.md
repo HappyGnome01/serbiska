@@ -18,7 +18,7 @@ Inspirerat av Duolingo och modern språkdidaktik:
 
 ## Idag: stigen
 - Idag-sidan är en slingrande stig med en rund knapp per lektion, indelad i nivåer. Sidan öppnas vid din lektion: tidigare lektioner ligger uppåt, kommande nedåt.
-- Tassavtryck längs en mjuk kurva binder ihop knapparna inom en nivå, en tass per 30 pixlar fritt avstånd och med lika stora mellanrum. Mellan nivåer finns inga tassar. Tassarna går växelvis på varsin sida och pekar dit stigen går. Vägen fram till din lektion är grön, resten dämpad. En igelkott står vid din lektion, på den trånga sidan när den ryms där, med en stillsam tomgångsanimation: kroppen andas mjukt upp och ner och ögat blinkar ibland.
+- Tassavtryck längs en mjuk kurva binder ihop knapparna inom en nivå, en tass per 30 pixlar fritt avstånd och med lika stora mellanrum. Mellan nivåer finns inga tassar. Tassarna går växelvis på varsin sida och pekar dit stigen går. Tassarna fram till din lektion är grå och 20 procentenheter mörkare (ljusare i mörkt läge) än tassarna framåt. En igelkott står vid din lektion, på den trånga sidan när den ryms där, med en stillsam tomgångsanimation: kroppen andas mjukt upp och ner och ögat blinkar ibland.
 - **Lägen:** gjord (grön, du har gjort ett pass), överhoppad (streckad ring), din lektion (större och rosa), kommande (dämpad).
 - Pass startas med knappen vid din lektion på stigen. Igelkotten står på den sida av din lektion där stigen inte fortsätter neråt (ryms den inte där, på andra sidan). Knappen står snett under lektionen och igelkotten, med ungefär samma avstånd till båda (16 pixlar, som mellan en lektion och närmaste tass), utan att täcka stigen, lektionerna, igelkotten eller nivårubriken. Står lektionen nära kanten och stigen går mellan dem väljs närmaste lediga plats under igelkotten.
 - **Byta flik under ett pass:** passet ligger kvar. Idag tar dig tillbaka till steget du var på (hade du svarat ångras svaret och steget visas som nytt). Trycker du på Idag medan du gör passet frågar appen "Vill du avbryta övningen?". Ja → stigen, Nej → du stannar kvar. Svar du redan gett i ett avbrutet pass sparas. Under passet är Idag markerad (Träna för träningspass).
@@ -44,7 +44,8 @@ Raden överst ligger kvar när du scrollar. Bredvid rubriken Serbiska står 🦔
 - **Markera som gjord** finns på alla lektioner som inte är gjorda. Du anger Svårt, Bra eller Lätt för varje ord, och orden kommer sedan med i repetitionerna. Lektionen blir gjord utan att du gör passet. Det ger ingen svit och räknas inte som pass. Är det din lektion går du vidare, annars ändras inte din plats. Efter ett pass hoppar appen över lektioner som redan är gjorda.
 
 ## Träna
-- Fliken **Träna** har runda knappar i fyra grupper: Extralektioner, Ämnen, Grammatik och Småord. Extralektioner har två knappar: Svåra ord och Lektioner. Kategorierna finns i `data/categories.json` och pekar på lektioner eller på enskilda meningar.
+- Fliken **Träna** har runda knappar i fyra grupper: Extralektioner, Ämnen, Grammatik och Småord. Extralektioner har tre knappar: Svåra ord, Lektioner och Skriv ord.
+- **Skriv ord** (✏️) är ett pass med bara skrivuppgifter (svenska → serbiska), högst 8 ord. Orden är de du förstår (senaste betyg Lätt eller Bra) men inte redan gett Lätt i skrivövningen. Ord du aldrig skrivit kommer först, sedan ord där skrivschemat säger att det är dags. Ringen visar hur stor andel av orden du förstår som du också kan stava. Betygen räknas i ❤️ och aktivt ordförråd. Kategorierna finns i `data/categories.json` och pekar på lektioner eller på enskilda meningar.
 - Ringarna har samma ljusa bakgrund inuti som korten. **Ringen** visar hur stor andel av kategorins ord du kan (Lätt eller Bra). Vid en kategori som bara har meningar visar ringen meningar du byggt rätt. Vid Svåra ord visar ringen andelen betygsatta ord som inte är svåra.
 - **Alla ord** i en kategori kan övas, även från lektioner du inte nått. Ord du aldrig sett presenteras innan frågan. Undantag: **Svåra ord** består bara av ord du senast gav Kunde inte eller Svårt.
 - **Lektioner** (🎓) övar ord och meningar från onsdagslektionerna med en serbisktalande lärare. De ligger i `data/tutor.json`, utanför stigen, och fylls på allt eftersom. Ord som redan finns i appen pekas ut med `refs` och delar betyg med samma ord på stigen. Ringen visar andelen av orden du kan. Utan ord står det "Inga ord än" och knappen går inte att trycka på. Orden får betyg som andra ord och räknas i 🍃, ❤️, cirklarna, Ditt ordförråd, Din utveckling och Svåra ord. Ord du kan (Lätt eller Bra) kommer med i skrivövningen i dagens pass, men nya ord från lektionerna läggs inte in i passet och flyttar dig inte på stigen.
@@ -52,11 +53,11 @@ Raden överst ligger kvar när du scrollar. Bredvid rubriken Serbiska står 🦔
 - Betygen sparas som vanligt och passet räknas i sviten. Din plats på stigen ändras inte, och lektioner längre fram förblir kommande även om du tränat på deras ord.
 
 ## Nivå klar
-När sista lektionen på en nivå blir gjord visas ett fönster där igelkotten gör en kullerbytta. Överhoppade lektioner räknas inte som gjorda, så hela nivån måste vara gjord.
+När sista lektionen på en nivå blir gjord visas ett fönster där igelkotten gör en kullerbytta, med knappen **Nästa nivå** som tar dig tillbaka till stigen. Överhoppade lektioner räknas inte som gjorda, så hela nivån måste vara gjord.
 
 ## Grammatik
-- Varje ord och mening pekar själv på de förklaringar som gäller just den (fältet `grammar`). Har ordet eller meningen en förklaring går tipset med 💡 att trycka på (prickad understrykning och ›), och då öppnas förklaringen. Saknas tips står det bara "💡 Grammatik". Det gäller i passen och på lektionssidan. Det finns ingen separat grammatikknapp. *Danas* har ingen, och *Idem kući* visar verbens ändelser, oregelbundna verb och *kući*.
-- På lektionssidan har varje ord och mening sitt eget tips med förklaring.
+- Varje ord och mening pekar själv på de förklaringar som gäller just den (fältet `grammar`). Tipset med 💡 är vanlig text och går inte att trycka på. Förklaringarna öppnas genom att trycka på orden i en mening (grammatik per ord). Saknas tips visas ingen 💡-rad. Det finns ingen separat grammatikknapp. *Danas* har ingen, och *Idem kući* visar verbens ändelser, oregelbundna verb och *kući*.
+- På lektionssidan har varje ord och mening sitt eget tips, och orden i meningarna går att trycka på.
 - Den öppnar ett fönster med kort förklaring och exempel. Innehållet finns i `data/grammar.json`.
 - Serbiska står i kursiv när den blandas med svenska, både här och i tipsen vid ord och meningar. I datafilerna märks den `*så här*`.
 
@@ -84,7 +85,11 @@ När alla lektioner är klara visas bara repetition och slumpade meningar, tills
 ## Navigering
 - En nivå är 7 lektioner. Med 100 lektioner blir det 15 nivåer, och den sista har 2 lektioner.
 - Fliken **Navigering** visar alla nivåer med nivånummer, teman och en bar med hur många lektioner som är klara. Klar betyder att du gjort ett pass på lektionen, så överhoppade lektioner räknas inte. En helt klar nivå är lila och nivån du är på ljusare lila.
-- Ett tryck på en nivå visar den på stigen under Idag. Din lektion ändras inte. Tryck på Idag för att komma tillbaka till igelkotten.
+- Överst står en bar, utan text och direkt på bakgrunden, med hur många lektioner du gjort av alla. Den ser ut som barerna på nivåkorten.
+- Ett tryck på en nivå öppnar ett fönster med nivåns lektioner: nummer, tema, läge (✓ gjord, 🦔 du är här, ↷ överhoppad) och lektionens ord. Ett tryck på en lektion visar den på stigen under Idag. Din lektion ändras inte.
+- **Repetera en nivå:** ett pass med tre delar, utan att din plats på stigen ändras: 1) ord från nivån du senast gav Svår eller Kan inte (högst 8, bara om det finns några), 2) 5 meningar att bygga, 3) 5 ord att skriva, inte samma som de svåra orden och helst ord du sett. Slutskärmen säger "Nivå N repeterad!".
+- På stigen öppnar ett tryck på en nivårubrik ett litet fönster med nivåns namn, ett centrerat kryss i en rund knapp uppe till höger som stänger, och två knappar: **Visa översikt för nivån** i samma färg som Starta pass, och under den en grå **Repetera föregående nivå** (inte på nivå 1).
+- **Skog längs stigen:** står 1–2 figurer per nivå, jämnt utspridda: nivåer med jämnt nummer har två (vid 2:a och 5:e lektionen), udda nivåer en (vid 5:e lektionen). Ingen figur står direkt under nivårubriken, och hamnar platsen vid din lektion eller nästa flyttas figuren en lektion. Figurerna kommer i tur och ordning, så att alla visas lika ofta och samma figur aldrig står två gånger i rad. Figuren står på andra sidan om lektionen: gran, flugsvamp, kantareller, mossig sten, stubbe med dörr, ormbunke, lingonris, kotte eller två gröna björklöv som svävar och vaggar lite fram och tillbaka. Figurerna är SVG ritade i samma mjuka stil som igelkotten, med marken markerad under: en skugga i ljust läge och en ljusare jordfläck i mörkt läge. På två av platserna står blinkande lysmaskar i mörkt läge och en gran eller ormbunke i ljust läge. Blinkandet och lövens rörelse stängs av om telefonen är inställd på minskad rörelse. Skogen ser likadan ut varje gång och står inte vid din lektion och nästa, där igelkotten och startknappen står.
 - Det går inte längre att byta nivå i appen. Har du hoppat över lektioner tidigare finns **Ångra hoppet** under Framsteg: det tar bort överhoppade ord du inte har övat på och går tillbaka till första lektionen med ord du inte sett.
 
 ## Ljud
@@ -103,11 +108,11 @@ När alla lektioner är klara visas bara repetition och slumpade meningar, tills
 Intervall: 1 dag → 6 dagar → föregående × "lätthet" (startar på 2,5, minst 1,3).
 
 ## Dashboard ("Framsteg")
-- **Din utveckling:** välj 7 dagar, 30 dagar eller 3 månader. Staplar och datum hålls en bit från grafens kanter, och varje datum står centrerat under sin stapel, så att första och sista datumet får plats.
+- **Din utveckling:** välj 7 dagar, 30 dagar eller 3 månader. Staplar och datum hålls en bit från grafens kanter, och varje datum står centrerat under sin stapel, så att första och sista datumet får plats. Varje stapel har fyra delar, nerifrån: lila **Kan stava** (Lätt eller Bra i skrivövningen), blå Lätt, grön Bra och röd Svårt. Ett ord du kan stava räknas bara i den lila delen och inte också som Lätt, Bra eller Svårt, så stapelns höjd är densamma som förut. Dagar sparade innan Kan stava fanns har ingen lila del.
 - **Grafen:** staplade staplar per dag (per vecka vid 3 månader) med alla ord i Lätt, Bra och Svårt som de såg ut när dagen slutade, i samma färger som de runda knapparna. Svårt är rosa där, men knappen Svårt i passet är kvar i gult eftersom Kunde inte är rosa. Har en tabellvy. Från och med nu sparas läget varje dag. Dagar innan dess är en uppskattning utifrån senaste betyget på varje ord.
 - **Cirklarna** står överst, ovanför Din utveckling: **Aktivt ordförråd**, ord du kan stava (Lätt eller Bra i skrivövningen), och **Passivt ordförråd**, ord du förstår (Lätt eller Bra), båda av alla ord i appen.
 - Samma stil som Idag: kort överst med svit, lila rubrikband och runda knappar.
-- **Ditt ordförråd:** antal ord per **senaste betyg** i runda knappar: Lätt, Bra, Svårt. "Kunde inte" visas inte. Ett tryck öppnar ett fönster med orden i gruppen.
+- **Ditt ordförråd:** antal ord per **senaste betyg** i runda knappar: först en ljuslila **Kan stava** med samma antal som ❤️ (samma färg som nivån du är på under Navigering), sedan Lätt, Bra och Svårt. "Kunde inte" visas inte. Ett tryck öppnar ett fönster med orden i gruppen.
 - **Exportera/importera** framsteg som JSON-fil (backup och flytt mellan enheter).
 
 ## Data
@@ -123,7 +128,7 @@ Intervall: 1 dag → 6 dagar → föregående × "lätthet" (startar på 2,5, mi
 ## Teknik
 - Ren HTML/CSS/JavaScript, inga ramverk eller byggsteg.
 - Måste köras via en webbserver (lokal server eller GitHub Pages), eftersom webbläsaren inte får läsa JSON-filer direkt från disken.
-- Mobilanpassad, ljust och mörkt läge. Hög kontrast och mjuk 3D-känsla: knappar, kort och stigens cirklar är rundade med ljus upptill och skugga nedtill, och knappar trycks ner när du trycker på dem. Barer och ringar ser ut som runda rör som fylls, och tomma rör är ljusa och blanka. Grafens staplar är runda pelare, och igelkotten har ljus, skugga och glans.
+- Mobilanpassad, ljust och mörkt läge. Ett tryck på **Serbiska** högst upp öppnar ett fönster med ☀️ Ljust läge, 🌙 Mörkt läge och 📱 Som telefonen (förval). Valt läge är grönt, de andra grå. Valet sparas i webbläsaren under `serbiska-theme`, skilt från framstegen. Hög kontrast och mjuk 3D-känsla: knappar, kort och stigens cirklar är rundade med ljus upptill och skugga nedtill, och knappar trycks ner när du trycker på dem. Barer och ringar ser ut som runda rör som fylls, och tomma rör är ljusa och blanka. Grafens staplar är runda pelare, och igelkotten har ljus, skugga och glans.
 
 ## Publicering
 GitHub Pages från ett publikt repo. `raw/` publiceras aldrig (`.gitignore`). Se `process.md`.

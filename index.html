@@ -11,11 +11,13 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" href="apple-touch-icon.png">
   <title>Serbiska</title>
+  <!-- Valt ljust eller mörkt läge sätts innan sidan ritas, så att färgerna inte blinkar -->
+  <script>try { const t = localStorage.getItem("serbiska-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Serbiska</h1>
+    <h1><button id="themeBtn" class="title-btn" aria-label="Serbiska. Välj ljust eller mörkt läge.">Serbiska</button></h1>
     <div class="header-stats">
       <button id="lessonCount" aria-label="Din lektion. Visa på stigen."></button>
       <button id="streakCount" aria-label="Dagar i rad. Visa mer."></button>

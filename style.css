@@ -21,8 +21,9 @@
   --tube: 0.75;  --tube-soft: 0.3;  /* Glansen på tomma rör */
   --shadow: rgba(90,60,40,0.16);
 }
+/* Mörkt läge: följer telefonen, om du inte valt ljust eller mörkt själv (tryck på Serbiska högst upp) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #1f1b18;
     --card: #2e2824;
     --text: #f8f1e8;
@@ -43,6 +44,28 @@
     --tube: 0.2;  --tube-soft: 0.06;
     --shadow: rgba(0,0,0,0.4);
   }
+}
+/* Samma färger när du valt mörkt läge själv. Ändras de ovan ska de ändras här också. */
+:root[data-theme="dark"] {
+  --bg: #1f1b18;
+  --card: #2e2824;
+  --text: #f8f1e8;
+  --muted: #c9bdb0;
+  --primary: #e8a99d;
+  --on-primary: #2a1a15;
+  --border: #5a5048;
+  --again: #7a3f38;  --on-again: #ffdcd4;  --again-edge: #552a25;
+  --hard: #75591f;   --on-hard: #ffe9c0;   --hard-edge: #4f3b14;
+  --good: #4a6541;   --on-good: #def0d8;   --good-edge: #31462b;
+  --easy: #3f5e7d;   --on-easy: #dcebf8;   --easy-edge: #2a4057;
+  --lav: #5a4765;    --on-lav: #f0e3f5;    --lav-edge: #3d2f45;
+  --lav-light: #806a8c;
+  --good-line: #84a87b;
+  --primary-edge: #a86f64;
+  --edge: #3c342d;
+  --shine: rgba(255,255,255,0.18);
+  --tube: 0.2;  --tube-soft: 0.06;
+  --shadow: rgba(0,0,0,0.4);
 }
 
 * { box-sizing: border-box; }
@@ -67,6 +90,9 @@ header {
 }
 .road-level { scroll-margin-top: 72px; }
 h1 { font-size: 1.3rem; margin: 0; }
+/* Rubriken är en knapp som öppnar valet av ljust eller mörkt läge, men ser ut som text */
+button.title-btn { all: unset; cursor: pointer; font: inherit; color: inherit; }
+button.title-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; border-radius: 6px; }
 .header-stats { display: flex; gap: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
 .header-stats button { background: transparent; color: inherit; font: inherit; padding: 6px 8px; }
 
@@ -232,12 +258,14 @@ button.level-here { background: var(--lav-light); }
 .ring-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.8rem; }
 .ring-num { font-size: 1.5rem; font-weight: 700; color: var(--text); line-height: 1.2; }
 .ring-label { margin-top: 6px; font-size: 0.85rem; }
-.stats { display: flex; justify-content: center; gap: 20px; }
+.stats { display: flex; justify-content: center; gap: 12px; }
 button.stat { display: flex; flex-direction: column; align-items: center; gap: 6px; background: transparent; padding: 0; color: var(--muted); font-size: 0.9rem; }
 .stat-num { display: flex; align-items: center; justify-content: center; width: 74px; height: 74px; border-radius: 50%; font-size: 1.4rem; font-weight: 700; }
 .stat.easy .stat-num { background: var(--easy); color: var(--on-easy); --edge: var(--easy-edge); }
 .stat.good .stat-num { background: var(--good); color: var(--on-good); --edge: var(--good-edge); }
 .stat.hard .stat-num { background: var(--again); color: var(--on-again); --edge: var(--again-edge); }
+/* Ord du kan stava: samma ljuslila som nivån du är på under Navigering */
+.stat.spelled .stat-num { background: var(--lav-light); color: var(--on-lav); --edge: var(--lav-edge); }
 .backup-text { margin-top: 0; font-size: 0.9rem; }
 details { background: var(--card); border-radius: 22px; padding: 12px 16px; margin: 12px 0; box-shadow: inset 0 2px 3px -1px var(--shine), 0 2px 4px var(--shadow), 0 10px 22px var(--shadow); }
 summary { cursor: pointer; font-weight: 600; }
@@ -264,6 +292,7 @@ button.range-btn.active { background: var(--lav); color: var(--on-lav); --edge: 
 .chart-seg.easy, .swatch.easy { background-color: var(--easy); }
 .chart-seg.good, .swatch.good { background-color: var(--good); }
 .chart-seg.hard, .swatch.hard { background-color: var(--again); }
+.chart-seg.spelled, .swatch.spelled { background-color: var(--lav); }
 .chart-seg:nth-last-child(2) { border-radius: 4px 4px 0 0; }
 .chart-tip { position: absolute; top: -8px; transform: translate(-50%, -100%); z-index: 2; background: var(--text); color: var(--bg); font-size: 0.8rem; padding: 5px 9px; border-radius: 6px; white-space: nowrap; pointer-events: none; }
 .chart-labels { display: flex; gap: 3px; margin: 6px 0 0 28px; padding: 0 16px; color: var(--muted); font-size: 0.75rem; }
@@ -278,10 +307,46 @@ button.range-btn.active { background: var(--lav); color: var(--on-lav); --edge: 
 .today-streak { font-size: 0.85rem; white-space: nowrap; }
 .road { position: relative; margin: 12px 0 24px; }
 .road-line { position: absolute; inset: 0; width: 100%; pointer-events: none; }
-.road-walked { fill: var(--good-line); }
-.road-ahead { fill: var(--muted); opacity: 0.6; }
+/* Tassar fram till din lektion är 20 procentenheter mörkare (ljusare i mörkt läge) än tassarna framåt */
+.road-walked { fill: var(--muted); opacity: 0.6; }
+.road-ahead { fill: var(--muted); opacity: 0.4; }
 .road-level, .section-title { background: var(--lav); color: var(--on-lav); border-radius: 14px; padding: 8px 12px; text-align: center; font-weight: 700; font-size: 0.9rem; --edge: var(--lav-edge); }
-.road-level { position: absolute; left: 0; right: 0; z-index: 2; }
+.road-level { position: absolute; left: 0; right: 0; z-index: 2; cursor: pointer; }
+/* Skogen längs stigen ligger under lektionerna och går inte att trycka på */
+.forest { position: absolute; z-index: 1; transform: translate(-50%, -50%); pointer-events: none; line-height: 0; }
+.forest-art { display: block; overflow: visible; }
+.ground { fill: #000; opacity: 0.2; }
+:root[data-theme="dark"] .ground { fill: #5e5043; opacity: 1; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ground { fill: #5e5043; opacity: 1; } }
+/* Lysmaskar bara i mörkt läge, annars figuren som står på deras plats */
+.forest-night { display: none; }
+:root[data-theme="dark"] .forest-night { display: block; }
+:root[data-theme="dark"] .forest-day { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .forest-night { display: block; }
+  :root:not([data-theme="light"]) .forest-day { display: none; }
+}
+/* Lysmaskarna blinkar långsamt, var och en i sin egen takt */
+/* Svävande löv: vaggar lite fram och tillbaka och upp och ner, utan att tona ut */
+.leaf { transform-box: fill-box; transform-origin: center; animation: leaf-sway 4s ease-in-out infinite; animation-delay: var(--anim-shift, 0s); }
+.leaf-2 { animation-duration: 5s; animation-delay: calc(var(--anim-shift, 0s) - 2s); }
+@keyframes leaf-sway {
+  0%, 100% { transform: translate(-2px, -1.5px) rotate(-10deg); }
+  50%      { transform: translate(2px, 1.5px) rotate(10deg); }
+}
+.glow { animation: glow 4s ease-in-out infinite; animation-delay: var(--anim-shift, 0s); }
+.glow:nth-of-type(2) { animation-duration: 5s; animation-delay: calc(var(--anim-shift, 0s) - 1.4s); }
+.glow:nth-of-type(3) { animation-duration: 4.5s; animation-delay: calc(var(--anim-shift, 0s) - 2.6s); }
+@keyframes glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.12; } }
+.road-level:active { transform: translateY(2px); }
+/* Navigering: hur många lektioner du gjort av alla, direkt på bakgrunden */
+.total-progress { margin: 4px 0 4px; }
+/* Nivåns lektioner i översiktsfönstret */
+.level-lessons { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
+button.level-lesson { display: block; width: 100%; text-align: left; background: var(--bg); color: var(--text); border-radius: 14px; padding: 10px 12px; font: inherit; box-shadow: none; transform: none; }
+.level-lesson-head { display: flex; justify-content: space-between; gap: 8px; font-weight: 600; }
+.level-lesson-mark { color: var(--good-line); }
+.level-lesson-words { display: block; font-size: 0.85rem; margin-top: 2px; }
 .node { position: absolute; z-index: 2; width: 58px; height: 58px; padding: 0; border-radius: 50%; border: 3px solid; font-weight: 700; transform: translate(-50%, -50%); }
 button.node:active { transform: translate(-50%, calc(-50% + 2px)); box-shadow: inset 0 3px 6px var(--shadow), 0 1px 3px var(--shadow); }
 .node.done { background: var(--good); border-color: var(--good-line); color: var(--on-good); --edge: var(--good-edge); }
@@ -317,7 +382,7 @@ button.road-start-btn { position: absolute; z-index: 3; min-width: 0; padding: 1
   84%  { transform: translateY(4px) rotate(360deg) scaleY(0.86); }
   100% { transform: translateY(0) rotate(360deg) scaleY(1); }
 }
-@media (prefers-reduced-motion: reduce) { .hedgehog-body, .hedgehog-eye, .hedgehog-flip { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .hedgehog-body, .hedgehog-eye, .hedgehog-flip, .glow, .leaf { animation: none; } }
 
 /* Lektionssidan */
 .lesson-list { display: grid; gap: 8px; margin-bottom: 16px; }
@@ -366,6 +431,12 @@ dialog.modal::backdrop { background: rgba(47,41,37,0.6); }
 /* Två lika stora knappar nära varandra, med luft över och under */
 .modal-actions { flex-wrap: nowrap; gap: 10px; padding: 22px 20px 24px; }
 .modal-actions button { flex: 1 1 0; max-width: 170px; min-width: 0; }
+/* Litet fönster med knappar under varandra och ett kryss uppe till höger */
+dialog.modal-small { position: fixed; overflow: visible; }
+.modal-small .modal-body { padding: 22px 20px 22px; }
+.modal-stack { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+.modal-stack button { width: 100%; }
+button.modal-x { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg); color: var(--muted); box-shadow: none; transform: none; z-index: 1; }
 
 .credits { font-size: 0.8rem; margin-top: 24px; }
 .credits a { color: inherit; }

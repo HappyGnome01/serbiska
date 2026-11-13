@@ -223,6 +223,7 @@ function gradeWriting(id, quality) {
   const p = progress.writing[id] || newProgress();
   applyGrade(p, quality);
   progress.writing[id] = p;
+  progress.gradeDays[dateStr(new Date())] = countGrades();  // Grafen visar ord du kan stava
   saveProgress();
 }
 
@@ -245,10 +246,14 @@ function applyGrade(p, quality) {
 
 const GRADE_KEYS = { 5: "easy", 4: "good", 3: "hard" };
 
-// Ord per senaste betyg just nu
+// Ord per senaste betyg just nu. Ord du kan stava (Lätt eller Bra i skrivövningen) räknas som spelled
+// och inte också som lätt, bra eller svårt, så att varje ord bara räknas en gång.
+// Dagar sparade innan spelled fanns saknar fältet och räknas som 0.
 function countGrades() {
-  const counts = { easy: 0, good: 0, hard: 0 };
+  const counts = { spelled: 0, easy: 0, good: 0, hard: 0 };
+  const writing = progress.writing || {};
   ALL_WORDS.forEach(w => {
+    if (writing[w.id] && writing[w.id].lastGrade >= 4) { counts.spelled++; return; }
     const key = progress.words[w.id] && GRADE_KEYS[progress.words[w.id].lastGrade];
     if (key) counts[key]++;
   });
@@ -815,7 +820,7 @@ function showDone() {
   updateHeader();
   main.replaceChildren(
     h("div", { class: "card" },
-      h("div", { class: "big" }, "Bra jobbat! 🎉"),
+      h("div", { class: "big" }, session.level ? `Nivå ${session.level} repeterad! 🎉` : "Bra jobbat! 🎉"),
       h("p", {}, `Du repeterade ${session.review.length} ord, ` + (written ? `skrev ${written} på serbiska, ` : "") +
         `lärde dig ${session.newWords.length} nya och övade på ${session.sentences.length} meningar.`),
       h("p", { class: "muted" }, streakText())),
@@ -1015,6 +1020,133 @@ function drawPaws(road, points, stop) {
   line.replaceChildren(ahead, walked);
 }
 
+// Skog längs stigen: ett träd, en svamp, en buske eller en sten på andra sidan om lektionen, vid 1–2
+// lektioner per nivå (se forestLessons). Valet beror på lektionsnumret, så skogen ser likadan ut varje gång.
+// Figurerna är ritade i samma mjuka stil som igelkotten, med en skugga i stället för gräs.
+// Lysmaskarna syns bara i mörkt läge. I ljust läge står figuren i "day" på deras plats.
+const FOREST = ["gran", "kantarell", "flugsvamp", "lingon", { night: "lysmask", day: "gran" }, "sten",
+  "bjorklov", "stubbe", "kotte", "kantarell", { night: "lysmask", day: "ormbunke" }, "ormbunke"];
+
+// Marken under figuren: en skugga i ljust läge, en ljusare jordfläck i mörkt läge (färgen styrs i style.css)
+const SHADOW = (cx, cy, rx, ry) => `<ellipse class="ground" cx="${cx}" cy="${cy}" rx="${rx + 2}" ry="${ry + 0.8}"/>`;
+
+// Ett blad på ormbunken: en stjälk med småblad som blir mindre mot toppen
+function fernFrond(transform, color) {
+  const leaves = [[-4.5, -6, 4.6, 1.9, -22], [4.8, -7, 4.6, 1.9, 22], [-3.8, -12.5, 4, 1.7, -22], [4.4, -13.5, 4, 1.7, 22],
+    [-3.6, -19, 3.3, 1.5, -22], [3.4, -20, 3.2, 1.5, 22], [-3.8, -24.5, 2.4, 1.3, -22], [1.6, -25.5, 2.3, 1.3, 22]]
+    .map(([cx, cy, rx, ry, a]) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" transform="rotate(${a} ${cx} ${cy})"/>`).join("");
+  return `<g transform="${transform}"><path d="M0 0Q1 -14 -2 -30" stroke="#6f9a5e" stroke-width="1.8" fill="none" stroke-linecap="round"/>` +
+    `<g fill="${color}">${leaves}<ellipse cx="-2" cy="-29.5" rx="1.4" ry="2.2"/></g></g>`;
+}
+
+// Ett grönt björklöv, ritat runt punkten 0,0
+const BIRCH_LEAF = `<path d="M-8 0C-6 -6 2 -7 8 0C2 7 -6 6 -8 0Z" fill="#8fb86a"/>` +
+  `<path d="M-9.5 0L7 0" stroke="#5f8a55" stroke-width="1" stroke-linecap="round"/>` +
+  `<path d="M-3 0L0 -3M1 0L4 -2.5M-3 0L0 3M1 0L4 2.5" stroke="#5f8a55" stroke-width=".7" stroke-linecap="round"/>`;
+
+// Lövet i en grupp som rör sig. nr ger varje löv sin egen takt.
+const leafSwaying = (leaf, nr) => `<g class="leaf leaf-${nr}">${leaf}</g>`;
+
+// Varje figur: viewBox-bredd och -höjd, höjd i pixlar på stigen och själva teckningen
+const FOREST_ART = {
+  gran: { w: 48, h: 60, px: 46, svg: SHADOW(24, 57, 13, 2.5) +
+    `<rect x="21.5" y="45" width="5" height="11" rx="2" fill="#7a5a45"/>` +
+    `<g stroke-linejoin="round" stroke-width="4"><path d="M7 48L24 26L41 48Z" fill="#4f7a4a" stroke="#4f7a4a"/>` +
+    `<path d="M11 37L24 16L37 37Z" fill="#5f8a55" stroke="#5f8a55"/><path d="M15 26L24 6L33 26Z" fill="#6f9a5e" stroke="#6f9a5e"/></g>` +
+    `<g stroke="#9cc283" stroke-width="2" stroke-linecap="round" opacity=".75"><path d="M12 45L18 37.5"/><path d="M16 34L21 27"/><path d="M19.5 23L23 15"/></g>` },
+  flugsvamp: { w: 48, h: 48, px: 32, svg: SHADOW(24, 45, 11, 2) +
+    `<path d="M19 44Q18 32 21 28L27 28Q30 32 29 44Q24 46 19 44Z" fill="#efdccb"/>` +
+    `<path d="M19.5 33Q24 35.5 28.5 33" stroke="#cdb59e" stroke-width="1.6" fill="none" stroke-linecap="round"/>` +
+    `<path d="M6 29Q7 10 24 9Q41 10 42 29Q24 33 6 29Z" fill="#c8574a"/>` +
+    `<path d="M11.5 21Q14 13.5 21 12" stroke="#e8a99d" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".85"/>` +
+    `<g fill="#fff8ef"><circle cx="16" cy="22" r="2.2"/><circle cx="25" cy="16" r="2.6"/><circle cx="34" cy="22" r="2"/><circle cx="22" cy="26" r="1.5"/><circle cx="31" cy="14" r="1.4"/></g>` },
+  kantarell: { w: 44, h: 40, px: 28, svg: SHADOW(22, 37, 14, 2) +
+    `<path d="M15 36C15 29 11 23 6 19Q10 15 16 17Q20 14 24 17Q28 15 30 19C25 23 21 29 21 36Z" fill="#e3a743"/>` +
+    `<path d="M9 19Q14 16.5 19 18" stroke="#f6cf7d" stroke-width="1.8" fill="none" stroke-linecap="round"/>` +
+    `<path d="M27 36C27 31 25 28 22 26Q25 23 29 25Q32 23 35 26C32 28 31 31 31 36Z" fill="#d6963a"/>` },
+  sten: { w: 52, h: 40, px: 28, svg: SHADOW(26, 37, 20, 2.5) +
+    `<path d="M6 35L9 24L17 16L30 13L40 17L46 27L45 35Z" fill="#8a817a" stroke="#8a817a" stroke-width="2" stroke-linejoin="round"/>` +
+    `<path d="M9 24L17 16L30 13L40 17L28 22Z" fill="#a79e96" stroke="#a79e96" stroke-width="1" stroke-linejoin="round"/>` +
+    `<path d="M40 17L46 27L45 35L34 35L28 22Z" fill="#746c66" stroke="#746c66" stroke-width="1" stroke-linejoin="round"/>` +
+    `<path d="M12 21Q15 16.5 18 16L30 13Q37 13.5 40.5 17.5Q36 17 33 19.5Q28 16 23 19Q18 17.5 15 21Q13.5 20.5 12 21Z" fill="#7fae5a"/>` +
+    `<path d="M31 13.5V9" stroke="#5f8a55" stroke-width="1" stroke-linecap="round"/><circle cx="31" cy="8" r="1.8" fill="#eee4f3"/><circle cx="31" cy="8" r=".7" fill="#e3a743"/>` },
+  stubbe: { w: 52, h: 52, px: 38, svg: SHADOW(26, 49, 20, 2.5) +
+    `<path d="M11 47Q12 34 12 20L40 20Q40 34 41 47Q46 47 48 49L4 49Q6 47 11 47Z" fill="#8a6a52"/>` +
+    `<path d="M16 26V41M37 25V37" stroke="#73563f" stroke-width="1.6" stroke-linecap="round"/>` +
+    `<ellipse cx="26" cy="20" rx="14" ry="4.5" fill="#d6b894"/><ellipse cx="26" cy="20" rx="7.5" ry="2.3" stroke="#b8956f" stroke-width="1.2" fill="none"/>` +
+    `<path d="M12 20Q16 16 22 18Q19 21 12 20Z" fill="#7fae5a"/><path d="M21 49V40Q26 33 31 40V49Z" fill="#5a4765"/>` +
+    `<circle cx="29" cy="44.5" r=".9" fill="#e3a743"/><circle cx="34.5" cy="29" r="2.4" fill="#f2cb83"/>` },
+  ormbunke: { w: 48, h: 44, px: 32, svg: SHADOW(24, 42, 12, 2) +
+    `<g transform="translate(24 42)">${fernFrond("rotate(-40) scale(.8)", "#6f9a5e")}${fernFrond("scale(-.8 .8) rotate(-40)", "#6f9a5e")}${fernFrond("", "#9cc283")}</g>` },
+  lingon: { w: 48, h: 34, px: 26, svg: SHADOW(24, 31, 15, 2) +
+    `<g fill="#4f7a4a"><ellipse cx="14" cy="24" rx="7" ry="4.5" transform="rotate(-20 14 24)"/><ellipse cx="34" cy="24" rx="7" ry="4.5" transform="rotate(20 34 24)"/></g>` +
+    `<g fill="#5f8a55"><ellipse cx="24" cy="19" rx="8" ry="5"/><ellipse cx="19" cy="27" rx="7" ry="4"/><ellipse cx="30" cy="27" rx="7" ry="4"/></g>` +
+    `<g fill="#d0584b"><circle cx="17" cy="22" r="2.6"/><circle cx="22" cy="25.5" r="2.6"/><circle cx="30" cy="20.5" r="2.4"/><circle cx="34" cy="26" r="2.2"/><circle cx="27" cy="27" r="2.4"/></g>` +
+    `<g fill="#fff" opacity=".7"><circle cx="16.2" cy="21.2" r=".8"/><circle cx="21.2" cy="24.7" r=".8"/><circle cx="29.3" cy="19.8" r=".7"/><circle cx="26.3" cy="26.2" r=".7"/></g>` },
+  kotte: { w: 40, h: 30, px: 20, svg: SHADOW(20, 27.3, 12, 1.8) +
+    `<g transform="translate(20 19) rotate(-78) translate(-16 -22)"><rect x="14.8" y="6" width="2.4" height="5" rx="1.2" fill="#6e4c35"/>` +
+    `<ellipse cx="16" cy="22" rx="8" ry="12.5" fill="#9a6e4f"/><g stroke="#6e4c35" stroke-width="1.3" fill="none" stroke-linecap="round">` +
+    `<path d="M10.5 14.5Q13.2 17 16 14.5Q18.8 17 21.5 14.5"/><path d="M8.5 20Q12.2 23 16 20Q19.8 23 23.5 20"/>` +
+    `<path d="M8.6 26Q12.3 29 16 26Q19.7 29 23.4 26"/><path d="M11 31.5Q13.5 33.5 16 31.5Q18.5 33.5 21 31.5"/></g>` +
+    `<path d="M21 13Q20 10.5 18 10" stroke="#c49a76" stroke-width="1.4" fill="none" stroke-linecap="round"/></g>` },
+  // Svävande björklöv: varje löv ligger i en egen grupp med klassen leaf, som style.css låter vagga lite
+  bjorklov: { w: 40, h: 48, px: 36, svg: `<g transform="translate(14 18) rotate(-20)">${leafSwaying(BIRCH_LEAF, 1)}</g>` +
+    `<g transform="translate(27 30) rotate(30) scale(.85)">${leafSwaying(BIRCH_LEAF, 2)}</g>` },
+  // Tre lysmaskar som blinkar långsamt i var sin takt (animationen ligger i style.css)
+  lysmask: { w: 40, h: 30, px: 26, svg: `<g fill="#f2cb83">` +
+    `<g class="glow"><circle cx="10" cy="18" r="5" opacity=".22"/><circle cx="10" cy="18" r="1.8"/></g>` +
+    `<g class="glow"><circle cx="27" cy="9" r="4.4" opacity=".22"/><circle cx="27" cy="9" r="1.5"/></g>` +
+    `<g class="glow"><circle cx="32" cy="23" r="3.6" opacity=".22"/><circle cx="32" cy="23" r="1.2"/></g></g>` },
+};
+
+// En figur som SVG. scale gör den lite större eller mindre så att skogen inte ser likformig ut.
+function forestSvg(name, scale, extraClass = "", style = "") {
+  const art = FOREST_ART[name];
+  const height = Math.round(art.px * scale);
+  const width = Math.round(height * art.w / art.h);
+  return `<svg class="forest-art ${extraClass}" viewBox="0 0 ${art.w} ${art.h}" width="${width}" height="${height}"` +
+    `${style ? ` style="${style}"` : ""} aria-hidden="true">${art.svg}</svg>`;
+}
+
+// Lektionerna som får en figur, jämnt utspridda: nivåer med jämnt nummer får två (vid nivåns 2:a och 5:e
+// lektion), udda nivåer en (vid 5:e lektionen). Inget direkt under nivårubriken, där det blir trångt.
+// Är platsen din lektion eller nästa, där igelkotten och startknappen står, flyttas figuren en lektion.
+const FOREST_SLOTS = { 1: [5], 2: [2, 5] };
+
+// Svarar med lektion → figur. Figurerna tas i tur och ordning ur FOREST, så att alla kommer med lika ofta
+// och samma figur aldrig står två gånger i rad. FOREST_START gör att stubben hamnar på nivå 11.
+const FOREST_START = 4;
+
+function forestLessons(current) {
+  const chosen = new Map();
+  const blocked = l => current && (l === current || l === current + 1);
+  const levels = [...new Set(allLessons().map(lessonLevel))];
+  levels.forEach(level => {
+    const lessons = allLessons().filter(l => lessonLevel(l) === level);
+    const slots = FOREST_SLOTS[level % 2 === 0 ? 2 : 1];
+    slots.forEach(slot => {
+      const index = Math.min(slot, lessons.length) - 1;  // Korta nivåer: sista lektionen
+      const candidates = [index, index + 1, index - 1, index + 2].map(i => lessons[i])
+        .filter(l => l && (l !== lessons[0] || lessons.length === 1) && !blocked(l) && !chosen.has(l));
+      if (candidates.length) chosen.set(candidates[0], FOREST[(chosen.size + FOREST_START) % FOREST.length]);
+    });
+  });
+  return chosen;
+}
+
+function forestDeco(lesson, x, center, pick) {
+  const n = (lesson * 7919 + 13) % 97;
+  const side = x < 50 ? 1 : -1;
+  const decoX = Math.min(92, Math.max(8, x + side * (32 + n % 9)));
+  const scale = 1 + n % 4 * 0.08;
+  const deco = h("span", { class: "forest", "aria-hidden": "true", style: `left:${decoX}%;top:${center - 8 + n % 3 * 8}px` });
+  // Löv och lysmaskar börjar röra sig olika långt in, så att de inte rör sig i takt med varandra
+  const shift = `--anim-shift:-${n % 7 * 0.6}s`;
+  deco.innerHTML = typeof pick === "string" ? forestSvg(pick, scale, "", shift)
+    : forestSvg(pick.night, scale, "forest-night", shift) + forestSvg(pick.day, scale, "forest-day");
+  return deco;
+}
+
 function roadmap(startLabel) {
   const current = currentLesson();
   const points = [];
@@ -1022,11 +1154,16 @@ function roadmap(startLabel) {
   let y = 0;
   let level = 0;
   let start = null;  // Startknappen och var den ska stå, när din lektion finns på stigen
+  const forest = forestLessons(current);
 
   allLessons().forEach((lesson, i) => {
     if (lessonLevel(lesson) !== level) {
       level = lessonLevel(lesson);
-      items.push(h("div", { class: "road-level", "data-level": level, style: `top:${y}px` }, `Nivå ${level}`));
+      const thisLevel = level;
+      items.push(h("div", { class: "road-level", "data-level": level, style: `top:${y}px`, role: "button", tabindex: "0",
+        "aria-label": `Nivå ${level}. Repetera eller se översikt.`,
+        onclick: () => showLevelChoice(thisLevel),
+        onkeydown: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showLevelChoice(thisLevel); } } }, `Nivå ${level}`));
       y += ROAD_LEVEL;
     }
     const x = 50 + Math.sin(i * ROAD_TURN) * ROAD_SWING;
@@ -1045,6 +1182,7 @@ function roadmap(startLabel) {
       items.push(hedgehog, button);
       start = { x, center, hedgehog, button, lesson };
     }
+    if (forest.has(lesson)) items.push(forestDeco(lesson, x, center, forest.get(lesson)));
     y += status === "current" ? ROAD_CURRENT : ROAD_ROW;
   });
 
@@ -1260,7 +1398,8 @@ function celebrateLevel(level) {
   showModal(`Nivå ${level} klar`, [
     h("div", { class: "flip-stage" }, hedgehog),
     h("h2", { class: "center" }, `Nivå ${level} klar! 🎉`),
-    h("p", { class: "center muted" }, `Du har gjort alla ${allLessons().filter(l => lessonLevel(l) === level).length} lektioner på nivån.`)]);
+    h("p", { class: "center muted" }, `Du har gjort alla ${allLessons().filter(l => lessonLevel(l) === level).length} lektioner på nivån.`)],
+    [], "Nästa nivå", { onClose: () => showHome() });
 }
 
 // ---------- Fönstren för din lektion, sviten och orden du kan ----------
@@ -1350,27 +1489,28 @@ function grammarFor(items) {
   return ids.map(id => GRAMMAR.find(g => g.id === id)).filter(Boolean);
 }
 
-// Tipset med glödlampan. Har ordet eller meningen en grammatikförklaring går tipset att trycka på
-// och öppnar förklaringen. Saknas tips men finns en förklaring står det bara "Grammatik".
+// Tipset med glödlampan, som vanlig text. Grammatiken nås genom att trycka på orden i meningarna.
 function noteLine(item, extraClass = "") {
-  const hasGrammar = grammarFor([item]).length > 0;
-  if (!item.note && !hasGrammar) return null;
-  const text = mixed("💡 " + (item.note || "Grammatik"));
-  if (!hasGrammar) return h("div", { class: `note ${extraClass}` }, text);
-  return h("button", { class: `note note-link ${extraClass}`, "aria-label": `${item.note || "Grammatik"}. Förklara grammatiken.`,
-    onclick: e => { e.stopPropagation(); showGrammar([item]); } },
-    text, h("span", { class: "note-more", "aria-hidden": "true" }, " ›"));
+  if (!item.note) return null;
+  return h("div", { class: `note ${extraClass}` }, mixed("💡 " + item.note));
 }
 
 // Modulfönster som stängs med knappen, Esc eller ett tryck utanför
 // actions = knappar som står bredvid Stäng, lika stora: [[text, klass, funktion]]. De stänger fönstret först.
-function showModal(label, content, actions = [], closeLabel = "Stäng") {
-  const closeDialog = () => { dialog.close(); dialog.remove(); };
-  const dialog = h("dialog", { class: "modal", "aria-label": label },
-    h("div", { class: "modal-body" }, content,
-      h("div", { class: "buttons modal-close" + (actions.length ? " modal-actions" : "") },
-        actions.map(([text, cls, action]) => h("button", { class: cls, onclick: () => { closeDialog(); action(); } }, text)),
-        h("button", { class: "primary", onclick: closeDialog }, closeLabel))));
+// opts.stacked = knapparna under varandra och ett litet kryss uppe till höger i stället för Stäng.
+// opts.onClose körs när du trycker på Stäng-knappen (den kan heta något annat, t.ex. Nästa nivå).
+function showModal(label, content, actions = [], closeLabel = "Stäng", opts = {}) {
+  const closeDialog = () => { if (dialog.open) dialog.close(); dialog.remove(); };
+  const actionButtons = actions.map(([text, cls, action]) => h("button", { class: cls, onclick: () => { closeDialog(); action(); } }, text));
+  const footer = opts.stacked
+    ? h("div", { class: "modal-stack" }, actionButtons)
+    : h("div", { class: "buttons modal-close" + (actions.length ? " modal-actions" : "") },
+        actionButtons, h("button", { class: "primary", onclick: () => { closeDialog(); if (opts.onClose) opts.onClose(); } }, closeLabel));
+  // Krysset ritas som bild, så att det står mitt i knappen oavsett typsnitt
+  const cross = opts.stacked ? h("button", { class: "modal-x", "aria-label": "Stäng", onclick: closeDialog }) : null;
+  if (cross) cross.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>`;
+  const dialog = h("dialog", { class: "modal" + (opts.stacked ? " modal-small" : ""), "aria-label": label },
+    cross, h("div", { class: "modal-body" }, content, footer));
   dialog.addEventListener("close", () => dialog.remove());  // Esc-tangenten
   dialog.addEventListener("click", e => { if (e.target === dialog) closeDialog(); });  // Tryck utanför stänger
   document.body.append(dialog);
@@ -1552,14 +1692,18 @@ function showLevelPicker() {
     const done = doneLessons().filter(l => lessonLevel(l) === level).length;
     const finished = done === lessons.length;
     return h("button", { class: "option level-option" + (finished ? " level-done" : "") + (here ? " level-here" : ""),
-      onclick: () => showLevel(level), "aria-label": `Nivå ${level}${finished ? ", klar" : ""}${here ? ", du är här" : ""}` },
+      onclick: () => showLevelOverview(level), "aria-label": `Nivå ${level}${finished ? ", klar" : ""}${here ? ", du är här" : ""}. Visa lektionerna.` },
       h("div", { class: "level-title" }, `Nivå ${level}` + (here ? " · du är här" : "")),
       h("div", { class: "muted level-themes" }, themes.slice(0, 4).join(", ")),
       h("div", { class: "progress", role: "img", "aria-label": `${done} av ${lessons.length} lektioner klara` },
         h("div", { class: "bar", style: `width:${done / lessons.length * 100}%` })));
   });
   setNav("levels");
+  const allDone = doneLessons().length, total = allLessons().length;
   main.replaceChildren(
+    // Hur många lektioner du gjort av alla, utan text
+    h("div", { class: "progress total-progress", role: "img", "aria-label": `${allDone} av ${total} lektioner klara` },
+      h("div", { class: "bar", style: `width:${allDone / total * 100}%` })),
     h("p", { class: "step-label center" }, "Navigering"),
     h("div", { class: "options" }, rows));
 }
@@ -1568,6 +1712,59 @@ function showLevelPicker() {
 function showLevel(level) {
   showHome();
   main.querySelector(`[data-level="${level}"]`).scrollIntoView();
+}
+
+const LESSON_MARK = { done: "✓", current: "🦔", skipped: "↷", next: "" };
+
+// Fönster med nivåns lektioner och orden i varje. Ett tryck visar lektionen på stigen.
+function showLevelOverview(level) {
+  const lessons = allLessons().filter(l => lessonLevel(l) === level);
+  const items = lessons.map(lesson => {
+    const status = lessonStatus(lesson);
+    const words = WORDS.filter(w => w.lesson === lesson).map(w => w.sr).join(", ");
+    return h("button", { class: "level-lesson", "aria-label": `Lektion ${lesson}, ${lessonTheme(lesson)}, ${STATUS_TEXT[status]}. Visa på stigen.`,
+      onclick: e => { e.currentTarget.closest("dialog").close(); showHome(lesson); } },
+      h("span", { class: "level-lesson-head" },
+        h("span", {}, `Lektion ${lesson} · ${lessonTheme(lesson)}`),
+        h("span", { class: "level-lesson-mark", "aria-hidden": "true" }, LESSON_MARK[status])),
+      h("span", { class: "muted level-lesson-words" }, h("em", {}, words)));
+  });
+  showModal(`Nivå ${level}`, [
+    h("h2", {}, `Nivå ${level}`),
+    h("p", { class: "muted" }, "Tryck på en lektion för att se den på stigen."),
+    h("div", { class: "level-lessons" }, items)]);
+}
+
+// Tryck på nivårubriken på stigen: repetera förra nivån eller se nivåns lektioner
+function showLevelChoice(level) {
+  const actions = [["Visa översikt för nivån", "primary", () => showLevelOverview(level)]];
+  if (level > 1) actions.push(["Repetera föregående nivå", "", () => startLevelReview(level - 1)]);
+  showModal(`Nivå ${level}`, h("h2", { class: "center" }, `Nivå ${level}`), actions, "", { stacked: true });
+}
+
+// Repetition av en hel nivå: ord du tycker är svåra, meningar att bygga och ord att skriva.
+// Din plats på stigen ändras inte.
+const LEVEL_HARD_MAX = 8;
+const LEVEL_BUILD = 5;
+const LEVEL_WRITE = 5;
+
+function startLevelReview(level) {
+  const words = WORDS.filter(w => lessonLevel(w.lesson) === level);
+  const sentences = SENTENCES.filter(s => lessonLevel(s.lesson) === level);
+  const grade = w => progress.words[w.id] && progress.words[w.id].lastGrade;
+  const hard = shuffle(words.filter(w => [1, 3].includes(grade(w)))).slice(0, LEVEL_HARD_MAX);
+  // Ord att skriva tas helst bland ord du sett, men inte bland de svåra som just visats med svaret
+  const rest = shuffle(words.filter(w => !hard.includes(w)));
+  const seen = rest.filter(w => progress.words[w.id]);
+  const write = (seen.length >= LEVEL_WRITE ? seen : rest).slice(0, LEVEL_WRITE);
+  const built = shuffle(sentences).filter(s => sentenceParts(s).length >= 2).slice(0, LEVEL_BUILD);
+
+  session = { review: hard, write, newWords: [], sentences: built, lesson: null, practice: true, level };
+  queue = hard.map(w => ({ type: "review", word: w }));           // 1. Ord du gett Svår eller Kan inte
+  built.forEach(s => queue.push({ type: "build", sentence: s })); // 2. Bygg meningar
+  write.forEach(w => queue.push({ type: "write", word: w }));     // 3. Skriv ord
+  pos = 0;
+  showTask();
 }
 
 // Tar bort ord du hoppat över och inte har övat på
@@ -1623,6 +1820,24 @@ function trainButton(title, icon, share, detail, start) {
     h("span", { class: "muted train-detail" }, detail));
 }
 
+// Skriv ord: ord du förstår (Lätt eller Bra) men inte redan gett Lätt i skrivövningen.
+// Ord du aldrig skrivit kommer först, sedan ord där skrivschemat säger att det är dags, sist övriga.
+function writingPracticeWords() {
+  const writing = progress.writing || {};
+  const rank = w => !writing[w.id] ? 0 : writing[w.id].due <= Date.now() ? 1 : 2;
+  return shuffle(knownWords().filter(w => !(writing[w.id] && writing[w.id].lastGrade === 5)))
+    .sort((a, b) => rank(a) - rank(b));
+}
+
+// Ett pass med bara skrivuppgifter. Betygen sparas i skrivschemat och räknas i aktivt ordförråd.
+function startWritingTraining(words) {
+  const picked = words.slice(0, TRAIN_WORDS);
+  session = { review: [], write: picked, newWords: [], sentences: [], lesson: null, practice: true, trained: true };
+  queue = picked.map(w => ({ type: "write", word: w }));
+  pos = 0;
+  showTask();
+}
+
 function showTraining() {
   setNav("train");
   const hard = hardWords();
@@ -1630,6 +1845,8 @@ function showTraining() {
   const groups = [...new Set(CATEGORIES.map(c => c.group))];
   const tutorKnown = knownWords(TUTOR_WORDS).length;
   const tutorTotal = TUTOR_WORDS.length || TUTOR_SENTENCES.length;
+  const known = knownWords();
+  const toWrite = writingPracticeWords();
   fillMain(
     h("div", { class: "section-title" }, "Extralektioner"),
     h("div", { class: "train-grid" },
@@ -1638,7 +1855,9 @@ function showTraining() {
       trainButton("Lektioner", "🎓", TUTOR_WORDS.length ? tutorKnown / TUTOR_WORDS.length : 0,
         TUTOR_WORDS.length ? `${tutorKnown} av ${TUTOR_WORDS.length} ord`
           : TUTOR_SENTENCES.length ? `${TUTOR_SENTENCES.length} meningar` : "Inga ord än",
-        tutorTotal ? () => startTraining(TUTOR_WORDS, TUTOR_SENTENCES) : null)),
+        tutorTotal ? () => startTraining(TUTOR_WORDS, TUTOR_SENTENCES) : null),
+      trainButton("Skriv ord", "✏️", known.length ? spelledWords(known).length / known.length : 0,
+        `${toWrite.length} ord`, toWrite.length ? () => startWritingTraining(toWrite) : null)),
     ...groups.map(group => [
       h("div", { class: "section-title" }, group),
       h("div", { class: "train-grid" }, CATEGORIES.filter(c => c.group === group).map(c => {
@@ -1667,8 +1886,8 @@ function chartBuckets(days) {
       ? first.toLocaleDateString("sv-SE", { weekday: "short" })
       : first.toLocaleDateString("sv-SE", { day: "numeric", month: "short" });
     const title = first.toLocaleDateString("sv-SE", { weekday: "short", day: "numeric", month: "short" });
-    const grades = gradesOn(dateStr(daysAgo(ago)));  // Veckans stapel visar läget när veckan slutade
-    buckets.push({ ...grades, total: grades.easy + grades.good + grades.hard, label, title: step > 1 ? `Veckan från ${title}` : title });
+    const grades = { spelled: 0, ...gradesOn(dateStr(daysAgo(ago))) };  // Veckans stapel visar läget när veckan slutade
+    buckets.push({ ...grades, total: grades.spelled + grades.easy + grades.good + grades.hard, label, title: step > 1 ? `Veckan från ${title}` : title });
   }
   return buckets;
 }
@@ -1679,8 +1898,11 @@ function niceMax(value) {
   return [2, 4, 6, 8, 10].map(n => n * scale).find(n => n >= value) || scale * 2;
 }
 
+// Texten för en stapel: kan stava, lätt, bra och svårt
+const bucketText = b => `${b.spelled} kan stava, ${b.easy} lätt, ${b.good} bra, ${b.hard} svårt`;
+
 function chartColumn(bucket, tip) {
-  const text = `${bucket.title}: ${bucket.easy} lätt, ${bucket.good} bra, ${bucket.hard} svårt`;
+  const text = `${bucket.title}: ${bucketText(bucket)}`;
   const show = e => {
     const plot = e.currentTarget.parentElement;
     const center = e.currentTarget.offsetLeft + e.currentTarget.offsetWidth / 2;
@@ -1691,7 +1913,8 @@ function chartColumn(bucket, tip) {
   const hide = () => tip.classList.add("hidden");
   return h("button", { class: "chart-col", "aria-label": text,
     onmouseenter: show, onfocus: show, onclick: show, onmouseleave: hide, onblur: hide },
-    ["easy", "good", "hard"].map(key => bucket[key]
+    // Först i listan hamnar underst: kan stava längst ner
+    ["spelled", "easy", "good", "hard"].map(key => bucket[key]
       ? h("span", { class: "chart-seg " + key, style: `flex-grow:${bucket[key]}` }) : null),
     h("span", { class: "chart-space", style: `flex-grow:${bucket.total ? 0 : 1}` }));
 }
@@ -1713,6 +1936,7 @@ function progressChart(buckets) {
     h("div", { class: "chart-labels" }, buckets.map((b, i) =>
       h("span", {}, (buckets.length - 1 - i) % every === 0 ? b.label : ""))),
     h("div", { class: "chart-legend" },
+      h("span", {}, h("i", { class: "swatch spelled" }), "Kan stava"),
       h("span", {}, h("i", { class: "swatch easy" }), "Lätt"),
       h("span", {}, h("i", { class: "swatch good" }), "Bra"),
       h("span", {}, h("i", { class: "swatch hard" }), "Svårt")));
@@ -1757,14 +1981,19 @@ function progressSection() {
     withWords.length ? h("details", {},
       h("summary", {}, "Visa som tabell"),
       withWords.map(b => h("div", { class: "word-row" },
-        h("span", {}, b.title), h("span", { class: "muted" }, `${b.easy} lätt, ${b.good} bra, ${b.hard} svårt`)))) : null);
+        h("span", {}, b.title), h("span", { class: "muted" }, bucketText(b))))) : null);
 }
 
 function showDashboard() {
   setNav("dash");
+  // Dagens stapel räknas om, så att den stämmer även om du inte gett något betyg sedan grafen fick Kan stava
+  const today = dateStr(new Date()), now = countGrades();
+  if (JSON.stringify(gradesOn(today)) !== JSON.stringify(now)) { progress.gradeDays[today] = now; saveProgress(); }
   const seen = ALL_WORDS.filter(w => progress.words[w.id]);
   const byGrade = g => seen.filter(w => progress.words[w.id].lastGrade === g);
-  const groups = [["Lätt", "easy", byGrade(5)], ["Bra", "good", byGrade(4)], ["Svårt", "hard", byGrade(3)]];
+  // Den lila först: hur många ord du kan stava (samma som ❤️). Sedan hur väl du förstår orden.
+  const groups = [["Kan stava", "spelled", spelledWords()],
+    ["Lätt", "easy", byGrade(5)], ["Bra", "good", byGrade(4)], ["Svårt", "hard", byGrade(3)]];
   const rings = h("div", { class: "rings" },
     progressRing(spelledWords().length, ALL_WORDS.length, "Aktivt ordförråd"),
     progressRing(knownWords().length, ALL_WORDS.length, "Passivt ordförråd"));
@@ -1863,6 +2092,33 @@ document.getElementById("lessonCount").addEventListener("click", showLessonInfo)
 document.getElementById("streakCount").addEventListener("click", showStreakInfo);
 document.getElementById("knownCount").addEventListener("click", showKnownInfo);
 document.getElementById("spelledCount").addEventListener("click", showSpelledInfo);
+document.getElementById("themeBtn").addEventListener("click", showThemeChoice);
+
+// Ljust eller mörkt läge. Sparas i en egen nyckel, skild från framstegen. "auto" följer telefonen.
+const THEME_KEY = "serbiska-theme";
+
+function currentTheme() {
+  try { return localStorage.getItem(THEME_KEY) || "auto"; } catch (e) { return "auto"; }
+}
+
+function applyTheme(theme) {
+  if (theme === "auto") delete document.documentElement.dataset.theme;
+  else document.documentElement.dataset.theme = theme;
+  try { theme === "auto" ? localStorage.removeItem(THEME_KEY) : localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+  // Färgen på telefonens statusrad följer bakgrunden
+  const bg = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim();
+  document.querySelector('meta[name="theme-color"]').setAttribute("content", bg);
+}
+
+function showThemeChoice() {
+  const theme = currentTheme();
+  const options = [["light", "☀️ Ljust läge"], ["dark", "🌙 Mörkt läge"], ["auto", "📱 Som telefonen"]];
+  // Valt läge är grönt, de andra grå
+  showModal("Välj läge", h("h2", { class: "center" }, "Utseende"),
+    options.map(([value, text]) => [text, value === theme ? "good" : "", () => applyTheme(value)]),
+    "", { stacked: true });
+}
+applyTheme(currentTheme());
 
 // Läs in ord och meningar, visa sedan startsidan
 Promise.all([

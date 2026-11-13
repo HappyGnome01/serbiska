@@ -373,3 +373,72 @@ Nästa steg: pojkvännen granskar listan, sedan nivåtestet.
 - *trenerka* och *duks* borttagna tills översättningen är säker.
 - Pushat: Extralektioner med 🎓 Lektioner (116 ord, 60 meningar) och Lektioner-orden i statistiken.
 
+
+## [2026-11-13] feature | Nivåöversikt och repetera nivå
+- Navigering: bar överst med gjorda lektioner av alla. Tryck på en nivå öppnar en översikt med lektionerna och deras ord, och ett tryck på en lektion visar den på stigen.
+- Stigen: tryck på nivårubriken ger Repetera förra nivån och Översikt för nivån. När en nivå blir klar frågar appen om du vill repetera den.
+- Nytt pass Repetera nivå: 5 testord, svåra ord från nivån, 5 meningar att bygga och 5 ord att skriva.
+
+
+## [2026-11-13] feature | Skog, ljust läge och enklare nivåfönster
+- 💡-raden är vanlig text utan länk till grammatiken. Grammatiken nås via orden i meningarna.
+- Nivå klar: frågan om repetition borttagen, knappen heter Nästa nivå och leder till stigen.
+- Nivårubriken på stigen: litet fönster med kryss uppe till höger, Visa översikt för nivån överst och Repetera föregående nivå under.
+- Repetera nivå: testet med 5 slumpade ord borttaget.
+- Skog (träd, svampar, buskar, blommor) längs stigen.
+- Tryck på Serbiska högst upp: välj ljust, mörkt eller som telefonen. Sparas under `serbiska-theme`.
+
+
+## [2026-11-13] fix | Kryss, grå knappar, gräs och grå tassar
+- Krysset i de små fönstren ritas som bild och står mitt i knappen.
+- Lägesvalet: valt läge grönt, de andra grå. Nivåfönstret på stigen: båda knapparna grå.
+- Skogen längs stigen har gräs och skugga under.
+- Tassarna fram till din lektion är mörkare grå i stället för gröna, tassarna framåt ljusare.
+
+
+## [2026-11-13] fix | Färgpennegräs och översiktsknappen
+- Nivåfönstret: Visa översikt för nivån har samma färg som Starta pass.
+- Tassarna fram till din lektion: opacitet 0,5 mot 0,4 framåt, alltså 10 procentenheter mörkare (ljusare i mörkt läge).
+- Skuggan under skogen borttagen. I stället gräs ritat med ett SVG-filter som ger ojämna, korniga streck som med färgpennor.
+
+## [2026-11-13] feature | Egen skog i igelkottens stil
+- Emojis och färgpennegräs längs stigen ersatta med egna SVG-figurer i nordisk sagostil: gran, tall, flugsvamp, kantareller, kantig mossig sten, stubbe med dörr och lysande fönster, ormbunke, lingonris och liggande kotte. Skugga under i stället för gräs.
+- Lysmaskar som blinkar långsamt på två platser, bara i mörkt läge. I ljust läge står en gran eller ormbunke där. Ingen blinkning vid minskad rörelse.
+- Borttaget: `FOREST`-emojis, `grassSvg`, gräs-CSS och filtret `#pencil` i `index.html` (användes bara av gräset).
+- Skälet: emojis ser olika ut på olika enheter och krockade i stil med igelkotten och gräset.
+
+## [2026-11-13] fix | Tassarna 20 procent
+- Tassarna fram till din lektion: opacitet 0,6 mot 0,4 framåt, alltså 20 procentenheter mörkare (ljusare i mörkt läge).
+
+## [2026-11-13] fix | Ingen tall, tydligare mark i mörkt läge
+- Tallen borttagen ur skogen. Dess platser har fått gran, kantareller och flugsvamp.
+- Marken under figurerna: i mörkt läge en ljusare jordfläck (#5e5043) i stället för en svart skugga som inte syntes, så att figurerna inte ser ut att sväva. Ljust läge har kvar skuggan.
+
+## [2026-11-13] feature | Fallande löv
+- Två nya figurer i skogen: två gröna björklöv och ett gult lönnlöv som singlar ner, vaggar och tonar ut i en slinga. Stängs av vid minskad rörelse.
+- Fix: med 12 figurer i `FOREST` valdes aldrig gran, lingon och löven, eftersom tal delbara med 3 redan betyder tom plats. Valet görs nu med `Math.floor(n / 3)`.
+- `--glow-shift` heter nu `--anim-shift` och används av både lysmaskar och löv.
+
+## [2026-11-13] fix | Färre skogsfigurer
+- Skogen längs stigen har 1–3 figurer per nivå i stället för vid två av tre lektioner. Vilka lektioner som får en figur bestäms av nivå- och lektionsnummer, så det blir likadant varje gång.
+- Tassarna 20 procentenheter mörkare än tidigare ändring (se ovan).
+
+## [2026-11-13] fix | Löven vaggar i stället för att falla
+- Björklöven svävar och vaggar lite på stället (4–5 s per vagg) i stället för att singla ner och tona ut.
+- Det gula lönnlövet borttaget. Dess plats har fått kantareller.
+
+## [2026-11-13] fix | Jämnare skog
+- 1–2 figurer per nivå: jämna nivåer vid 2:a och 5:e lektionen, udda vid 5:e. Ingen figur direkt under nivårubriken.
+- Figurerna tas i tur och ordning, så att samma figur inte står två gånger på en nivå. Stubben står kvar på nivå 11.
+
+
+## [2026-11-13] feature | Skriv ord och aktivt ordförråd i statistiken
+- Träna → Extralektioner: ny knapp ✏️ Skriv ord med skrivuppgifter på ord du förstår (Lätt eller Bra), utom de du redan gett Lätt i skrivövningen.
+- Din utveckling: lila del underst i staplarna för ord du kan stava. De orden räknas inte också som lätt, bra eller svårt. `gradeDays` har fått fältet `spelled`, och äldre dagar utan fältet räknas som 0.
+- Ditt ordförråd: ljuslila cirkel Kan stava, samma antal som ❤️.
+
+
+## [2026-11-13] publish | Nivåöversikt, skog, ljust läge och aktivt ordförråd
+- Kan stava-cirkeln står först under Ditt ordförråd.
+- Pushat: nivåöversikt och repetera nivå, skog längs stigen, ljust och mörkt läge, grå tassar, Skriv ord och Kan stava i statistiken.
+
